@@ -1,1 +1,24 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+.prose th,
+.prose td {
+  border: 1px solid #d1d5db;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+.prose th {
+  background-color: #f3f4f6;
+  font-weight: 600;
+}
+
+.prose tbody tr:hover {
+  background-color: #f9fafb;
+}

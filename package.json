@@ -5,11 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && cp dist/index.html dist/404.html",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mdx-js/react": "^3.1.1",
+    "@mdx-js/rollup": "^3.1.1",
+    "@tailwindcss/typography": "^0.5.19",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.13.0"
