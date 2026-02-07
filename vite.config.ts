@@ -5,7 +5,7 @@ import mdx from '@mdx-js/rollup';
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/information-security-engineer/',
+  base: '/',
   plugins: [
     { enforce: 'pre', ...mdx() },
     react({ include: /\.(jsx|js|mdx|md|tsx|ts)$/ }),
