@@ -196,16 +196,15 @@ AA:BB:CC:DD:EE:FF
 
 #### TCP 3-Way Handshake
 
-```
-클라이언트                    서버
-    |                          |
-    |-------- SYN ------------>|
-    |                          |
-    |<------ SYN + ACK --------|
-    |                          |
-    |-------- ACK ------------>|
-    |                          |
-    |     연결 수립 완료        |
+```mermaid
+sequenceDiagram
+    participant C as 클라이언트
+    participant S as 서버
+
+    C->>S: SYN (seq=x)
+    S->>C: SYN + ACK (seq=y, ack=x+1)
+    C->>S: ACK (ack=y+1)
+    Note over C,S: 연결 수립 완료
 ```
 
 | 단계 | 설명 |
@@ -216,18 +215,16 @@ AA:BB:CC:DD:EE:FF
 
 #### TCP 4-Way Handshake (연결 종료)
 
-```
-클라이언트                    서버
-    |                          |
-    |-------- FIN ------------>|
-    |                          |
-    |<-------- ACK ------------|
-    |                          |
-    |<-------- FIN ------------|
-    |                          |
-    |-------- ACK ------------>|
-    |                          |
-    |     연결 종료 완료        |
+```mermaid
+sequenceDiagram
+    participant C as 클라이언트
+    participant S as 서버
+
+    C->>S: FIN
+    S->>C: ACK
+    S->>C: FIN
+    C->>S: ACK
+    Note over C,S: 연결 종료 완료
 ```
 
 #### TCP 상태 전이
@@ -622,16 +619,15 @@ arp -s [IP] [MAC]
 
 **RTS/CTS (Request To Send / Clear To Send)**
 
-```
-송신자                     수신자
-   |                         |
-   |-------- RTS ----------->|
-   |                         |
-   |<-------- CTS -----------|
-   |                         |
-   |-------- Data ---------->|
-   |                         |
-   |<-------- ACK -----------|
+```mermaid
+sequenceDiagram
+    participant TX as 송신자
+    participant RX as 수신자
+
+    TX->>RX: RTS (Request To Send)
+    RX->>TX: CTS (Clear To Send)
+    TX->>RX: Data
+    RX->>TX: ACK
 ```
 
 - 숨겨진 노드(Hidden Node) 문제 해결
@@ -680,17 +676,16 @@ arp -s [IP] [MAC]
 
 ### DHCP 동작 과정 (DORA)
 
-```
-클라이언트                    서버
-    |                          |
-    |---- DISCOVER (브로드캐스트) -->|
-    |                          |
-    |<---- OFFER --------------|
-    |                          |
-    |---- REQUEST (브로드캐스트) -->|
-    |                          |
-    |<---- ACK ----------------|
-    |                          |
+```mermaid
+sequenceDiagram
+    participant C as 클라이언트
+    participant S as DHCP 서버
+
+    C->>S: DISCOVER (브로드캐스트)
+    S->>C: OFFER (IP 주소 제안)
+    C->>S: REQUEST (브로드캐스트)
+    S->>C: ACK (할당 확인)
+    Note over C,S: IP 주소 할당 완료
 ```
 
 | 단계 | 메시지 | 설명 |
@@ -923,10 +918,22 @@ arp -s [IP] [MAC]
 
 ### DNS 동작 과정
 
-```
-클라이언트 -> 로컬 DNS -> 루트 DNS -> TLD DNS -> 권한 DNS
-                 |                                   |
-                 |<---------- 최종 응답 -------------|
+```mermaid
+sequenceDiagram
+    participant C as 클라이언트
+    participant L as 로컬 DNS
+    participant R as 루트 DNS
+    participant T as TLD DNS
+    participant A as 권한 DNS
+
+    C->>L: www.example.com 질의
+    L->>R: 루트 서버 질의
+    R->>L: .com TLD 서버 주소
+    L->>T: TLD 서버 질의
+    T->>L: example.com 권한 서버 주소
+    L->>A: 권한 서버 질의
+    A->>L: 최종 IP 주소
+    L->>C: 응답 반환
 ```
 
 1. 클라이언트가 로컬 DNS 서버에 질의
@@ -1013,24 +1020,22 @@ arp -s [IP] [MAC]
 
 ### TLS Handshake
 
-```
-클라이언트                    서버
-    |                          |
-    |---- ClientHello -------->|
-    |                          |
-    |<--- ServerHello ---------|
-    |<--- Certificate ---------|
-    |<--- ServerKeyExchange ---|
-    |<--- ServerHelloDone -----|
-    |                          |
-    |---- ClientKeyExchange -->|
-    |---- ChangeCipherSpec --->|
-    |---- Finished ----------->|
-    |                          |
-    |<--- ChangeCipherSpec ----|
-    |<--- Finished ------------|
-    |                          |
-    |   암호화 통신 시작        |
+```mermaid
+sequenceDiagram
+    participant C as 클라이언트
+    participant S as 서버
+
+    C->>S: ClientHello
+    S->>C: ServerHello
+    S->>C: Certificate
+    S->>C: ServerKeyExchange
+    S->>C: ServerHelloDone
+    C->>S: ClientKeyExchange
+    C->>S: ChangeCipherSpec
+    C->>S: Finished
+    S->>C: ChangeCipherSpec
+    S->>C: Finished
+    Note over C,S: 암호화 통신 시작
 ```
 
 ---

@@ -318,6 +318,22 @@ sysctl -w net.ipv4.conf.all.send_redirects=0
 서버: SYN_RECEIVED 상태로 대기 (자원 점유)
 ```
 
+**SYN Flood 동작**
+
+```mermaid
+sequenceDiagram
+    participant A as 공격자
+    participant V as 희생자 서버
+
+    A->>V: SYN (src: 위조 IP)
+    V-->>A: SYN+ACK → 위조 IP (응답 없음)
+    Note over V: SYN_RECEIVED 상태 유지
+    Note over V: 연결 대기 큐 점유
+    A->>V: SYN (src: 위조 IP)
+    A->>V: SYN (src: 위조 IP)
+    Note over V: Backlog 큐 고갈 → 서비스 거부
+```
+
 **SYN Flood 대응**
 
 | 대응 | 설명 |
@@ -468,8 +484,12 @@ sysctl -w net.ipv4.conf.all.send_redirects=0
 | 3 | 공격자가 리다이렉트 가로채기 |
 | 4 | 공격자-서버: HTTPS, 공격자-클라이언트: HTTP |
 
-```
-클라이언트 <-- HTTP --> 공격자 <-- HTTPS --> 서버
+```mermaid
+flowchart LR
+    C[클라이언트] <--"HTTP (평문)"--> A[공격자]
+    A <--"HTTPS (암호화)"--> S[서버]
+
+    style A fill:#ff6b6b
 ```
 
 **SSL Stripping 대응**
@@ -580,10 +600,14 @@ sysctl -w net.ipv4.conf.all.send_redirects=0
 
 **WPA2 사전 공격 과정**
 
-```
-1. Deauth 패킷으로 클라이언트 연결 해제
-2. 재연결 시 4-Way Handshake 캡처
-3. 사전 파일로 PSK 크래킹
+```mermaid
+flowchart TD
+    A[공격자] -->|1. Deauth 패킷 전송| B[클라이언트 연결 해제]
+    B -->|2. 클라이언트 재연결 시도| C[4-Way Handshake 캡처]
+    C -->|3. 오프라인 분석| D[사전 파일로 PSK 크래킹]
+    D --> E{PSK 일치?}
+    E -->|Yes| F[패스워드 획득]
+    E -->|No| D
 ```
 
 #### Deauthentication 공격

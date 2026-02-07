@@ -118,10 +118,19 @@
 | DMZ | 공개 서버 배치 영역 |
 | 장점 | 다층 방어, 내부망 보호 |
 
-```
-인터넷 -- [외부 방화벽] -- DMZ -- [내부 방화벽] -- 내부망
-                          |
-                     웹서버, 메일서버
+```mermaid
+flowchart LR
+    I[인터넷] --> FW1[외부 방화벽]
+    FW1 --> DMZ[DMZ]
+    DMZ --> FW2[내부 방화벽]
+    FW2 --> INT[내부망]
+
+    DMZ --- WEB[웹서버]
+    DMZ --- MAIL[메일서버]
+
+    style FW1 fill:#ff9999
+    style FW2 fill:#ff9999
+    style DMZ fill:#ffffcc
 ```
 
 ### 방화벽 정책
@@ -544,8 +553,13 @@ alert tcp any any -> any 80 (msg:"SQL Injection Attempt"; content:"' OR '1'='1";
 | 동작 | 클라이언트 대신 서버에 요청 |
 | 용도 | 콘텐츠 필터링, 캐싱, 익명화 |
 
-```
-클라이언트 -> Forward Proxy -> 인터넷 -> 웹서버
+```mermaid
+flowchart LR
+    C[클라이언트] --> FP[Forward Proxy]
+    FP --> I[인터넷]
+    I --> WS[웹서버]
+
+    style FP fill:#87ceeb
 ```
 
 #### Reverse Proxy
@@ -556,8 +570,15 @@ alert tcp any any -> any 80 (msg:"SQL Injection Attempt"; content:"' OR '1'='1";
 | 동작 | 클라이언트 요청을 서버에 분배 |
 | 용도 | 로드밸런싱, SSL 오프로딩, WAF |
 
-```
-클라이언트 -> 인터넷 -> Reverse Proxy -> 웹서버들
+```mermaid
+flowchart LR
+    C[클라이언트] --> I[인터넷]
+    I --> RP[Reverse Proxy]
+    RP --> WS1[웹서버 1]
+    RP --> WS2[웹서버 2]
+    RP --> WS3[웹서버 3]
+
+    style RP fill:#90ee90
 ```
 
 #### Transparent Proxy
@@ -625,21 +646,23 @@ alert tcp any any -> any 80 (msg:"SQL Injection Attempt"; content:"' OR '1'='1";
 
 **802.1X 인증 과정**
 
-```
-Supplicant       Authenticator       RADIUS Server
-    |                  |                   |
-    |-- EAPOL-Start -->|                   |
-    |<-- EAP-Request --|                   |
-    |-- EAP-Response ->|                   |
-    |                  |-- RADIUS Access-Request -->|
-    |                  |<-- RADIUS Access-Challenge -|
-    |<-- EAP-Request --|                   |
-    |-- EAP-Response ->|                   |
-    |                  |-- RADIUS Access-Request -->|
-    |                  |<-- RADIUS Access-Accept ---|
-    |<-- EAP-Success --|                   |
-    |                  |                   |
-    | 포트 열림 (인증 완료)                  |
+```mermaid
+sequenceDiagram
+    participant S as Supplicant<br/>(클라이언트)
+    participant A as Authenticator<br/>(스위치/AP)
+    participant R as RADIUS Server
+
+    S->>A: EAPOL-Start
+    A->>S: EAP-Request (Identity)
+    S->>A: EAP-Response (Identity)
+    A->>R: RADIUS Access-Request
+    R->>A: RADIUS Access-Challenge
+    A->>S: EAP-Request (Challenge)
+    S->>A: EAP-Response (Credentials)
+    A->>R: RADIUS Access-Request
+    R->>A: RADIUS Access-Accept
+    A->>S: EAP-Success
+    Note over S,A: 포트 열림 (인증 완료)
 ```
 
 ### EAP (Extensible Authentication Protocol)
