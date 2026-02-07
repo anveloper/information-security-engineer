@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const NAV_ITEMS = [
-  { path: "/subjects", label: "과목별 학습" },
+  { path: "/theory", label: "이론 학습" },
+  { path: "/quiz", label: "문제 풀이" },
   { path: "/wrong-answers", label: "오답 노트" },
   { path: "/mock-exam", label: "모의고사" },
 ];
