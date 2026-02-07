@@ -1,0 +1,558 @@
+# 시스템 정보
+
+시스템 정보는 운영체제와 애플리케이션의 환경 설정, 인증 정보, 로그 등을 포함합니다. 보안 관점에서 이러한 정보의 보호와 모니터링이 중요합니다.
+
+---
+
+## 시스템 환경정보
+
+### Windows 환경정보
+
+#### 시스템 정보 확인
+
+**명령어**
+
+| 명령어 | 설명 |
+|--------|------|
+| systeminfo | 시스템 상세 정보 |
+| hostname | 컴퓨터 이름 |
+| whoami | 현재 사용자 |
+| whoami /priv | 사용자 권한 |
+| net user | 사용자 목록 |
+| net localgroup | 로컬 그룹 목록 |
+| net share | 공유 폴더 목록 |
+| netstat -ano | 네트워크 연결 상태 |
+| tasklist | 실행 중인 프로세스 |
+| sc query | 서비스 상태 |
+| wmic | WMI 정보 조회 |
+
+**환경 변수**
+
+| 변수 | 설명 |
+|------|------|
+| %SYSTEMROOT% | Windows 설치 경로 (C:\Windows) |
+| %USERPROFILE% | 사용자 프로필 경로 |
+| %TEMP%, %TMP% | 임시 파일 경로 |
+| %APPDATA% | 애플리케이션 데이터 경로 |
+| %PROGRAMFILES% | 프로그램 설치 경로 |
+| %PATH% | 실행 파일 검색 경로 |
+
+#### 주요 설정 파일 및 경로
+
+| 경로 | 설명 |
+|------|------|
+| C:\Windows\System32\config | SAM, SECURITY, SYSTEM 하이브 |
+| C:\Windows\System32\drivers\etc\hosts | 호스트 파일 |
+| C:\Windows\System32\drivers\etc\services | 서비스 포트 정의 |
+| C:\Users\{user}\NTUSER.DAT | 사용자 레지스트리 하이브 |
+
+#### 시작 프로그램 위치
+
+| 위치 | 설명 |
+|------|------|
+| HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run | 시스템 시작 프로그램 |
+| HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run | 사용자 시작 프로그램 |
+| C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup | 공용 시작 폴더 |
+| %APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup | 사용자 시작 폴더 |
+| 작업 스케줄러 | 예약 작업 |
+| 서비스 | 시스템 서비스 |
+
+### Linux 환경정보
+
+#### 시스템 정보 확인
+
+**명령어**
+
+| 명령어 | 설명 |
+|--------|------|
+| uname -a | 커널 정보 |
+| cat /etc/os-release | 배포판 정보 |
+| hostname | 호스트 이름 |
+| whoami | 현재 사용자 |
+| id | 사용자 UID, GID |
+| cat /etc/passwd | 사용자 목록 |
+| cat /etc/group | 그룹 목록 |
+| ps aux | 실행 중인 프로세스 |
+| netstat -tulnp | 열린 포트 |
+| ss -tulnp | 소켓 통계 (netstat 대체) |
+| lsof -i | 네트워크 연결 파일 |
+| df -h | 디스크 사용량 |
+| free -h | 메모리 사용량 |
+| uptime | 시스템 가동 시간 |
+
+**환경 변수**
+
+| 변수 | 설명 |
+|------|------|
+| $HOME | 사용자 홈 디렉토리 |
+| $PATH | 실행 파일 검색 경로 |
+| $SHELL | 기본 셸 |
+| $USER | 현재 사용자 |
+| $UID | 사용자 ID |
+| $PWD | 현재 작업 디렉토리 |
+
+#### 주요 설정 파일
+
+| 파일 | 설명 |
+|------|------|
+| /etc/passwd | 사용자 계정 정보 |
+| /etc/shadow | 패스워드 해시 |
+| /etc/group | 그룹 정보 |
+| /etc/sudoers | sudo 설정 |
+| /etc/hosts | 호스트 파일 |
+| /etc/resolv.conf | DNS 설정 |
+| /etc/fstab | 파일 시스템 마운트 |
+| /etc/crontab | 시스템 크론 작업 |
+| /etc/ssh/sshd_config | SSH 서버 설정 |
+| /etc/pam.d/ | PAM 설정 |
+| /etc/security/ | 보안 설정 |
+
+#### 시작 프로그램/서비스
+
+| 위치 | 설명 |
+|------|------|
+| /etc/init.d/ | SysVinit 스크립트 |
+| /etc/systemd/system/ | systemd 서비스 |
+| /etc/rc.local | 부팅 시 실행 스크립트 |
+| /etc/cron.d/ | 시스템 크론 작업 |
+| /var/spool/cron/ | 사용자 크론 작업 |
+| ~/.bashrc, ~/.profile | 사용자 로그인 스크립트 |
+| /etc/profile, /etc/bash.bashrc | 시스템 전역 스크립트 |
+
+---
+
+## 인증정보
+
+### 인증의 3요소 (Authentication Factors)
+
+| 요소 | 설명 | 예시 |
+|------|------|------|
+| 지식 (Something you know) | 알고 있는 것 | 패스워드, PIN |
+| 소유 (Something you have) | 가지고 있는 것 | 스마트카드, OTP 토큰 |
+| 존재 (Something you are) | 본인 자체 | 지문, 홍채, 얼굴 |
+
+**추가 요소**
+- 위치 (Somewhere you are): GPS, IP 주소
+- 행위 (Something you do): 서명, 타이핑 패턴
+
+### 다중 인증 (MFA)
+
+2개 이상의 인증 요소를 조합하여 보안을 강화합니다.
+
+**2FA 예시**
+- 패스워드 + OTP
+- 패스워드 + 생체인증
+- 스마트카드 + PIN
+
+### 패스워드 보안
+
+#### 패스워드 공격 기법
+
+| 공격 | 설명 |
+|------|------|
+| 무차별 대입 (Brute Force) | 모든 조합 시도 |
+| 사전 공격 (Dictionary) | 사전 단어 목록 시도 |
+| 레인보우 테이블 | 미리 계산된 해시 테이블 |
+| 패스워드 스프레이 | 하나의 패스워드로 다수 계정 시도 |
+| 크리덴셜 스터핑 | 유출된 자격증명 재사용 |
+| 피싱 | 사회공학적 탈취 |
+| 키로거 | 키보드 입력 기록 |
+| 숄더 서핑 | 어깨 너머 훔쳐보기 |
+
+#### 패스워드 저장 방식
+
+**해시 함수**
+
+| 알고리즘 | 안전성 | 설명 |
+|---------|--------|------|
+| MD5 | 취약 | 128비트, 충돌 발견됨 |
+| SHA-1 | 취약 | 160비트, 충돌 발견됨 |
+| SHA-256 | 안전 | 256비트 |
+| SHA-512 | 안전 | 512비트 |
+
+**패스워드 해싱 함수**
+
+| 함수 | 특징 |
+|------|------|
+| bcrypt | Blowfish 기반, 비용 인자, 솔트 포함 |
+| scrypt | 메모리 집약적, 병렬화 어려움 |
+| Argon2 | 최신 표준, 메모리/시간/병렬성 설정 |
+| PBKDF2 | 반복 횟수 설정 가능 |
+
+**솔트 (Salt)**
+- 동일 패스워드의 다른 해시 생성
+- 레인보우 테이블 공격 방어
+- 패스워드별 고유한 랜덤 값
+
+**페퍼 (Pepper)**
+- 모든 패스워드에 적용되는 비밀 값
+- 별도 저장 (DB 외부)
+
+#### 패스워드 정책
+
+| 정책 | 권장값 |
+|------|--------|
+| 최소 길이 | 8자 이상 (NIST: 8자, 기업: 12자+) |
+| 복잡도 | 대소문자, 숫자, 특수문자 조합 |
+| 만료 기간 | 90일 (NIST: 정기 변경 권장 안 함) |
+| 기록 보관 | 최근 12개 패스워드 재사용 금지 |
+| 잠금 | 5회 실패 시 30분 잠금 |
+
+### Windows 인증
+
+#### SAM (Security Account Manager)
+
+로컬 사용자 계정 정보를 저장합니다.
+
+- 위치: C:\Windows\System32\config\SAM
+- 부팅 중 잠금 (접근 불가)
+- NTLM 해시 저장
+
+**SAM 해시 추출 도구**
+- mimikatz
+- pwdump
+- SAMInside
+
+#### NTLM (NT LAN Manager)
+
+| 버전 | 특징 |
+|------|------|
+| LM Hash | 취약 (7자씩 분리, DES) |
+| NTLM v1 | 취약 (Challenge-Response) |
+| NTLM v2 | 개선됨 (HMAC-MD5) |
+
+**NTLM 인증 과정**
+1. 클라이언트가 사용자 이름 전송
+2. 서버가 Challenge 전송
+3. 클라이언트가 패스워드 해시로 Response 생성
+4. 서버가 검증
+
+#### Kerberos
+
+Active Directory의 기본 인증 프로토콜입니다.
+
+**구성요소**
+
+| 구성요소 | 설명 |
+|---------|------|
+| KDC (Key Distribution Center) | 인증 서버 |
+| AS (Authentication Service) | 초기 인증 |
+| TGS (Ticket Granting Service) | 서비스 티켓 발급 |
+| TGT (Ticket Granting Ticket) | 티켓 요청용 티켓 |
+| Service Ticket | 서비스 접근 티켓 |
+
+**Kerberos 인증 과정**
+1. 클라이언트 → AS: 인증 요청
+2. AS → 클라이언트: TGT 발급
+3. 클라이언트 → TGS: 서비스 티켓 요청 (TGT 제시)
+4. TGS → 클라이언트: 서비스 티켓 발급
+5. 클라이언트 → 서버: 서비스 티켓으로 접근
+
+**Kerberos 공격**
+
+| 공격 | 설명 |
+|------|------|
+| Golden Ticket | krbtgt 해시로 TGT 위조 |
+| Silver Ticket | 서비스 계정 해시로 서비스 티켓 위조 |
+| Kerberoasting | SPN 계정의 서비스 티켓 요청 후 오프라인 크래킹 |
+| AS-REP Roasting | 사전 인증 비활성화 계정 공격 |
+| Pass-the-Ticket | 티켓 탈취 후 재사용 |
+
+### Linux 인증
+
+#### /etc/shadow
+
+패스워드 해시를 저장합니다 (root만 읽기 가능).
+
+**구조**
+```
+username:$6$salt$hash:lastchange:min:max:warn:inactive:expire:reserved
+```
+
+| 필드 | 설명 |
+|------|------|
+| username | 사용자 이름 |
+| hash | 암호화된 패스워드 |
+| lastchange | 마지막 변경일 (1970.1.1 기준 일수) |
+| min | 최소 변경 간격 (일) |
+| max | 최대 사용 기간 (일) |
+| warn | 만료 경고 기간 (일) |
+| inactive | 만료 후 비활성화 기간 (일) |
+| expire | 계정 만료일 |
+
+#### PAM 인증 흐름
+
+```
+1. 애플리케이션이 PAM 호출
+2. PAM이 /etc/pam.d/{서비스} 설정 읽음
+3. 설정된 모듈 순차 실행
+4. 결과 반환 (성공/실패)
+```
+
+#### SSH 키 인증
+
+**키 생성**
+```bash
+ssh-keygen -t rsa -b 4096
+ssh-keygen -t ed25519
+```
+
+**키 파일**
+
+| 파일 | 설명 |
+|------|------|
+| ~/.ssh/id_rsa | 개인 키 |
+| ~/.ssh/id_rsa.pub | 공개 키 |
+| ~/.ssh/authorized_keys | 허용된 공개 키 목록 |
+| ~/.ssh/known_hosts | 접속한 서버 공개 키 |
+
+### 싱글 사인온 (SSO)
+
+한 번의 인증으로 여러 시스템에 접근합니다.
+
+**SSO 프로토콜**
+
+| 프로토콜 | 설명 |
+|---------|------|
+| SAML | XML 기반, 엔터프라이즈 |
+| OAuth 2.0 | 권한 부여 프레임워크 |
+| OpenID Connect | OAuth 2.0 기반 인증 |
+| Kerberos | 티켓 기반 |
+| LDAP | 디렉토리 서비스 |
+
+**SAML 구성요소**
+
+| 구성요소 | 설명 |
+|---------|------|
+| IdP (Identity Provider) | 인증 제공자 |
+| SP (Service Provider) | 서비스 제공자 |
+| Assertion | 인증 정보 토큰 |
+
+**OAuth 2.0 Grant Types**
+
+| 유형 | 설명 |
+|------|------|
+| Authorization Code | 웹 서버 앱 |
+| Implicit | SPA (Deprecated) |
+| Resource Owner Password | 신뢰할 수 있는 앱 |
+| Client Credentials | 서버 간 통신 |
+| PKCE | Authorization Code + 보안 강화 |
+
+---
+
+## 시스템/감사 로그
+
+### 로그의 중요성
+
+| 목적 | 설명 |
+|------|------|
+| 보안 모니터링 | 침입 시도 탐지 |
+| 사고 대응 | 침해 사고 분석 |
+| 포렌식 | 증거 수집 |
+| 컴플라이언스 | 규정 준수 증명 |
+| 문제 해결 | 시스템 오류 진단 |
+
+### Windows 감사 정책
+
+#### 감사 정책 설정
+
+**고급 감사 정책 (Advanced Audit Policy)**
+
+| 카테고리 | 감사 항목 |
+|---------|----------|
+| 계정 로그온 | Credential Validation, Kerberos |
+| 계정 관리 | 사용자/그룹/컴퓨터 계정 관리 |
+| 세부 추적 | 프로세스 생성/종료, DPAPI |
+| DS 액세스 | 디렉토리 서비스 접근 |
+| 로그온/로그오프 | 로그온, 로그오프, 계정 잠금 |
+| 개체 액세스 | 파일, 레지스트리, SAM 접근 |
+| 정책 변경 | 감사/인증/권한 정책 변경 |
+| 권한 사용 | 권한 있는 작업 수행 |
+| 시스템 | 보안 상태 변경, 시스템 무결성 |
+| 전역 개체 액세스 | 파일 시스템/레지스트리 전역 감사 |
+
+#### Windows 이벤트 로그 분석
+
+**보안 이벤트 분석 예시**
+
+| 시나리오 | 이벤트 ID |
+|---------|----------|
+| 무차별 대입 공격 | 4625 다수 발생 → 4624 성공 |
+| 계정 탈취 | 4624 (비정상 시간/IP) |
+| 권한 상승 | 4672, 4673 |
+| 악성코드 실행 | 4688, 4689 |
+| 측면 이동 | 4624 (Type 3), 4648 |
+| 데이터 유출 | 4663, 5140 |
+
+**PowerShell 로깅**
+
+| 로그 | 이벤트 ID | 설명 |
+|------|----------|------|
+| Script Block Logging | 4104 | 실행된 스크립트 블록 |
+| Module Logging | 4103 | 모듈 실행 |
+| Transcription | 파일 | 전체 세션 기록 |
+
+### Linux 감사 시스템
+
+#### auditd
+
+Linux 커널 감사 프레임워크입니다.
+
+**주요 파일**
+
+| 파일 | 설명 |
+|------|------|
+| /etc/audit/auditd.conf | auditd 설정 |
+| /etc/audit/rules.d/ | 감사 규칙 |
+| /var/log/audit/audit.log | 감사 로그 |
+
+**감사 규칙 예시**
+
+```bash
+# 파일 접근 감사
+-w /etc/passwd -p wa -k identity
+-w /etc/shadow -p wa -k identity
+
+# 명령어 실행 감사
+-a always,exit -F arch=b64 -S execve -k exec
+
+# 권한 상승 감사
+-w /usr/bin/sudo -p x -k priv_esc
+-w /usr/bin/su -p x -k priv_esc
+```
+
+**ausearch 명령어**
+
+```bash
+# 키로 검색
+ausearch -k identity
+
+# 사용자로 검색
+ausearch -ua root
+
+# 시간 범위로 검색
+ausearch -ts today -te now
+```
+
+#### syslog / rsyslog / journald
+
+**syslog 설정 (/etc/rsyslog.conf)**
+
+```
+# 시설.심각도  목적지
+auth.*         /var/log/auth.log
+*.info         /var/log/messages
+*.emerg        :omusrmsg:*
+```
+
+**원격 로깅**
+```
+# 전송
+*.* @192.168.1.100:514    # UDP
+*.* @@192.168.1.100:514   # TCP
+
+# 수신
+$ModLoad imudp
+$UDPServerRun 514
+```
+
+**journalctl 사용**
+
+```bash
+# 부팅 로그
+journalctl -b
+
+# 서비스 로그
+journalctl -u sshd
+
+# 실시간 모니터링
+journalctl -f
+
+# 시간 범위
+journalctl --since "2024-01-01" --until "2024-01-02"
+
+# 우선순위
+journalctl -p err
+```
+
+### 로그 관리
+
+#### 로그 수집 및 중앙화
+
+**중앙 집중식 로깅의 장점**
+- 통합 분석 및 상관관계
+- 로그 보호 (로컬 삭제 방지)
+- 장기 보관
+- 컴플라이언스
+
+**로그 수집 도구**
+
+| 도구 | 설명 |
+|------|------|
+| Syslog-ng | 고급 syslog |
+| Fluentd | 통합 로그 수집 |
+| Filebeat | Elastic Stack 로그 수집 |
+| Logstash | 로그 처리 파이프라인 |
+| Splunk Forwarder | Splunk 로그 전송 |
+
+#### 로그 보관 정책
+
+| 로그 유형 | 권장 보관 기간 |
+|----------|---------------|
+| 보안 로그 | 1년 이상 |
+| 시스템 로그 | 6개월 |
+| 애플리케이션 로그 | 3-6개월 |
+| 접근 로그 | 1년 이상 |
+| 감사 로그 | 법적 요구사항에 따름 |
+
+#### 로그 무결성
+
+| 방법 | 설명 |
+|------|------|
+| 해시 체인 | 로그 엔트리를 해시로 연결 |
+| 디지털 서명 | 로그 파일 서명 |
+| WORM 스토리지 | 한 번 쓰기 후 수정 불가 |
+| 원격 저장 | 분리된 로그 서버에 저장 |
+| 실시간 전송 | 즉시 외부 전송 |
+
+#### 로그 분석
+
+**분석 항목**
+
+| 항목 | 설명 |
+|------|------|
+| 인증 실패 | 무차별 대입 공격 탐지 |
+| 권한 변경 | 권한 상승 시도 |
+| 비정상 시간 | 근무 외 시간 활동 |
+| 비정상 위치 | 해외 IP, 새로운 IP |
+| 대량 접근 | 데이터 유출 시도 |
+| 에러 급증 | 공격 또는 시스템 문제 |
+
+**SIEM 상관분석 규칙 예시**
+```
+IF 4625 (로그인 실패) COUNT > 5 IN 5 minutes
+   FROM same source IP
+   THEN alert "Brute Force Attack"
+
+IF 4624 (로그인 성공)
+   AND source IP NOT IN whitelist
+   AND time NOT IN business hours
+   THEN alert "Suspicious Login"
+```
+
+### 로그 관련 규정
+
+| 규정 | 요구사항 |
+|------|---------|
+| 개인정보보호법 | 접속기록 2년 보관 |
+| 정보통신망법 | 접속기록 1년 보관 |
+| 전자금융거래법 | 거래기록 5년 보관 |
+| PCI DSS | 감사 로그 1년 보관 |
+| HIPAA | 6년 보관 |
+| SOX | 7년 보관 |
+
+---
+
+## 핵심 키워드
+
+`시스템 정보` `환경 변수` `레지스트리` `시작 프로그램` `인증` `MFA` `패스워드` `해시` `솔트` `bcrypt` `SAM` `NTLM` `Kerberos` `TGT` `Golden Ticket` `/etc/shadow` `PAM` `SSH 키` `SSO` `SAML` `OAuth` `감사 로그` `이벤트 로그` `auditd` `syslog` `journalctl` `로그 분석` `SIEM`
