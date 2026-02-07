@@ -455,35 +455,21 @@ ipad: 0x36 반복
 ### 7.3 X.509 인증서
 
 ```mermaid
-flowchart TB
+flowchart LR
     subgraph Cert["X.509 인증서 구조"]
+        direction TB
         V["버전 (Version)"]
         SN["일련번호 (Serial Number)"]
         SA["서명 알고리즘"]
         I["발급자 (Issuer)"]
-
-        subgraph Validity["유효기간 (Validity)"]
-            NB["Not Before"]
-            NA["Not After"]
-        end
-
+        Val["유효기간<br/>(Not Before / Not After)"]
         S["주체 (Subject)"]
-
-        subgraph PK["공개키 정보"]
-            PKA["알고리즘"]
-            PKV["공개키"]
-        end
-
-        subgraph Ext["확장 (Extensions)"]
-            KU["Key Usage"]
-            SAN["Subject Alternative Name"]
-            ETC["..."]
-        end
-
+        PK["공개키 정보<br/>(알고리즘, 공개키)"]
+        Ext["확장<br/>(Key Usage, SAN 등)"]
         Sig["서명 (Signature)"]
     end
 
-    V --> SN --> SA --> I --> Validity --> S --> PK --> Ext --> Sig
+    V --> SN --> SA --> I --> Val --> S --> PK --> Ext --> Sig
 ```
 
 ### 7.4 인증서 체인
@@ -533,7 +519,10 @@ sequenceDiagram
     C->>S: Finished
     S->>C: ChangeCipherSpec
     S->>C: Finished
-    C<<->>S: 암호화 통신
+
+    rect rgb(200, 220, 255)
+        Note over C,S: 암호화 통신
+    end
 ```
 
 #### TLS 1.3 개선사항
