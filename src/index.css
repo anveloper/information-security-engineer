@@ -5,6 +5,13 @@
 /* 다크모드 설정 */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* 모바일 줌/스크롤 이슈 방지 */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
 :root {
   color-scheme: light;
 }
