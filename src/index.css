@@ -5,6 +5,22 @@
 /* 다크모드 설정 */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* 모바일 줌 시 전체 폭 유지 */
+html {
+  min-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  min-width: 100vw;
+  width: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+#root {
+  min-width: 100vw;
+}
+
 :root {
   color-scheme: light;
 }
