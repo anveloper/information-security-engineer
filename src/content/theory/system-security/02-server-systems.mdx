@@ -8,74 +8,207 @@
 
 ### 주요 DBMS
 
-**관계형 데이터베이스**
-- Oracle
-- MySQL / MariaDB
-- PostgreSQL
-- MS SQL Server
+**관계형 데이터베이스 (RDBMS)**
+
+| DBMS | 특징 | 기본 포트 |
+|------|------|----------|
+| Oracle | 엔터프라이즈급, 고가용성 | 1521 |
+| MySQL | 오픈소스, 웹 서비스에 널리 사용 | 3306 |
+| MariaDB | MySQL 포크, 오픈소스 | 3306 |
+| PostgreSQL | 오픈소스, 확장성 우수 | 5432 |
+| MS SQL Server | Windows 환경, .NET 연동 | 1433 |
 
 **NoSQL 데이터베이스**
-- MongoDB (문서형)
-- Redis (키-값)
-- Cassandra (컬럼형)
+
+| 유형 | DBMS | 특징 |
+|------|------|------|
+| 문서형 | MongoDB | JSON 형태 문서 저장, 스키마 유연 |
+| 키-값 | Redis | 인메모리, 캐시/세션 저장 |
+| 컬럼형 | Cassandra | 대용량 분산 처리 |
+| 그래프 | Neo4j | 관계 중심 데이터 |
 
 ### DB 보안 위협
 
-- SQL Injection 공격
-- 권한 상승
-- 데이터 유출
-- 백업 파일 탈취
+#### SQL Injection
+
+SQL 쿼리에 악의적인 코드를 삽입하는 공격입니다.
+
+**SQL Injection 유형**
+
+| 유형 | 설명 |
+|------|------|
+| In-band (Classic) | 같은 채널로 공격 및 결과 수신 |
+| Error-based | 에러 메시지로 정보 추출 |
+| Union-based | UNION 구문으로 데이터 추출 |
+| Blind SQL Injection | 참/거짓 응답으로 정보 유추 |
+| Boolean-based | 참/거짓 조건으로 판별 |
+| Time-based | 응답 시간 지연으로 판별 |
+| Out-of-band | DNS, HTTP 등 다른 채널로 결과 수신 |
+
+**SQL Injection 예시**
+
+```sql
+-- 인증 우회
+' OR '1'='1' --
+' OR '1'='1' /*
+admin'--
+
+-- Union 기반 데이터 추출
+' UNION SELECT username, password FROM users --
+```
+
+**SQL Injection 대책**
+
+| 대책 | 설명 |
+|------|------|
+| Prepared Statement | 파라미터화된 쿼리 사용 |
+| Stored Procedure | 미리 정의된 프로시저 사용 |
+| 입력값 검증 | 화이트리스트 기반 검증 |
+| 이스케이프 처리 | 특수문자 이스케이프 |
+| 최소 권한 | DB 계정 권한 최소화 |
+| WAF | 웹 방화벽으로 패턴 탐지 |
+
+#### 기타 DB 보안 위협
+
+| 위협 | 설명 |
+|------|------|
+| 권한 상승 | 낮은 권한에서 높은 권한 획득 |
+| 데이터 유출 | 비인가 데이터 접근/추출 |
+| 백업 파일 탈취 | 암호화되지 않은 백업 파일 |
+| 기본 계정 악용 | 기본 관리자 계정/패스워드 |
+| 패치 미적용 | 알려진 취약점 악용 |
 
 ### DB 보안 대책
 
 #### 접근 제어
 
-- 최소 권한 원칙 적용
-- 역할 기반 접근 제어 (RBAC)
-- IP 기반 접근 제한
-- 애플리케이션 계정과 관리자 계정 분리
+| 대책 | 설명 |
+|------|------|
+| 최소 권한 원칙 | 필요한 권한만 부여 |
+| RBAC | 역할 기반 접근 제어 |
+| IP 접근 제한 | 허용된 IP만 접근 |
+| 계정 분리 | 애플리케이션/관리자 계정 분리 |
+| 강력한 인증 | 복잡한 패스워드, MFA |
 
-#### 데이터 보호
+#### 데이터 암호화
 
-- **TDE (Transparent Data Encryption)**: 저장 데이터 암호화
-- 컬럼 레벨 암호화 (중요 정보)
-- 전송 구간 암호화 (TLS)
-- 데이터 마스킹
+**TDE (Transparent Data Encryption)**
+- 저장 데이터(Data at Rest) 자동 암호화
+- 애플리케이션 수정 불필요
+- Oracle, SQL Server, MySQL Enterprise 지원
+
+**컬럼 레벨 암호화**
+- 특정 컬럼만 선택적 암호화
+- 주민등록번호, 카드번호 등 민감 정보
+- 애플리케이션 레벨 암호화
+
+**전송 암호화**
+- TLS/SSL 통신 암호화
+- 스니핑 방지
+
+**데이터 마스킹**
+
+| 유형 | 설명 |
+|------|------|
+| 정적 마스킹 | 비운영 환경용 데이터 변환 |
+| 동적 마스킹 | 실시간 조회 시 마스킹 |
 
 #### 감사 및 모니터링
 
 - DB 감사 로그 활성화
-- 쿼리 로깅
-- 이상 행위 탐지
+- 쿼리 로깅 및 분석
+- 이상 행위 탐지 (대량 조회, 비정상 시간 접근)
+- DAM (Database Activity Monitoring)
 - 정기적 취약점 점검
 
 ---
 
 ## DNS 서버 (Domain Name System)
 
+### DNS 기본 개념
+
+도메인 이름을 IP 주소로 변환하는 분산 데이터베이스 시스템입니다.
+
+**DNS 구성요소**
+
+| 구성요소 | 설명 |
+|---------|------|
+| DNS Resolver | 클라이언트 요청을 처리하는 해석기 |
+| Root Server | 최상위 DNS 서버 (13개 루트 서버) |
+| TLD Server | 최상위 도메인 서버 (.com, .kr 등) |
+| Authoritative Server | 도메인의 실제 레코드 보유 |
+
+**DNS 레코드 유형**
+
+| 레코드 | 설명 |
+|--------|------|
+| A | IPv4 주소 매핑 |
+| AAAA | IPv6 주소 매핑 |
+| CNAME | 별칭 (Canonical Name) |
+| MX | 메일 서버 지정 |
+| NS | 네임서버 지정 |
+| TXT | 텍스트 정보 (SPF, DKIM 등) |
+| PTR | 역방향 조회 (IP → 도메인) |
+| SOA | 권한 시작 (Start of Authority) |
+
+**DNS 쿼리 유형**
+
+| 유형 | 설명 |
+|------|------|
+| 재귀 쿼리 (Recursive) | 완전한 응답 요구 |
+| 반복 쿼리 (Iterative) | 다음 서버 정보만 응답 |
+
 ### DNS 보안 위협
 
-| 공격 유형 | 설명 |
-|----------|------|
-| DNS 캐시 포이즈닝 | 잘못된 DNS 응답 주입 |
-| DNS 스푸핑 | 위조된 DNS 응답 |
-| DNS 증폭 공격 | DDoS에 악용 |
-| DNS 터널링 | 데이터 유출에 악용 |
+| 공격 유형 | 설명 | 대책 |
+|----------|------|------|
+| DNS 캐시 포이즈닝 | 위조된 응답을 캐시에 저장 | DNSSEC, 포트 랜덤화 |
+| DNS 스푸핑 | 위조된 DNS 응답 전송 | DNSSEC |
+| DNS 증폭 공격 | 작은 요청으로 큰 응답 유발 (DDoS) | RRL, 재귀 쿼리 제한 |
+| DNS 터널링 | DNS 프로토콜로 데이터 유출 | DNS 트래픽 모니터링 |
+| Zone Transfer 공격 | 전체 DNS 레코드 탈취 | Zone Transfer 제한 |
+| 도메인 하이재킹 | 도메인 등록 정보 탈취 | 레지스트라 보안 강화 |
+
+**DNS 캐시 포이즈닝 (Kaminsky Attack)**
+1. 공격자가 존재하지 않는 서브도메인 질의
+2. 실제 응답보다 먼저 위조된 응답 전송
+3. 캐시에 위조된 레코드 저장
+4. 이후 모든 사용자가 위조된 IP로 접속
 
 ### DNS 보안 대책
 
-- **DNSSEC**: DNS 응답 디지털 서명으로 무결성 보장
-- Source Port Randomization
-- Response Rate Limiting (RRL)
-- 재귀 쿼리 제한
-- 최신 패치 유지
+#### DNSSEC (DNS Security Extensions)
+
+DNS 응답에 디지털 서명을 추가하여 무결성을 보장합니다.
+
+**DNSSEC 레코드**
+
+| 레코드 | 설명 |
+|--------|------|
+| RRSIG | 리소스 레코드 서명 |
+| DNSKEY | 공개 키 |
+| DS | Delegation Signer (상위 위임) |
+| NSEC/NSEC3 | 존재하지 않는 레코드 증명 |
+
+**기타 DNS 보안 대책**
+
+| 대책 | 설명 |
+|------|------|
+| Source Port Randomization | 응답 포트 무작위화 |
+| Transaction ID Randomization | 트랜잭션 ID 무작위화 |
+| Response Rate Limiting (RRL) | 응답 속도 제한 |
+| 재귀 쿼리 제한 | 내부 네트워크만 허용 |
+| Zone Transfer 제한 | 특정 IP만 허용 |
+| Split DNS | 내부/외부 DNS 분리 |
 
 ### 주요 DNS 서버 소프트웨어
 
-- BIND (가장 널리 사용)
-- Microsoft DNS
-- PowerDNS
-- Unbound
+| 소프트웨어 | 특징 |
+|-----------|------|
+| BIND | 가장 널리 사용, 오픈소스 |
+| Microsoft DNS | Windows 환경, AD 연동 |
+| PowerDNS | 유연한 백엔드 지원 |
+| Unbound | 보안 중심, Resolver 전용 |
 
 ---
 
@@ -83,46 +216,103 @@
 
 ### 이메일 프로토콜
 
-| 프로토콜 | 포트 | 용도 |
-|---------|------|------|
-| SMTP | 25, 587 | 메일 전송 |
-| POP3 | 110, 995(SSL) | 메일 수신 (다운로드) |
-| IMAP | 143, 993(SSL) | 메일 수신 (동기화) |
+| 프로토콜 | 포트 | 보안 포트 | 용도 |
+|---------|------|----------|------|
+| SMTP | 25 | 465 (SMTPS), 587 (Submission) | 메일 전송 |
+| POP3 | 110 | 995 | 메일 수신 (다운로드 후 삭제) |
+| IMAP | 143 | 993 | 메일 수신 (서버 동기화) |
+
+**SMTP 통신 과정**
+
+```
+클라이언트 → MUA (Mail User Agent)
+    ↓
+발신 서버 → MTA (Mail Transfer Agent)
+    ↓
+수신 서버 → MTA → MDA (Mail Delivery Agent)
+    ↓
+수신자 → MUA
+```
 
 ### 이메일 보안 위협
 
-- 스팸/피싱 메일
-- 악성 첨부파일
-- 메일 스푸핑
-- 중간자 공격 (도청)
+| 위협 | 설명 |
+|------|------|
+| 스팸 메일 | 대량 광고/악성 메일 |
+| 피싱 메일 | 정상 기관 사칭 |
+| 스피어 피싱 | 특정 대상 표적 피싱 |
+| BEC (Business Email Compromise) | 임원 사칭 사기 |
+| 악성 첨부파일 | 악성코드 포함 첨부 |
+| 메일 스푸핑 | 발신자 위조 |
+| Open Relay | 릴레이 허용 서버 악용 |
+| 메일 도청 | 암호화되지 않은 메일 스니핑 |
 
 ### 이메일 보안 대책
 
 #### 발신자 인증 기술
 
 **SPF (Sender Policy Framework)**
-- 발신 서버 IP를 DNS TXT 레코드로 검증
-- 스푸핑 방지
+
+발신 서버 IP를 DNS TXT 레코드로 검증합니다.
+
+```
+v=spf1 ip4:192.168.1.0/24 include:_spf.google.com -all
+```
+
+| 한정자 | 의미 |
+|--------|------|
+| + | Pass (허용) |
+| - | Fail (거부) |
+| ~ | SoftFail (허용하되 표시) |
+| ? | Neutral (중립) |
 
 **DKIM (DomainKeys Identified Mail)**
-- 메일에 디지털 서명 추가
-- 메일 변조 탐지
 
-**DMARC (Domain-based Message Authentication)**
-- SPF/DKIM 정책 및 리포팅
-- 인증 실패 시 처리 방법 지정
+메일에 디지털 서명을 추가하여 변조를 탐지합니다.
 
-#### 콘텐츠 보안
+- 발신 서버가 개인 키로 서명
+- 수신 서버가 DNS에서 공개 키 조회 후 검증
+- 메일 헤더와 본문 무결성 보장
 
-- 스팸 필터링
-- 악성코드 검사
-- 첨부파일 유형 제한
-- URL 검사
+**DMARC (Domain-based Message Authentication, Reporting and Conformance)**
 
-#### 전송 보안
+SPF/DKIM 정책을 정의하고 리포팅합니다.
 
-- STARTTLS (전송 암호화)
-- S/MIME 또는 PGP (종단간 암호화)
+```
+v=DMARC1; p=reject; rua=mailto:dmarc@example.com
+```
+
+| 정책 | 의미 |
+|------|------|
+| none | 모니터링만 |
+| quarantine | 스팸 처리 |
+| reject | 거부 |
+
+**이메일 인증 체계 비교**
+
+| 기술 | 검증 대상 | 보호 기능 |
+|------|----------|----------|
+| SPF | 발신 서버 IP | 스푸핑 방지 |
+| DKIM | 메일 서명 | 변조 탐지 |
+| DMARC | SPF+DKIM 정책 | 정책 적용, 리포팅 |
+
+#### 메일 서버 보안 설정
+
+| 설정 | 설명 |
+|------|------|
+| Open Relay 차단 | 인증된 사용자만 릴레이 허용 |
+| STARTTLS | 전송 구간 암호화 |
+| 스팸 필터링 | SpamAssassin, 베이지안 필터 |
+| 악성코드 검사 | ClamAV 등 연동 |
+| 첨부파일 제한 | 실행 파일 차단 (.exe, .bat 등) |
+| 메일 크기 제한 | 대용량 메일 제한 |
+
+#### 종단간 암호화
+
+| 기술 | 특징 |
+|------|------|
+| S/MIME | X.509 인증서 기반, 기업용 |
+| PGP/GPG | Web of Trust 기반, 개인용 |
 
 ---
 
@@ -130,49 +320,145 @@
 
 ### 웹 서버 vs WAS
 
-| 구분 | 웹 서버 | WAS |
-|------|--------|-----|
-| 역할 | 정적 콘텐츠 제공 | 동적 콘텐츠/비즈니스 로직 |
-| 예시 | Apache, Nginx, IIS | Tomcat, WebLogic, JBoss |
+| 구분 | 웹 서버 | WAS (Web Application Server) |
+|------|--------|------------------------------|
+| 역할 | 정적 콘텐츠 (HTML, CSS, 이미지) | 동적 콘텐츠, 비즈니스 로직 |
+| 처리 | HTTP 요청/응답 | 애플리케이션 실행 |
+| 예시 | Apache, Nginx, IIS | Tomcat, WebLogic, JBoss, WebSphere |
 
-### 웹 보안 위협 (OWASP Top 10)
+### 웹 서버 소프트웨어
 
-1. **Injection** - SQL, Command Injection
-2. **Broken Authentication** - 인증 결함
-3. **Sensitive Data Exposure** - 민감 데이터 노출
-4. **XML External Entities (XXE)**
-5. **Broken Access Control** - 접근 제어 결함
-6. **Security Misconfiguration** - 보안 설정 오류
-7. **Cross-Site Scripting (XSS)**
-8. **Insecure Deserialization** - 안전하지 않은 역직렬화
-9. **Using Components with Known Vulnerabilities**
-10. **Insufficient Logging & Monitoring**
+| 서버 | 특징 | 설정 파일 |
+|------|------|----------|
+| Apache | 모듈 기반, 가장 널리 사용 | httpd.conf, .htaccess |
+| Nginx | 이벤트 기반, 고성능, 리버스 프록시 | nginx.conf |
+| IIS | Windows 전용, ASP.NET 연동 | web.config |
+
+### OWASP Top 10 (2021)
+
+| 순위 | 취약점 | 설명 |
+|-----|--------|------|
+| A01 | Broken Access Control | 접근 제어 실패 |
+| A02 | Cryptographic Failures | 암호화 실패 |
+| A03 | Injection | SQL, OS, LDAP 인젝션 |
+| A04 | Insecure Design | 설계 결함 |
+| A05 | Security Misconfiguration | 보안 설정 오류 |
+| A06 | Vulnerable Components | 취약한 컴포넌트 사용 |
+| A07 | Identification and Authentication Failures | 인증 실패 |
+| A08 | Software and Data Integrity Failures | 무결성 실패 |
+| A09 | Security Logging and Monitoring Failures | 로깅/모니터링 실패 |
+| A10 | Server-Side Request Forgery (SSRF) | 서버측 요청 위조 |
+
+### 주요 웹 취약점
+
+#### XSS (Cross-Site Scripting)
+
+클라이언트 측에서 악성 스크립트가 실행되는 취약점입니다.
+
+| 유형 | 설명 |
+|------|------|
+| Stored XSS | DB에 저장된 스크립트 실행 |
+| Reflected XSS | URL 파라미터의 스크립트 반사 |
+| DOM-based XSS | 클라이언트 DOM 조작 |
+
+**XSS 대책**
+- 입력값 검증 (화이트리스트)
+- 출력값 인코딩 (HTML Entity)
+- CSP (Content Security Policy) 헤더
+- HttpOnly 쿠키
+
+#### CSRF (Cross-Site Request Forgery)
+
+사용자의 인증된 세션을 악용하여 의도하지 않은 요청을 전송합니다.
+
+**CSRF 대책**
+- CSRF 토큰 사용
+- SameSite 쿠키 속성
+- Referer 검증
+- 재인증 요구
+
+#### 기타 웹 취약점
+
+| 취약점 | 설명 | 대책 |
+|--------|------|------|
+| 파일 업로드 | 악성 파일 업로드 | 확장자 검증, 실행 권한 제거 |
+| 디렉토리 트래버설 | 경로 조작으로 파일 접근 | 경로 정규화, 입력값 검증 |
+| 세션 하이재킹 | 세션 ID 탈취 | HTTPS, 세션 재생성 |
+| 클릭재킹 | 투명 프레임으로 클릭 유도 | X-Frame-Options 헤더 |
 
 ### 웹 서버 보안 대책
 
-#### HTTPS 적용
+#### HTTPS/TLS 설정
 
-- TLS 1.2 이상 사용
-- 강력한 암호화 스위트
-- HSTS 헤더 적용
-- 인증서 관리
+| 설정 | 권장사항 |
+|------|---------|
+| 프로토콜 | TLS 1.2 이상 (TLS 1.3 권장) |
+| 암호화 스위트 | AEAD 암호화 (AES-GCM, ChaCha20) |
+| 키 교환 | ECDHE (순방향 비밀성) |
+| 인증서 | SHA-256 이상 서명, 2048비트 RSA 또는 ECC |
 
 #### 보안 헤더
 
+| 헤더 | 설명 |
+|------|------|
+| Strict-Transport-Security | HTTPS 강제 (HSTS) |
+| Content-Security-Policy | 리소스 로드 정책 (XSS 방지) |
+| X-Content-Type-Options | MIME 스니핑 방지 |
+| X-Frame-Options | 클릭재킹 방지 |
+| X-XSS-Protection | 브라우저 XSS 필터 |
+| Referrer-Policy | Referer 헤더 제어 |
+
 ```http
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Content-Security-Policy: default-src 'self'; script-src 'self'
 X-Content-Type-Options: nosniff
 X-Frame-Options: DENY
-X-XSS-Protection: 1; mode=block
-Content-Security-Policy: default-src 'self'
-Strict-Transport-Security: max-age=31536000
 ```
 
-#### 서버 설정
+#### 웹 서버 설정
 
-- 디렉토리 리스팅 비활성화
-- 서버 버전 정보 숨김
-- 불필요한 HTTP 메서드 비활성화 (PUT, DELETE, TRACE)
-- 에러 페이지 커스터마이징
+| 설정 | 설명 |
+|------|------|
+| 디렉토리 리스팅 비활성화 | 디렉토리 내용 노출 방지 |
+| 서버 정보 숨김 | ServerTokens, ServerSignature |
+| HTTP 메서드 제한 | PUT, DELETE, TRACE 비활성화 |
+| 에러 페이지 커스터마이징 | 상세 에러 정보 노출 방지 |
+| 타임아웃 설정 | DoS 공격 완화 |
+
+---
+
+## FTP 서버
+
+### FTP 개요
+
+파일 전송 프로토콜로 제어 연결(21)과 데이터 연결(20)을 분리하여 사용합니다.
+
+**FTP 모드**
+
+| 모드 | 제어 연결 | 데이터 연결 | 방화벽 |
+|------|----------|-----------|--------|
+| Active | 클라이언트 → 서버 (21) | 서버 → 클라이언트 (20→랜덤) | 클라이언트 방화벽 문제 |
+| Passive | 클라이언트 → 서버 (21) | 클라이언트 → 서버 (랜덤) | 서버 포트 개방 필요 |
+
+### FTP 보안 위협
+
+| 위협 | 설명 |
+|------|------|
+| 평문 전송 | 자격증명, 데이터 스니핑 |
+| Anonymous FTP | 익명 접근 허용 시 정보 유출 |
+| Bounce Attack | 제3자 서버 포트 스캔 |
+| 디렉토리 트래버설 | 상위 디렉토리 접근 |
+
+### FTP 보안 대책
+
+| 대책 | 설명 |
+|------|------|
+| SFTP | SSH 기반 파일 전송 (포트 22) |
+| FTPS | FTP over SSL/TLS (포트 990) |
+| Anonymous 비활성화 | 익명 접근 차단 |
+| chroot 설정 | 사용자 홈 디렉토리 제한 |
+| 접근 IP 제한 | 허용된 IP만 접근 |
+| 강력한 인증 | 복잡한 패스워드, 공개키 인증 |
 
 ---
 
@@ -180,19 +466,44 @@ Strict-Transport-Security: max-age=31536000
 
 ### 파일 공유 프로토콜
 
-| 프로토콜 | 설명 |
-|---------|------|
-| SMB/CIFS | Windows 파일 공유 |
-| NFS | Unix/Linux 파일 공유 |
-| FTP/SFTP | 파일 전송 |
+| 프로토콜 | 포트 | 특징 |
+|---------|------|------|
+| SMB/CIFS | 445 (직접), 137-139 (NetBIOS) | Windows 파일 공유 |
+| NFS | 2049 | Unix/Linux 파일 공유 |
+| AFP | 548 | macOS 파일 공유 (레거시) |
+| WebDAV | 80/443 | HTTP 기반 파일 공유 |
+
+### SMB 버전별 특징
+
+| 버전 | Windows | 특징 |
+|------|---------|------|
+| SMB 1.0 | XP/2003 | 취약점 다수 (WannaCry 등) |
+| SMB 2.0 | Vista/2008 | 성능 개선 |
+| SMB 2.1 | 7/2008 R2 | 대용량 MTU |
+| SMB 3.0 | 8/2012 | 암호화, 다중 채널 |
+| SMB 3.1.1 | 10/2016 | 사전 인증 무결성 |
+
+### 파일 서버 보안 위협
+
+| 위협 | 설명 | 사례 |
+|------|------|------|
+| SMB 취약점 | EternalBlue 등 원격 코드 실행 | WannaCry, NotPetya |
+| 랜섬웨어 | 파일 암호화 및 협박 | 네트워크 공유 감염 확산 |
+| 무단 접근 | 권한 없는 파일 접근 | 잘못된 공유 권한 |
+| 정보 유출 | 민감 파일 외부 유출 | 공유 폴더 노출 |
 
 ### 파일 서버 보안 대책
 
-- 공유 폴더 최소화
-- 접근 권한 세분화
-- SMBv1 비활성화 (EternalBlue 취약점)
-- 감사 로깅 활성화
-- 랜섬웨어 대응 (백업, 스냅샷)
+| 대책 | 설명 |
+|------|------|
+| SMBv1 비활성화 | 취약한 프로토콜 차단 |
+| SMB 서명 | 메시지 무결성 검증 |
+| SMB 암호화 | SMB 3.0+ 암호화 활성화 |
+| 최소 권한 | 필요한 권한만 부여 |
+| 공유 폴더 최소화 | 불필요한 공유 제거 |
+| 감사 로깅 | 접근 로그 기록 |
+| 백업 | 정기적 백업, 오프라인 보관 |
+| 스냅샷 | VSS 등으로 복구 지점 생성 |
 
 ---
 
@@ -200,29 +511,64 @@ Strict-Transport-Security: max-age=31536000
 
 ### 클라우드 서비스 모델
 
-| 모델 | 설명 | 예시 |
-|------|------|------|
-| IaaS | 인프라 제공 | AWS EC2, Azure VM |
-| PaaS | 플랫폼 제공 | Heroku, App Engine |
-| SaaS | 소프트웨어 제공 | Office 365, Salesforce |
+| 모델 | 고객 관리 | CSP 관리 | 예시 |
+|------|----------|---------|------|
+| IaaS | OS, 미들웨어, 앱, 데이터 | 하드웨어, 네트워크, 가상화 | AWS EC2, Azure VM, GCP Compute |
+| PaaS | 앱, 데이터 | 런타임, 미들웨어, OS, 인프라 | Heroku, App Engine, Azure App Service |
+| SaaS | 데이터 (일부 설정) | 모든 계층 | Office 365, Salesforce, Google Workspace |
 
-### 공동 책임 모델
+### 클라우드 배포 모델
+
+| 모델 | 설명 |
+|------|------|
+| Public Cloud | 공개 클라우드, 다중 테넌트 |
+| Private Cloud | 전용 클라우드, 단일 조직 |
+| Hybrid Cloud | 퍼블릭 + 프라이빗 조합 |
+| Multi-Cloud | 여러 CSP 사용 |
+
+### 공동 책임 모델 (Shared Responsibility)
 
 | 구분 | IaaS | PaaS | SaaS |
 |------|------|------|------|
 | 데이터 | 고객 | 고객 | 고객 |
-| 애플리케이션 | 고객 | 공동 | CSP |
+| 애플리케이션 | 고객 | 고객/CSP | CSP |
+| 미들웨어 | 고객 | CSP | CSP |
 | OS | 고객 | CSP | CSP |
-| 인프라 | CSP | CSP | CSP |
+| 가상화 | CSP | CSP | CSP |
+| 하드웨어 | CSP | CSP | CSP |
+| 네트워크 | CSP | CSP | CSP |
+| 물리적 보안 | CSP | CSP | CSP |
+
+### 클라우드 보안 위협
+
+| 위협 | 설명 |
+|------|------|
+| 데이터 유출 | 잘못된 설정으로 인한 노출 |
+| 설정 오류 | S3 버킷 공개, 보안 그룹 오픈 |
+| 계정 탈취 | 자격증명 유출, 권한 상승 |
+| 내부자 위협 | CSP 직원, 동일 테넌트 공격 |
+| API 취약점 | 클라우드 API 보안 결함 |
+| 가시성 부족 | 로깅/모니터링 미흡 |
+
+### 클라우드 보안 솔루션
+
+| 솔루션 | 설명 |
+|--------|------|
+| CASB (Cloud Access Security Broker) | 클라우드 접근 중개, 가시성, DLP |
+| CSPM (Cloud Security Posture Management) | 설정 오류 탐지, 컴플라이언스 |
+| CWPP (Cloud Workload Protection Platform) | 워크로드 보호, 취약점 관리 |
+| CNAPP (Cloud-Native Application Protection) | CSPM + CWPP 통합 |
 
 ### 클라우드 보안 대책
 
-- IAM 정책 최소 권한
-- MFA 필수 적용
-- 데이터 암호화 (저장/전송)
-- VPC/보안 그룹 설정
-- 로깅 및 모니터링 (CloudTrail, CloudWatch)
-- 정기적 보안 감사
+| 영역 | 대책 |
+|------|------|
+| IAM | 최소 권한, MFA 필수, 역할 기반 접근 제어 |
+| 네트워크 | VPC, 보안 그룹, 네트워크 ACL |
+| 데이터 | 저장/전송 암호화, 키 관리 (KMS) |
+| 로깅 | CloudTrail, CloudWatch, SIEM 연동 |
+| 설정 관리 | IaC (Infrastructure as Code), 설정 검증 |
+| 백업 | 정기적 백업, 다중 리전 복제 |
 
 ---
 
@@ -230,23 +576,48 @@ Strict-Transport-Security: max-age=31536000
 
 ### 주요 보안 솔루션 서버
 
-- 방화벽 관리 서버
-- IDS/IPS 관리 콘솔
-- SIEM 서버
-- 백신 중앙 관리 서버
-- NAC 서버
-- DLP 관리 서버
+| 솔루션 | 설명 |
+|--------|------|
+| 방화벽 관리 서버 | 방화벽 정책 중앙 관리 |
+| IDS/IPS 관리 콘솔 | 침입탐지/방지 이벤트 관리 |
+| SIEM | 로그 수집, 상관분석, 위협 탐지 |
+| EDR 관리 서버 | 엔드포인트 탐지/대응 중앙 관리 |
+| 백신 중앙 관리 | 안티바이러스 정책/업데이트 배포 |
+| NAC 서버 | 네트워크 접근 제어 정책 관리 |
+| DLP 서버 | 데이터 유출 방지 정책 관리 |
+| 취약점 스캐너 | 취약점 점검 및 리포팅 |
+| PAM | 특권 계정 접근 관리 |
+
+### SIEM (Security Information and Event Management)
+
+**주요 기능**
+- 로그 수집 및 정규화
+- 실시간 이벤트 상관분석
+- 보안 위협 탐지 및 알람
+- 컴플라이언스 리포팅
+- 포렌식 분석 지원
+
+**주요 SIEM 제품**
+- Splunk
+- IBM QRadar
+- Microsoft Sentinel
+- Elastic Security
 
 ### 보안제품 서버 보안
 
-- 별도 관리 네트워크 분리
-- 강력한 인증 (MFA)
-- 관리 접근 IP 제한
-- 정기적 업데이트
-- 이중화 구성
+| 대책 | 설명 |
+|------|------|
+| 네트워크 분리 | 관리 네트워크 별도 구성 |
+| 강력한 인증 | MFA, 인증서 기반 인증 |
+| 접근 IP 제한 | 관리자 IP만 허용 |
+| 역할 기반 접근 | 최소 권한 원칙 |
+| 감사 로깅 | 관리자 활동 기록 |
+| 정기적 업데이트 | 보안 패치 적용 |
+| 이중화 | 고가용성 구성 |
+| 백업 | 설정 및 로그 백업 |
 
 ---
 
 ## 핵심 키워드
 
-`서버 보안` `DB 보안` `TDE` `DNS` `DNSSEC` `이메일 보안` `SPF` `DKIM` `DMARC` `웹 보안` `OWASP` `클라우드` `공동 책임 모델`
+`서버 보안` `DB 보안` `SQL Injection` `Prepared Statement` `TDE` `DNS` `DNSSEC` `Zone Transfer` `캐시 포이즈닝` `이메일 보안` `SPF` `DKIM` `DMARC` `Open Relay` `SMTP` `웹 보안` `OWASP Top 10` `XSS` `CSRF` `HTTPS` `TLS` `보안 헤더` `CSP` `FTP` `SFTP` `FTPS` `SMB` `NFS` `클라우드` `IaaS` `PaaS` `SaaS` `공동 책임 모델` `CASB` `CSPM` `SIEM`
