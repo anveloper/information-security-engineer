@@ -4,5 +4,6 @@ export { default as Quiz } from './quiz';
 export { default as SubjectTheory } from './subject-theory';
 export { default as TheoryDetail } from './theory-detail';
 export { default as SubjectQuiz } from './subject-quiz';
+export { default as QuizDetail } from './quiz-detail';
 export { default as WrongAnswers } from './wrong-answers';
 export { default as MockExam } from './mock-exam';

@@ -17,19 +17,34 @@ export const SUBJECTS: Record<Subject, string> = {
 
 // 문제 타입
 export interface Question {
-  id: string;
-  subject: Subject;
-  category: string;
-  type: 'multiple' | 'short';
+  id: number;
   question: string;
-  options?: string[];
-  answer: string | number;
-  explanation?: string;
+  options: string[];
+  answer: number; // 1-based index
+  explanation: string;
+  keywords: string[];
+}
+
+// 챕터별 문제 세트
+export interface QuestionSet {
+  subject: string;
+  subjectName: string;
+  chapter: string;
+  chapterName: string;
+  questions: Question[];
+}
+
+// 오답 기록
+export interface WrongAnswer {
+  questionSetId: string; // subject/chapter 형태
+  questionId: number;
+  selectedAnswer: number;
+  timestamp: number;
 }
 
 // 사용자 학습 기록
 export interface UserProgress {
   solvedQuestions: string[];
-  wrongAnswers: string[];
+  wrongAnswers: WrongAnswer[];
   lastStudyDate: string;
 }
