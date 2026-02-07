@@ -8,18 +8,16 @@
 
 ### 웹 아키텍처
 
-```
-클라이언트 (브라우저)
-    |
-    | HTTP/HTTPS
-    v
-웹 서버 (Apache, Nginx, IIS)
-    |
-    v
-WAS (Tomcat, JBoss, WebLogic)
-    |
-    v
-데이터베이스 (MySQL, Oracle, PostgreSQL)
+```mermaid
+flowchart TD
+    C[클라이언트<br/>브라우저] -->|HTTP/HTTPS| WS[웹 서버<br/>Apache, Nginx, IIS]
+    WS --> WAS[WAS<br/>Tomcat, JBoss, WebLogic]
+    WAS --> DB[(데이터베이스<br/>MySQL, Oracle, PostgreSQL)]
+
+    style C fill:#e1f5fe
+    style WS fill:#fff9c4
+    style WAS fill:#c8e6c9
+    style DB fill:#f8bbd9
 ```
 
 ### 웹 서버 vs WAS
