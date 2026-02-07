@@ -61,25 +61,38 @@
 
 #### DES (Data Encryption Standard)
 
-```
-┌─────────────────────────────────────┐
-│           64비트 평문               │
-├─────────────────────────────────────┤
-│         초기 순열 (IP)              │
-├──────────────┬──────────────────────┤
-│     L0       │         R0           │
-├──────────────┼──────────────────────┤
-│              │    ┌─────────┐       │
-│   L1 = R0    │←───│ f(R0,K1)│←── K1 │
-│   R1 = L0⊕f  │    └─────────┘       │
-├──────────────┼──────────────────────┤
-│      ...     │        ...           │
-│   (16라운드) │                      │
-├──────────────┴──────────────────────┤
-│       최종 순열 (IP⁻¹)              │
-├─────────────────────────────────────┤
-│          64비트 암호문              │
-└─────────────────────────────────────┘
+```mermaid
+flowchart TB
+    subgraph DES["DES 암호화 구조"]
+        P["64비트 평문"]
+        IP["초기 순열 (IP)"]
+
+        subgraph Round["라운드 구조"]
+            L0["L0"] --- R0["R0"]
+            F["f(R0, K1)"]
+            XOR["⊕"]
+            L1["L1 = R0"]
+            R1["R1 = L0 ⊕ f"]
+        end
+
+        More["... (16라운드 반복)"]
+        FP["최종 순열 (IP⁻¹)"]
+        C["64비트 암호문"]
+    end
+
+    P --> IP
+    IP --> L0
+    IP --> R0
+    R0 --> F
+    K1["K1"] --> F
+    F --> XOR
+    L0 --> XOR
+    XOR --> R1
+    R0 --> L1
+    L1 --> More
+    R1 --> More
+    More --> FP
+    FP --> C
 ```
 
 **페이스텔(Feistel) 구조:**
@@ -89,26 +102,30 @@
 
 #### AES (Advanced Encryption Standard)
 
-```
-┌─────────────────────────────────────┐
-│         128비트 평문                │
-├─────────────────────────────────────┤
-│       AddRoundKey (K0)              │
-├─────────────────────────────────────┤
-│  ┌─────────────────────────────┐    │
-│  │    SubBytes (S-Box 치환)    │    │
-│  ├─────────────────────────────┤    │
-│  │    ShiftRows (행 이동)      │    │
-│  ├─────────────────────────────┤    │
-│  │  MixColumns (열 혼합)*      │    │
-│  ├─────────────────────────────┤    │
-│  │    AddRoundKey (Ki)         │    │
-│  └─────────────────────────────┘    │
-│        * 마지막 라운드 제외         │
-│     (10/12/14 라운드 반복)          │
-├─────────────────────────────────────┤
-│         128비트 암호문              │
-└─────────────────────────────────────┘
+```mermaid
+flowchart TB
+    subgraph AES["AES 암호화 구조"]
+        P["128비트 평문"]
+        ARK0["AddRoundKey (K0)"]
+
+        subgraph Round["라운드 (10/12/14회 반복)"]
+            SB["SubBytes (S-Box 치환)"]
+            SR["ShiftRows (행 이동)"]
+            MC["MixColumns (열 혼합)*"]
+            ARK["AddRoundKey (Ki)"]
+        end
+
+        Note["* 마지막 라운드에서는 MixColumns 제외"]
+        C["128비트 암호문"]
+    end
+
+    P --> ARK0
+    ARK0 --> SB
+    SB --> SR
+    SR --> MC
+    MC --> ARK
+    ARK -->|반복| SB
+    ARK --> C
 ```
 
 **SPN (Substitution-Permutation Network) 구조:**
@@ -126,23 +143,40 @@
 | CTR | 카운터 값 암호화 | 병렬처리, 랜덤 접근 | 카운터 재사용 위험 |
 | GCM | CTR + 인증 태그 | 기밀성 + 무결성 | 구현 복잡 |
 
+```mermaid
+flowchart LR
+    subgraph ECB["ECB 모드"]
+        P1_E["P1"] --> E1["E"] --> C1_E["C1"]
+        P2_E["P2"] --> E2["E"] --> C2_E["C2"]
+        P3_E["P3"] --> E3["E"] --> C3_E["C3"]
+    end
 ```
-ECB 모드:
-P1 → [E] → C1    P2 → [E] → C2    P3 → [E] → C3
 
-CBC 모드:
-IV ──┐
-     ↓
-P1 → ⊕ → [E] → C1 ──┐
-                    ↓
-          P2 → ⊕ → [E] → C2 ──┐
-                              ↓
-                    P3 → ⊕ → [E] → C3
+```mermaid
+flowchart LR
+    subgraph CBC["CBC 모드"]
+        IV["IV"] --> XOR1["⊕"]
+        P1["P1"] --> XOR1
+        XOR1 --> E1["E"] --> C1["C1"]
+        C1 --> XOR2["⊕"]
+        P2["P2"] --> XOR2
+        XOR2 --> E2["E"] --> C2["C2"]
+        C2 --> XOR3["⊕"]
+        P3["P3"] --> XOR3
+        XOR3 --> E3["E"] --> C3["C3"]
+    end
+```
 
-CTR 모드:
-CTR+0 → [E] → K1 ⊕ P1 → C1
-CTR+1 → [E] → K2 ⊕ P2 → C2
-CTR+2 → [E] → K3 ⊕ P3 → C3
+```mermaid
+flowchart LR
+    subgraph CTR["CTR 모드"]
+        CTR0["CTR+0"] --> E1["E"] --> XOR1["⊕"]
+        P1["P1"] --> XOR1 --> C1["C1"]
+        CTR1["CTR+1"] --> E2["E"] --> XOR2["⊕"]
+        P2["P2"] --> XOR2 --> C2["C2"]
+        CTR2["CTR+2"] --> E3["E"] --> XOR3["⊕"]
+        P3["P3"] --> XOR3 --> C3["C3"]
+    end
 ```
 
 ### 2.4 스트림 암호 (Stream Cipher)
@@ -420,38 +454,52 @@ ipad: 0x36 반복
 
 ### 7.3 X.509 인증서
 
-```
-인증서 구조:
-├── 버전 (Version)
-├── 일련번호 (Serial Number)
-├── 서명 알고리즘
-├── 발급자 (Issuer)
-├── 유효기간 (Validity)
-│   ├── Not Before
-│   └── Not After
-├── 주체 (Subject)
-├── 공개키 정보
-│   ├── 알고리즘
-│   └── 공개키
-├── 확장 (Extensions)
-│   ├── Key Usage
-│   ├── Subject Alternative Name
-│   └── ...
-└── 서명 (Signature)
+```mermaid
+flowchart TB
+    subgraph Cert["X.509 인증서 구조"]
+        V["버전 (Version)"]
+        SN["일련번호 (Serial Number)"]
+        SA["서명 알고리즘"]
+        I["발급자 (Issuer)"]
+
+        subgraph Validity["유효기간 (Validity)"]
+            NB["Not Before"]
+            NA["Not After"]
+        end
+
+        S["주체 (Subject)"]
+
+        subgraph PK["공개키 정보"]
+            PKA["알고리즘"]
+            PKV["공개키"]
+        end
+
+        subgraph Ext["확장 (Extensions)"]
+            KU["Key Usage"]
+            SAN["Subject Alternative Name"]
+            ETC["..."]
+        end
+
+        Sig["서명 (Signature)"]
+    end
+
+    V --> SN --> SA --> I --> Validity --> S --> PK --> Ext --> Sig
 ```
 
 ### 7.4 인증서 체인
 
-```
-Root CA (자체 서명)
-    │
-    ├── Intermediate CA
-    │       │
-    │       └── End Entity Certificate
-    │
-    └── Intermediate CA
-            │
-            └── End Entity Certificate
+```mermaid
+flowchart TB
+    Root["Root CA<br/>(자체 서명)"]
+    Int1["Intermediate CA"]
+    Int2["Intermediate CA"]
+    EE1["End Entity Certificate"]
+    EE2["End Entity Certificate"]
+
+    Root --> Int1
+    Root --> Int2
+    Int1 --> EE1
+    Int2 --> EE2
 ```
 
 ### 7.5 인증서 폐지
@@ -470,26 +518,22 @@ Root CA (자체 서명)
 
 #### TLS 핸드셰이크 (TLS 1.2)
 
-```
-Client                                 Server
-  │                                      │
-  ├──── ClientHello ──────────────────→│
-  │     (버전, 난수, 암호 스위트)         │
-  │                                      │
-  │←─── ServerHello ─────────────────────┤
-  │     (버전, 난수, 선택된 암호 스위트)   │
-  │←─── Certificate ─────────────────────┤
-  │←─── ServerKeyExchange ───────────────┤
-  │←─── ServerHelloDone ─────────────────┤
-  │                                      │
-  ├──── ClientKeyExchange ────────────→│
-  ├──── ChangeCipherSpec ─────────────→│
-  ├──── Finished ─────────────────────→│
-  │                                      │
-  │←─── ChangeCipherSpec ────────────────┤
-  │←─── Finished ────────────────────────┤
-  │                                      │
-  │←──────── 암호화 통신 ────────────────→│
+```mermaid
+sequenceDiagram
+    participant C as Client
+    participant S as Server
+
+    C->>S: ClientHello (버전, 난수, 암호 스위트)
+    S->>C: ServerHello (버전, 난수, 선택된 암호 스위트)
+    S->>C: Certificate
+    S->>C: ServerKeyExchange
+    S->>C: ServerHelloDone
+    C->>S: ClientKeyExchange
+    C->>S: ChangeCipherSpec
+    C->>S: Finished
+    S->>C: ChangeCipherSpec
+    S->>C: Finished
+    C<<->>S: 암호화 통신
 ```
 
 #### TLS 1.3 개선사항
