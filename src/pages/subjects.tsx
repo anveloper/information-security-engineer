@@ -1,16 +1,16 @@
-import { Link } from 'react-router-dom';
-import { SUBJECTS } from '../types';
-import type { Subject } from '../types';
+import { Link } from "react-router-dom";
+import { SUBJECTS } from "../types";
+import type { Subject } from "../types";
 
 export default function Subjects() {
   const subjectList = Object.entries(SUBJECTS) as [Subject, string][];
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4">
+    <div className="py-12 px-4">
       <div className="max-w-2xl mx-auto">
         <h1 className="text-2xl font-bold text-gray-900 mb-6">과목 선택</h1>
 
-        <ul className="flex flex-col gap-3 mb-8">
+        <ul className="flex flex-col gap-3">
           {subjectList.map(([key, name], index) => (
             <li key={key}>
               <Link
@@ -23,10 +23,6 @@ export default function Subjects() {
             </li>
           ))}
         </ul>
-
-        <Link to="/" className="text-blue-600 hover:underline">
-          ← 홈으로
-        </Link>
       </div>
     </div>
   );

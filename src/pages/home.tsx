@@ -1,15 +1,11 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4">
+    <div className="py-12 px-4">
       <div className="max-w-2xl mx-auto">
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">
-          정보보안기사 문제 풀이
-        </h1>
-        <p className="text-gray-600 mb-8">
-          정보보안기사 자격증 시험 대비를 위한 학습 플랫폼입니다.
-        </p>
+        <h1 className="text-3xl font-bold text-gray-900 mb-4">정보보안기사 문제 풀이</h1>
+        <p className="text-gray-600 mb-8">정보보안기사 자격증 시험 대비를 위한 학습 플랫폼입니다.</p>
 
         <nav className="flex flex-col gap-3">
           <Link
