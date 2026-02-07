@@ -1,0 +1,288 @@
+{
+  "subject": "01-system-security",
+  "subjectName": "시스템 보안",
+  "chapter": "01-terminal-systems",
+  "chapterName": "단말 시스템",
+  "questions": [
+    {
+      "id": 1,
+      "question": "BIOS를 대체하는 최신 펌웨어 인터페이스로, Secure Boot 기능을 지원하며 GPT 파티션을 사용할 수 있는 것은?",
+      "options": ["CMOS", "UEFI", "POST", "MBR"],
+      "answer": 2,
+      "explanation": "UEFI(Unified Extensible Firmware Interface)는 BIOS의 후속 표준으로, Secure Boot 기능을 제공하고 GPT 파티션을 지원하여 2TB 이상의 디스크를 사용할 수 있습니다.",
+      "keywords": ["UEFI", "Secure Boot", "GPT"]
+    },
+    {
+      "id": 2,
+      "question": "하드웨어 기반 보안 모듈로 암호화 키를 안전하게 저장하고, 플랫폼 무결성을 측정하는 기능을 제공하는 것은?",
+      "options": ["HSM", "TPM", "KMS", "PKI"],
+      "answer": 2,
+      "explanation": "TPM(Trusted Platform Module)은 암호화 키 생성/저장, 플랫폼 무결성 측정(PCR), 원격 증명, 봉인/개봉 기능을 제공하는 하드웨어 보안 칩입니다.",
+      "keywords": ["TPM", "하드웨어 보안", "암호화 키"]
+    },
+    {
+      "id": 3,
+      "question": "Windows 운영체제에서 TPM과 연동하여 전체 디스크를 암호화하는 기능은?",
+      "options": ["FileVault", "BitLocker", "LUKS", "VeraCrypt"],
+      "answer": 2,
+      "explanation": "BitLocker는 Windows의 전체 디스크 암호화(FDE) 솔루션으로, TPM과 연동하여 AES-128/256 암호화를 제공합니다. FileVault는 macOS, LUKS는 Linux용입니다.",
+      "keywords": ["BitLocker", "FDE", "디스크 암호화"]
+    },
+    {
+      "id": 4,
+      "question": "다음 중 안티바이러스와 EDR(Endpoint Detection and Response)의 차이점으로 옳지 않은 것은?",
+      "options": [
+        "안티바이러스는 시그니처 기반, EDR은 행위 기반 탐지를 사용한다",
+        "EDR은 알려지지 않은 위협도 탐지할 수 있다",
+        "안티바이러스는 EDR보다 더 넓은 범위의 가시성을 제공한다",
+        "EDR은 포렌식 분석 기능을 제공한다"
+      ],
+      "answer": 3,
+      "explanation": "EDR이 안티바이러스보다 더 넓은 가시성을 제공합니다. EDR은 엔드포인트 전체 활동을 모니터링하며, 탐지/분석/대응/포렌식 기능을 제공합니다.",
+      "keywords": ["EDR", "안티바이러스", "행위 기반 탐지"]
+    },
+    {
+      "id": 5,
+      "question": "Windows에서 관리자 권한이 필요한 작업 수행 시 사용자에게 확인을 요청하는 보안 기능은?",
+      "options": ["Windows Defender", "UAC", "BitLocker", "Credential Guard"],
+      "answer": 2,
+      "explanation": "UAC(User Account Control)는 관리자 권한이 필요한 작업 수행 시 사용자에게 확인을 요청하여 악성 프로그램의 무단 권한 상승을 방지합니다.",
+      "keywords": ["UAC", "권한 상승", "사용자 계정 컨트롤"]
+    },
+    {
+      "id": 6,
+      "question": "Linux 커널에서 강제적 접근 제어(MAC)를 구현하여 프로세스와 파일에 대한 접근을 세밀하게 제어하는 보안 모듈은?",
+      "options": ["PAM", "SELinux", "iptables", "sudo"],
+      "answer": 2,
+      "explanation": "SELinux(Security-Enhanced Linux)는 NSA에서 개발한 강제적 접근 제어(MAC) 시스템으로, 프로세스와 파일에 대한 세밀한 접근 제어를 제공합니다.",
+      "keywords": ["SELinux", "MAC", "강제적 접근 제어"]
+    },
+    {
+      "id": 7,
+      "question": "모바일 기기를 중앙에서 관리하며, 원격 잠금/초기화, 정책 강제 적용, 앱 배포 등의 기능을 제공하는 솔루션은?",
+      "options": ["MAM", "MDM", "MCM", "DLP"],
+      "answer": 2,
+      "explanation": "MDM(Mobile Device Management)은 기업 모바일 기기를 중앙에서 관리하는 솔루션으로, 원격 잠금/초기화, 정책 강제 적용, 앱 배포, 위치 추적 등의 기능을 제공합니다.",
+      "keywords": ["MDM", "모바일 기기 관리"]
+    },
+    {
+      "id": 8,
+      "question": "개인 소유의 기기를 업무에 사용하는 정책으로, 보안 관리의 어려움과 데이터 유출 위험이 있는 것은?",
+      "options": ["COPE", "BYOD", "CYOD", "COBO"],
+      "answer": 2,
+      "explanation": "BYOD(Bring Your Own Device)는 개인 소유 기기를 업무에 사용하는 정책입니다. 비용 절감과 사용자 만족도 향상의 장점이 있지만, 보안 관리가 어렵고 데이터 유출 위험이 있습니다.",
+      "keywords": ["BYOD", "개인 기기", "모바일 보안"]
+    },
+    {
+      "id": 9,
+      "question": "Android 운영체제에서 각 앱을 고유 UID로 격리하여 실행하는 보안 메커니즘은?",
+      "options": ["SELinux", "앱 샌드박싱", "Verified Boot", "Google Play Protect"],
+      "answer": 2,
+      "explanation": "Android의 앱 샌드박싱은 각 앱을 고유 UID로 격리하여 실행함으로써 앱 간 데이터 접근을 차단하고 시스템을 보호합니다.",
+      "keywords": ["샌드박싱", "Android", "앱 격리"]
+    },
+    {
+      "id": 10,
+      "question": "iOS에서 암호화 키와 생체인증 정보를 안전하게 저장하는 하드웨어 기반 보안 영역은?",
+      "options": ["Keychain", "Secure Enclave", "App Sandbox", "Data Protection"],
+      "answer": 2,
+      "explanation": "Secure Enclave는 iOS 기기의 하드웨어 기반 보안 영역으로, 암호화 키와 생체인증(Face ID/Touch ID) 정보를 안전하게 저장합니다.",
+      "keywords": ["Secure Enclave", "iOS", "하드웨어 보안"]
+    },
+    {
+      "id": 11,
+      "question": "2016년 기본 패스워드를 악용하여 IoT 기기를 감염시킨 대규모 봇넷 공격은?",
+      "options": ["Stuxnet", "Mirai", "WannaCry", "NotPetya"],
+      "answer": 2,
+      "explanation": "Mirai 봇넷(2016)은 IoT 기기의 기본 자격증명을 악용하여 대규모 DDoS 공격을 수행했습니다. 이 사건으로 IoT 보안의 중요성이 부각되었습니다.",
+      "keywords": ["Mirai", "봇넷", "IoT 보안"]
+    },
+    {
+      "id": 12,
+      "question": "OWASP IoT Top 10(2018)에서 1위로 선정된 IoT 취약점은?",
+      "options": [
+        "안전하지 않은 네트워크 서비스",
+        "취약한/하드코딩된/추측 가능한 패스워드",
+        "안전한 업데이트 메커니즘 부재",
+        "불충분한 개인정보 보호"
+      ],
+      "answer": 2,
+      "explanation": "OWASP IoT Top 10(2018) 1위는 '취약한/하드코딩된/추측 가능한 패스워드'입니다. 많은 IoT 기기가 기본 패스워드를 변경하지 않거나 하드코딩된 자격증명을 사용합니다.",
+      "keywords": ["OWASP IoT Top 10", "기본 패스워드"]
+    },
+    {
+      "id": 13,
+      "question": "산업용 제어 시스템에서 원격지 장비를 모니터링하고 제어하는 시스템은?",
+      "options": ["ERP", "SCADA", "MES", "CRM"],
+      "answer": 2,
+      "explanation": "SCADA(Supervisory Control and Data Acquisition)는 원격지 장비를 모니터링하고 제어하는 산업용 시스템으로, HMI, RTU, PLC 등으로 구성됩니다.",
+      "keywords": ["SCADA", "ICS", "산업 제어"]
+    },
+    {
+      "id": 14,
+      "question": "IT(Information Technology)와 OT(Operational Technology)의 우선순위 차이로 옳은 것은?",
+      "options": [
+        "IT: 가용성 > 무결성 > 기밀성",
+        "OT: 기밀성 > 가용성 > 무결성",
+        "IT: 기밀성 > 무결성 > 가용성, OT: 가용성 > 무결성 > 기밀성",
+        "IT와 OT의 우선순위는 동일하다"
+      ],
+      "answer": 3,
+      "explanation": "IT는 정보 보호가 중요하여 기밀성을 우선시하고, OT는 물리적 프로세스의 연속성이 중요하여 가용성을 최우선으로 합니다.",
+      "keywords": ["IT", "OT", "보안 우선순위"]
+    },
+    {
+      "id": 15,
+      "question": "2010년 이란 핵시설의 원심분리기를 공격한 최초의 산업 제어 시스템 표적 악성코드는?",
+      "options": ["BlackEnergy", "TRITON", "Stuxnet", "Industroyer"],
+      "answer": 3,
+      "explanation": "Stuxnet(2010)은 이란 나탄즈 핵시설의 원심분리기를 표적으로 한 최초의 ICS 표적 악성코드로, 지멘스 PLC를 조작하여 물리적 피해를 유발했습니다.",
+      "keywords": ["Stuxnet", "ICS 공격", "원심분리기"]
+    },
+    {
+      "id": 16,
+      "question": "네트워크에 접속하는 기기의 보안 상태를 점검하고, 비인가 기기의 접근을 차단하는 솔루션은?",
+      "options": ["IDS", "NAC", "WAF", "SIEM"],
+      "answer": 2,
+      "explanation": "NAC(Network Access Control)는 네트워크 접근 제어 솔루션으로, 기기 인증, 보안 상태 점검(패치, 안티바이러스), 네트워크 격리/허용 기능을 제공합니다.",
+      "keywords": ["NAC", "네트워크 접근 제어"]
+    },
+    {
+      "id": 17,
+      "question": "IEEE 802.1X 포트 기반 네트워크 접근 제어에서 인증 요청을 하는 클라이언트 구성요소는?",
+      "options": ["Authenticator", "Supplicant", "Authentication Server", "RADIUS"],
+      "answer": 2,
+      "explanation": "802.1X에서 Supplicant는 인증을 요청하는 클라이언트, Authenticator는 스위치/AP, Authentication Server는 RADIUS 서버입니다.",
+      "keywords": ["802.1X", "Supplicant", "포트 기반 인증"]
+    },
+    {
+      "id": 18,
+      "question": "USB, 이메일, 웹 등을 통한 기업 데이터 유출을 방지하는 솔루션은?",
+      "options": ["DRM", "DLP", "MDM", "NAC"],
+      "answer": 2,
+      "explanation": "DLP(Data Loss Prevention)는 엔드포인트, 네트워크, 스토리지에서 민감한 데이터의 유출을 탐지하고 차단하는 솔루션입니다.",
+      "keywords": ["DLP", "데이터 유출 방지"]
+    },
+    {
+      "id": 19,
+      "question": "다음 중 프린터/복합기 보안 대책으로 적절하지 않은 것은?",
+      "options": [
+        "기본 관리자 패스워드 변경",
+        "SNMP v1/v2를 활성화하여 모니터링 강화",
+        "프린터 전용 VLAN 구성",
+        "인쇄 후 데이터 자동 삭제 설정"
+      ],
+      "answer": 2,
+      "explanation": "SNMP v1/v2는 커뮤니티 스트링이 평문으로 전송되어 보안에 취약합니다. SNMPv3를 사용하거나 불필요한 경우 비활성화해야 합니다.",
+      "keywords": ["프린터 보안", "SNMP", "복합기"]
+    },
+    {
+      "id": 20,
+      "question": "MDM, MAM, MCM을 통합한 기업 모빌리티 관리 솔루션은?",
+      "options": ["UEM", "EMM", "NAC", "EDR"],
+      "answer": 2,
+      "explanation": "EMM(Enterprise Mobility Management)은 MDM(기기 관리), MAM(앱 관리), MCM(콘텐츠 관리)을 통합한 솔루션입니다. UEM은 EMM에 PC, IoT까지 포함합니다.",
+      "keywords": ["EMM", "MDM", "MAM", "MCM"]
+    },
+    {
+      "id": 21,
+      "question": "TPM 2.0에서 지원하는 암호화 알고리즘으로 옳은 것은?",
+      "options": [
+        "SHA-1, RSA만 지원",
+        "SHA-256, RSA/ECC 지원",
+        "MD5, DES 지원",
+        "SHA-512만 지원"
+      ],
+      "answer": 2,
+      "explanation": "TPM 2.0은 SHA-256 해시와 RSA/ECC 암호화를 지원하며, TPM 1.2보다 더 유연한 구조를 가지고 있습니다.",
+      "keywords": ["TPM 2.0", "SHA-256", "ECC"]
+    },
+    {
+      "id": 22,
+      "question": "경량 IoT 환경에서 사용되는 Publish/Subscribe 방식의 메시징 프로토콜은?",
+      "options": ["CoAP", "MQTT", "HTTP", "SOAP"],
+      "answer": 2,
+      "explanation": "MQTT(Message Queuing Telemetry Transport)는 경량 Pub/Sub 메시징 프로토콜로, IoT 환경에서 널리 사용됩니다. TLS와 사용자 인증을 통해 보안을 제공합니다.",
+      "keywords": ["MQTT", "IoT", "Pub/Sub"]
+    },
+    {
+      "id": 23,
+      "question": "Linux에서 프로파일 기반으로 애플리케이션의 시스템 리소스 접근을 제어하는 보안 모듈은?",
+      "options": ["SELinux", "AppArmor", "iptables", "PAM"],
+      "answer": 2,
+      "explanation": "AppArmor는 경로 기반 프로파일을 사용하여 애플리케이션의 시스템 리소스 접근을 제어합니다. SELinux보다 설정이 간단하며 Ubuntu에서 기본 사용됩니다.",
+      "keywords": ["AppArmor", "프로파일 기반", "MAC"]
+    },
+    {
+      "id": 24,
+      "question": "UEFI의 Secure Boot 기능이 방지하는 공격 유형은?",
+      "options": [
+        "SQL Injection",
+        "부트킷/루트킷",
+        "피싱 공격",
+        "DDoS 공격"
+      ],
+      "answer": 2,
+      "explanation": "Secure Boot는 서명된 부트로더만 실행을 허용하여 부트킷(Bootkit)이나 루트킷이 부팅 과정에 개입하는 것을 방지합니다.",
+      "keywords": ["Secure Boot", "부트킷", "루트킷"]
+    },
+    {
+      "id": 25,
+      "question": "BitLocker의 보호 방식 중 TPM과 사용자 PIN을 조합하여 사용하는 방식의 장점은?",
+      "options": [
+        "가장 빠른 부팅 속도",
+        "별도 하드웨어 불필요",
+        "다중 요소 인증으로 보안 강화",
+        "원격 관리 용이"
+      ],
+      "answer": 3,
+      "explanation": "TPM + PIN 방식은 하드웨어(TPM)와 지식(PIN)을 조합한 다중 요소 인증으로, TPM만 사용하는 것보다 보안이 강화됩니다.",
+      "keywords": ["BitLocker", "TPM + PIN", "다중 요소 인증"]
+    },
+    {
+      "id": 26,
+      "question": "Purdue Model에서 IT와 OT 네트워크를 분리하는 영역의 레벨은?",
+      "options": ["레벨 0", "레벨 2", "레벨 3.5 (DMZ)", "레벨 5"],
+      "answer": 3,
+      "explanation": "Purdue Model에서 레벨 3.5는 IT/OT 분리를 위한 DMZ 영역입니다. 이 영역에서 IT와 OT 네트워크 간의 통신을 통제합니다.",
+      "keywords": ["Purdue Model", "DMZ", "IT/OT 분리"]
+    },
+    {
+      "id": 27,
+      "question": "EPP, EDR, XDR의 범위를 올바르게 나열한 것은?",
+      "options": [
+        "EPP < EDR < XDR",
+        "EDR < EPP < XDR",
+        "XDR < EDR < EPP",
+        "EPP = EDR < XDR"
+      ],
+      "answer": 1,
+      "explanation": "EPP는 엔드포인트 보호 플랫폼(예방 중심), EDR은 엔드포인트 탐지/대응, XDR은 엔드포인트+네트워크+클라우드까지 확장된 탐지/대응입니다.",
+      "keywords": ["EPP", "EDR", "XDR"]
+    },
+    {
+      "id": 28,
+      "question": "모바일 앱을 컨테이너화하여 업무/개인 영역을 분리하고, 앱 수준의 보안 정책을 적용하는 솔루션은?",
+      "options": ["MDM", "MAM", "MCM", "UEM"],
+      "answer": 2,
+      "explanation": "MAM(Mobile Application Management)은 업무용 앱을 컨테이너화하여 개인 영역과 분리하고, 앱 간 데이터 공유 제한, 앱 수준 암호화 등의 기능을 제공합니다.",
+      "keywords": ["MAM", "앱 컨테이너화", "모바일 앱 관리"]
+    },
+    {
+      "id": 29,
+      "question": "UDP 기반의 RESTful IoT 프로토콜로, DTLS를 통해 보안을 제공하는 것은?",
+      "options": ["MQTT", "CoAP", "AMQP", "XMPP"],
+      "answer": 2,
+      "explanation": "CoAP(Constrained Application Protocol)는 제한된 환경을 위한 RESTful 프로토콜로, UDP 기반이며 DTLS(Datagram TLS)를 통해 보안을 제공합니다.",
+      "keywords": ["CoAP", "DTLS", "RESTful IoT"]
+    },
+    {
+      "id": 30,
+      "question": "Windows에서 자격증명을 가상화 기반으로 격리하여 보호하는 기능은?",
+      "options": ["Windows Defender", "UAC", "Credential Guard", "BitLocker"],
+      "answer": 3,
+      "explanation": "Credential Guard는 가상화 기반 보안(VBS)을 사용하여 NTLM 해시와 Kerberos 티켓 등 자격증명을 격리된 환경에서 보호합니다.",
+      "keywords": ["Credential Guard", "자격증명 보호", "VBS"]
+    }
+  ]
+}
