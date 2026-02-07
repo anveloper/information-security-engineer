@@ -1,5 +1,8 @@
 export { default as Home } from './home';
-export { default as Subjects } from './subjects';
-export { default as SubjectDetail } from './subject-detail';
+export { default as Theory } from './theory';
+export { default as Quiz } from './quiz';
+export { default as SubjectTheory } from './subject-theory';
+export { default as TheoryDetail } from './theory-detail';
+export { default as SubjectQuiz } from './subject-quiz';
 export { default as WrongAnswers } from './wrong-answers';
 export { default as MockExam } from './mock-exam';

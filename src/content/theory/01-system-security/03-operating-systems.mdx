@@ -700,3 +700,81 @@ systemctl disable rexec.socket
 ## 핵심 키워드
 
 `운영체제` `Windows` `Linux` `Unix` `NTFS` `레지스트리` `UAC` `BitLocker` `그룹 정책` `이벤트 로그` `ext4` `SELinux` `AppArmor` `iptables` `PAM` `sudo` `SetUID` `SetGID` `Sticky Bit` `/etc/shadow` `syslog` `Android` `iOS` `샌드박스` `Secure Boot` `임베디드`
+
+---
+
+## 가상화 및 컨테이너 보안
+
+### 가상화 유형
+
+| 유형 | 설명 | 예시 |
+|------|------|------|
+| Type 1 (Bare-metal) | 하드웨어에서 직접 실행 | VMware ESXi, Hyper-V, Xen |
+| Type 2 (Hosted) | 호스트 OS 위에서 실행 | VirtualBox, VMware Workstation |
+| 컨테이너 | OS 수준 가상화 | Docker, Podman |
+
+### 컨테이너 보안
+
+**Docker 보안 위협**
+
+| 위협 | 설명 |
+|------|------|
+| 이미지 취약점 | 베이스 이미지의 보안 결함 |
+| 컨테이너 탈출 | 호스트 시스템 접근 |
+| 특권 컨테이너 | --privileged 옵션 남용 |
+| 민감정보 노출 | 환경변수, 설정 파일 노출 |
+
+**컨테이너 보안 대책**
+
+| 대책 | 설명 |
+|------|------|
+| 이미지 스캔 | Trivy, Clair로 취약점 검사 |
+| 최소 권한 | non-root 사용자, 읽기 전용 파일시스템 |
+| 네트워크 분리 | 컨테이너 네트워크 격리 |
+| 시크릿 관리 | Vault, Kubernetes Secrets |
+| 런타임 보안 | Falco, Sysdig로 이상 행위 탐지 |
+
+### Kubernetes 보안
+
+| 구성요소 | 보안 고려사항 |
+|---------|--------------|
+| API Server | RBAC, 인증, 감사 로깅 |
+| etcd | 암호화, 접근 제한 |
+| Pod | SecurityContext, PodSecurityPolicy |
+| Network | NetworkPolicy로 트래픽 제어 |
+
+---
+
+## 용어 해설
+
+| 용어 | 풀이 | 설명 |
+|------|------|------|
+| NTFS | New Technology File System | Windows의 기본 파일 시스템. ACL 기반 접근 제어 지원 |
+| EFS | Encrypting File System | NTFS의 파일/폴더 암호화 기능 |
+| ACL | Access Control List | 접근 제어 목록. 객체에 대한 권한 정의 |
+| 레지스트리 | Registry | Windows 설정 정보를 저장하는 계층적 데이터베이스 |
+| 하이브 | Hive | 레지스트리의 최상위 논리적 그룹 (HKLM, HKCU 등) |
+| UAC | User Account Control | 관리자 권한 상승 시 사용자 확인 |
+| SID | Security Identifier | Windows의 보안 주체 고유 식별자 |
+| GPO | Group Policy Object | Active Directory의 그룹 정책 객체 |
+| ext4 | Fourth Extended Filesystem | Linux 표준 파일 시스템 |
+| XFS | - | 대용량 파일에 적합한 고성능 Linux 파일 시스템 |
+| FHS | Filesystem Hierarchy Standard | Linux 디렉토리 구조 표준 |
+| UID | User Identifier | Linux 사용자 고유 식별 번호 |
+| GID | Group Identifier | Linux 그룹 고유 식별 번호 |
+| SetUID | Set User ID | 실행 시 파일 소유자 권한으로 실행 |
+| SetGID | Set Group ID | 실행 시 파일 그룹 권한으로 실행 |
+| Sticky Bit | 스티키 비트 | 디렉토리 내 파일을 소유자만 삭제 가능하게 설정 |
+| SELinux | Security-Enhanced Linux | NSA 개발 강제적 접근 제어(MAC) 시스템 |
+| AppArmor | Application Armor | 경로 기반 프로파일 접근 제어 (Ubuntu 기본) |
+| iptables | - | Linux 커널 방화벽 (Netfilter) |
+| nftables | - | iptables를 대체하는 차세대 Linux 방화벽 |
+| PAM | Pluggable Authentication Modules | 모듈식 인증 프레임워크 |
+| syslog | System Logging Protocol | 시스템 로그 수집 표준 프로토콜 |
+| journald | - | systemd의 로그 수집 데몬 |
+| Secure Enclave | 보안 영역 | iOS/macOS의 하드웨어 기반 키 저장소 |
+| TEE | Trusted Execution Environment | 신뢰 실행 환경. 격리된 보안 영역 |
+| RTOS | Real-Time Operating System | 실시간 운영체제. 시간 제약 처리 |
+| Docker | - | 컨테이너 기반 애플리케이션 배포 플랫폼 |
+| Kubernetes | K8s | 컨테이너 오케스트레이션 플랫폼 |
+| Hypervisor | 하이퍼바이저 | 가상 머신을 생성하고 관리하는 소프트웨어 |

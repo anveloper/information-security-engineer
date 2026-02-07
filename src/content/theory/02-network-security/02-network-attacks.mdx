@@ -717,6 +717,55 @@ sysctl -w net.ipv4.conf.all.send_redirects=0
 
 ---
 
+## 용어 해설
+
+| 용어 | 설명 |
+|------|------|
+| 스니핑 (Sniffing) | 네트워크 트래픽을 도청하여 정보를 수집하는 공격. 패시브(허브 환경)와 액티브(스위치 환경) 방식으로 구분 |
+| ARP Spoofing/Poisoning | 위조된 ARP Reply를 보내 희생자의 ARP 캐시를 변조하는 공격. MITM 공격의 전 단계로 활용 |
+| MAC Flooding | 다량의 위조 MAC 주소로 스위치의 MAC 테이블을 오버플로우시켜 스위치를 허브처럼 동작하게 만드는 공격 |
+| DAI (Dynamic ARP Inspection) | 스위치에서 ARP 패킷을 검증하여 ARP Spoofing을 방지하는 기능 |
+| SPAN (Switch Port Analyzer) | 스위치에서 특정 포트의 트래픽을 다른 포트로 미러링하는 기능. 네트워크 모니터링에 사용 |
+| Promiscuous Mode | 네트워크 인터페이스가 자신에게 오지 않은 패킷도 모두 수신하는 모드. 스니핑에 필요 |
+| IP Spoofing | 패킷의 출발지 IP 주소를 위조하는 공격. DoS 공격이나 신원 은닉에 사용 |
+| DNS Cache Poisoning | DNS 서버의 캐시에 위조된 레코드를 삽입하여 사용자를 악성 사이트로 유도하는 공격 |
+| Ingress/Egress Filtering | 네트워크 경계에서 위조된 IP 주소를 가진 패킷을 차단하는 필터링 기법 |
+| uRPF (Unicast Reverse Path Forwarding) | 패킷의 출발지 IP가 해당 인터페이스로 라우팅 가능한지 검증하여 IP Spoofing을 방지 |
+| Session Hijacking | 인증된 사용자의 세션을 가로채어 권한을 탈취하는 공격 |
+| Session Fixation | 공격자가 미리 설정한 세션 ID를 희생자가 사용하도록 유도하는 공격 |
+| DoS (Denial of Service) | 시스템 자원을 고갈시켜 정상적인 서비스를 방해하는 공격 |
+| DDoS (Distributed DoS) | 다수의 공격자(봇넷)를 이용한 분산 서비스 거부 공격 |
+| SYN Flood | TCP 연결 과정에서 SYN 패킷만 대량 전송하여 서버의 연결 대기 큐를 고갈시키는 공격 |
+| SYN Cookies | SYN Flood 방어 기법. 상태 정보 없이 쿠키 값으로 연결을 검증 |
+| Backlog Queue | TCP 연결 요청을 대기시키는 큐. SYN Flood 공격의 대상 |
+| Smurf Attack | ICMP Echo Request를 브로드캐스트로 보내 희생자에게 대량의 Echo Reply가 집중되게 하는 공격 |
+| Fraggle Attack | Smurf Attack의 UDP 버전. UDP Echo를 브로드캐스트로 전송 |
+| Land Attack | 출발지와 목적지를 동일하게 설정하여 시스템이 자기 자신에게 응답하게 만드는 공격 |
+| Teardrop Attack | IP 단편화 패킷의 오프셋을 조작하여 재조합 시 시스템 충돌을 유발하는 공격 |
+| Ping of Death | 65,535바이트를 초과하는 ICMP 패킷을 전송하여 버퍼 오버플로우를 일으키는 공격 |
+| Amplification Attack | DNS, NTP 등의 프로토콜 특성을 악용하여 작은 요청으로 큰 응답을 유발하는 증폭 공격 |
+| Open Resolver | 누구나 쿼리할 수 있는 DNS 서버. DNS Amplification 공격에 악용됨 |
+| monlist | NTP 서버에서 최근 접속 클라이언트 목록을 반환하는 명령. NTP Amplification에 악용 |
+| Botnet | 악성코드에 감염된 다수의 좀비 PC로 구성된 네트워크. DDoS 공격에 활용 |
+| C&C (Command and Control) | 봇넷을 제어하기 위한 명령 및 제어 서버 |
+| MITM (Man-in-the-Middle) | 통신하는 두 당사자 사이에서 메시지를 도청하거나 변조하는 공격 |
+| SSL Stripping | HTTPS 연결을 HTTP로 다운그레이드하여 평문 통신을 유도하는 MITM 공격 |
+| HSTS Preload | 브라우저에 미리 HTTPS를 강제하는 도메인 목록을 등록하여 SSL Stripping 방지 |
+| Evil Twin | 정상 AP와 동일한 SSID로 악성 AP를 운영하여 사용자를 속이는 공격 |
+| 포트 스캐닝 (Port Scanning) | 대상 시스템의 열린 포트와 서비스를 탐색하는 정찰 활동 |
+| SYN Scan (Half-Open) | SYN 패킷만 보내고 연결을 완료하지 않는 스텔스 스캔 기법 |
+| XMAS Scan | FIN, PSH, URG 플래그를 모두 설정한 패킷으로 스캔하는 기법 |
+| WEP Cracking | IV(Initialization Vector) 취약점을 이용하여 WEP 키를 추출하는 공격 |
+| KRACK (Key Reinstallation Attack) | WPA2의 4-Way Handshake 취약점을 악용하는 공격 |
+| Deauthentication Attack | 위조된 인증 해제 프레임을 전송하여 무선 클라이언트 연결을 끊는 공격 |
+| PMKID Attack | 4-Way Handshake 캡처 없이 WPA/WPA2 PSK를 공격하는 기법 |
+| DNS Tunneling | DNS 쿼리/응답에 데이터를 인코딩하여 방화벽을 우회하고 데이터를 유출하는 기법 |
+| BGP Hijacking | 잘못된 BGP 경로를 광고하여 인터넷 트래픽을 가로채거나 차단하는 공격 |
+| RPKI (Resource Public Key Infrastructure) | BGP 경로 광고의 진위를 검증하기 위한 PKI 기반 인프라 |
+| Port Knocking | 미리 정의된 포트 시퀀스로 접속해야 실제 포트가 열리는 보안 기법 |
+
+---
+
 ## 핵심 키워드
 
 `스니핑` `ARP Spoofing` `MAC Flooding` `DNS Spoofing` `DHCP Spoofing` `세션 하이재킹` `Session Fixation` `DoS` `DDoS` `SYN Flood` `Smurf Attack` `증폭 공격` `봇넷` `MITM` `SSL Stripping` `Evil Twin` `포트 스캐닝` `WEP` `WPA` `Deauthentication` `DNS 터널링` `BGP Hijacking`

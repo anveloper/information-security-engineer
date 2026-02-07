@@ -1114,6 +1114,52 @@ arp -s [IP] [MAC]
 
 ---
 
+## 용어 해설
+
+| 용어 | 설명 |
+|------|------|
+| PDU (Protocol Data Unit) | 각 계층에서 처리되는 데이터 단위. 전송 계층에서는 세그먼트(Segment), 네트워크 계층에서는 패킷(Packet), 데이터링크 계층에서는 프레임(Frame), 물리 계층에서는 비트(Bit)라고 부름 |
+| OSI 7계층 | ISO에서 정의한 네트워크 통신 표준 참조 모델. 물리-데이터링크-네트워크-전송-세션-표현-응용의 7개 계층으로 구성 |
+| LLC (Logical Link Control) | 데이터링크 계층의 상위 부계층. 상위 계층과의 인터페이스 및 흐름 제어 담당 |
+| MAC (Media Access Control) | 데이터링크 계층의 하위 부계층. 물리적 주소 지정과 매체 접근 제어 담당 |
+| OUI (Organizationally Unique Identifier) | MAC 주소의 상위 24비트로, 제조사를 식별하는 고유 번호 |
+| CSMA/CD | Carrier Sense Multiple Access with Collision Detection. 유선 이더넷에서 사용하는 매체 접근 방식으로, 충돌을 감지하면 재전송 |
+| CSMA/CA | Carrier Sense Multiple Access with Collision Avoidance. 무선 네트워크에서 사용하는 매체 접근 방식으로, 충돌을 사전에 회피 |
+| RTS/CTS | Request To Send / Clear To Send. 무선 네트워크에서 숨겨진 노드 문제를 해결하기 위한 충돌 회피 메커니즘 |
+| 3-Way Handshake | TCP 연결 수립 과정. SYN → SYN+ACK → ACK 순서로 진행 |
+| 4-Way Handshake | TCP 연결 종료 과정. FIN → ACK → FIN → ACK 순서로 진행 |
+| ISN (Initial Sequence Number) | TCP 연결 시 사용되는 초기 시퀀스 번호. 보안을 위해 랜덤하게 생성 |
+| MSL (Maximum Segment Lifetime) | TCP 세그먼트가 네트워크에 존재할 수 있는 최대 시간. TIME_WAIT 상태는 2MSL 동안 유지 |
+| Sliding Window | 흐름 제어 기법으로, 윈도우 크기만큼 확인 응답 없이 연속 전송 가능 |
+| ARQ (Automatic Repeat reQuest) | 오류가 발생한 프레임을 자동으로 재전송하는 오류 제어 방식 |
+| CIDR (Classless Inter-Domain Routing) | 클래스 없이 IP 주소를 할당하는 방식. /24와 같은 표기법 사용 |
+| VLSM (Variable Length Subnet Mask) | 서브넷마다 다른 크기의 서브넷 마스크를 사용하는 기법 |
+| APIPA (Automatic Private IP Addressing) | DHCP 서버를 찾지 못할 때 자동 할당되는 169.254.x.x 대역 IP |
+| DORA | DHCP 동작 과정의 약어. Discover → Offer → Request → ACK |
+| NAT (Network Address Translation) | 사설 IP를 공인 IP로 변환하는 기술 |
+| PAT (Port Address Translation) | 하나의 공인 IP를 여러 사설 IP가 공유하도록 포트 번호로 구분하는 NAT 방식. NAPT라고도 함 |
+| VLAN (Virtual LAN) | 물리적 위치와 무관하게 논리적으로 분리된 네트워크. 브로드캐스트 도메인 분리 |
+| 802.1Q | VLAN 태깅을 위한 IEEE 표준. 프레임에 VLAN ID 정보를 추가 |
+| 트렁크 포트 (Trunk Port) | 여러 VLAN의 트래픽을 전달하는 스위치 포트. 802.1Q 태그 사용 |
+| SVI (Switched Virtual Interface) | L3 스위치에서 VLAN 간 라우팅을 위한 가상 인터페이스 |
+| IGP (Interior Gateway Protocol) | AS 내부에서 사용하는 라우팅 프로토콜. RIP, OSPF, EIGRP 등 |
+| EGP (Exterior Gateway Protocol) | AS 간 라우팅에 사용하는 프로토콜. BGP가 대표적 |
+| AS (Autonomous System) | 동일한 라우팅 정책으로 관리되는 네트워크 집합 |
+| LSA (Link State Advertisement) | OSPF에서 라우터가 교환하는 링크 상태 정보 |
+| DR (Designated Router) | OSPF 영역 내에서 대표로 선출된 라우터 |
+| TTL (Time To Live) | IP 패킷이 네트워크에서 거칠 수 있는 최대 라우터(홉) 수 |
+| DNSSEC | DNS 응답에 디지털 서명을 추가하여 위변조를 방지하는 보안 확장 |
+| TLD (Top-Level Domain) | 도메인 계층 구조의 최상위 도메인. .com, .org, .kr 등 |
+| 멱등성 (Idempotent) | 동일한 요청을 여러 번 해도 결과가 같은 HTTP 메서드의 특성 |
+| HSTS (HTTP Strict Transport Security) | 브라우저에 HTTPS 사용을 강제하는 HTTP 헤더 |
+| TLS Handshake | HTTPS 연결 시 클라이언트와 서버 간 암호화 협상 과정 |
+| WEP (Wired Equivalent Privacy) | 구형 무선 보안 프로토콜. IV 취약점으로 쉽게 해독됨 |
+| WPA/WPA2/WPA3 | Wi-Fi Protected Access. 무선 네트워크 보안 프로토콜로, 버전이 높을수록 보안 강화 |
+| SSID (Service Set Identifier) | 무선 네트워크의 이름. 최대 32자까지 설정 가능 |
+| BSSID (Basic Service Set Identifier) | 무선 AP의 MAC 주소 |
+
+---
+
 ## 핵심 키워드
 
 `OSI 7계층` `TCP/IP` `MAC 주소` `IP 주소` `TCP` `UDP` `ICMP` `ARP` `3-Way Handshake` `4-Way Handshake` `서브넷팅` `CIDR` `IPv6` `Well-Known 포트` `허브` `스위치` `라우터` `L3 스위치` `CSMA/CD` `CSMA/CA` `ARQ` `DHCP` `NAT` `PAT` `VLAN` `802.1Q` `RIP` `OSPF` `BGP` `DNS` `DNSSEC` `HTTP` `HTTPS` `TLS` `WPA2` `WPA3`
