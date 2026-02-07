@@ -215,17 +215,12 @@ sequenceDiagram
 
 #### TCP 4-Way Handshake (연결 종료)
 
-```mermaid
-sequenceDiagram
-    participant C as 클라이언트
-    participant S as 서버
-
-    C->>S: FIN
-    S->>C: ACK
-    S->>C: FIN
-    C->>S: ACK
-    Note over C,S: 연결 종료 완료
-```
+| 단계 | 방향 | 플래그 | 설명 |
+|------|------|--------|------|
+| 1 | 클라이언트 → 서버 | FIN | 연결 종료 요청 |
+| 2 | 서버 → 클라이언트 | ACK | 종료 요청 확인 |
+| 3 | 서버 → 클라이언트 | FIN | 서버측 종료 요청 |
+| 4 | 클라이언트 → 서버 | ACK | 종료 확인, 연결 종료 완료 |
 
 #### TCP 상태 전이
 
@@ -619,16 +614,12 @@ arp -s [IP] [MAC]
 
 **RTS/CTS (Request To Send / Clear To Send)**
 
-```mermaid
-sequenceDiagram
-    participant TX as 송신자
-    participant RX as 수신자
-
-    TX->>RX: RTS (Request To Send)
-    RX->>TX: CTS (Clear To Send)
-    TX->>RX: Data
-    RX->>TX: ACK
-```
+| 단계 | 방향 | 프레임 | 설명 |
+|------|------|--------|------|
+| 1 | 송신자 → 수신자 | RTS | 전송 요청 |
+| 2 | 수신자 → 송신자 | CTS | 전송 허가 |
+| 3 | 송신자 → 수신자 | Data | 데이터 전송 |
+| 4 | 수신자 → 송신자 | ACK | 수신 확인 |
 
 - 숨겨진 노드(Hidden Node) 문제 해결
 - 충돌을 사전에 방지
