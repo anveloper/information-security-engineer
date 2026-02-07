@@ -4,16 +4,16 @@ export default function Home() {
   return (
     <div className="py-12 px-4">
       <div className="max-w-2xl mx-auto">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">정보보안기사</h1>
-        <p className="text-gray-600 mb-8">자격증 시험 대비를 위한 학습 플랫폼</p>
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">정보보안기사</h1>
+        <p className="text-gray-600 dark:text-gray-400 mb-8">자격증 시험 대비를 위한 학습 플랫폼</p>
 
         <div className="grid gap-4">
           <Link
             to="/theory"
-            className="block p-6 bg-white rounded-lg border border-gray-200 hover:border-blue-500 hover:shadow-sm transition"
+            className="block p-6 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400 hover:shadow-sm transition"
           >
             <div className="flex items-center gap-4">
-              <span className="w-12 h-12 flex items-center justify-center bg-blue-50 text-blue-600 rounded-lg">
+              <span className="w-12 h-12 flex items-center justify-center bg-blue-50 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 rounded-lg">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     strokeLinecap="round"
@@ -24,18 +24,18 @@ export default function Home() {
                 </svg>
               </span>
               <div>
-                <h2 className="text-lg font-medium text-gray-900">이론 학습</h2>
-                <p className="text-sm text-gray-500 mt-1">핵심 개념과 이론을 학습합니다</p>
+                <h2 className="text-lg font-medium text-gray-900 dark:text-white">이론 학습</h2>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">핵심 개념과 이론을 학습합니다</p>
               </div>
             </div>
           </Link>
 
           <Link
             to="/quiz"
-            className="block p-6 bg-white rounded-lg border border-gray-200 hover:border-green-500 hover:shadow-sm transition"
+            className="block p-6 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-green-500 dark:hover:border-green-400 hover:shadow-sm transition"
           >
             <div className="flex items-center gap-4">
-              <span className="w-12 h-12 flex items-center justify-center bg-green-50 text-green-600 rounded-lg">
+              <span className="w-12 h-12 flex items-center justify-center bg-green-50 dark:bg-green-900/50 text-green-600 dark:text-green-400 rounded-lg">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     strokeLinecap="round"
@@ -46,18 +46,18 @@ export default function Home() {
                 </svg>
               </span>
               <div>
-                <h2 className="text-lg font-medium text-gray-900">문제 풀이</h2>
-                <p className="text-sm text-gray-500 mt-1">문제를 풀고 실력을 확인합니다</p>
+                <h2 className="text-lg font-medium text-gray-900 dark:text-white">문제 풀이</h2>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">문제를 풀고 실력을 확인합니다</p>
               </div>
             </div>
           </Link>
 
           <Link
             to="/wrong-answers"
-            className="block p-6 bg-white rounded-lg border border-gray-200 hover:border-orange-500 hover:shadow-sm transition"
+            className="block p-6 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-orange-500 dark:hover:border-orange-400 hover:shadow-sm transition"
           >
             <div className="flex items-center gap-4">
-              <span className="w-12 h-12 flex items-center justify-center bg-orange-50 text-orange-600 rounded-lg">
+              <span className="w-12 h-12 flex items-center justify-center bg-orange-50 dark:bg-orange-900/50 text-orange-600 dark:text-orange-400 rounded-lg">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     strokeLinecap="round"
@@ -68,18 +68,18 @@ export default function Home() {
                 </svg>
               </span>
               <div>
-                <h2 className="text-lg font-medium text-gray-900">오답 노트</h2>
-                <p className="text-sm text-gray-500 mt-1">틀린 문제를 복습합니다</p>
+                <h2 className="text-lg font-medium text-gray-900 dark:text-white">오답 노트</h2>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">틀린 문제를 복습합니다</p>
               </div>
             </div>
           </Link>
 
           <Link
             to="/mock-exam"
-            className="block p-6 bg-white rounded-lg border border-gray-200 hover:border-purple-500 hover:shadow-sm transition"
+            className="block p-6 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-400 hover:shadow-sm transition"
           >
             <div className="flex items-center gap-4">
-              <span className="w-12 h-12 flex items-center justify-center bg-purple-50 text-purple-600 rounded-lg">
+              <span className="w-12 h-12 flex items-center justify-center bg-purple-50 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400 rounded-lg">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     strokeLinecap="round"
@@ -90,8 +90,8 @@ export default function Home() {
                 </svg>
               </span>
               <div>
-                <h2 className="text-lg font-medium text-gray-900">모의고사</h2>
-                <p className="text-sm text-gray-500 mt-1">실전처럼 연습합니다</p>
+                <h2 className="text-lg font-medium text-gray-900 dark:text-white">모의고사</h2>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">실전처럼 연습합니다</p>
               </div>
             </div>
           </Link>

@@ -53,20 +53,20 @@ export default function TheoryDetail() {
     <div className="py-8 px-4 pb-24">
       <div className="max-w-4xl mx-auto">
         {/* Breadcrumb */}
-        <nav className="text-sm text-gray-500 mb-4">
-          <Link to="/theory" className="hover:text-blue-600">
+        <nav className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+          <Link to="/theory" className="hover:text-blue-600 dark:hover:text-blue-400">
             이론 학습
           </Link>
           <span className="mx-2">/</span>
-          <Link to={`/theory/${subject}`} className="hover:text-blue-600">
+          <Link to={`/theory/${subject}`} className="hover:text-blue-600 dark:hover:text-blue-400">
             {subjectName}
           </Link>
           <span className="mx-2">/</span>
-          <span className="text-gray-900">{post.title}</span>
+          <span className="text-gray-900 dark:text-white">{post.title}</span>
         </nav>
 
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
-          <article className="prose prose-gray max-w-none">
+        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+          <article className="prose prose-gray dark:prose-invert max-w-none">
             <post.component />
           </article>
         </div>
@@ -76,7 +76,7 @@ export default function TheoryDetail() {
           {prevPost ? (
             <Link
               to={`/theory/${subject}/${prevPost.id}`}
-              className="flex items-center gap-2 text-blue-600 hover:underline"
+              className="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -89,7 +89,7 @@ export default function TheoryDetail() {
           {nextPost ? (
             <Link
               to={`/theory/${subject}/${nextPost.id}`}
-              className="flex items-center gap-2 text-blue-600 hover:underline"
+              className="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline"
             >
               {nextPost.title}
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -106,7 +106,7 @@ export default function TheoryDetail() {
       <div className="fixed bottom-6 right-4 flex flex-col gap-2">
         <button
           onClick={() => scrollByScreen("up")}
-          className="w-12 h-12 bg-white border border-gray-300 rounded-full shadow-lg flex items-center justify-center text-gray-600 hover:bg-gray-50 active:bg-gray-100"
+          className="w-12 h-12 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-full shadow-lg flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 active:bg-gray-100 dark:active:bg-gray-600"
           aria-label="위로 스크롤"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -115,7 +115,7 @@ export default function TheoryDetail() {
         </button>
         <button
           onClick={() => scrollByScreen("down")}
-          className="w-12 h-12 bg-white border border-gray-300 rounded-full shadow-lg flex items-center justify-center text-gray-600 hover:bg-gray-50 active:bg-gray-100"
+          className="w-12 h-12 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-full shadow-lg flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 active:bg-gray-100 dark:active:bg-gray-600"
           aria-label="아래로 스크롤"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

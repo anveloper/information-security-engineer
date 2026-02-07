@@ -2,6 +2,17 @@
 @import "highlight.js/styles/github.css";
 @plugin "@tailwindcss/typography";
 
+/* 다크모드 설정 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
 /* 테이블 반응형 래퍼 */
 .prose :where(table):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
   display: block;
@@ -52,8 +63,21 @@
   font-weight: 600;
 }
 
+.dark .prose th {
+  background-color: #374151;
+}
+
 .prose tbody tr:hover {
   background-color: #f9fafb;
+}
+
+.dark .prose tbody tr:hover {
+  background-color: #1f2937;
+}
+
+.dark .prose th,
+.dark .prose td {
+  border-color: #4b5563;
 }
 
 /* 인라인 코드 스타일 */
@@ -64,6 +88,11 @@
   font-size: 0.875em;
   font-weight: 500;
   color: #1f2937;
+}
+
+.dark .prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)):not(pre code) {
+  background-color: #374151;
+  color: #e5e7eb;
 }
 
 .prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)):not(pre code)::before,

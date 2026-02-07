@@ -35,15 +35,15 @@ export default function SubjectTheory() {
     <div className="py-8 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Breadcrumb */}
-        <nav className="text-sm text-gray-500 mb-4">
-          <Link to="/theory" className="hover:text-blue-600">
+        <nav className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+          <Link to="/theory" className="hover:text-blue-600 dark:hover:text-blue-400">
             이론 학습
           </Link>
           <span className="mx-2">/</span>
-          <span className="text-gray-900">{subjectName}</span>
+          <span className="text-gray-900 dark:text-white">{subjectName}</span>
         </nav>
 
-        <h1 className="text-2xl font-bold text-gray-900 mb-6">{subjectName}</h1>
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{subjectName}</h1>
 
         {posts.length > 0 ? (
           <div className="space-y-3">
@@ -51,23 +51,23 @@ export default function SubjectTheory() {
               <Link
                 key={post.id}
                 to={`/theory/${subject}/${post.id}`}
-                className="block bg-white rounded-lg border border-gray-200 p-4 hover:border-blue-500 hover:shadow-sm transition"
+                className="block bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4 hover:border-blue-500 dark:hover:border-blue-400 hover:shadow-sm transition"
               >
                 <div className="flex items-start gap-3">
-                  <span className="shrink-0 w-10 h-10 flex items-center justify-center bg-blue-50 text-blue-600 rounded-lg text-sm font-medium">
+                  <span className="shrink-0 w-10 h-10 flex items-center justify-center bg-blue-50 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 rounded-lg text-sm font-medium">
                     {post.chapter}-{post.order}
                   </span>
                   <div className="min-w-0">
-                    <h3 className="font-medium text-gray-900">{post.title}</h3>
-                    <p className="text-sm text-gray-500 mt-1 truncate">{post.description}</p>
+                    <h3 className="font-medium text-gray-900 dark:text-white">{post.title}</h3>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 truncate">{post.description}</p>
                   </div>
                 </div>
               </Link>
             ))}
           </div>
         ) : (
-          <div className="bg-white rounded-lg border border-gray-200 p-8 text-center">
-            <p className="text-gray-500">이론 내용이 준비 중입니다.</p>
+          <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-8 text-center">
+            <p className="text-gray-500 dark:text-gray-400">이론 내용이 준비 중입니다.</p>
           </div>
         )}
       </div>
