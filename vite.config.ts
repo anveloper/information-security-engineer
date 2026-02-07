@@ -21,6 +21,7 @@ export default defineConfig({
       ...mdx({
         remarkPlugins: [remarkGfm, remarkMermaid],
         rehypePlugins: [rehypeHighlight],
+        providerImportSource: '@mdx-js/react',
       }),
     },
     react({ include: /\.(jsx|js|mdx|md|tsx|ts)$/ }),
