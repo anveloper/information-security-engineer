@@ -1,5 +1,5 @@
-import { useCallback } from "react";
-import { Link, useParams, Navigate } from "react-router-dom";
+import { useCallback, useEffect, useRef } from "react";
+import { Link, useParams, Navigate, useNavigate } from "react-router-dom";
 import { MDXProvider } from "@mdx-js/react";
 import { posts as systemSecurityPosts, type Post } from "../content/theory/01-system-security";
 import { posts as networkSecurityPosts } from "../content/theory/02-network-security";
@@ -27,29 +27,85 @@ function getPostsBySubject(subject: Subject): Post[] {
   }
 }
 
+function isAtBottom() {
+  const scrollTop = window.scrollY;
+  const windowHeight = window.innerHeight;
+  const documentHeight = document.documentElement.scrollHeight;
+  return scrollTop + windowHeight >= documentHeight - 50;
+}
+
 export default function TheoryDetail() {
   const { subject, postId } = useParams<{ subject: Subject; postId: string }>();
+  const navigate = useNavigate();
   const subjectKey = subject as Subject;
   const subjectName = subject ? SUBJECTS[subjectKey] : "알 수 없음";
+  const bottomScrollAttemptRef = useRef(0);
+  const lastScrollTimeRef = useRef(0);
 
   const posts = getPostsBySubject(subjectKey);
   const post = posts.find((p) => p.id === postId);
+  const currentIndex = posts.findIndex((p) => p.id === postId);
+  const prevPost = currentIndex > 0 ? posts[currentIndex - 1] : null;
+  const nextPost = currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null;
+
+  const goToNextPost = useCallback(() => {
+    if (nextPost) {
+      navigate(`/theory/${subject}/${nextPost.id}`);
+    }
+  }, [navigate, subject, nextPost]);
 
   const scrollByScreen = useCallback((direction: "up" | "down") => {
+    if (direction === "down" && isAtBottom()) {
+      const now = Date.now();
+      if (now - lastScrollTimeRef.current < 1000) {
+        bottomScrollAttemptRef.current += 1;
+      } else {
+        bottomScrollAttemptRef.current = 1;
+      }
+      lastScrollTimeRef.current = now;
+
+      if (bottomScrollAttemptRef.current >= 2) {
+        goToNextPost();
+        return;
+      }
+    }
+
     const scrollAmount = window.innerHeight * 0.8;
     window.scrollBy({
       top: direction === "down" ? scrollAmount : -scrollAmount,
       behavior: "smooth",
     });
-  }, []);
+  }, [goToNextPost]);
+
+  // Handle wheel scroll at bottom
+  useEffect(() => {
+    let wheelAttempts = 0;
+    let lastWheelTime = 0;
+
+    const handleWheel = (e: WheelEvent) => {
+      if (e.deltaY > 0 && isAtBottom()) {
+        const now = Date.now();
+        if (now - lastWheelTime < 500) {
+          wheelAttempts += 1;
+        } else {
+          wheelAttempts = 1;
+        }
+        lastWheelTime = now;
+
+        if (wheelAttempts >= 3) {
+          goToNextPost();
+          wheelAttempts = 0;
+        }
+      }
+    };
+
+    window.addEventListener("wheel", handleWheel, { passive: true });
+    return () => window.removeEventListener("wheel", handleWheel);
+  }, [goToNextPost]);
 
   if (!post) {
     return <Navigate to={`/theory/${subject}`} replace />;
   }
-
-  const currentIndex = posts.findIndex((p) => p.id === postId);
-  const prevPost = currentIndex > 0 ? posts[currentIndex - 1] : null;
-  const nextPost = currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null;
 
   return (
     <div className="py-8 px-4 pb-24">
