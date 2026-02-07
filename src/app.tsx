@@ -3,7 +3,7 @@ import { Home, Subjects, SubjectDetail, WrongAnswers, MockExam } from './pages';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/information-security-engineer">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/subjects" element={<Subjects />} />
