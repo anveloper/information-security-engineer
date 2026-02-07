@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { posts as systemSecurityPosts, type Post } from "../content/theory/01-system-security";
 import { posts as networkSecurityPosts } from "../content/theory/02-network-security";
@@ -32,6 +33,14 @@ export default function TheoryDetail() {
   const posts = getPostsBySubject(subjectKey);
   const post = posts.find((p) => p.id === postId);
 
+  const scrollByScreen = useCallback((direction: "up" | "down") => {
+    const scrollAmount = window.innerHeight * 0.8;
+    window.scrollBy({
+      top: direction === "down" ? scrollAmount : -scrollAmount,
+      behavior: "smooth",
+    });
+  }, []);
+
   if (!post) {
     return <Navigate to={`/theory/${subject}`} replace />;
   }
@@ -41,7 +50,7 @@ export default function TheoryDetail() {
   const nextPost = currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null;
 
   return (
-    <div className="py-8 px-4">
+    <div className="py-8 px-4 pb-24">
       <div className="max-w-4xl mx-auto">
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-4">
@@ -91,6 +100,28 @@ export default function TheoryDetail() {
             <div />
           )}
         </div>
+      </div>
+
+      {/* Scroll Buttons */}
+      <div className="fixed bottom-6 right-4 flex flex-col gap-2">
+        <button
+          onClick={() => scrollByScreen("up")}
+          className="w-12 h-12 bg-white border border-gray-300 rounded-full shadow-lg flex items-center justify-center text-gray-600 hover:bg-gray-50 active:bg-gray-100"
+          aria-label="위로 스크롤"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+          </svg>
+        </button>
+        <button
+          onClick={() => scrollByScreen("down")}
+          className="w-12 h-12 bg-white border border-gray-300 rounded-full shadow-lg flex items-center justify-center text-gray-600 hover:bg-gray-50 active:bg-gray-100"
+          aria-label="아래로 스크롤"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
       </div>
     </div>
   );
