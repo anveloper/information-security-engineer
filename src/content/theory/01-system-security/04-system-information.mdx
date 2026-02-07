@@ -556,3 +556,44 @@ IF 4624 (로그인 성공)
 ## 핵심 키워드
 
 `시스템 정보` `환경 변수` `레지스트리` `시작 프로그램` `인증` `MFA` `패스워드` `해시` `솔트` `bcrypt` `SAM` `NTLM` `Kerberos` `TGT` `Golden Ticket` `/etc/shadow` `PAM` `SSH 키` `SSO` `SAML` `OAuth` `감사 로그` `이벤트 로그` `auditd` `syslog` `journalctl` `로그 분석` `SIEM`
+
+---
+
+## 용어 해설
+
+| 용어 | 풀이 | 설명 |
+|------|------|------|
+| MFA | Multi-Factor Authentication | 다중 인증. 2개 이상의 인증 요소 조합 |
+| 2FA | Two-Factor Authentication | 2요소 인증. MFA의 가장 일반적인 형태 |
+| OTP | One-Time Password | 일회용 비밀번호 |
+| 솔트 | Salt | 패스워드 해시에 추가하는 랜덤 값. 레인보우 테이블 공격 방어 |
+| 페퍼 | Pepper | 모든 패스워드에 적용되는 비밀 값. DB 외부 저장 |
+| bcrypt | - | Blowfish 기반 패스워드 해싱 함수. 비용 인자로 속도 조절 |
+| scrypt | - | 메모리 집약적 패스워드 해싱 함수. GPU 공격 저항 |
+| Argon2 | - | 최신 패스워드 해싱 표준 (2015). 메모리/시간/병렬성 조절 가능 |
+| PBKDF2 | Password-Based Key Derivation Function 2 | 반복 해싱 기반 키 유도 함수 |
+| SAM | Security Account Manager | Windows 로컬 계정 정보 저장 데이터베이스 |
+| NTLM | NT LAN Manager | Windows의 Challenge-Response 인증 프로토콜 |
+| Kerberos | - | Active Directory 기본 인증 프로토콜. 티켓 기반 |
+| KDC | Key Distribution Center | Kerberos 키 분배 센터 (AS + TGS) |
+| AS | Authentication Service | Kerberos 초기 인증 서비스 |
+| TGS | Ticket Granting Service | Kerberos 서비스 티켓 발급 서비스 |
+| TGT | Ticket Granting Ticket | TGS 접근을 위한 티켓 |
+| Golden Ticket | 골든 티켓 | krbtgt 해시로 위조한 TGT. 도메인 전체 접근 가능 |
+| Silver Ticket | 실버 티켓 | 서비스 계정 해시로 위조한 서비스 티켓 |
+| Kerberoasting | - | SPN 계정의 서비스 티켓을 요청 후 오프라인 크래킹 |
+| SPN | Service Principal Name | 서비스 주체 이름. Kerberos 서비스 식별 |
+| SSO | Single Sign-On | 한 번 인증으로 여러 시스템 접근 |
+| SAML | Security Assertion Markup Language | XML 기반 인증/인가 표준. 엔터프라이즈 SSO용 |
+| IdP | Identity Provider | 신원 제공자. 인증 담당 |
+| SP | Service Provider | 서비스 제공자. 인증 정보 수신 |
+| OAuth | Open Authorization | 권한 위임 프레임워크. API 접근 권한 부여 |
+| OIDC | OpenID Connect | OAuth 2.0 기반 인증 계층. OAuth + 신원 확인 |
+| PKCE | Proof Key for Code Exchange | Authorization Code 보안 강화 |
+| LDAP | Lightweight Directory Access Protocol | 디렉토리 서비스 접근 프로토콜 |
+| auditd | Audit Daemon | Linux 커널 감사 프레임워크 |
+| syslog | System Logging Protocol | 시스템 로그 수집 프로토콜 |
+| rsyslog | Rocket-fast Syslog | 고성능 syslog 구현 |
+| journald | Journal Daemon | systemd의 바이너리 로그 수집 |
+| SIEM | Security Information and Event Management | 로그 수집, 상관분석, 위협 탐지 통합 플랫폼 |
+| WORM | Write Once Read Many | 한 번 쓰면 수정 불가. 로그 무결성 보장 |
