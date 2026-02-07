@@ -23,5 +23,10 @@ export default function Mermaid({ chart }: MermaidProps) {
     }
   }, [chart]);
 
-  return <div ref={containerRef} className="my-4 flex justify-center" />;
+  return (
+    <div
+      ref={containerRef}
+      className="my-4 flex justify-center p-4 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700"
+    />
+  );
 }
