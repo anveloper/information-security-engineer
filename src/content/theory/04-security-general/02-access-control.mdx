@@ -14,18 +14,14 @@
 
 ### 1.2 접근통제 3요소
 
-```
-┌─────────────────────────────────────────────────┐
-│                  접근통제 정책                    │
-│           (어떤 규칙으로 통제할 것인가)            │
-└─────────────────────────────────────────────────┘
-                        │
-          ┌─────────────┴─────────────┐
-          ↓                           ↓
-┌──────────────────┐       ┌──────────────────┐
-│   접근통제 모델    │       │   접근통제 메커니즘  │
-│  (규칙의 표현)     │       │   (규칙의 구현)     │
-└──────────────────┘       └──────────────────┘
+```mermaid
+flowchart TB
+    Policy["접근통제 정책<br/>(어떤 규칙으로 통제할 것인가)"]
+    Model["접근통제 모델<br/>(규칙의 표현)"]
+    Mechanism["접근통제 메커니즘<br/>(규칙의 구현)"]
+
+    Policy --> Model
+    Policy --> Mechanism
 ```
 
 ---
@@ -34,25 +30,25 @@
 
 ### 2.1 AAA (Authentication, Authorization, Accounting)
 
-```
-┌──────────────┐     ┌──────────────┐     ┌──────────────┐
-│    식별       │────→│    인증       │────→│    인가       │
-│(Identification)│    │(Authentication)│    │(Authorization)│
-└──────────────┘     └──────────────┘     └──────────────┘
-      │                    │                     │
-      ↓                    ↓                     ↓
-   "나는 누구"         "본인이 맞는지"        "무엇을 할 수 있는지"
-   (ID 제시)          (비밀번호 확인)         (권한 확인)
-                                                 │
-                                                 ↓
-                                    ┌──────────────┐
-                                    │    책임추적     │
-                                    │(Accountability) │
-                                    └──────────────┘
-                                          │
-                                          ↓
-                                     "누가 무엇을 했는지"
-                                      (로그 기록)
+```mermaid
+flowchart LR
+    subgraph ID["식별 (Identification)"]
+        ID_DESC["나는 누구<br/>(ID 제시)"]
+    end
+
+    subgraph AUTH["인증 (Authentication)"]
+        AUTH_DESC["본인이 맞는지<br/>(비밀번호 확인)"]
+    end
+
+    subgraph AUTHZ["인가 (Authorization)"]
+        AUTHZ_DESC["무엇을 할 수 있는지<br/>(권한 확인)"]
+    end
+
+    subgraph ACC["책임추적 (Accountability)"]
+        ACC_DESC["누가 무엇을 했는지<br/>(로그 기록)"]
+    end
+
+    ID --> AUTH --> AUTHZ --> ACC
 ```
 
 ### 2.2 각 단계 상세
@@ -124,18 +120,16 @@
 | FRR (False Rejection Rate) | 본인 거부율 (편의성) |
 | CER/EER | FAR = FRR인 지점 (성능 지표) |
 
+```mermaid
+xychart-beta
+    title "FAR/FRR과 CER/EER 관계"
+    x-axis "임계값" [낮음, "", "", 중간, "", "", 높음]
+    y-axis "에러율" 0 --> 100
+    line "FRR" [90, 70, 50, 35, 20, 10, 5]
+    line "FAR" [5, 10, 20, 35, 50, 70, 90]
 ```
-         에러율
-           ↑
-           │
-    FRR ───┼──────╲
-           │       ╲
-           │        ╳ ← CER/EER
-           │       ╱
-    FAR ───┼──────╱
-           │
-           └───────────────→ 임계값
-```
+
+> CER/EER: FAR과 FRR이 교차하는 지점 (중간 부근)
 
 ### 3.5 SSO (Single Sign-On)
 
@@ -150,32 +144,18 @@
 
 #### 커버로스 (Kerberos)
 
-```
-┌────────┐                              ┌────────┐
-│ Client │                              │  KDC   │
-└───┬────┘                              └───┬────┘
-    │                                       │
-    │ 1. AS-REQ (ID, TGS ID)                │
-    │──────────────────────────────────────→│
-    │                                       │
-    │ 2. AS-REP (TGT, 세션키)                │
-    │←──────────────────────────────────────│
-    │                                       │
-    │ 3. TGS-REQ (TGT, 서비스 ID)            │
-    │──────────────────────────────────────→│
-    │                                       │
-    │ 4. TGS-REP (서비스 티켓)               │
-    │←──────────────────────────────────────│
-    │                                       │
-    │          ┌──────────────┐             │
-    │          │   Service    │             │
-    │          └──────┬───────┘             │
-    │                 │                     │
-    │ 5. AP-REQ       │                     │
-    │────────────────→│                     │
-    │                 │                     │
-    │ 6. AP-REP       │                     │
-    │←────────────────│                     │
+```mermaid
+sequenceDiagram
+    participant C as Client
+    participant KDC as KDC (AS + TGS)
+    participant S as Service
+
+    C->>KDC: 1. AS-REQ (ID, TGS ID)
+    KDC->>C: 2. AS-REP (TGT, 세션키)
+    C->>KDC: 3. TGS-REQ (TGT, 서비스 ID)
+    KDC->>C: 4. TGS-REP (서비스 티켓)
+    C->>S: 5. AP-REQ (서비스 티켓)
+    S->>C: 6. AP-REP (인증 완료)
 ```
 
 **커버로스 구성요소:**
@@ -233,11 +213,9 @@ Top Secret > Secret > Confidential > Unclassified
 
 역할을 기반으로 권한을 부여한다.
 
-```
-┌────────┐      ┌────────┐      ┌────────┐
-│ 사용자  │─────→│  역할   │─────→│  권한   │
-└────────┘      └────────┘      └────────┘
-  Users          Roles         Permissions
+```mermaid
+flowchart LR
+    Users["사용자<br/>(Users)"] --> Roles["역할<br/>(Roles)"] --> Permissions["권한<br/>(Permissions)"]
 ```
 
 **RBAC 모델 계층:**
@@ -350,12 +328,15 @@ Biba (무결성):  읽기↑ 쓰기↓  (Read Up, Write Down)
 | IVP | 무결성 검증 프로시저 |
 | TP | 변환 프로시저 (유일한 CDI 접근 수단) |
 
-```
-┌───────┐     ┌────┐     ┌─────┐
-│  UDI  │────→│ TP │────→│ CDI │
-└───────┘     └────┘     └─────┘
-                ↑
-              사용자
+```mermaid
+flowchart LR
+    UDI["UDI<br/>(비제약 데이터)"]
+    TP["TP<br/>(변환 프로시저)"]
+    CDI["CDI<br/>(제약된 데이터)"]
+    User["사용자"]
+
+    UDI --> TP --> CDI
+    User --> TP
 ```
 
 **원칙:**
@@ -382,16 +363,24 @@ Biba (무결성):  읽기↑ 쓰기↓  (Read Up, Write Down)
 
 보안 등급을 격자(Lattice) 구조로 표현한다.
 
-```
-         (TS, {A,B})
-         ╱        ╲
-   (TS,{A})      (TS,{B})
-       ╲          ╱
-        (S,{A,B})
-         ╱    ╲
-   (S,{A})    (S,{B})
-       ╲        ╱
-        (C,{})
+```mermaid
+flowchart TB
+    TSAB["(TS, {'{'}A,B{'}'})"]
+    TSA["(TS, {'{'}A{'}'})"]
+    TSB["(TS, {'{'}B{'}'})"]
+    SAB["(S, {'{'}A,B{'}'})"]
+    SA["(S, {'{'}A{'}'})"]
+    SB["(S, {'{'}B{'}'})"]
+    C["(C, {'{'}{'}'})"]
+
+    TSAB --> TSA
+    TSAB --> TSB
+    TSA --> SAB
+    TSB --> SAB
+    SAB --> SA
+    SAB --> SB
+    SA --> C
+    SB --> C
 ```
 
 ---

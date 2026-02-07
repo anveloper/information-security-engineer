@@ -38,23 +38,18 @@
 
 ### 2.2 국내 침해사고 대응 체계
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                  국가사이버안전센터 (NCSC)                    │
-│                    (국가정보원 소속)                         │
-└──────────────────────────┬──────────────────────────────────┘
-                           │
-    ┌──────────────────────┼──────────────────────┐
-    ↓                      ↓                      ↓
-┌──────────┐        ┌──────────┐         ┌──────────┐
-│  KISA    │        │ 금융보안원 │         │ 국방부   │
-│ KrCERT  │        │ (금융)    │         │ (국방)   │
-└──────────┘        └──────────┘         └──────────┘
-    │
-    ↓
-┌─────────────────────────────────────────┐
-│           민간 기업/기관 보안팀          │
-└─────────────────────────────────────────┘
+```mermaid
+flowchart TB
+    NCSC["국가사이버안전센터 (NCSC)<br/>(국가정보원 소속)"]
+    KISA["KISA<br/>KrCERT"]
+    FSI["금융보안원<br/>(금융)"]
+    Defense["국방부<br/>(국방)"]
+    Private["민간 기업/기관 보안팀"]
+
+    NCSC --> KISA
+    NCSC --> FSI
+    NCSC --> Defense
+    KISA --> Private
 ```
 
 ### 2.3 KISA 인터넷침해대응센터
@@ -83,18 +78,15 @@
 
 ### 3.1 사고 대응 생명주기 (NIST)
 
-```
-┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐
-│  준비    │──→│  탐지/   │──→│  봉쇄/   │──→│  사후    │
-│          │   │  분석    │   │  제거/   │   │  활동    │
-│(Preparation)│ │(Detection│   │  복구    │   │ (Post-  │
-│          │   │/Analysis)│   │(Contain/ │   │Incident)│
-│          │   │          │   │Eradicate/│   │          │
-└──────────┘   └──────────┘   │Recovery) │   └──────────┘
-                              └──────────┘
-      ↑                                            │
-      └────────────────────────────────────────────┘
-                    (지속적 개선)
+```mermaid
+flowchart LR
+    Prep["준비<br/>(Preparation)"]
+    Detect["탐지/분석<br/>(Detection/Analysis)"]
+    Contain["봉쇄/제거/복구<br/>(Containment/Eradication/Recovery)"]
+    Post["사후 활동<br/>(Post-Incident)"]
+
+    Prep --> Detect --> Contain --> Post
+    Post -->|지속적 개선| Prep
 ```
 
 ### 3.2 단계별 활동
@@ -183,11 +175,14 @@
 
 ### 4.3 포렌식 절차
 
-```
-┌────────────┐   ┌────────────┐   ┌────────────┐   ┌────────────┐
-│   수집     │──→│   보존     │──→│   분석     │──→│   보고     │
-│(Collection)│   │(Preservation)│  │ (Analysis) │   │(Reporting) │
-└────────────┘   └────────────┘   └────────────┘   └────────────┘
+```mermaid
+flowchart LR
+    Collection["수집<br/>(Collection)"]
+    Preservation["보존<br/>(Preservation)"]
+    Analysis["분석<br/>(Analysis)"]
+    Reporting["보고<br/>(Reporting)"]
+
+    Collection --> Preservation --> Analysis --> Reporting
 ```
 
 ### 4.4 증거 수집
@@ -204,10 +199,24 @@
 6. 원격 로그
 7. 물리적 구성
 
-```
-휘발성 높음 ─────────────────────────────→ 휘발성 낮음
-레지스터 → 메모리 → 네트워크 → 프로세스 → 디스크 → 오프라인
-(먼저 수집) ─────────────────────────────→ (나중에 수집)
+```mermaid
+flowchart LR
+    subgraph HighVolatility["휘발성 높음 (먼저 수집)"]
+        Register["레지스터"]
+        Memory["메모리"]
+    end
+
+    subgraph MediumVolatility["중간"]
+        Network["네트워크"]
+        Process["프로세스"]
+    end
+
+    subgraph LowVolatility["휘발성 낮음 (나중에 수집)"]
+        Disk["디스크"]
+        Offline["오프라인"]
+    end
+
+    Register --> Memory --> Network --> Process --> Disk --> Offline
 ```
 
 #### 비휘발성 증거 (Non-volatile)
