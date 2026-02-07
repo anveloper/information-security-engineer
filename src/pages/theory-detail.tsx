@@ -1,10 +1,12 @@
 import { useCallback } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
+import { MDXProvider } from "@mdx-js/react";
 import { posts as systemSecurityPosts, type Post } from "../content/theory/01-system-security";
 import { posts as networkSecurityPosts } from "../content/theory/02-network-security";
 import { posts as applicationSecurityPosts } from "../content/theory/03-application-security";
 import { posts as securityGeneralPosts } from "../content/theory/04-security-general";
 import { posts as securityManagementPosts } from "../content/theory/05-security-management";
+import { mdxComponents } from "@/components";
 import type { Subject } from "@/types";
 import { SUBJECTS } from "@/types";
 
@@ -67,7 +69,9 @@ export default function TheoryDetail() {
 
         <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
           <article className="prose prose-gray dark:prose-invert max-w-none">
-            <post.component />
+            <MDXProvider components={mdxComponents}>
+              <post.component />
+            </MDXProvider>
           </article>
         </div>
 
