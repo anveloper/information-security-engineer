@@ -17,7 +17,7 @@ export default function Header() {
   const isActive = (path: string) => location.pathname.startsWith(path);
 
   return (
-    <header className="sticky top-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700" style={{ paddingTop: 'env(safe-area-inset-top)' }}>
       <div className="max-w-5xl mx-auto px-4">
         <div className="flex items-center justify-between h-14">
           <Link to="/" className="flex items-center gap-2 font-bold text-lg text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition">
