@@ -10,19 +10,19 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```bash
 # 의존성 설치
-npm install
+pnpm install
 
 # 개발 서버 실행
-npm run dev
+pnpm dev
 
 # 빌드
-npm run build
+pnpm build
 
 # 린트
-npm run lint
+pnpm lint
 
 # 프리뷰 (빌드 결과 확인)
-npm run preview
+pnpm preview
 ```
 
 ## 브랜치 전략
@@ -53,6 +53,16 @@ Conventional Commits 규칙을 따름:
 - React 19
 - TypeScript
 - Vite
+- Tailwind CSS v4
+- React Router v7
 - GitHub Pages (배포)
 
 **버전 정책: 의존성은 최신 버전 유지**
+
+## 코드 컨벤션
+
+### 파일명 규칙
+
+- 모든 `.ts`, `.tsx` 파일은 **kebab-case** 사용
+- 예: `subject-detail.tsx`, `wrong-answers.tsx`, `use-local-storage.ts`
+- `index.ts`는 예외
