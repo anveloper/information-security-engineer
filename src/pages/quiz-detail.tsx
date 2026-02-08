@@ -50,7 +50,7 @@ export default function QuizDetail() {
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
   const [correctCount, setCorrectCount] = useState(0);
-  const [answeredQuestions, setAnsweredQuestions] = useState<Set<number>>(new Set());
+  const [answeredQuestions, setAnsweredQuestions] = useState<Map<number, boolean>>(new Map());
 
   const scrollByScreen = useCallback((direction: "up" | "down") => {
     const scrollAmount = window.innerHeight * 0.8;
@@ -90,7 +90,7 @@ export default function QuizDetail() {
     } else {
       saveWrongAnswer(questionSetId, currentQuestion.id, selectedAnswer);
     }
-    setAnsweredQuestions((prev) => new Set(prev).add(currentIndex));
+    setAnsweredQuestions((prev) => new Map(prev).set(currentIndex, isCorrect));
   };
 
   const handleNext = () => {
@@ -105,7 +105,7 @@ export default function QuizDetail() {
     }
   };
 
-  const progress = ((answeredQuestions.size) / questions.length) * 100;
+  const progress = (answeredQuestions.size / questions.length) * 100;
 
   return (
     <div className="py-8 px-4 pb-24">
@@ -244,13 +244,16 @@ export default function QuizDetail() {
           <div className="flex flex-wrap gap-2">
             {questions.map((_, index) => {
               const isAnswered = answeredQuestions.has(index);
+              const isCorrect = answeredQuestions.get(index);
               const isCurrent = index === currentIndex;
 
               let btnClass = "bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600";
               if (isCurrent) {
                 btnClass = "bg-blue-600 text-white";
-              } else if (isAnswered) {
+              } else if (isAnswered && isCorrect) {
                 btnClass = "bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300";
+              } else if (isAnswered && !isCorrect) {
+                btnClass = "bg-red-100 dark:bg-red-900/50 text-red-800 dark:text-red-300";
               }
 
               return (
