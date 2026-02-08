@@ -1,42 +1,9 @@
 import { useState, useCallback, useEffect } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { getQuestionSetsBySubject } from "@/content/questions";
-import type { Subject, WrongAnswer } from "@/types";
+import { saveWrongAnswer, removeWrongAnswer } from "@/utils/wrong-answers";
+import type { Subject } from "@/types";
 import { SUBJECTS } from "@/types";
-
-const WRONG_ANSWERS_KEY = "wrong-answers";
-
-function getWrongAnswers(): WrongAnswer[] {
-  try {
-    const stored = localStorage.getItem(WRONG_ANSWERS_KEY);
-    return stored ? JSON.parse(stored) : [];
-  } catch {
-    return [];
-  }
-}
-
-function saveWrongAnswer(questionSetId: string, questionId: number, selectedAnswer: number) {
-  const wrongAnswers = getWrongAnswers();
-  const existing = wrongAnswers.find(
-    (wa) => wa.questionSetId === questionSetId && wa.questionId === questionId
-  );
-  if (!existing) {
-    wrongAnswers.push({
-      questionSetId,
-      questionId,
-      selectedAnswer,
-      timestamp: Date.now(),
-    });
-    localStorage.setItem(WRONG_ANSWERS_KEY, JSON.stringify(wrongAnswers));
-  }
-}
-
-function removeWrongAnswer(questionSetId: string, questionId: number) {
-  const wrongAnswers = getWrongAnswers().filter(
-    (wa) => !(wa.questionSetId === questionSetId && wa.questionId === questionId)
-  );
-  localStorage.setItem(WRONG_ANSWERS_KEY, JSON.stringify(wrongAnswers));
-}
 
 export default function QuizDetail() {
   const { subject, chapter } = useParams<{ subject: Subject; chapter: string }>();
