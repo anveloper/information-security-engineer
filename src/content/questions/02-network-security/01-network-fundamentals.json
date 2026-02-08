@@ -1,0 +1,453 @@
+{
+  "subject": "02-network-security",
+  "subjectName": "네트워크 보안",
+  "chapter": "01-network-fundamentals",
+  "chapterName": "네트워크 일반",
+  "questions": [
+    {
+      "id": 1,
+      "question": "OSI 7계층 모델에서 라우터가 동작하는 계층은?",
+      "options": ["물리 계층", "데이터링크 계층", "네트워크 계층", "전송 계층"],
+      "answer": 2,
+      "explanation": "라우터는 네트워크 계층(L3)에서 동작하며, IP 주소를 기반으로 패킷을 라우팅합니다. L3 스위치도 네트워크 계층에서 동작합니다.",
+      "keywords": ["OSI 7계층", "네트워크 계층", "라우터"]
+    },
+    {
+      "id": 2,
+      "question": "OSI 모델에서 각 계층의 PDU(Protocol Data Unit)가 올바르게 연결된 것은?",
+      "options": [
+        "전송 계층 - Packet",
+        "네트워크 계층 - Segment",
+        "데이터링크 계층 - Frame",
+        "물리 계층 - Data"
+      ],
+      "answer": 2,
+      "explanation": "데이터링크 계층의 PDU는 Frame입니다. 전송 계층은 Segment, 네트워크 계층은 Packet, 물리 계층은 Bit가 각각의 PDU입니다.",
+      "keywords": ["PDU", "Frame", "Segment", "Packet"]
+    },
+    {
+      "id": 3,
+      "question": "MAC 주소에 대한 설명으로 옳지 않은 것은?",
+      "options": [
+        "총 48비트(6바이트)로 구성된다",
+        "상위 24비트는 OUI(제조사 식별 코드)이다",
+        "네트워크 계층에서 사용되는 논리적 주소이다",
+        "데이터링크 계층에서 사용되는 물리적 주소이다"
+      ],
+      "answer": 2,
+      "explanation": "MAC 주소는 데이터링크 계층에서 사용되는 물리적 주소입니다. 네트워크 계층에서 사용되는 논리적 주소는 IP 주소입니다.",
+      "keywords": ["MAC 주소", "OUI", "물리적 주소"]
+    },
+    {
+      "id": 4,
+      "question": "TCP 3-Way Handshake의 올바른 순서는?",
+      "options": [
+        "SYN → ACK → SYN+ACK",
+        "SYN → SYN+ACK → ACK",
+        "ACK → SYN → SYN+ACK",
+        "SYN+ACK → SYN → ACK"
+      ],
+      "answer": 1,
+      "explanation": "TCP 연결 수립은 클라이언트가 SYN 전송, 서버가 SYN+ACK 응답, 클라이언트가 ACK 전송하는 3-Way Handshake로 이루어집니다.",
+      "keywords": ["TCP", "3-Way Handshake", "SYN"]
+    },
+    {
+      "id": 5,
+      "question": "다음 중 TCP 프로토콜의 특징이 아닌 것은?",
+      "options": [
+        "연결 지향적이다",
+        "데이터 순서를 보장한다",
+        "헤더 크기가 8바이트이다",
+        "흐름 제어와 혼잡 제어를 지원한다"
+      ],
+      "answer": 2,
+      "explanation": "TCP 헤더의 최소 크기는 20바이트입니다. 8바이트는 UDP 헤더의 크기입니다. TCP는 연결 지향, 순서 보장, 흐름/혼잡 제어를 지원합니다.",
+      "keywords": ["TCP", "UDP", "헤더 크기"]
+    },
+    {
+      "id": 6,
+      "question": "IPv4 헤더에서 패킷의 수명을 제한하여 무한 루프를 방지하는 필드는?",
+      "options": ["Protocol", "TTL", "Flags", "IHL"],
+      "answer": 1,
+      "explanation": "TTL(Time To Live)은 패킷이 거칠 수 있는 최대 라우터(홉) 수를 지정하여 패킷의 무한 루프를 방지합니다. 각 라우터를 거칠 때마다 1씩 감소합니다.",
+      "keywords": ["TTL", "IPv4 헤더", "홉"]
+    },
+    {
+      "id": 7,
+      "question": "다음 중 사설 IP 주소 범위에 해당하지 않는 것은?",
+      "options": [
+        "10.0.0.0 ~ 10.255.255.255",
+        "172.16.0.0 ~ 172.31.255.255",
+        "192.168.0.0 ~ 192.168.255.255",
+        "169.254.0.0 ~ 169.254.255.255"
+      ],
+      "answer": 3,
+      "explanation": "169.254.x.x는 APIPA(Automatic Private IP Addressing) 대역으로, DHCP 서버를 찾지 못할 때 자동 할당되는 주소이며 사설 IP 주소 범위가 아닙니다.",
+      "keywords": ["사설 IP", "APIPA", "IPv4"]
+    },
+    {
+      "id": 8,
+      "question": "서브넷 마스크 255.255.255.192(/26)를 사용할 때 하나의 서브넷에서 사용 가능한 호스트 수는?",
+      "options": ["30", "62", "126", "254"],
+      "answer": 1,
+      "explanation": "/26 서브넷은 호스트 비트가 6비트이므로 2^6 - 2 = 62개의 호스트를 사용할 수 있습니다. 네트워크 주소와 브로드캐스트 주소를 제외합니다.",
+      "keywords": ["서브넷팅", "CIDR", "호스트 수"]
+    },
+    {
+      "id": 9,
+      "question": "ICMP 메시지 유형 중 ping 요청에 사용되는 것은?",
+      "options": [
+        "Type 0 - Echo Reply",
+        "Type 3 - Destination Unreachable",
+        "Type 8 - Echo Request",
+        "Type 11 - Time Exceeded"
+      ],
+      "answer": 2,
+      "explanation": "ICMP Type 8은 Echo Request로 ping 요청에 사용됩니다. 이에 대한 응답은 Type 0 Echo Reply입니다.",
+      "keywords": ["ICMP", "Echo Request", "ping"]
+    },
+    {
+      "id": 10,
+      "question": "ARP(Address Resolution Protocol)의 주요 기능은?",
+      "options": [
+        "도메인 이름을 IP 주소로 변환",
+        "IP 주소를 MAC 주소로 변환",
+        "MAC 주소를 IP 주소로 변환",
+        "사설 IP를 공인 IP로 변환"
+      ],
+      "answer": 1,
+      "explanation": "ARP는 IP 주소를 MAC 주소로 변환하는 프로토콜입니다. 반대로 MAC 주소를 IP 주소로 변환하는 것은 RARP입니다.",
+      "keywords": ["ARP", "MAC 주소", "IP 주소"]
+    },
+    {
+      "id": 11,
+      "question": "DHCP 동작 과정(DORA)의 올바른 순서는?",
+      "options": [
+        "Discover → Offer → Request → ACK",
+        "Discover → Request → Offer → ACK",
+        "Offer → Discover → Request → ACK",
+        "Request → Discover → Offer → ACK"
+      ],
+      "answer": 0,
+      "explanation": "DHCP는 DORA 순서로 동작합니다. 클라이언트가 Discover(브로드캐스트), 서버가 Offer(IP 제안), 클라이언트가 Request(IP 요청), 서버가 ACK(할당 확인)을 보냅니다.",
+      "keywords": ["DHCP", "DORA", "IP 할당"]
+    },
+    {
+      "id": 12,
+      "question": "다음 중 Well-Known 포트 번호가 올바르게 짝지어진 것은?",
+      "options": [
+        "FTP 제어 - 20/TCP",
+        "SSH - 22/TCP",
+        "HTTP - 8080/TCP",
+        "DNS - 53/TCP만"
+      ],
+      "answer": 1,
+      "explanation": "SSH는 22/TCP 포트를 사용합니다. FTP 제어는 21/TCP(데이터는 20/TCP), HTTP는 80/TCP, DNS는 53번 TCP/UDP 모두 사용합니다.",
+      "keywords": ["Well-Known 포트", "SSH", "포트 번호"]
+    },
+    {
+      "id": 13,
+      "question": "스위치(Switch)가 수신한 프레임의 목적지 MAC 주소를 MAC 테이블에서 찾지 못했을 때의 동작은?",
+      "options": ["프레임을 폐기한다", "출발지 포트로 반송한다", "모든 포트로 플러딩한다", "브로드캐스트 주소로 변환한다"],
+      "answer": 2,
+      "explanation": "스위치는 목적지 MAC 주소를 MAC 테이블에서 찾지 못하면 수신 포트를 제외한 모든 포트로 프레임을 플러딩(Flooding)합니다.",
+      "keywords": ["스위치", "플러딩", "MAC 테이블"]
+    },
+    {
+      "id": 14,
+      "question": "NAT(Network Address Translation)에서 하나의 공인 IP로 다수의 내부 호스트가 인터넷에 접속할 수 있도록 포트 번호로 구분하는 방식은?",
+      "options": ["Static NAT", "Dynamic NAT", "PAT/NAPT", "Proxy ARP"],
+      "answer": 2,
+      "explanation": "PAT(Port Address Translation) 또는 NAPT는 하나의 공인 IP에 포트 번호를 조합하여 다수의 사설 IP 호스트가 인터넷에 접속할 수 있게 합니다.",
+      "keywords": ["NAT", "PAT", "NAPT"]
+    },
+    {
+      "id": 15,
+      "question": "VLAN(Virtual LAN)에 대한 설명으로 옳지 않은 것은?",
+      "options": [
+        "물리적 위치와 무관하게 논리적으로 네트워크를 분리한다",
+        "브로드캐스트 도메인을 분리할 수 있다",
+        "IEEE 802.1Q 표준을 사용한다",
+        "VLAN 간 통신은 스위치만으로 가능하다"
+      ],
+      "answer": 3,
+      "explanation": "VLAN 간 통신은 L3 장비(라우터 또는 L3 스위치)를 통한 라우팅이 필요합니다. L2 스위치만으로는 VLAN 간 통신이 불가능합니다.",
+      "keywords": ["VLAN", "802.1Q", "브로드캐스트 도메인"]
+    },
+    {
+      "id": 16,
+      "question": "802.1Q VLAN 태그에서 VLAN ID(VID)의 크기는?",
+      "options": ["8비트", "12비트", "16비트", "24비트"],
+      "answer": 1,
+      "explanation": "802.1Q VLAN 태그에서 VID(VLAN ID) 필드는 12비트이며, 0~4095 범위의 VLAN을 식별할 수 있습니다.",
+      "keywords": ["802.1Q", "VLAN ID", "VID"]
+    },
+    {
+      "id": 17,
+      "question": "OSPF 라우팅 프로토콜에서 최적 경로를 계산하는 데 사용하는 알고리즘은?",
+      "options": ["Bellman-Ford", "Dijkstra(SPF)", "Distance Vector", "Path Vector"],
+      "answer": 1,
+      "explanation": "OSPF는 Dijkstra(SPF - Shortest Path First) 알고리즘을 사용하여 최적 경로를 계산합니다. Bellman-Ford는 RIP 같은 거리 벡터 프로토콜에서 사용됩니다.",
+      "keywords": ["OSPF", "Dijkstra", "SPF"]
+    },
+    {
+      "id": 18,
+      "question": "다음 중 AS(자율 시스템) 간 라우팅에 사용되는 EGP(외부 게이트웨이 프로토콜)는?",
+      "options": ["RIP", "OSPF", "EIGRP", "BGP"],
+      "answer": 3,
+      "explanation": "BGP(Border Gateway Protocol)는 AS 간 라우팅에 사용되는 유일한 EGP입니다. RIP, OSPF, EIGRP는 모두 IGP(내부 게이트웨이 프로토콜)입니다.",
+      "keywords": ["BGP", "EGP", "AS"]
+    },
+    {
+      "id": 19,
+      "question": "RIP 라우팅 프로토콜의 최대 홉 수(Hop Count) 제한은?",
+      "options": ["10", "15", "30", "255"],
+      "answer": 1,
+      "explanation": "RIP의 최대 홉 수는 15입니다. 16홉 이상은 도달 불가능(unreachable)으로 간주되며, 이는 소규모 네트워크에만 적합한 이유입니다.",
+      "keywords": ["RIP", "홉 수", "거리 벡터"]
+    },
+    {
+      "id": 20,
+      "question": "DNS 레코드 유형 중 도메인에 대한 메일 서버를 지정하는 것은?",
+      "options": ["A", "CNAME", "MX", "PTR"],
+      "answer": 2,
+      "explanation": "MX(Mail Exchanger) 레코드는 해당 도메인의 메일 서버를 지정합니다. A는 IPv4 주소 매핑, CNAME은 별칭, PTR은 역방향 조회에 사용됩니다.",
+      "keywords": ["DNS", "MX 레코드", "메일 서버"]
+    },
+    {
+      "id": 21,
+      "question": "TCP 4-Way Handshake로 연결을 종료한 후, 지연된 패킷 처리를 위해 일정 시간 대기하는 상태는?",
+      "options": ["CLOSE_WAIT", "LAST_ACK", "TIME_WAIT", "FIN_WAIT_2"],
+      "answer": 2,
+      "explanation": "TIME_WAIT 상태는 연결 종료 후 2MSL(Maximum Segment Lifetime) 동안 대기하여, 지연된 패킷이 도착할 수 있도록 합니다.",
+      "keywords": ["TIME_WAIT", "4-Way Handshake", "MSL"]
+    },
+    {
+      "id": 22,
+      "question": "TCP 혼잡 제어에서 중복 ACK 3회 수신 시 재전송을 수행하는 방식은?",
+      "options": ["Slow Start", "Congestion Avoidance", "Fast Retransmit", "Stop-and-Wait"],
+      "answer": 2,
+      "explanation": "Fast Retransmit은 타이머 만료를 기다리지 않고 중복 ACK를 3회 수신하면 즉시 재전송하는 방식입니다.",
+      "keywords": ["Fast Retransmit", "혼잡 제어", "중복 ACK"]
+    },
+    {
+      "id": 23,
+      "question": "IPv6에 대한 설명으로 옳지 않은 것은?",
+      "options": [
+        "128비트 주소 체계를 사용한다",
+        "IPsec 지원이 필수이다",
+        "브로드캐스트를 지원한다",
+        "헤더 크기가 40바이트로 고정되어 있다"
+      ],
+      "answer": 2,
+      "explanation": "IPv6에는 브로드캐스트가 없으며, 대신 멀티캐스트를 사용합니다. IPv6는 유니캐스트, 멀티캐스트, 애니캐스트 3가지 주소 유형을 지원합니다.",
+      "keywords": ["IPv6", "멀티캐스트", "브로드캐스트"]
+    },
+    {
+      "id": 24,
+      "question": "유선 이더넷에서 사용하는 매체 접근 방식으로, 충돌 감지 시 잼(Jam) 신호를 보내고 임의 시간 대기 후 재전송하는 방식은?",
+      "options": ["CSMA/CA", "CSMA/CD", "Token Ring", "TDMA"],
+      "answer": 1,
+      "explanation": "CSMA/CD(Carrier Sense Multiple Access with Collision Detection)는 유선 이더넷에서 사용하며, 충돌 감지 시 잼 신호를 전송하고 Binary Exponential Backoff로 재전송합니다.",
+      "keywords": ["CSMA/CD", "충돌 감지", "이더넷"]
+    },
+    {
+      "id": 25,
+      "question": "오류 제어 방식 중 오류가 발생한 프레임만 선택적으로 재전송하는 ARQ 방식은?",
+      "options": ["Stop-and-Wait ARQ", "Go-Back-N ARQ", "Selective Repeat ARQ", "Forward Error Correction"],
+      "answer": 2,
+      "explanation": "Selective Repeat ARQ는 오류가 발생한 프레임만 선택적으로 재전송합니다. Go-Back-N ARQ는 오류 이후 모든 프레임을 재전송합니다.",
+      "keywords": ["Selective Repeat ARQ", "ARQ", "오류 제어"]
+    },
+    {
+      "id": 26,
+      "question": "다음 중 DNS 질의에서 DNS 서버가 최종 응답까지 책임지고 처리하는 방식은?",
+      "options": ["반복 질의(Iterative)", "재귀 질의(Recursive)", "역방향 질의(Reverse)", "영역 전송(Zone Transfer)"],
+      "answer": 1,
+      "explanation": "재귀 질의(Recursive Query)는 DNS 서버가 최종 응답을 얻을 때까지 다른 DNS 서버에 질의하여 클라이언트에게 최종 결과를 반환합니다.",
+      "keywords": ["DNS", "재귀 질의", "반복 질의"]
+    },
+    {
+      "id": 27,
+      "question": "IPv4 IP 주소 클래스 중 멀티캐스트 용도로 사용되는 클래스는?",
+      "options": ["클래스 A", "클래스 B", "클래스 C", "클래스 D"],
+      "answer": 3,
+      "explanation": "클래스 D(224.0.0.0 ~ 239.255.255.255)는 멀티캐스트 용도로 사용됩니다. 클래스 E는 연구/예약 용도입니다.",
+      "keywords": ["IP 클래스", "멀티캐스트", "클래스 D"]
+    },
+    {
+      "id": 28,
+      "question": "TCP 플래그 중 연결을 강제로 종료(리셋)할 때 사용하는 것은?",
+      "options": ["FIN", "SYN", "RST", "PSH"],
+      "answer": 2,
+      "explanation": "RST(Reset) 플래그는 TCP 연결을 강제로 종료할 때 사용합니다. FIN은 정상적인 연결 종료, SYN은 연결 요청에 사용됩니다.",
+      "keywords": ["TCP 플래그", "RST", "연결 종료"]
+    },
+    {
+      "id": 29,
+      "question": "스위치의 스위칭 방식 중 전체 프레임을 수신한 후 오류를 검사하고 전달하는 방식은?",
+      "options": ["Cut-Through", "Fragment-Free", "Store-and-Forward", "Fast-Forward"],
+      "answer": 2,
+      "explanation": "Store-and-Forward는 전체 프레임을 수신하고 CRC 오류 검사를 수행한 후 전달하는 방식으로, 가장 안정적이지만 지연이 발생합니다.",
+      "keywords": ["Store-and-Forward", "스위칭", "CRC"]
+    },
+    {
+      "id": 30,
+      "question": "HTTP 메서드 중 멱등성(Idempotent)이 보장되지 않는 것은?",
+      "options": ["GET", "PUT", "DELETE", "POST"],
+      "answer": 3,
+      "explanation": "POST는 리소스를 생성하는 메서드로 멱등성이 보장되지 않습니다. 같은 요청을 여러 번 보내면 매번 새로운 리소스가 생성될 수 있습니다.",
+      "keywords": ["HTTP 메서드", "멱등성", "POST"]
+    },
+    {
+      "id": 31,
+      "question": "IPv4 헤더의 Protocol 필드 값이 6인 경우 상위 프로토콜은?",
+      "options": ["ICMP", "TCP", "UDP", "OSPF"],
+      "answer": 1,
+      "explanation": "IPv4 헤더의 Protocol 필드 값 6은 TCP를 나타냅니다. 1은 ICMP, 17은 UDP, 89는 OSPF입니다.",
+      "keywords": ["IPv4", "Protocol 필드", "TCP"]
+    },
+    {
+      "id": 32,
+      "question": "데이터링크 계층의 LLC와 MAC 부계층에 대한 설명으로 옳은 것은?",
+      "options": [
+        "LLC는 물리 주소 지정을 담당한다",
+        "MAC은 상위 계층과의 인터페이스를 담당한다",
+        "LLC는 상위 계층과 인터페이스 및 흐름 제어를 담당한다",
+        "MAC은 오류 정정(FEC)을 담당한다"
+      ],
+      "answer": 2,
+      "explanation": "LLC(Logical Link Control)는 상위 계층과의 인터페이스 및 흐름 제어를 담당하고, MAC(Media Access Control)은 매체 접근 제어와 물리 주소 지정을 담당합니다.",
+      "keywords": ["LLC", "MAC", "데이터링크 계층"]
+    },
+    {
+      "id": 33,
+      "question": "DHCP 서버를 찾지 못할 때 클라이언트에 자동 할당되는 IP 대역은?",
+      "options": [
+        "10.0.0.0/8",
+        "172.16.0.0/12",
+        "169.254.0.0/16",
+        "192.168.0.0/16"
+      ],
+      "answer": 2,
+      "explanation": "APIPA(Automatic Private IP Addressing)는 DHCP 서버를 찾지 못했을 때 169.254.0.0/16 대역의 IP를 자동으로 할당합니다.",
+      "keywords": ["APIPA", "DHCP", "169.254"]
+    },
+    {
+      "id": 34,
+      "question": "트렁크 포트(Trunk Port)에 대한 설명으로 옳은 것은?",
+      "options": [
+        "하나의 VLAN에만 속하는 포트이다",
+        "여러 VLAN의 트래픽을 802.1Q 태그로 전달한다",
+        "호스트가 연결되는 액세스 포트이다",
+        "VLAN 간 라우팅을 수행하는 포트이다"
+      ],
+      "answer": 1,
+      "explanation": "트렁크 포트는 여러 VLAN의 트래픽을 802.1Q 태그를 사용하여 구분하며 전달합니다. 주로 스위치 간 연결에 사용됩니다.",
+      "keywords": ["트렁크 포트", "802.1Q", "VLAN"]
+    },
+    {
+      "id": 35,
+      "question": "DNS 보안 확장(DNSSEC)의 주요 목적은?",
+      "options": [
+        "DNS 쿼리를 암호화한다",
+        "DNS 응답의 무결성과 출처를 검증한다",
+        "DNS 서버의 가용성을 보장한다",
+        "DNS 레코드를 자동으로 갱신한다"
+      ],
+      "answer": 1,
+      "explanation": "DNSSEC은 디지털 서명을 사용하여 DNS 응답의 무결성과 출처를 검증합니다. DNS 쿼리 암호화는 DoH(DNS over HTTPS)나 DoT(DNS over TLS)에서 제공합니다.",
+      "keywords": ["DNSSEC", "DNS 보안", "디지털 서명"]
+    },
+    {
+      "id": 36,
+      "question": "IPv4에서 IPv6로 전환하는 방법 중 IPv6 패킷을 IPv4 패킷으로 캡슐화하여 전송하는 방식은?",
+      "options": ["듀얼 스택", "터널링", "NAT64", "프록시"],
+      "answer": 1,
+      "explanation": "터널링은 IPv6 패킷을 IPv4 패킷으로 캡슐화하여 IPv4 네트워크를 통해 전송하는 방식입니다. 듀얼 스택은 IPv4/IPv6 동시 운영, NAT64는 프로토콜 변환 방식입니다.",
+      "keywords": ["터널링", "IPv6 전환", "캡슐화"]
+    },
+    {
+      "id": 37,
+      "question": "포트 번호 범위 중 Well-Known 포트의 범위는?",
+      "options": ["0 ~ 255", "0 ~ 1023", "1024 ~ 49151", "49152 ~ 65535"],
+      "answer": 1,
+      "explanation": "Well-Known 포트는 0~1023 범위로 시스템 서비스에 예약되어 있으며 관리자 권한이 필요합니다. 1024~49151은 Registered, 49152~65535는 Dynamic 포트입니다.",
+      "keywords": ["Well-Known 포트", "포트 범위", "포트 번호"]
+    },
+    {
+      "id": 38,
+      "question": "TLS Handshake 과정에서 서버가 클라이언트에게 전송하는 것이 아닌 것은?",
+      "options": ["ServerHello", "Certificate", "ClientKeyExchange", "ServerHelloDone"],
+      "answer": 2,
+      "explanation": "ClientKeyExchange는 클라이언트가 서버에게 전송하는 메시지입니다. 서버는 ServerHello, Certificate, ServerKeyExchange, ServerHelloDone을 전송합니다.",
+      "keywords": ["TLS Handshake", "HTTPS", "ClientKeyExchange"]
+    },
+    {
+      "id": 39,
+      "question": "무선 네트워크 보안 프로토콜 중 RC4 암호화를 사용하며 IV(Initialization Vector) 취약점으로 쉽게 해독되는 것은?",
+      "options": ["WEP", "WPA", "WPA2", "WPA3"],
+      "answer": 0,
+      "explanation": "WEP(Wired Equivalent Privacy)는 RC4 암호화를 사용하며, 24비트 IV의 취약점으로 인해 쉽게 키가 노출됩니다. 현재는 사용이 권장되지 않습니다.",
+      "keywords": ["WEP", "RC4", "IV 취약점"]
+    },
+    {
+      "id": 40,
+      "question": "OSI 7계층에서 데이터 암호화/복호화, 형식 변환을 담당하는 계층은?",
+      "options": ["세션 계층", "표현 계층", "응용 계층", "전송 계층"],
+      "answer": 1,
+      "explanation": "표현 계층(Presentation Layer)은 데이터 형식 변환, 암호화/복호화, 압축/압축 해제를 담당합니다. SSL/TLS, JPEG, MPEG 등이 이 계층에 해당합니다.",
+      "keywords": ["표현 계층", "OSI 7계층", "암호화"]
+    },
+    {
+      "id": 41,
+      "question": "OSPF 프로토콜에서 이웃 라우터를 발견하고 관계를 유지하기 위해 사용하는 패킷 유형은?",
+      "options": ["DBD", "LSR", "Hello", "LSU"],
+      "answer": 2,
+      "explanation": "OSPF Hello 패킷(Type 1)은 이웃 라우터를 발견하고 인접성을 유지하는 데 사용됩니다. DBD는 데이터베이스 설명, LSR/LSU는 링크 상태 정보 교환에 사용됩니다.",
+      "keywords": ["OSPF", "Hello 패킷", "이웃 발견"]
+    },
+    {
+      "id": 42,
+      "question": "다음 중 L4/L7 스위치에 대한 설명으로 옳은 것은?",
+      "options": [
+        "L4 스위치는 URL, 쿠키 기반으로 트래픽을 분류한다",
+        "L7 스위치는 IP와 포트 번호만으로 트래픽을 분류한다",
+        "L7 스위치는 콘텐츠 스위칭과 WAF 기능을 제공한다",
+        "L4 스위치는 응용 계층에서 동작한다"
+      ],
+      "answer": 2,
+      "explanation": "L7 스위치는 응용 계층에서 URL, 쿠키, HTTP 헤더 등을 기반으로 콘텐츠 스위칭을 하며 WAF 기능을 제공합니다. L4 스위치는 IP와 포트 기반 로드밸런싱을 합니다.",
+      "keywords": ["L7 스위치", "L4 스위치", "로드밸런싱"]
+    },
+    {
+      "id": 43,
+      "question": "DHCP Starvation 공격에 대한 설명으로 옳은 것은?",
+      "options": [
+        "악성 DHCP 서버를 설치하여 잘못된 네트워크 정보를 제공한다",
+        "DHCP 서버의 IP 주소 풀을 고갈시키는 공격이다",
+        "DHCP 패킷을 스니핑하여 정보를 탈취한다",
+        "DHCP 서버에 DDoS 공격을 수행한다"
+      ],
+      "answer": 1,
+      "explanation": "DHCP Starvation은 다수의 위조된 DHCP 요청을 보내 서버의 IP 주소 풀을 고갈시키는 공격입니다. Port Security와 DHCP Snooping으로 대응합니다.",
+      "keywords": ["DHCP Starvation", "IP 풀 고갈", "DHCP Snooping"]
+    },
+    {
+      "id": 44,
+      "question": "HTTP 상태 코드 중 클라이언트 오류를 나타내는 범위는?",
+      "options": ["1xx", "2xx", "3xx", "4xx"],
+      "answer": 3,
+      "explanation": "4xx는 클라이언트 오류를 나타냅니다. 400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found 등이 있습니다.",
+      "keywords": ["HTTP 상태 코드", "4xx", "클라이언트 오류"]
+    },
+    {
+      "id": 45,
+      "question": "BGP(Border Gateway Protocol)에서 경유한 AS(자율 시스템) 목록을 나타내는 속성은?",
+      "options": ["NEXT_HOP", "LOCAL_PREF", "AS_PATH", "MED"],
+      "answer": 2,
+      "explanation": "AS_PATH는 패킷이 경유한 AS 목록을 나타내며, BGP에서 경로 선택의 주요 기준 중 하나입니다. AS_PATH가 짧을수록 우선 선택됩니다.",
+      "keywords": ["BGP", "AS_PATH", "경로 벡터"]
+    }
+  ]
+}
