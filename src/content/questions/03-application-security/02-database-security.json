@@ -1,0 +1,528 @@
+{
+  "subject": "03-application-security",
+  "subjectName": "애플리케이션 보안",
+  "chapter": "02-database-security",
+  "chapterName": "데이터베이스 보안",
+  "questions": [
+    {
+      "id": 1,
+      "question": "관계형 데이터베이스(RDBMS)의 특징으로 올바른 것은?",
+      "options": [
+        "유연한 스키마, 비정형 데이터 저장",
+        "테이블 기반, SQL 사용",
+        "키-값 쌍으로 데이터 저장",
+        "시간 기반 데이터 처리에 특화"
+      ],
+      "answer": 1,
+      "explanation": "RDBMS는 테이블 형태로 데이터를 저장하고 SQL을 사용합니다. Oracle, MySQL, PostgreSQL, MSSQL 등이 대표적입니다.",
+      "keywords": ["RDBMS", "관계형 데이터베이스", "SQL"]
+    },
+    {
+      "id": 2,
+      "question": "비정형 데이터를 유연한 스키마로 저장하는 데이터베이스 유형은?",
+      "options": [
+        "RDBMS",
+        "NoSQL",
+        "인메모리 DB",
+        "시계열 DB"
+      ],
+      "answer": 1,
+      "explanation": "NoSQL은 비관계형 데이터베이스로 유연한 스키마를 제공합니다. MongoDB, Redis, Cassandra 등이 있으며, 수평 확장에 유리합니다.",
+      "keywords": ["NoSQL", "비정형 데이터"]
+    },
+    {
+      "id": 3,
+      "question": "데이터베이스 구성요소 중 하나 이상의 테이블에서 유도된 가상 테이블은?",
+      "options": [
+        "인덱스",
+        "뷰(View)",
+        "트리거",
+        "저장 프로시저"
+      ],
+      "answer": 1,
+      "explanation": "뷰(View)는 하나 이상의 테이블에서 유도된 가상 테이블입니다. 접근 제어와 데이터 추상화에 활용되며, 민감한 열을 숨길 수 있습니다.",
+      "keywords": ["뷰", "View", "가상 테이블"]
+    },
+    {
+      "id": 4,
+      "question": "특정 이벤트(INSERT, UPDATE, DELETE) 발생 시 자동으로 실행되는 데이터베이스 객체는?",
+      "options": [
+        "뷰",
+        "인덱스",
+        "저장 프로시저",
+        "트리거"
+      ],
+      "answer": 3,
+      "explanation": "트리거(Trigger)는 특정 DML 이벤트가 발생할 때 자동으로 실행되는 프로시저입니다. 감사 로그 생성, 데이터 무결성 유지 등에 활용됩니다.",
+      "keywords": ["트리거", "Trigger"]
+    },
+    {
+      "id": 5,
+      "question": "SQL에서 사용자에게 권한을 부여하는 명령은?",
+      "options": [
+        "GRANT",
+        "REVOKE",
+        "CREATE",
+        "ALTER"
+      ],
+      "answer": 0,
+      "explanation": "GRANT는 DCL(Data Control Language)로, 사용자에게 SELECT, INSERT 등의 권한을 부여합니다. REVOKE는 권한을 회수합니다.",
+      "keywords": ["GRANT", "DCL", "권한 부여"]
+    },
+    {
+      "id": 6,
+      "question": "다음 SQL 문의 의미는?\nREVOKE INSERT ON employees FROM user1;",
+      "options": [
+        "user1에게 employees 테이블 INSERT 권한 부여",
+        "user1에게서 employees 테이블 INSERT 권한 회수",
+        "employees 테이블의 INSERT 트리거 삭제",
+        "user1의 employees 테이블 데이터 삭제"
+      ],
+      "answer": 1,
+      "explanation": "REVOKE는 이전에 GRANT로 부여된 권한을 회수하는 명령입니다. user1에게서 employees 테이블에 대한 INSERT 권한을 회수합니다.",
+      "keywords": ["REVOKE", "권한 회수"]
+    },
+    {
+      "id": 7,
+      "question": "데이터베이스 보안에서 최소 권한 원칙의 설명으로 올바른 것은?",
+      "options": [
+        "모든 사용자에게 관리자 권한 부여",
+        "업무에 필요한 최소한의 권한만 부여",
+        "개발자와 DBA가 동일한 권한 사용",
+        "공유 계정 사용 권장"
+      ],
+      "answer": 1,
+      "explanation": "최소 권한 원칙은 사용자에게 업무 수행에 필요한 최소한의 권한만 부여하고, 역할 기반(RBAC)으로 관리하며 정기적으로 검토합니다.",
+      "keywords": ["최소 권한", "원칙"]
+    },
+    {
+      "id": 8,
+      "question": "사용자별로 조회 가능한 행을 제한하는 데이터베이스 보안 기능은?",
+      "options": [
+        "열 수준 보안",
+        "행 수준 보안(RLS)",
+        "TDE",
+        "데이터 마스킹"
+      ],
+      "answer": 1,
+      "explanation": "행 수준 보안(Row-Level Security, RLS)은 사용자별로 접근 가능한 행을 제한하는 보안 기능입니다. PostgreSQL의 CREATE POLICY 등으로 구현합니다.",
+      "keywords": ["RLS", "행 수준 보안"]
+    },
+    {
+      "id": 9,
+      "question": "데이터베이스 수준에서 자동으로 저장 데이터를 암호화하며 애플리케이션 변경이 불필요한 기술은?",
+      "options": [
+        "컬럼 레벨 암호화",
+        "TDE (Transparent Data Encryption)",
+        "전송 암호화 (TLS)",
+        "동형 암호"
+      ],
+      "answer": 1,
+      "explanation": "TDE(Transparent Data Encryption)는 데이터베이스 수준에서 저장 시 자동 암호화, 읽기 시 자동 복호화를 수행합니다. 애플리케이션 변경이 필요 없습니다.",
+      "keywords": ["TDE", "Transparent Data Encryption"]
+    },
+    {
+      "id": 10,
+      "question": "데이터 암호화 유형 중 디스크에 저장된 데이터의 암호화를 의미하는 것은?",
+      "options": [
+        "In-Transit 암호화",
+        "At-Rest 암호화",
+        "In-Use 암호화",
+        "End-to-End 암호화"
+      ],
+      "answer": 1,
+      "explanation": "At-Rest 암호화는 저장된 데이터(디스크, 백업)의 암호화입니다. In-Transit는 전송 중 암호화(TLS), In-Use는 메모리 내 암호화(SGX, 동형암호)입니다.",
+      "keywords": ["At-Rest", "저장 데이터 암호화"]
+    },
+    {
+      "id": 11,
+      "question": "암호화 키를 안전하게 저장하고 암호화 연산을 수행하는 전용 하드웨어는?",
+      "options": [
+        "TPM",
+        "HSM",
+        "SGX",
+        "TEE"
+      ],
+      "answer": 1,
+      "explanation": "HSM(Hardware Security Module)은 암호화 키를 안전하게 저장하고 암호화 연산을 수행하는 전용 하드웨어입니다. TDE의 마스터 키 관리 등에 사용됩니다.",
+      "keywords": ["HSM", "Hardware Security Module", "키 관리"]
+    },
+    {
+      "id": 12,
+      "question": "데이터베이스 감사의 유형 중 특정 테이블에 대한 접근을 기록하는 것은?",
+      "options": [
+        "문장 감사",
+        "권한 감사",
+        "객체 감사",
+        "세분화 감사"
+      ],
+      "answer": 2,
+      "explanation": "객체 감사(Object Audit)는 특정 테이블, 뷰 등 데이터베이스 객체에 대한 SELECT, INSERT 등의 접근을 기록합니다.",
+      "keywords": ["객체 감사", "감사 유형"]
+    },
+    {
+      "id": 13,
+      "question": "Oracle에서 감사 로그를 조회하는 딕셔너리 뷰는?",
+      "options": [
+        "V$SESSION",
+        "DBA_AUDIT_TRAIL",
+        "ALL_TABLES",
+        "USER_OBJECTS"
+      ],
+      "answer": 1,
+      "explanation": "DBA_AUDIT_TRAIL은 Oracle에서 감사 로그를 조회하는 데이터 딕셔너리 뷰입니다. 감사 정책에 따라 기록된 이벤트를 확인할 수 있습니다.",
+      "keywords": ["DBA_AUDIT_TRAIL", "Oracle 감사"]
+    },
+    {
+      "id": 14,
+      "question": "MySQL에서 보안 초기 설정을 수행하는 스크립트는?",
+      "options": [
+        "mysql_install_db",
+        "mysql_secure_installation",
+        "mysql_upgrade",
+        "mysql_config"
+      ],
+      "answer": 1,
+      "explanation": "mysql_secure_installation은 root 패스워드 설정, anonymous 사용자 삭제, root 원격 접속 제한, test DB 삭제 등 보안 초기 설정을 수행합니다.",
+      "keywords": ["mysql_secure_installation", "MySQL 보안"]
+    },
+    {
+      "id": 15,
+      "question": "MSSQL의 기본 관리자 계정으로 비활성화 또는 강력한 패스워드 설정이 권장되는 것은?",
+      "options": [
+        "root",
+        "admin",
+        "sa",
+        "postgres"
+      ],
+      "answer": 2,
+      "explanation": "sa(System Administrator)는 MSSQL의 기본 관리자 계정입니다. 보안을 위해 비활성화하거나 강력한 패스워드를 설정해야 합니다.",
+      "keywords": ["sa", "MSSQL", "기본 계정"]
+    },
+    {
+      "id": 16,
+      "question": "Oracle의 기본 계정 중 보안을 위해 잠금이 권장되는 데모용 계정은?",
+      "options": [
+        "SYS",
+        "SYSTEM",
+        "SCOTT",
+        "DBSNMP"
+      ],
+      "answer": 2,
+      "explanation": "SCOTT은 Oracle의 데모용(Demonstration) 계정입니다. 기본 패스워드(tiger)가 알려져 있으므로 잠금 처리가 권장됩니다.",
+      "keywords": ["SCOTT", "Oracle", "기본 계정"]
+    },
+    {
+      "id": 17,
+      "question": "데이터베이스별 SQL Injection에서 MSSQL의 OS 명령 실행에 악용되는 확장 저장 프로시저는?",
+      "options": [
+        "UTL_HTTP",
+        "xp_cmdshell",
+        "LOAD_FILE",
+        "pg_read_file"
+      ],
+      "answer": 1,
+      "explanation": "xp_cmdshell은 MSSQL의 확장 저장 프로시저로, 운영체제 명령을 실행할 수 있습니다. SQL Injection에서 원격 코드 실행에 악용됩니다.",
+      "keywords": ["xp_cmdshell", "MSSQL"]
+    },
+    {
+      "id": 18,
+      "question": "MySQL에서 SQL Injection을 통해 서버 파일을 읽는 데 사용되는 함수는?",
+      "options": [
+        "xp_cmdshell",
+        "UTL_HTTP.REQUEST",
+        "LOAD_FILE()",
+        "pg_read_file()"
+      ],
+      "answer": 2,
+      "explanation": "MySQL의 LOAD_FILE() 함수는 서버의 파일을 읽을 수 있습니다. SQL Injection에서 /etc/passwd 등 시스템 파일 읽기에 악용됩니다.",
+      "keywords": ["LOAD_FILE", "MySQL", "파일 읽기"]
+    },
+    {
+      "id": 19,
+      "question": "MySQL에서 SQL Injection을 통해 웹쉘을 생성할 수 있는 구문은?",
+      "options": [
+        "LOAD_FILE()",
+        "INTO OUTFILE",
+        "xp_cmdshell",
+        "UTL_HTTP"
+      ],
+      "answer": 1,
+      "explanation": "MySQL의 INTO OUTFILE 구문은 쿼리 결과를 파일로 저장합니다. SQL Injection에서 웹쉘 파일을 생성하는 데 악용될 수 있습니다.",
+      "keywords": ["INTO OUTFILE", "웹쉘", "MySQL"]
+    },
+    {
+      "id": 20,
+      "question": "MySQL과 PostgreSQL에서 테이블 목록 등 메타데이터를 조회할 수 있는 스키마는?",
+      "options": [
+        "sys",
+        "information_schema",
+        "master",
+        "all_tables"
+      ],
+      "answer": 1,
+      "explanation": "information_schema는 MySQL, PostgreSQL에서 데이터베이스 메타데이터(테이블, 컬럼 정보 등)를 제공하는 표준 스키마입니다. SQL Injection에서 정보 수집에 사용됩니다.",
+      "keywords": ["information_schema", "메타데이터"]
+    },
+    {
+      "id": 21,
+      "question": "이차(Second-Order) SQL Injection의 특징으로 올바른 것은?",
+      "options": [
+        "요청에 포함된 SQL이 즉시 실행된다",
+        "저장된 데이터가 나중에 다른 쿼리에서 사용될 때 실행된다",
+        "DNS를 통해 데이터가 추출된다",
+        "에러 메시지를 통해 데이터가 추출된다"
+      ],
+      "answer": 1,
+      "explanation": "이차 SQL Injection은 사용자 입력이 먼저 DB에 저장되고, 나중에 다른 쿼리에서 이 저장된 값이 사용될 때 SQL Injection이 발생합니다. 일반 스캐너로 탐지가 어렵습니다.",
+      "keywords": ["이차 SQL Injection", "Second-Order"]
+    },
+    {
+      "id": 22,
+      "question": "MongoDB Injection에서 인증을 우회하기 위해 악용되는 연산자는?",
+      "options": [
+        "$eq",
+        "$ne",
+        "$and",
+        "$or"
+      ],
+      "answer": 1,
+      "explanation": "$ne(not equal) 연산자를 사용하여 password가 빈 문자열이 아닌 조건으로 인증을 우회할 수 있습니다. (예: password[$ne]=로 모든 패스워드 매칭)",
+      "keywords": ["MongoDB Injection", "$ne", "NoSQL"]
+    },
+    {
+      "id": 23,
+      "question": "NoSQL Injection 대응 방법으로 적절하지 않은 것은?",
+      "options": [
+        "입력값 타입 검증 및 연산자 필터링",
+        "ODM(Object Document Mapper) 사용",
+        "문자열 연결로 쿼리 생성",
+        "최소 권한 원칙 적용"
+      ],
+      "answer": 2,
+      "explanation": "문자열 연결로 쿼리를 생성하면 Injection에 취약합니다. 파라미터화, ODM(Mongoose 등) 사용, 입력 검증, 최소 권한 적용이 올바른 대응입니다.",
+      "keywords": ["NoSQL Injection 대응"]
+    },
+    {
+      "id": 24,
+      "question": "데이터 마스킹 유형 중 운영 환경에서 조회 시 실시간으로 민감 데이터를 가리는 방식은?",
+      "options": [
+        "정적 마스킹",
+        "동적 마스킹",
+        "암호화",
+        "토큰화"
+      ],
+      "answer": 1,
+      "explanation": "동적 마스킹은 운영 환경에서 데이터 조회 시점에 실시간으로 민감 데이터를 가립니다. 원본 데이터는 변경되지 않습니다. 정적 마스킹은 비운영 환경(개발/테스트)용입니다.",
+      "keywords": ["동적 마스킹", "데이터 마스킹"]
+    },
+    {
+      "id": 25,
+      "question": "데이터 마스킹 기법 중 민감 데이터를 의미 없는 대체 값으로 바꾸는 방식은?",
+      "options": [
+        "셔플",
+        "치환",
+        "널 처리",
+        "토큰화"
+      ],
+      "answer": 3,
+      "explanation": "토큰화(Tokenization)는 민감 데이터를 의미 없는 토큰으로 대체합니다. 원본 데이터는 안전한 토큰 저장소에 보관됩니다. 카드번호 보호에 주로 사용됩니다.",
+      "keywords": ["토큰화", "Tokenization"]
+    },
+    {
+      "id": 26,
+      "question": "MSSQL의 Dynamic Data Masking에서 이메일 형식을 마스킹하는 함수는?",
+      "options": [
+        "default()",
+        "email()",
+        "partial()",
+        "random()"
+      ],
+      "answer": 1,
+      "explanation": "MSSQL Dynamic Data Masking에서 email() 함수는 이메일 주소를 마스킹합니다. (예: aXXX@XXXX.com) default()는 기본 마스킹, partial()은 부분 마스킹입니다.",
+      "keywords": ["Dynamic Data Masking", "email()", "MSSQL"]
+    },
+    {
+      "id": 27,
+      "question": "데이터베이스 백업 보안에서 가장 중요한 대책은?",
+      "options": [
+        "백업 주기 단축",
+        "백업 파일 암호화",
+        "백업 파일 크기 제한",
+        "백업 자동화"
+      ],
+      "answer": 1,
+      "explanation": "암호화되지 않은 백업 파일이 탈취되면 모든 데이터가 노출됩니다. 백업 파일 암호화는 가장 중요한 보안 대책입니다.",
+      "keywords": ["백업 암호화", "백업 보안"]
+    },
+    {
+      "id": 28,
+      "question": "데이터베이스 활동을 실시간으로 모니터링하고 감사하는 솔루션은?",
+      "options": [
+        "WAF",
+        "DAM (Database Activity Monitoring)",
+        "IDS",
+        "SIEM"
+      ],
+      "answer": 1,
+      "explanation": "DAM(Database Activity Monitoring)은 모든 데이터베이스 활동을 실시간으로 감시하고, 상세 감사 로그를 생성하며, 의심 활동에 대해 경고합니다.",
+      "keywords": ["DAM", "Database Activity Monitoring"]
+    },
+    {
+      "id": 29,
+      "question": "데이터베이스로 들어오는 SQL을 분석하여 악성 쿼리를 차단하는 솔루션은?",
+      "options": [
+        "DAM",
+        "DBF (Database Firewall)",
+        "WAF",
+        "NAC"
+      ],
+      "answer": 1,
+      "explanation": "DBF(Database Firewall)는 SQL 문장을 실시간으로 분석하여 악성 쿼리를 차단하고, 접근 정책을 강제하며, 가상 패치 기능을 제공합니다.",
+      "keywords": ["DBF", "Database Firewall"]
+    },
+    {
+      "id": 30,
+      "question": "PostgreSQL에서 SSL을 강제하는 pg_hba.conf 설정에 사용되는 접속 유형은?",
+      "options": [
+        "host",
+        "hostssl",
+        "local",
+        "hostnossl"
+      ],
+      "answer": 1,
+      "explanation": "pg_hba.conf에서 hostssl은 SSL/TLS 연결만 허용하는 접속 유형입니다. host는 SSL 여부 무관, hostnossl은 비SSL만 허용합니다.",
+      "keywords": ["hostssl", "PostgreSQL", "SSL"]
+    },
+    {
+      "id": 31,
+      "question": "MySQL에서 anonymous 사용자를 삭제하는 SQL 명령은?",
+      "options": [
+        "DROP USER '';",
+        "DELETE FROM mysql.user WHERE User = '';",
+        "REVOKE ALL FROM '';",
+        "ALTER USER '' ACCOUNT LOCK;"
+      ],
+      "answer": 1,
+      "explanation": "MySQL에서 anonymous 사용자는 DELETE FROM mysql.user WHERE User = ''로 삭제하고, FLUSH PRIVILEGES로 적용합니다.",
+      "keywords": ["anonymous", "MySQL", "계정 관리"]
+    },
+    {
+      "id": 32,
+      "question": "KISA 데이터베이스 취약점 점검 가이드에서 D-02 항목은?",
+      "options": [
+        "기본 계정 패스워드 변경",
+        "Scott 등 Demonstration 계정 제거",
+        "패스워드 복잡도 설정",
+        "원격 접속 제한"
+      ],
+      "answer": 1,
+      "explanation": "KISA 가이드 D-02는 Scott 등 데모용 계정을 제거하는 항목입니다. 기본 계정은 D-01, 패스워드 복잡도는 D-03입니다.",
+      "keywords": ["KISA", "D-02", "데모 계정"]
+    },
+    {
+      "id": 33,
+      "question": "데이터베이스 인증 방식 중 LDAP, Kerberos 등을 이용하는 방식은?",
+      "options": [
+        "데이터베이스 인증",
+        "OS 인증",
+        "외부 인증",
+        "인증서 인증"
+      ],
+      "answer": 2,
+      "explanation": "외부 인증은 LDAP, Kerberos, RADIUS 등 외부 인증 시스템과 연동하여 데이터베이스 인증을 수행하는 방식입니다.",
+      "keywords": ["외부 인증", "LDAP", "Kerberos"]
+    },
+    {
+      "id": 34,
+      "question": "데이터 마스킹 기법 중 레코드 간 값의 순서를 섞는 방식은?",
+      "options": [
+        "치환",
+        "부분 가림",
+        "셔플",
+        "널 처리"
+      ],
+      "answer": 2,
+      "explanation": "셔플(Shuffle)은 같은 컬럼 내에서 레코드 간 값의 순서를 섞는 마스킹 기법입니다. 데이터의 통계적 특성은 유지됩니다.",
+      "keywords": ["셔플", "데이터 마스킹"]
+    },
+    {
+      "id": 35,
+      "question": "Oracle에서 SQL Injection 시 메타데이터 테이블 목록을 조회하는 딕셔너리 뷰는?",
+      "options": [
+        "information_schema.tables",
+        "sysobjects",
+        "all_tables",
+        "pg_tables"
+      ],
+      "answer": 2,
+      "explanation": "Oracle에서는 all_tables 딕셔너리 뷰를 통해 테이블 목록을 조회합니다. information_schema는 MySQL/PostgreSQL, sysobjects는 MSSQL에서 사용됩니다.",
+      "keywords": ["all_tables", "Oracle", "메타데이터"]
+    },
+    {
+      "id": 36,
+      "question": "데이터베이스 감사 대상 중 CREATE, ALTER, DROP 등의 명령을 기록하는 것은?",
+      "options": [
+        "DML 감사",
+        "DDL 감사",
+        "DCL 감사",
+        "TCL 감사"
+      ],
+      "answer": 1,
+      "explanation": "DDL(Data Definition Language) 감사는 CREATE, ALTER, DROP 등 데이터베이스 구조 변경 명령을 기록합니다. DML은 SELECT/INSERT/UPDATE/DELETE, DCL은 GRANT/REVOKE입니다.",
+      "keywords": ["DDL 감사", "CREATE", "ALTER", "DROP"]
+    },
+    {
+      "id": 37,
+      "question": "MySQL에서 TLS/SSL 접속을 강제하는 설정은?",
+      "options": [
+        "bind-address = 127.0.0.1",
+        "require_secure_transport = ON",
+        "skip-networking = 1",
+        "general_log = ON"
+      ],
+      "answer": 1,
+      "explanation": "MySQL의 require_secure_transport = ON 설정은 모든 클라이언트 연결에 TLS/SSL을 강제합니다.",
+      "keywords": ["require_secure_transport", "MySQL", "TLS"]
+    },
+    {
+      "id": 38,
+      "question": "PostgreSQL에서 감사 로깅을 위한 확장 모듈은?",
+      "options": [
+        "pg_stat_statements",
+        "pgAudit",
+        "pg_trgm",
+        "pg_crypto"
+      ],
+      "answer": 1,
+      "explanation": "pgAudit는 PostgreSQL의 감사 로깅 확장 모듈로, 상세한 SQL 문장 감사를 제공합니다. read, write, ddl 등의 감사 범주를 설정할 수 있습니다.",
+      "keywords": ["pgAudit", "PostgreSQL", "감사"]
+    },
+    {
+      "id": 39,
+      "question": "데이터베이스 보안에서 특정 열에 대한 접근을 사용자별로 제한하는 것은?",
+      "options": [
+        "행 수준 보안",
+        "열 수준 보안",
+        "TDE",
+        "동적 마스킹"
+      ],
+      "answer": 1,
+      "explanation": "열 수준 보안은 GRANT SELECT (id, name) ON table TO user 처럼 특정 열에만 접근 권한을 부여하여 민감한 열(급여 등)의 접근을 제한합니다.",
+      "keywords": ["열 수준 보안", "컬럼 보안"]
+    },
+    {
+      "id": 40,
+      "question": "DB에서 문자열 연결 연산자가 '||'인 DBMS의 조합으로 올바른 것은?",
+      "options": [
+        "MySQL, MSSQL",
+        "Oracle, PostgreSQL",
+        "MSSQL, Oracle",
+        "MySQL, PostgreSQL"
+      ],
+      "answer": 1,
+      "explanation": "Oracle과 PostgreSQL은 문자열 연결에 || 연산자를 사용합니다. MySQL은 CONCAT() 함수, MSSQL은 + 연산자를 사용합니다.",
+      "keywords": ["문자열 연결", "Oracle", "PostgreSQL"]
+    }
+  ]
+}
