@@ -1,0 +1,378 @@
+{
+  "subject": "01-system-security",
+  "subjectName": "시스템 보안",
+  "chapter": "04-system-information",
+  "chapterName": "시스템 정보",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Linux에서 패스워드 해시가 저장되는 파일로, root만 읽기 가능한 것은?",
+      "options": ["/etc/passwd", "/etc/shadow", "/etc/group", "/etc/sudoers"],
+      "answer": 1,
+      "explanation": "/etc/shadow는 패스워드 해시를 저장하며 root만 읽기 가능합니다. /etc/passwd는 사용자 계정 정보를 저장하지만 패스워드 해시는 포함하지 않습니다(x로 표시).",
+      "keywords": ["/etc/shadow", "패스워드 해시", "Linux"]
+    },
+    {
+      "id": 2,
+      "question": "인증의 3요소(Authentication Factors) 중 '소유 기반(Something you have)'에 해당하는 것은?",
+      "options": ["패스워드", "지문", "OTP 토큰", "서명 패턴"],
+      "answer": 2,
+      "explanation": "OTP 토큰은 소유 기반(Something you have) 인증입니다. 패스워드는 지식 기반, 지문은 존재 기반, 서명 패턴은 행위 기반 인증입니다.",
+      "keywords": ["인증 3요소", "소유 기반", "OTP"]
+    },
+    {
+      "id": 3,
+      "question": "Kerberos 인증에서 KDC의 TGS가 발급하는 것으로, 특정 서비스에 접근하기 위한 티켓은?",
+      "options": ["TGT", "Service Ticket", "Session Key", "Authenticator"],
+      "answer": 1,
+      "explanation": "Service Ticket은 TGS(Ticket Granting Service)가 발급하며, 클라이언트가 특정 서비스에 접근할 때 제시합니다. TGT는 AS가 발급하는 티켓 요청용 티켓입니다.",
+      "keywords": ["Kerberos", "Service Ticket", "TGS"]
+    },
+    {
+      "id": 4,
+      "question": "Kerberos 공격 중 krbtgt 계정의 해시를 탈취하여 TGT를 위조하는 공격은?",
+      "options": ["Silver Ticket", "Golden Ticket", "Kerberoasting", "Pass-the-Ticket"],
+      "answer": 1,
+      "explanation": "Golden Ticket은 krbtgt 계정의 해시를 사용하여 TGT를 위조합니다. 이를 통해 도메인 전체에 대한 접근 권한을 획득할 수 있습니다.",
+      "keywords": ["Golden Ticket", "krbtgt", "Kerberos"]
+    },
+    {
+      "id": 5,
+      "question": "패스워드 해싱 시 동일한 패스워드라도 서로 다른 해시 값을 생성하기 위해 추가하는 랜덤 값은?",
+      "options": ["Pepper", "Salt", "Nonce", "IV"],
+      "answer": 1,
+      "explanation": "Salt는 패스워드별 고유한 랜덤 값으로, 동일 패스워드의 해시가 달라지게 하여 레인보우 테이블 공격을 방어합니다.",
+      "keywords": ["Salt", "패스워드 해싱", "레인보우 테이블"]
+    },
+    {
+      "id": 6,
+      "question": "다음 패스워드 해싱 함수 중 2015년에 최신 표준으로 선정되었으며, 메모리/시간/병렬성을 설정할 수 있는 것은?",
+      "options": ["bcrypt", "scrypt", "Argon2", "PBKDF2"],
+      "answer": 2,
+      "explanation": "Argon2는 2015년 Password Hashing Competition 우승 알고리즘으로, 메모리, 시간, 병렬성을 모두 조절할 수 있는 최신 패스워드 해싱 표준입니다.",
+      "keywords": ["Argon2", "패스워드 해싱", "최신 표준"]
+    },
+    {
+      "id": 7,
+      "question": "Windows에서 로컬 사용자 계정 정보와 NTLM 해시를 저장하는 데이터베이스는?",
+      "options": ["Active Directory", "SAM", "LDAP", "NTDS.dit"],
+      "answer": 1,
+      "explanation": "SAM(Security Account Manager)은 Windows 로컬 사용자 계정 정보와 NTLM 해시를 저장합니다. C:\\Windows\\System32\\config\\SAM에 위치하며 부팅 중 잠금됩니다.",
+      "keywords": ["SAM", "NTLM 해시", "Windows"]
+    },
+    {
+      "id": 8,
+      "question": "SSO 프로토콜 중 XML 기반으로, IdP(Identity Provider)와 SP(Service Provider) 구조를 사용하는 것은?",
+      "options": ["OAuth 2.0", "SAML", "OpenID Connect", "Kerberos"],
+      "answer": 1,
+      "explanation": "SAML(Security Assertion Markup Language)은 XML 기반 SSO 프로토콜로, IdP가 인증을 담당하고 SP가 서비스를 제공합니다. 엔터프라이즈 환경에서 많이 사용됩니다.",
+      "keywords": ["SAML", "SSO", "IdP"]
+    },
+    {
+      "id": 9,
+      "question": "OAuth 2.0에서 웹 서버 애플리케이션에 권장되는 Grant Type은?",
+      "options": ["Implicit", "Client Credentials", "Authorization Code", "Resource Owner Password"],
+      "answer": 2,
+      "explanation": "Authorization Code Grant는 웹 서버 애플리케이션에 권장되는 방식으로, 인가 코드를 교환하여 Access Token을 획득합니다. PKCE를 추가하면 보안이 더 강화됩니다.",
+      "keywords": ["OAuth 2.0", "Authorization Code", "Grant Type"]
+    },
+    {
+      "id": 10,
+      "question": "Windows 보안 이벤트 로그에서 로그인 실패를 나타내는 이벤트 ID는?",
+      "options": ["4624", "4625", "4672", "4688"],
+      "answer": 1,
+      "explanation": "이벤트 ID 4625는 로그인 실패를 나타냅니다. 4624는 로그인 성공, 4672는 특수 권한 할당, 4688은 프로세스 생성입니다.",
+      "keywords": ["이벤트 ID 4625", "로그인 실패", "Windows 감사"]
+    },
+    {
+      "id": 11,
+      "question": "Linux 커널 감사 프레임워크로, /var/log/audit/audit.log에 감사 로그를 기록하는 것은?",
+      "options": ["syslog", "rsyslog", "auditd", "journald"],
+      "answer": 2,
+      "explanation": "auditd는 Linux 커널 감사 프레임워크로, 파일 접근, 명령어 실행, 권한 변경 등을 /var/log/audit/audit.log에 기록합니다.",
+      "keywords": ["auditd", "감사 로그", "Linux"]
+    },
+    {
+      "id": 12,
+      "question": "미리 계산된 해시 테이블을 이용하여 패스워드를 크래킹하는 공격은?",
+      "options": ["무차별 대입 공격", "사전 공격", "레인보우 테이블 공격", "패스워드 스프레이"],
+      "answer": 2,
+      "explanation": "레인보우 테이블 공격은 미리 계산된 해시-패스워드 쌍의 테이블을 이용하여 빠르게 패스워드를 복원합니다. Salt를 사용하면 이 공격을 방어할 수 있습니다.",
+      "keywords": ["레인보우 테이블", "패스워드 크래킹", "Salt"]
+    },
+    {
+      "id": 13,
+      "question": "NTLM 인증 방식 중 Challenge-Response에서 HMAC-MD5를 사용하는 개선된 버전은?",
+      "options": ["LM Hash", "NTLM v1", "NTLM v2", "Kerberos"],
+      "answer": 2,
+      "explanation": "NTLM v2는 HMAC-MD5를 사용하여 NTLM v1보다 개선된 보안을 제공합니다. LM Hash는 가장 취약하며 7자씩 분리하여 DES로 암호화합니다.",
+      "keywords": ["NTLM v2", "HMAC-MD5", "Challenge-Response"]
+    },
+    {
+      "id": 14,
+      "question": "로그 무결성을 보장하기 위해 한 번 쓰면 수정이 불가능한 스토리지 방식은?",
+      "options": ["SAN", "NAS", "WORM", "RAID"],
+      "answer": 2,
+      "explanation": "WORM(Write Once Read Many) 스토리지는 한 번 기록하면 수정이나 삭제가 불가능하여 로그 무결성을 보장합니다.",
+      "keywords": ["WORM", "로그 무결성", "스토리지"]
+    },
+    {
+      "id": 15,
+      "question": "개인정보보호법에서 요구하는 접속기록의 최소 보관 기간은?",
+      "options": ["6개월", "1년", "2년", "5년"],
+      "answer": 2,
+      "explanation": "개인정보보호법은 접속기록을 최소 2년간 보관하도록 요구합니다. 정보통신망법은 1년, 전자금융거래법은 거래기록 5년 보관을 요구합니다.",
+      "keywords": ["개인정보보호법", "접속기록", "보관 기간"]
+    },
+    {
+      "id": 16,
+      "question": "Kerberos 공격 중 SPN(Service Principal Name) 계정의 서비스 티켓을 요청한 후 오프라인으로 크래킹하는 것은?",
+      "options": ["Golden Ticket", "Silver Ticket", "Kerberoasting", "AS-REP Roasting"],
+      "answer": 2,
+      "explanation": "Kerberoasting은 SPN이 등록된 서비스 계정의 서비스 티켓을 요청하고, 해당 티켓을 오프라인에서 크래킹하여 서비스 계정의 패스워드를 획득합니다.",
+      "keywords": ["Kerberoasting", "SPN", "오프라인 크래킹"]
+    },
+    {
+      "id": 17,
+      "question": "하나의 패스워드로 다수의 계정에 로그인을 시도하는 공격 방식은?",
+      "options": ["무차별 대입 공격", "사전 공격", "패스워드 스프레이", "크리덴셜 스터핑"],
+      "answer": 2,
+      "explanation": "패스워드 스프레이는 흔히 사용되는 하나의 패스워드로 여러 계정에 로그인을 시도합니다. 계정 잠금 정책을 우회하기 위한 기법입니다.",
+      "keywords": ["패스워드 스프레이", "계정 잠금 우회", "패스워드 공격"]
+    },
+    {
+      "id": 18,
+      "question": "Linux SSH 키 인증에서 원격 서버에 등록하는 허용된 공개 키 목록 파일은?",
+      "options": ["~/.ssh/id_rsa", "~/.ssh/id_rsa.pub", "~/.ssh/authorized_keys", "~/.ssh/known_hosts"],
+      "answer": 2,
+      "explanation": "~/.ssh/authorized_keys는 원격 접속을 허용할 공개 키 목록을 저장합니다. id_rsa는 개인 키, id_rsa.pub는 공개 키, known_hosts는 접속한 서버 공개 키입니다.",
+      "keywords": ["authorized_keys", "SSH 키 인증", "공개 키"]
+    },
+    {
+      "id": 19,
+      "question": "Linux에서 사용자 크론 작업이 저장되는 경로는?",
+      "options": ["/etc/crontab", "/etc/cron.d/", "/var/spool/cron/", "/etc/init.d/"],
+      "answer": 2,
+      "explanation": "/var/spool/cron/은 개별 사용자의 크론 작업이 저장되는 경로입니다. /etc/crontab은 시스템 크론, /etc/cron.d/는 시스템 크론 작업 디렉토리입니다.",
+      "keywords": ["cron", "/var/spool/cron", "Linux"]
+    },
+    {
+      "id": 20,
+      "question": "Windows 레지스트리에서 시스템 시작 프로그램이 등록되는 키 경로는?",
+      "options": [
+        "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run",
+        "HKLM\\SYSTEM\\CurrentControlSet\\Services",
+        "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer",
+        "HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion"
+      ],
+      "answer": 0,
+      "explanation": "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run은 시스템 시작 시 자동으로 실행되는 프로그램이 등록되는 레지스트리 키입니다.",
+      "keywords": ["레지스트리", "시작 프로그램", "Run 키"]
+    },
+    {
+      "id": 21,
+      "question": "SIEM(Security Information and Event Management)의 주요 기능이 아닌 것은?",
+      "options": ["로그 수집 및 정규화", "이벤트 상관분석", "위협 탐지 알림", "패스워드 크래킹"],
+      "answer": 3,
+      "explanation": "SIEM은 로그 수집, 정규화, 상관분석, 알림, 대시보드, 컴플라이언스 보고 기능을 제공합니다. 패스워드 크래킹은 공격 기법이지 SIEM 기능이 아닙니다.",
+      "keywords": ["SIEM", "상관분석", "로그 수집"]
+    },
+    {
+      "id": 22,
+      "question": "다른 사이트에서 유출된 자격증명(ID/패스워드)을 다른 서비스에 재사용하여 로그인을 시도하는 공격은?",
+      "options": ["패스워드 스프레이", "무차별 대입 공격", "크리덴셜 스터핑", "사전 공격"],
+      "answer": 2,
+      "explanation": "크리덴셜 스터핑(Credential Stuffing)은 유출된 자격증명 목록을 다른 서비스에 자동으로 시도하는 공격으로, 패스워드 재사용의 위험성을 보여줍니다.",
+      "keywords": ["크리덴셜 스터핑", "자격증명 재사용", "유출"]
+    },
+    {
+      "id": 23,
+      "question": "rsyslog에서 원격 서버로 TCP를 통해 로그를 전송하는 설정은?",
+      "options": [
+        "*.* @192.168.1.100:514",
+        "*.* @@192.168.1.100:514",
+        "*.* #192.168.1.100:514",
+        "*.* $192.168.1.100:514"
+      ],
+      "answer": 1,
+      "explanation": "rsyslog에서 @@는 TCP, @는 UDP를 통한 원격 전송을 의미합니다. TCP가 신뢰성이 높아 보안 로그 전송에 권장됩니다.",
+      "keywords": ["rsyslog", "TCP", "원격 로깅"]
+    },
+    {
+      "id": 24,
+      "question": "Kerberos 인증에서 AS(Authentication Service)가 클라이언트에게 발급하는 것은?",
+      "options": ["Service Ticket", "TGT(Ticket Granting Ticket)", "Session Key만", "Access Token"],
+      "answer": 1,
+      "explanation": "AS(Authentication Service)는 클라이언트 인증 후 TGT를 발급합니다. 이후 클라이언트는 TGT를 TGS에 제시하여 Service Ticket을 요청합니다.",
+      "keywords": ["Kerberos", "TGT", "AS"]
+    },
+    {
+      "id": 25,
+      "question": "Linux /etc/shadow 파일에서 해시 알고리즘 식별자 $6$이 의미하는 것은?",
+      "options": ["MD5", "SHA-256", "SHA-512", "Blowfish"],
+      "answer": 2,
+      "explanation": "/etc/shadow에서 $6$은 SHA-512를 의미합니다. $1$은 MD5, $5$은 SHA-256, $2a$/$2b$은 bcrypt입니다.",
+      "keywords": ["/etc/shadow", "SHA-512", "해시 식별자"]
+    },
+    {
+      "id": 26,
+      "question": "Windows 감사 이벤트에서 특수 권한(관리자 권한)이 할당된 로그온을 나타내는 이벤트 ID는?",
+      "options": ["4624", "4625", "4672", "4688"],
+      "answer": 2,
+      "explanation": "이벤트 ID 4672는 특수 권한이 새 로그온에 할당되었음을 나타냅니다. 관리자 로그인이나 권한 상승 탐지에 활용됩니다.",
+      "keywords": ["이벤트 ID 4672", "특수 권한", "감사"]
+    },
+    {
+      "id": 27,
+      "question": "OAuth 2.0과 OpenID Connect의 관계에 대한 설명으로 옳은 것은?",
+      "options": [
+        "OpenID Connect는 OAuth 2.0과 무관한 별도 프로토콜이다",
+        "OAuth 2.0은 OpenID Connect 위에 구축되었다",
+        "OpenID Connect는 OAuth 2.0 위에 인증 계층을 추가한 것이다",
+        "둘은 동일한 프로토콜의 다른 이름이다"
+      ],
+      "answer": 2,
+      "explanation": "OpenID Connect(OIDC)는 OAuth 2.0 위에 인증(Authentication) 계층을 추가한 프로토콜입니다. OAuth 2.0은 인가(Authorization), OIDC는 인증을 담당합니다.",
+      "keywords": ["OpenID Connect", "OAuth 2.0", "인증"]
+    },
+    {
+      "id": 28,
+      "question": "다음 중 journalctl 명령어로 SSH 서비스 로그를 조회하는 방법은?",
+      "options": [
+        "journalctl -b",
+        "journalctl -u sshd",
+        "journalctl -f",
+        "journalctl -p err"
+      ],
+      "answer": 1,
+      "explanation": "journalctl -u sshd는 sshd 서비스의 로그를 조회합니다. -b는 부팅 로그, -f는 실시간 모니터링, -p는 우선순위 필터입니다.",
+      "keywords": ["journalctl", "sshd", "서비스 로그"]
+    },
+    {
+      "id": 29,
+      "question": "패스워드에 대한 모든 해시에 동일하게 적용되는 비밀 값으로, DB 외부에 별도 저장하는 것은?",
+      "options": ["Salt", "Pepper", "Nonce", "IV"],
+      "answer": 1,
+      "explanation": "Pepper는 모든 패스워드에 동일하게 적용되는 비밀 값으로, 데이터베이스 외부에 별도 저장하여 DB 유출 시에도 해시 크래킹을 어렵게 합니다.",
+      "keywords": ["Pepper", "패스워드 보안", "비밀 값"]
+    },
+    {
+      "id": 30,
+      "question": "Windows에서 SAM 파일의 해시를 추출하는 데 사용되는 도구는?",
+      "options": ["Wireshark", "mimikatz", "Nmap", "Burp Suite"],
+      "answer": 1,
+      "explanation": "mimikatz는 Windows 메모리에서 패스워드 해시, 평문 패스워드, Kerberos 티켓 등을 추출할 수 있는 도구입니다.",
+      "keywords": ["mimikatz", "SAM", "해시 추출"]
+    },
+    {
+      "id": 31,
+      "question": "Linux에서 PAM(Pluggable Authentication Modules)의 서비스별 설정 파일이 위치하는 경로는?",
+      "options": ["/etc/security/", "/etc/pam.d/", "/etc/ssh/", "/etc/login.defs"],
+      "answer": 1,
+      "explanation": "/etc/pam.d/ 디렉토리에 서비스별 PAM 설정 파일이 위치합니다. 예: /etc/pam.d/sshd, /etc/pam.d/login 등",
+      "keywords": ["PAM", "/etc/pam.d", "Linux 인증"]
+    },
+    {
+      "id": 32,
+      "question": "auditd에서 /etc/passwd 파일에 대한 쓰기와 속성 변경을 감사하는 규칙은?",
+      "options": [
+        "-w /etc/passwd -p r -k identity",
+        "-w /etc/passwd -p wa -k identity",
+        "-w /etc/passwd -p x -k identity",
+        "-a always,exit -F path=/etc/passwd"
+      ],
+      "answer": 1,
+      "explanation": "-w는 파일 감시, -p wa는 쓰기(w)와 속성 변경(a) 감사, -k identity는 키워드 태그입니다. r은 읽기, x는 실행 감사입니다.",
+      "keywords": ["auditd", "감사 규칙", "파일 감시"]
+    },
+    {
+      "id": 33,
+      "question": "무차별 대입 공격을 탐지하기 위한 SIEM 상관분석 규칙으로 적절한 것은?",
+      "options": [
+        "동일 IP에서 4624 이벤트가 5분 내 5회 이상 발생",
+        "동일 IP에서 4625 이벤트가 5분 내 5회 이상 발생",
+        "동일 IP에서 4672 이벤트가 5분 내 5회 이상 발생",
+        "동일 IP에서 4688 이벤트가 5분 내 5회 이상 발생"
+      ],
+      "answer": 1,
+      "explanation": "4625(로그인 실패)가 동일 출발지 IP에서 짧은 시간 내 반복되면 무차별 대입 공격의 지표입니다. 4624는 성공, 4672는 권한 할당, 4688은 프로세스 생성입니다.",
+      "keywords": ["SIEM", "상관분석", "무차별 대입"]
+    },
+    {
+      "id": 34,
+      "question": "Linux 환경 변수 중 현재 사용자의 기본 셸을 나타내는 것은?",
+      "options": ["$HOME", "$PATH", "$SHELL", "$USER"],
+      "answer": 2,
+      "explanation": "$SHELL은 현재 사용자의 기본 셸(예: /bin/bash)을 나타냅니다. $HOME은 홈 디렉토리, $PATH는 실행 파일 경로, $USER는 사용자 이름입니다.",
+      "keywords": ["$SHELL", "환경 변수", "Linux"]
+    },
+    {
+      "id": 35,
+      "question": "bcrypt 패스워드 해싱 함수의 특징으로 옳은 것은?",
+      "options": [
+        "SHA-256 기반이다",
+        "Blowfish 기반이며 비용 인자(cost factor)로 속도를 조절한다",
+        "메모리 집약적으로 GPU 공격에 강하다",
+        "반복 횟수만 설정 가능하다"
+      ],
+      "answer": 1,
+      "explanation": "bcrypt는 Blowfish 암호 알고리즘 기반으로, 비용 인자(cost factor)를 통해 해싱 속도를 조절할 수 있으며 Salt가 포함되어 있습니다.",
+      "keywords": ["bcrypt", "Blowfish", "비용 인자"]
+    },
+    {
+      "id": 36,
+      "question": "Silver Ticket 공격에 대한 설명으로 옳은 것은?",
+      "options": [
+        "krbtgt 해시를 사용하여 TGT를 위조한다",
+        "서비스 계정 해시를 사용하여 Service Ticket을 위조한다",
+        "DNS 캐시를 오염시킨다",
+        "NTLM 해시로 인증한다"
+      ],
+      "answer": 1,
+      "explanation": "Silver Ticket은 특정 서비스 계정의 해시를 사용하여 Service Ticket을 위조합니다. Golden Ticket과 달리 KDC를 경유하지 않아 탐지가 어렵습니다.",
+      "keywords": ["Silver Ticket", "Service Ticket", "Kerberos"]
+    },
+    {
+      "id": 37,
+      "question": "Windows에서 호스트 파일이 위치하는 경로는?",
+      "options": [
+        "C:\\Windows\\System32\\config\\hosts",
+        "C:\\Windows\\System32\\drivers\\etc\\hosts",
+        "C:\\Users\\{user}\\hosts",
+        "C:\\Windows\\hosts"
+      ],
+      "answer": 1,
+      "explanation": "Windows 호스트 파일은 C:\\Windows\\System32\\drivers\\etc\\hosts에 위치하며, DNS 조회 전에 참조되어 도메인-IP 매핑을 정의합니다.",
+      "keywords": ["hosts 파일", "Windows", "경로"]
+    },
+    {
+      "id": 38,
+      "question": "PowerShell 실행 스크립트 블록을 로깅하는 이벤트 ID는?",
+      "options": ["4103", "4104", "4624", "4688"],
+      "answer": 1,
+      "explanation": "이벤트 ID 4104는 PowerShell Script Block Logging으로, 실행된 스크립트 블록을 기록합니다. 악성 PowerShell 스크립트 탐지에 중요합니다.",
+      "keywords": ["PowerShell", "Script Block Logging", "4104"]
+    },
+    {
+      "id": 39,
+      "question": "다중 인증(MFA)의 올바른 조합은?",
+      "options": [
+        "패스워드 + PIN (지식 + 지식)",
+        "지문 + 홍채 (존재 + 존재)",
+        "패스워드 + OTP 토큰 (지식 + 소유)",
+        "보안 질문 + 패스워드 (지식 + 지식)"
+      ],
+      "answer": 2,
+      "explanation": "MFA는 서로 다른 유형의 인증 요소를 조합해야 합니다. 패스워드(지식) + OTP 토큰(소유)은 2가지 다른 요소를 사용하므로 올바른 MFA입니다.",
+      "keywords": ["MFA", "다중 인증", "2FA"]
+    },
+    {
+      "id": 40,
+      "question": "로그 수집 도구 중 Elastic Stack에서 로그 수집을 담당하는 것은?",
+      "options": ["Logstash", "Filebeat", "Kibana", "Elasticsearch"],
+      "answer": 1,
+      "explanation": "Filebeat는 Elastic Stack에서 가볍게 로그를 수집하여 Logstash 또는 Elasticsearch로 전송하는 에이전트입니다. Logstash는 처리, Kibana는 시각화를 담당합니다.",
+      "keywords": ["Filebeat", "Elastic Stack", "로그 수집"]
+    }
+  ]
+}

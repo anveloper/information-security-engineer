@@ -1,0 +1,423 @@
+{
+  "subject": "02-network-security",
+  "subjectName": "네트워크 보안",
+  "chapter": "02-network-attacks",
+  "chapterName": "네트워크 기반 공격",
+  "questions": [
+    {
+      "id": 1,
+      "question": "스위치 환경에서 위조된 ARP Reply를 보내 ARP 캐시를 변조하여 중간자(MITM) 위치를 확보하는 공격은?",
+      "options": ["MAC Flooding", "ARP Spoofing", "IP Spoofing", "DNS Spoofing"],
+      "answer": 1,
+      "explanation": "ARP Spoofing(ARP Poisoning)은 위조된 ARP Reply로 희생자의 ARP 캐시를 변조하여 트래픽이 공격자를 경유하도록 하는 공격입니다.",
+      "keywords": ["ARP Spoofing", "ARP Poisoning", "MITM"]
+    },
+    {
+      "id": 2,
+      "question": "다량의 위조 MAC 주소를 전송하여 스위치의 MAC 테이블을 오버플로우시키는 공격은?",
+      "options": ["ARP Spoofing", "DHCP Starvation", "MAC Flooding", "Switch Jamming"],
+      "answer": 2,
+      "explanation": "MAC Flooding은 다량의 위조 MAC 주소로 MAC 테이블을 가득 채워 스위치가 허브처럼 동작(Fail-Open)하게 만드는 공격입니다. macof 도구가 사용됩니다.",
+      "keywords": ["MAC Flooding", "MAC 테이블", "Fail-Open"]
+    },
+    {
+      "id": 3,
+      "question": "MAC Flooding 공격에 대한 대응으로 스위치 포트당 허용되는 MAC 주소 수를 제한하는 기능은?",
+      "options": ["DHCP Snooping", "Port Security", "DAI", "BPDU Guard"],
+      "answer": 1,
+      "explanation": "Port Security는 스위치 포트당 허용되는 MAC 주소 수를 제한하여 MAC Flooding 공격을 방지합니다.",
+      "keywords": ["Port Security", "MAC Flooding", "대응"]
+    },
+    {
+      "id": 4,
+      "question": "SYN Flood 공격에 대한 설명으로 옳은 것은?",
+      "options": [
+        "대량의 UDP 패킷을 전송하여 대역폭을 고갈시킨다",
+        "TCP 3-Way Handshake를 완료하지 않아 서버의 연결 대기 큐를 고갈시킨다",
+        "ICMP Echo Request를 브로드캐스트로 전송한다",
+        "출발지와 목적지 IP를 동일하게 설정한다"
+      ],
+      "answer": 1,
+      "explanation": "SYN Flood는 SYN 패킷만 대량으로 보내고 ACK를 보내지 않아 서버의 Backlog 큐를 SYN_RECEIVED 상태로 가득 채워 서비스를 거부시킵니다.",
+      "keywords": ["SYN Flood", "Backlog 큐", "DoS"]
+    },
+    {
+      "id": 5,
+      "question": "SYN Flood 공격의 대응 방법 중, 서버가 상태 정보를 저장하지 않고 쿠키 값으로 연결을 검증하는 방식은?",
+      "options": ["Backlog 큐 증가", "SYN Cookies", "Rate Limiting", "TCP Reset"],
+      "answer": 1,
+      "explanation": "SYN Cookies는 서버가 SYN 요청에 대한 상태 정보를 저장하지 않고, 시퀀스 번호에 쿠키 값을 인코딩하여 ACK 수신 시 연결을 검증하는 방식입니다.",
+      "keywords": ["SYN Cookies", "SYN Flood", "대응"]
+    },
+    {
+      "id": 6,
+      "question": "Smurf Attack에 대한 설명으로 옳은 것은?",
+      "options": [
+        "TCP SYN 패킷을 대량 전송하는 공격이다",
+        "ICMP Echo Request를 브로드캐스트 주소로 보내 증폭하는 공격이다",
+        "IP 단편화 오프셋을 조작하는 공격이다",
+        "65,535바이트 초과 ICMP 패킷을 보내는 공격이다"
+      ],
+      "answer": 1,
+      "explanation": "Smurf Attack은 출발지 IP를 희생자로 위조한 ICMP Echo Request를 브로드캐스트 주소로 보내, 네트워크의 모든 호스트가 희생자에게 Echo Reply를 보내도록 하는 증폭 공격입니다.",
+      "keywords": ["Smurf Attack", "ICMP", "브로드캐스트"]
+    },
+    {
+      "id": 7,
+      "question": "출발지 IP와 목적지 IP를 동일하게 설정하여 시스템이 자기 자신에게 응답을 시도하게 만드는 공격은?",
+      "options": ["Teardrop Attack", "Land Attack", "Ping of Death", "Fraggle Attack"],
+      "answer": 1,
+      "explanation": "Land Attack은 출발지와 목적지 IP/포트를 동일하게 설정한 패킷을 전송하여 시스템이 자기 자신에게 응답을 시도하며 자원을 소모하게 만듭니다.",
+      "keywords": ["Land Attack", "DoS", "IP 스푸핑"]
+    },
+    {
+      "id": 8,
+      "question": "IP 패킷의 단편화 오프셋을 겹치게 설정하여 재조합 시 시스템 충돌을 유발하는 공격은?",
+      "options": ["Land Attack", "Smurf Attack", "Teardrop Attack", "SYN Flood"],
+      "answer": 2,
+      "explanation": "Teardrop Attack은 IP 단편화 패킷의 오프셋을 조작하여 중첩되게 만들고, 이를 재조합할 때 시스템이 충돌하도록 유발합니다.",
+      "keywords": ["Teardrop Attack", "IP 단편화", "오프셋"]
+    },
+    {
+      "id": 9,
+      "question": "DNS Amplification 공격에서 증폭 효과를 높이기 위해 오픈 리졸버에 전송하는 쿼리 유형은?",
+      "options": ["A 레코드 쿼리", "MX 레코드 쿼리", "ANY 쿼리", "PTR 레코드 쿼리"],
+      "answer": 2,
+      "explanation": "DNS Amplification 공격은 오픈 리졸버에 ANY 쿼리를 보내 작은 요청으로 큰 응답(최대 50배 이상)을 유발하며, 출발지 IP를 희생자로 위조합니다.",
+      "keywords": ["DNS Amplification", "ANY 쿼리", "오픈 리졸버"]
+    },
+    {
+      "id": 10,
+      "question": "NTP Amplification 공격에서 악용되는 NTP 명령으로, 최근 접속 클라이언트 목록을 반환하여 최대 500배 이상 증폭되는 것은?",
+      "options": ["ntpdate", "ntpstat", "monlist", "peer"],
+      "answer": 2,
+      "explanation": "monlist 명령은 NTP 서버에서 최근 접속한 클라이언트 목록을 반환하며, 최대 500배 이상의 증폭 효과가 발생합니다. 대응 방법은 monlist 비활성화입니다.",
+      "keywords": ["NTP Amplification", "monlist", "증폭 공격"]
+    },
+    {
+      "id": 11,
+      "question": "봇넷(Botnet)의 구성요소가 아닌 것은?",
+      "options": ["Bot (좀비 PC)", "C&C Server", "Bot Master", "Honeypot"],
+      "answer": 3,
+      "explanation": "Honeypot은 공격자를 유인하기 위한 방어 수단이지 봇넷의 구성요소가 아닙니다. 봇넷은 Bot(좀비 PC), C&C Server(명령 제어), Bot Master(공격자)로 구성됩니다.",
+      "keywords": ["봇넷", "C&C", "Bot Master"]
+    },
+    {
+      "id": 12,
+      "question": "HTTPS 연결을 HTTP로 다운그레이드하여 평문 통신을 유도하는 MITM 공격은?",
+      "options": ["DNS Spoofing", "SSL Stripping", "Evil Twin", "ARP Spoofing"],
+      "answer": 1,
+      "explanation": "SSL Stripping은 클라이언트-서버 간 HTTPS 통신을 가로채어, 공격자-서버는 HTTPS, 공격자-클라이언트는 HTTP로 다운그레이드하여 평문을 도청합니다.",
+      "keywords": ["SSL Stripping", "MITM", "HTTPS 다운그레이드"]
+    },
+    {
+      "id": 13,
+      "question": "SSL Stripping 공격의 대응으로 브라우저에 HTTPS 사용을 강제하는 HTTP 헤더는?",
+      "options": ["X-Frame-Options", "Content-Security-Policy", "HSTS", "X-XSS-Protection"],
+      "answer": 2,
+      "explanation": "HSTS(HTTP Strict Transport Security)는 웹 서버가 브라우저에 HTTPS 사용을 강제하는 헤더입니다. HSTS Preload를 통해 첫 접속부터 보호할 수 있습니다.",
+      "keywords": ["HSTS", "SSL Stripping", "대응"]
+    },
+    {
+      "id": 14,
+      "question": "합법적인 Wi-Fi AP와 동일한 SSID로 악성 AP를 운영하여 사용자를 속이는 공격은?",
+      "options": ["Deauthentication Attack", "KRACK", "Evil Twin", "WEP Cracking"],
+      "answer": 2,
+      "explanation": "Evil Twin 공격은 정상 AP와 동일한 SSID로 악성 AP를 운영하여 사용자가 악성 AP에 접속하게 만들고, 트래픽 도청이나 DNS 스푸핑을 수행합니다.",
+      "keywords": ["Evil Twin", "악성 AP", "SSID"]
+    },
+    {
+      "id": 15,
+      "question": "포트 스캔 유형 중 TCP 연결을 완전히 수립하지 않아 로그에 남지 않는 스텔스 스캔은?",
+      "options": ["TCP Connect 스캔", "SYN(Half-Open) 스캔", "UDP 스캔", "ACK 스캔"],
+      "answer": 1,
+      "explanation": "SYN(Half-Open) 스캔은 SYN 패킷을 보낸 후 SYN+ACK를 받으면 RST로 연결을 끊어, 완전한 TCP 연결이 수립되지 않아 로그에 남지 않습니다.",
+      "keywords": ["SYN 스캔", "Half-Open", "스텔스 스캔"]
+    },
+    {
+      "id": 16,
+      "question": "Nmap에서 XMAS 스캔을 수행하는 옵션은?",
+      "options": ["-sS", "-sT", "-sX", "-sU"],
+      "answer": 2,
+      "explanation": "Nmap의 -sX 옵션은 XMAS 스캔으로, FIN+PSH+URG 플래그를 모두 설정한 패킷을 전송합니다. -sS는 SYN, -sT는 TCP Connect, -sU는 UDP 스캔입니다.",
+      "keywords": ["Nmap", "XMAS 스캔", "-sX"]
+    },
+    {
+      "id": 17,
+      "question": "DNS Cache Poisoning 공격의 대응으로 DNS 응답에 디지털 서명을 추가하여 검증하는 기술은?",
+      "options": ["DNS over HTTPS", "DNS over TLS", "DNSSEC", "DNS Filtering"],
+      "answer": 2,
+      "explanation": "DNSSEC은 DNS 응답에 디지털 서명을 추가하여 응답의 무결성과 출처를 검증합니다. DoH/DoT는 DNS 쿼리의 암호화에 초점을 맞춥니다.",
+      "keywords": ["DNSSEC", "DNS Cache Poisoning", "디지털 서명"]
+    },
+    {
+      "id": 18,
+      "question": "위조된 ICMP Redirect 메시지를 보내 트래픽 경로를 변경하는 공격의 대응 방법은?",
+      "options": [
+        "DHCP Snooping 활성화",
+        "ICMP Redirect 비활성화",
+        "Port Security 설정",
+        "MAC 필터링 적용"
+      ],
+      "answer": 1,
+      "explanation": "ICMP Redirect 공격은 위조된 Redirect 메시지로 라우팅을 변경합니다. Linux에서 net.ipv4.conf.all.accept_redirects=0으로 비활성화하여 대응합니다.",
+      "keywords": ["ICMP Redirect", "라우팅 변경", "대응"]
+    },
+    {
+      "id": 19,
+      "question": "이메일 발신자 위조(Email Spoofing)를 방지하기 위해 SPF, DKIM, DMARC 중 발신 서버 IP를 검증하는 기술은?",
+      "options": ["SPF", "DKIM", "DMARC", "S/MIME"],
+      "answer": 0,
+      "explanation": "SPF(Sender Policy Framework)는 DNS TXT 레코드에 허용된 발신 서버 IP 목록을 등록하여 발신 서버 IP를 검증합니다.",
+      "keywords": ["SPF", "Email Spoofing", "발신 서버"]
+    },
+    {
+      "id": 20,
+      "question": "세션 하이재킹 공격에서 공격자가 미리 설정한 세션 ID를 희생자가 사용하도록 유도하는 방식은?",
+      "options": ["Session Sniffing", "Session Fixation", "Session Prediction", "Session Replay"],
+      "answer": 1,
+      "explanation": "Session Fixation은 공격자가 미리 획득한 세션 ID를 희생자에게 사용하도록 유도한 후, 희생자가 로그인하면 같은 세션으로 인증된 상태를 공유합니다.",
+      "keywords": ["Session Fixation", "세션 하이재킹", "세션 ID"]
+    },
+    {
+      "id": 21,
+      "question": "Session Fixation 공격의 대응으로 가장 적절한 것은?",
+      "options": [
+        "세션 타임아웃 설정",
+        "로그인 시 세션 ID 재생성",
+        "IP 기반 세션 바인딩",
+        "HTTPS 강제 적용"
+      ],
+      "answer": 1,
+      "explanation": "Session Fixation의 핵심 대응은 로그인(인증) 성공 시 세션 ID를 재생성하여 기존 세션 ID를 무효화하는 것입니다.",
+      "keywords": ["Session Fixation", "세션 ID 재생성", "대응"]
+    },
+    {
+      "id": 22,
+      "question": "스니핑 대응을 위해 네트워크 인터페이스를 Promiscuous Mode로 설정한 호스트를 탐지할 수 있는 도구는?",
+      "options": ["Wireshark", "arpwatch", "Nmap", "tcpdump"],
+      "answer": 1,
+      "explanation": "arpwatch는 ARP 변화를 감시하여 ARP Spoofing이나 스니핑 활동을 탐지할 수 있습니다. Wireshark와 tcpdump는 스니핑 도구, Nmap은 포트 스캐너입니다.",
+      "keywords": ["arpwatch", "스니핑 탐지", "ARP 감시"]
+    },
+    {
+      "id": 23,
+      "question": "Slowloris 공격에 대한 설명으로 옳은 것은?",
+      "options": [
+        "대량의 SYN 패킷을 전송하여 연결 큐를 고갈시킨다",
+        "느린 HTTP 요청을 보내 웹 서버의 연결을 장시간 점유한다",
+        "DNS 증폭을 이용한 대역폭 소진 공격이다",
+        "UDP 패킷을 대량 전송하여 대역폭을 고갈시킨다"
+      ],
+      "answer": 1,
+      "explanation": "Slowloris는 HTTP 요청 헤더를 매우 느리게 전송하여 웹 서버의 연결을 장시간 점유하는 애플리케이션 계층 DoS 공격입니다.",
+      "keywords": ["Slowloris", "HTTP", "애플리케이션 DoS"]
+    },
+    {
+      "id": 24,
+      "question": "IP Spoofing 대응 기법 중 패킷의 출발지 IP가 해당 인터페이스로 라우팅 가능한지 검증하는 것은?",
+      "options": ["Ingress Filtering", "Egress Filtering", "uRPF", "ACL"],
+      "answer": 2,
+      "explanation": "uRPF(Unicast Reverse Path Forwarding)는 수신 패킷의 출발지 IP 주소에 대한 역경로를 확인하여 IP Spoofing을 방지합니다.",
+      "keywords": ["uRPF", "IP Spoofing", "역경로 검증"]
+    },
+    {
+      "id": 25,
+      "question": "WPA2 보안의 4-Way Handshake 취약점을 악용하여 키를 재설치하는 공격은?",
+      "options": ["WEP Cracking", "PMKID Attack", "KRACK", "Deauthentication Attack"],
+      "answer": 2,
+      "explanation": "KRACK(Key Reinstallation Attack)은 WPA2의 4-Way Handshake 과정에서 키를 강제로 재설치하게 하여 암호화를 무력화하는 공격입니다.",
+      "keywords": ["KRACK", "WPA2", "4-Way Handshake"]
+    },
+    {
+      "id": 26,
+      "question": "무선 네트워크에서 위조된 Deauthentication 프레임을 전송하여 클라이언트 연결을 강제 해제하는 공격의 주요 목적은?",
+      "options": [
+        "WEP 키를 직접 추출하기 위해",
+        "DoS 또는 4-Way Handshake 캡처를 위해",
+        "AP의 관리자 패스워드를 변경하기 위해",
+        "DNS 캐시를 오염시키기 위해"
+      ],
+      "answer": 1,
+      "explanation": "Deauthentication 공격은 클라이언트 연결을 강제 해제하여 서비스를 거부하거나, 클라이언트의 재연결 과정에서 4-Way Handshake를 캡처하여 PSK 크래킹에 활용합니다.",
+      "keywords": ["Deauthentication", "Handshake 캡처", "무선 공격"]
+    },
+    {
+      "id": 27,
+      "question": "DNS 터널링에 대한 설명으로 옳은 것은?",
+      "options": [
+        "DNS 서버의 캐시에 위조된 레코드를 삽입한다",
+        "DNS 쿼리/응답에 데이터를 인코딩하여 방화벽을 우회한다",
+        "DNS 응답을 증폭하여 DDoS 공격을 수행한다",
+        "DNS 서버를 대상으로 SYN Flood 공격을 수행한다"
+      ],
+      "answer": 1,
+      "explanation": "DNS 터널링은 DNS 쿼리와 응답의 페이로드에 데이터를 인코딩하여, DNS가 대부분 허용되어 있는 방화벽을 우회하여 데이터를 유출하거나 C&C 통신에 활용합니다.",
+      "keywords": ["DNS 터널링", "방화벽 우회", "데이터 유출"]
+    },
+    {
+      "id": 28,
+      "question": "Smurf Attack의 UDP 버전으로, UDP Echo(7번 포트)를 브로드캐스트로 전송하는 공격은?",
+      "options": ["Land Attack", "Teardrop Attack", "Fraggle Attack", "Ping of Death"],
+      "answer": 2,
+      "explanation": "Fraggle Attack은 Smurf Attack의 UDP 버전으로, UDP Echo 서비스(포트 7)에 브로드캐스트로 패킷을 전송하여 증폭 공격을 수행합니다.",
+      "keywords": ["Fraggle Attack", "UDP", "Smurf"]
+    },
+    {
+      "id": 29,
+      "question": "BGP Hijacking 공격에 대한 대응으로 BGP 경로 광고의 진위를 검증하기 위한 PKI 기반 인프라는?",
+      "options": ["BGPsec", "RPKI", "MANRS", "DNSSEC"],
+      "answer": 1,
+      "explanation": "RPKI(Resource Public Key Infrastructure)는 IP 주소와 AS 번호의 소유권을 인증서로 검증하여 BGP Hijacking을 방지하는 PKI 기반 인프라입니다.",
+      "keywords": ["RPKI", "BGP Hijacking", "경로 검증"]
+    },
+    {
+      "id": 30,
+      "question": "스위치에서 ARP 패킷을 검증하여 ARP Spoofing을 방지하는 보안 기능은?",
+      "options": ["Port Security", "DHCP Snooping", "Dynamic ARP Inspection", "BPDU Guard"],
+      "answer": 2,
+      "explanation": "DAI(Dynamic ARP Inspection)는 스위치에서 수신되는 ARP 패킷의 IP-MAC 매핑을 DHCP Snooping 바인딩 테이블과 비교하여 검증합니다.",
+      "keywords": ["DAI", "ARP Spoofing", "스위치 보안"]
+    },
+    {
+      "id": 31,
+      "question": "포트 스캐닝에서 FIN, PSH, URG 플래그를 모두 설정한 패킷을 전송하는 스캔 유형은?",
+      "options": ["FIN 스캔", "NULL 스캔", "XMAS 스캔", "ACK 스캔"],
+      "answer": 2,
+      "explanation": "XMAS 스캔은 FIN, PSH, URG 플래그를 모두 설정한 패킷을 전송합니다. 열린 포트는 응답 없음, 닫힌 포트는 RST를 반환합니다.",
+      "keywords": ["XMAS 스캔", "FIN+PSH+URG", "포트 스캐닝"]
+    },
+    {
+      "id": 32,
+      "question": "DDoS 대응 방법 중 공격 트래픽을 네트워크 블랙홀로 보내 폐기하는 방식은?",
+      "options": ["Rate Limiting", "Blackhole Routing", "CAPTCHA", "CDN"],
+      "answer": 1,
+      "explanation": "Blackhole Routing은 공격 대상 IP로 향하는 모든 트래픽을 블랙홀(null 라우트)로 보내 폐기합니다. 정상 트래픽도 함께 차단될 수 있는 단점이 있습니다.",
+      "keywords": ["Blackhole Routing", "DDoS 대응", "null 라우트"]
+    },
+    {
+      "id": 33,
+      "question": "Passive Sniffing과 Active Sniffing의 차이에 대한 설명으로 옳은 것은?",
+      "options": [
+        "Passive Sniffing은 스위치 환경에서, Active Sniffing은 허브 환경에서 사용한다",
+        "Passive Sniffing은 허브 환경에서 단순 도청, Active Sniffing은 스위치 환경에서 공격을 통한 도청이다",
+        "둘 다 암호화된 트래픽을 해독할 수 있다",
+        "Active Sniffing은 방화벽을 우회할 수 있다"
+      ],
+      "answer": 1,
+      "explanation": "Passive Sniffing은 허브 환경에서 모든 트래픽이 모든 포트로 전달되므로 단순 도청이 가능합니다. Active Sniffing은 스위치 환경에서 ARP Spoofing 등의 공격을 통해 도청합니다.",
+      "keywords": ["Passive Sniffing", "Active Sniffing", "스니핑"]
+    },
+    {
+      "id": 34,
+      "question": "DHCP Spoofing 공격에 대응하여 신뢰할 수 있는 DHCP 서버만 허용하는 스위치 보안 기능은?",
+      "options": ["Port Security", "DAI", "DHCP Snooping", "802.1X"],
+      "answer": 2,
+      "explanation": "DHCP Snooping은 신뢰할 수 있는(Trusted) 포트와 신뢰할 수 없는(Untrusted) 포트를 구분하여 악성 DHCP 서버의 응답을 차단합니다.",
+      "keywords": ["DHCP Snooping", "DHCP Spoofing", "대응"]
+    },
+    {
+      "id": 35,
+      "question": "Memcached Amplification 공격의 증폭 비율은 최대 얼마까지 가능한가?",
+      "options": ["약 30배", "약 500배", "약 10,000배", "약 50,000배 이상"],
+      "answer": 3,
+      "explanation": "Memcached Amplification 공격은 Memcached 프로토콜을 악용하여 최대 50,000배 이상의 증폭 비율을 달성할 수 있어 매우 위험합니다.",
+      "keywords": ["Memcached Amplification", "증폭 비율", "DDoS"]
+    },
+    {
+      "id": 36,
+      "question": "미리 정의된 포트 시퀀스로 접속해야 실제 서비스 포트가 열리는 보안 기법은?",
+      "options": ["Port Forwarding", "Port Knocking", "Port Mirroring", "Port Security"],
+      "answer": 1,
+      "explanation": "Port Knocking은 특정 순서로 포트에 접근해야 실제 서비스 포트가 열리는 기법으로, 포트 스캐닝 공격에 대한 대응 수단입니다.",
+      "keywords": ["Port Knocking", "포트 스캐닝 대응", "보안"]
+    },
+    {
+      "id": 37,
+      "question": "DKIM(DomainKeys Identified Mail)의 주요 기능은?",
+      "options": [
+        "발신 서버의 IP 주소를 검증한다",
+        "이메일에 디지털 서명을 추가하여 무결성을 검증한다",
+        "SPF와 DKIM 결과를 바탕으로 정책을 적용한다",
+        "이메일 본문을 암호화한다"
+      ],
+      "answer": 1,
+      "explanation": "DKIM은 발신 서버가 이메일에 디지털 서명을 추가하고, 수신 서버가 DNS에 게시된 공개키로 서명을 검증하여 이메일의 무결성과 발신자를 확인합니다.",
+      "keywords": ["DKIM", "디지털 서명", "이메일 보안"]
+    },
+    {
+      "id": 38,
+      "question": "느린 POST 데이터 전송으로 웹 서버 연결을 점유하는 애플리케이션 계층 DoS 공격은?",
+      "options": ["Slowloris", "RUDY", "HTTP Flood", "SYN Flood"],
+      "answer": 1,
+      "explanation": "RUDY(R-U-Dead-Yet)는 HTTP POST 요청의 데이터를 매우 느리게 전송하여 웹 서버 연결을 장시간 점유하는 공격입니다. Slowloris는 헤더를 느리게 보냅니다.",
+      "keywords": ["RUDY", "Slowloris", "애플리케이션 DoS"]
+    },
+    {
+      "id": 39,
+      "question": "무선 네트워크 공격 도구 중 패킷 인젝션 기능을 제공하는 것은?",
+      "options": ["airmon-ng", "airodump-ng", "aireplay-ng", "aircrack-ng"],
+      "answer": 2,
+      "explanation": "aireplay-ng는 패킷 인젝션(주입) 기능을 제공합니다. airmon-ng는 모니터 모드, airodump-ng는 패킷 캡처, aircrack-ng는 키 크래킹을 담당합니다.",
+      "keywords": ["aireplay-ng", "패킷 인젝션", "Aircrack-ng"]
+    },
+    {
+      "id": 40,
+      "question": "Ingress Filtering과 Egress Filtering에 대한 설명으로 옳은 것은?",
+      "options": [
+        "Ingress Filtering은 내부에서 외부로 나가는 트래픽을 필터링한다",
+        "Egress Filtering은 외부에서 내부로 들어오는 트래픽을 필터링한다",
+        "Ingress Filtering은 내부 IP를 출발지로 한 외부 패킷을 차단한다",
+        "둘 다 애플리케이션 계층에서 동작한다"
+      ],
+      "answer": 2,
+      "explanation": "Ingress Filtering은 외부에서 유입되는 패킷 중 내부 IP를 출발지로 위조한 패킷을 차단합니다. Egress Filtering은 내부에서 나가는 패킷 중 외부 IP를 출발지로 한 패킷을 차단합니다.",
+      "keywords": ["Ingress Filtering", "Egress Filtering", "IP Spoofing 대응"]
+    },
+    {
+      "id": 41,
+      "question": "세션 하이재킹 대응을 위한 쿠키 속성 중, JavaScript에서 쿠키에 접근하지 못하도록 하는 것은?",
+      "options": ["Secure", "SameSite", "HttpOnly", "Path"],
+      "answer": 2,
+      "explanation": "HttpOnly 속성은 JavaScript의 document.cookie를 통한 쿠키 접근을 차단하여 XSS를 이용한 세션 쿠키 탈취를 방지합니다.",
+      "keywords": ["HttpOnly", "쿠키 보안", "XSS 대응"]
+    },
+    {
+      "id": 42,
+      "question": "DMARC에서 SPF와 DKIM 검증에 모두 실패한 이메일을 격리 보관하도록 하는 정책은?",
+      "options": ["p=none", "p=quarantine", "p=reject", "p=pass"],
+      "answer": 1,
+      "explanation": "DMARC 정책에서 p=quarantine은 인증 실패 이메일을 스팸함이나 격리 영역에 보관합니다. p=none은 모니터링만, p=reject는 거부합니다.",
+      "keywords": ["DMARC", "quarantine", "이메일 인증"]
+    },
+    {
+      "id": 43,
+      "question": "OSPF 프로토콜에서 가짜 라우터로 링크 상태 광고(LSA)를 주입하는 공격은?",
+      "options": ["Route Injection", "Phantom Router", "Max Age Attack", "BGP Hijacking"],
+      "answer": 1,
+      "explanation": "Phantom Router 공격은 OSPF 네트워크에 가짜 라우터를 추가하여 위조된 LSA(Link State Advertisement)를 주입하여 라우팅을 조작합니다.",
+      "keywords": ["Phantom Router", "OSPF 공격", "LSA"]
+    },
+    {
+      "id": 44,
+      "question": "스캐닝 대응을 위해 공격자를 유인하여 공격 패턴을 분석하는 시스템은?",
+      "options": ["IDS", "IPS", "허니팟(Honeypot)", "NAC"],
+      "answer": 2,
+      "explanation": "허니팟(Honeypot)은 의도적으로 취약한 시스템을 구축하여 공격자를 유인하고 공격 패턴과 기법을 분석하기 위한 보안 시스템입니다.",
+      "keywords": ["허니팟", "Honeypot", "공격 분석"]
+    },
+    {
+      "id": 45,
+      "question": "WPA2 사전 공격 과정에서 클라이언트 연결을 끊어 4-Way Handshake를 캡처하기 위해 사용하는 기법은?",
+      "options": [
+        "ARP Spoofing",
+        "Deauthentication 공격",
+        "Evil Twin 공격",
+        "ICMP Redirect 공격"
+      ],
+      "answer": 1,
+      "explanation": "Deauthentication 공격으로 클라이언트 연결을 강제 해제하면 클라이언트가 재연결을 시도하며, 이 과정에서 4-Way Handshake를 캡처하여 오프라인 사전 공격에 활용합니다.",
+      "keywords": ["Deauthentication", "4-Way Handshake", "WPA2 크래킹"]
+    }
+  ]
+}
