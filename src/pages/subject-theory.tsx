@@ -6,6 +6,7 @@ import { posts as securityGeneralPosts } from "../content/theory/04-security-gen
 import { posts as securityManagementPosts } from "../content/theory/05-security-management";
 import type { Subject } from "@/types";
 import { SUBJECTS } from "@/types";
+import { usePageMeta } from "@/hooks";
 
 function getPostsBySubject(subject: Subject): Post[] {
   switch (subject) {
@@ -30,6 +31,11 @@ export default function SubjectTheory() {
   const subjectName = subject ? SUBJECTS[subjectKey] : "알 수 없음";
 
   const posts = getPostsBySubject(subjectKey);
+
+  usePageMeta({
+    title: `${subjectName} - 이론 학습`,
+    description: `정보보안기사 ${subjectName} 이론 학습 자료`,
+  });
 
   return (
     <div className="py-8 px-4">

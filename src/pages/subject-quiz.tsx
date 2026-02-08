@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { getQuestionSetsBySubject } from "@/content/questions";
 import type { Subject } from "@/types";
 import { SUBJECTS } from "@/types";
+import { usePageMeta } from "@/hooks";
 
 export default function SubjectQuiz() {
   const { subject } = useParams<{ subject: Subject }>();
@@ -9,6 +10,11 @@ export default function SubjectQuiz() {
   const subjectName = subject ? SUBJECTS[subjectKey] : "알 수 없음";
 
   const questionSets = getQuestionSetsBySubject(subjectKey);
+
+  usePageMeta({
+    title: `${subjectName} - 문제 풀이`,
+    description: `정보보안기사 ${subjectName} 문제 풀이`,
+  });
 
   return (
     <div className="py-8 px-4">

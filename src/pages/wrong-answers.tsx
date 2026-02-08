@@ -4,6 +4,7 @@ import { getQuestionSet } from "@/content/questions";
 import { getWrongAnswers, removeWrongAnswer, clearAllWrongAnswers } from "@/utils/wrong-answers";
 import type { Subject, Question, WrongAnswer } from "@/types";
 import { SUBJECTS } from "@/types";
+import { usePageMeta } from "@/hooks";
 
 interface WrongAnswerWithQuestion {
   wrongAnswer: WrongAnswer;
@@ -50,6 +51,11 @@ function groupBySubject(items: WrongAnswerWithQuestion[]) {
 }
 
 export default function WrongAnswers() {
+  usePageMeta({
+    title: "오답 노트",
+    description: "정보보안기사 틀린 문제 복습 - 오답 노트",
+  });
+
   const [items, setItems] = useState(() => resolveWrongAnswers());
   const [expandedExplanations, setExpandedExplanations] = useState<Set<string>>(new Set());
   const [showConfirmClear, setShowConfirmClear] = useState(false);

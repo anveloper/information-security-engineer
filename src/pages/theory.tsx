@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
 import { SUBJECTS } from "@/types";
 import type { Subject } from "@/types";
+import { usePageMeta } from "@/hooks";
 
 export default function Theory() {
+  usePageMeta({
+    title: "이론 학습",
+    description: "정보보안기사 이론 학습 - 시스템 보안, 네트워크 보안, 어플리케이션 보안, 정보보안 일반, 정보보안 관리 및 법규",
+  });
   const subjectList = Object.entries(SUBJECTS) as [Subject, string][];
 
   return (

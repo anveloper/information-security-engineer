@@ -9,6 +9,7 @@ import { posts as securityManagementPosts } from "../content/theory/05-security-
 import { mdxComponents } from "@/components";
 import type { Subject } from "@/types";
 import { SUBJECTS } from "@/types";
+import { usePageMeta } from "@/hooks";
 
 function getPostsBySubject(subject: Subject): Post[] {
   switch (subject) {
@@ -47,6 +48,11 @@ export default function TheoryDetail() {
   const currentIndex = posts.findIndex((p) => p.id === postId);
   const prevPost = currentIndex > 0 ? posts[currentIndex - 1] : null;
   const nextPost = currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null;
+
+  usePageMeta({
+    title: post ? `${post.title} - ${subjectName}` : subjectName,
+    description: post?.description || `정보보안기사 ${subjectName} 이론 학습`,
+  });
 
   const goToNextPost = useCallback(() => {
     if (nextPost) {

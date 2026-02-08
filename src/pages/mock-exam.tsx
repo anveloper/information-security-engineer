@@ -4,6 +4,7 @@ import { getQuestionSetsBySubject } from "@/content/questions";
 import { saveWrongAnswer } from "@/utils/wrong-answers";
 import type { Subject, Question } from "@/types";
 import { SUBJECTS } from "@/types";
+import { usePageMeta } from "@/hooks";
 
 const QUESTIONS_PER_SUBJECT = 20;
 const PASS_SUBJECT_SCORE = 40; // 과목당 40점 이상
@@ -608,6 +609,11 @@ function ResultPhase({
 // --- Main Component ---
 
 export default function MockExam() {
+  usePageMeta({
+    title: "모의고사",
+    description: "정보보안기사 모의고사 - 실전 시험 형식으로 연습",
+  });
+
   const [phase, setPhase] = useState<Phase>("ready");
   const [examQuestions, setExamQuestions] = useState<ExamQuestion[]>([]);
   const [finalAnswers, setFinalAnswers] = useState<Map<number, number>>(new Map());

@@ -4,6 +4,7 @@ import { getQuestionSetsBySubject } from "@/content/questions";
 import { saveWrongAnswer, removeWrongAnswer } from "@/utils/wrong-answers";
 import type { Subject } from "@/types";
 import { SUBJECTS } from "@/types";
+import { usePageMeta } from "@/hooks";
 
 export default function QuizDetail() {
   const { subject, chapter } = useParams<{ subject: Subject; chapter: string }>();
@@ -12,6 +13,13 @@ export default function QuizDetail() {
 
   const questionSets = getQuestionSetsBySubject(subjectKey);
   const questionSet = questionSets.find((qs) => qs.chapter === chapter);
+
+  usePageMeta({
+    title: questionSet ? `${questionSet.chapterName} - ${subjectName}` : `${subjectName} - 문제 풀이`,
+    description: questionSet
+      ? `정보보안기사 ${subjectName} ${questionSet.chapterName} 문제 풀이`
+      : `정보보안기사 ${subjectName} 문제 풀이`,
+  });
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
