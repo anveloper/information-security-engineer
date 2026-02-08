@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
+import { usePageMeta } from "@/hooks";
 
 export default function Home() {
+  usePageMeta({
+    title: undefined,
+    description: "정보보안기사 자격증 시험 대비 문제 풀이 및 이론 학습",
+  });
+
   return (
     <div className="py-12 px-4">
       <div className="max-w-2xl mx-auto">

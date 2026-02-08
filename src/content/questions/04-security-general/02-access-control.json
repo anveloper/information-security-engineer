@@ -1,0 +1,463 @@
+{
+  "subject": "04-security-general",
+  "subjectName": "정보보안 일반",
+  "chapter": "02-access-control",
+  "chapterName": "접근통제",
+  "questions": [
+    {
+      "id": 1,
+      "question": "접근통제에서 객체에 접근하는 능동적 개체를 무엇이라 하는가?",
+      "options": [
+        "객체(Object)",
+        "주체(Subject)",
+        "접근(Access)",
+        "정책(Policy)"
+      ],
+      "answer": 1,
+      "explanation": "주체(Subject)는 사용자, 프로세스, 서비스 등 객체에 접근하는 능동적 개체입니다. 객체(Object)는 파일, DB 등 접근 대상이 되는 수동적 개체입니다.",
+      "keywords": ["주체", "Subject"]
+    },
+    {
+      "id": 2,
+      "question": "AAA의 세 가지 구성요소로 올바른 것은?",
+      "options": [
+        "Authentication, Authorization, Availability",
+        "Authentication, Authorization, Accounting",
+        "Access, Authentication, Authorization",
+        "Authentication, Audit, Access"
+      ],
+      "answer": 1,
+      "explanation": "AAA는 Authentication(인증), Authorization(인가), Accounting(책임추적)으로 구성됩니다. 식별(Identification)을 포함하여 4단계로 설명하기도 합니다.",
+      "keywords": ["AAA", "인증", "인가", "책임추적"]
+    },
+    {
+      "id": 3,
+      "question": "접근통제 절차에서 '인증된 주체에게 권한을 부여하는 단계'는?",
+      "options": [
+        "식별",
+        "인증",
+        "인가",
+        "책임추적"
+      ],
+      "answer": 2,
+      "explanation": "인가(Authorization)는 인증된 주체에게 리소스 접근 권한을 부여하는 단계입니다. 식별→인증→인가→책임추적 순서로 진행됩니다.",
+      "keywords": ["인가", "Authorization"]
+    },
+    {
+      "id": 4,
+      "question": "인증 요소 중 '가지고 있는 것'에 해당하는 Type 2 인증의 예시는?",
+      "options": [
+        "비밀번호, PIN",
+        "스마트카드, OTP",
+        "지문, 홍채",
+        "GPS, IP 주소"
+      ],
+      "answer": 1,
+      "explanation": "Type 2(소유 기반)는 사용자가 가지고 있는 물건으로 인증합니다. 스마트카드, OTP 토큰, 보안 키 등이 해당됩니다.",
+      "keywords": ["Type 2", "소유 기반", "OTP"]
+    },
+    {
+      "id": 5,
+      "question": "다음 중 올바른 다중 인증(MFA) 조합은?",
+      "options": [
+        "비밀번호 + PIN",
+        "비밀번호 + OTP",
+        "지문 + 홍채",
+        "스마트카드 + 보안 토큰"
+      ],
+      "answer": 1,
+      "explanation": "MFA는 서로 다른 유형의 인증 요소를 조합해야 합니다. 비밀번호(Type 1) + OTP(Type 2)는 서로 다른 유형입니다. 같은 유형의 조합은 MFA가 아닙니다.",
+      "keywords": ["MFA", "다중 인증"]
+    },
+    {
+      "id": 6,
+      "question": "생체인증에서 타인을 본인으로 잘못 수락하는 비율은?",
+      "options": [
+        "FRR (False Rejection Rate)",
+        "FAR (False Acceptance Rate)",
+        "CER (Crossover Error Rate)",
+        "ERR (Error Rejection Rate)"
+      ],
+      "answer": 1,
+      "explanation": "FAR(False Acceptance Rate)은 타인 수락율로, 보안성을 나타내는 지표입니다. FRR은 본인 거부율로 편의성 지표입니다.",
+      "keywords": ["FAR", "타인 수락율"]
+    },
+    {
+      "id": 7,
+      "question": "생체인증 성능 평가에서 FAR과 FRR이 교차하는 지점은?",
+      "options": [
+        "ROC",
+        "CER/EER",
+        "AUC",
+        "TPR"
+      ],
+      "answer": 1,
+      "explanation": "CER(Crossover Error Rate) 또는 EER(Equal Error Rate)는 FAR과 FRR이 같아지는 지점으로, 생체인증 시스템의 전체 성능을 비교하는 기준입니다.",
+      "keywords": ["CER", "EER", "생체인증"]
+    },
+    {
+      "id": 8,
+      "question": "Kerberos 인증에서 티켓을 발급하는 서버의 조합으로 올바른 것은?",
+      "options": [
+        "CA + RA",
+        "AS + TGS",
+        "DNS + DHCP",
+        "LDAP + RADIUS"
+      ],
+      "answer": 1,
+      "explanation": "Kerberos의 KDC는 AS(Authentication Server, 초기 인증)와 TGS(Ticket Granting Server, 서비스 티켓 발급)로 구성됩니다.",
+      "keywords": ["Kerberos", "AS", "TGS"]
+    },
+    {
+      "id": 9,
+      "question": "Kerberos에서 TGS에 접근하기 위해 AS로부터 받는 티켓은?",
+      "options": [
+        "서비스 티켓",
+        "TGT (Ticket Granting Ticket)",
+        "세션 키",
+        "인증서"
+      ],
+      "answer": 1,
+      "explanation": "TGT(Ticket Granting Ticket)는 AS에서 발급받아 TGS에 접근할 때 사용하는 티켓입니다. TGS는 이를 검증 후 서비스 티켓을 발급합니다.",
+      "keywords": ["TGT", "Kerberos"]
+    },
+    {
+      "id": 10,
+      "question": "OAuth 2.0의 주요 목적은?",
+      "options": [
+        "패스워드 암호화",
+        "권한 위임",
+        "파일 암호화",
+        "네트워크 인증"
+      ],
+      "answer": 1,
+      "explanation": "OAuth 2.0은 권한 위임 프레임워크로, 사용자가 제3자 애플리케이션에 자신의 리소스에 대한 제한된 접근 권한을 부여할 수 있습니다.",
+      "keywords": ["OAuth 2.0", "권한 위임"]
+    },
+    {
+      "id": 11,
+      "question": "OAuth 2.0 위에 인증 계층을 추가한 프로토콜은?",
+      "options": [
+        "SAML",
+        "Kerberos",
+        "OpenID Connect",
+        "RADIUS"
+      ],
+      "answer": 2,
+      "explanation": "OpenID Connect는 OAuth 2.0 프레임워크 위에 인증(Authentication) 계층을 추가한 프로토콜로, ID 토큰을 통해 사용자 인증을 수행합니다.",
+      "keywords": ["OpenID Connect", "OAuth 2.0"]
+    },
+    {
+      "id": 12,
+      "question": "DAC(임의적 접근통제)의 특징으로 올바른 것은?",
+      "options": [
+        "시스템이 접근 권한을 강제한다",
+        "객체 소유자가 접근 권한을 결정한다",
+        "역할을 기반으로 권한을 부여한다",
+        "속성을 기반으로 동적으로 결정한다"
+      ],
+      "answer": 1,
+      "explanation": "DAC(Discretionary Access Control)는 객체 소유자가 다른 사용자에게 접근 권한을 부여/회수할 수 있습니다. Unix/Windows 파일 시스템이 대표적입니다.",
+      "keywords": ["DAC", "소유자", "임의적"]
+    },
+    {
+      "id": 13,
+      "question": "MAC(강제적 접근통제)에서 주체와 객체에 부여되는 것은?",
+      "options": [
+        "역할",
+        "속성",
+        "보안 레이블",
+        "ACL"
+      ],
+      "answer": 2,
+      "explanation": "MAC에서는 주체와 객체에 보안 레이블(보안 등급 + 범주)을 부여하고, 시스템이 이를 기반으로 접근을 강제적으로 통제합니다.",
+      "keywords": ["MAC", "보안 레이블"]
+    },
+    {
+      "id": 14,
+      "question": "MAC의 보안 등급 순서로 올바른 것은?",
+      "options": [
+        "Secret > Top Secret > Confidential > Unclassified",
+        "Top Secret > Secret > Confidential > Unclassified",
+        "Unclassified > Confidential > Secret > Top Secret",
+        "Confidential > Secret > Top Secret > Unclassified"
+      ],
+      "answer": 1,
+      "explanation": "보안 등급은 Top Secret(최고) > Secret > Confidential > Unclassified(최저) 순서입니다.",
+      "keywords": ["보안 등급", "MAC"]
+    },
+    {
+      "id": 15,
+      "question": "RBAC에서 RBAC0에 역할 계층을 추가한 모델은?",
+      "options": [
+        "RBAC0",
+        "RBAC1",
+        "RBAC2",
+        "RBAC3"
+      ],
+      "answer": 1,
+      "explanation": "RBAC1은 RBAC0에 역할 계층(Role Hierarchy)을 추가한 모델입니다. RBAC2는 제약조건 추가, RBAC3는 RBAC1+RBAC2 통합입니다.",
+      "keywords": ["RBAC1", "역할 계층"]
+    },
+    {
+      "id": 16,
+      "question": "RBAC의 제약조건 중 한 사용자가 상호 배타적인 역할을 동시에 갖지 못하게 하는 것은?",
+      "options": [
+        "역할 계층",
+        "직무 분리 (Separation of Duties)",
+        "역할 수 제한",
+        "선행 역할 요구"
+      ],
+      "answer": 1,
+      "explanation": "직무 분리(SoD)는 상호 배타적 역할을 동시에 부여하지 못하게 하는 제약조건입니다. 예: 구매 요청자 ≠ 구매 승인자.",
+      "keywords": ["직무 분리", "SoD", "RBAC"]
+    },
+    {
+      "id": 17,
+      "question": "ABAC(속성 기반 접근통제)에서 접근 결정에 사용되는 요소가 아닌 것은?",
+      "options": [
+        "주체 속성",
+        "객체 속성",
+        "환경 속성",
+        "보안 레이블"
+      ],
+      "answer": 3,
+      "explanation": "ABAC는 주체 속성, 객체 속성, 환경 속성, 행위를 기반으로 동적 접근 결정을 합니다. 보안 레이블은 MAC에서 사용됩니다.",
+      "keywords": ["ABAC", "속성 기반"]
+    },
+    {
+      "id": 18,
+      "question": "Bell-LaPadula(BLP) 모델의 보호 목표는?",
+      "options": [
+        "무결성",
+        "기밀성",
+        "가용성",
+        "부인방지"
+      ],
+      "answer": 1,
+      "explanation": "Bell-LaPadula 모델은 기밀성 보호를 목표로 합니다. 군사 환경에서 기밀 정보의 유출을 방지하기 위해 설계되었습니다.",
+      "keywords": ["BLP", "기밀성"]
+    },
+    {
+      "id": 19,
+      "question": "Bell-LaPadula 모델의 핵심 규칙은?",
+      "options": [
+        "No Read Down, No Write Up",
+        "No Read Up, No Write Down",
+        "Read All, Write None",
+        "No Read, No Write"
+      ],
+      "answer": 1,
+      "explanation": "BLP 모델: No Read Up(상위 등급 읽기 금지), No Write Down(하위 등급 쓰기 금지). 기밀 정보가 하위로 유출되는 것을 방지합니다.",
+      "keywords": ["No Read Up", "No Write Down", "BLP"]
+    },
+    {
+      "id": 20,
+      "question": "Biba 모델의 보호 목표는?",
+      "options": [
+        "기밀성",
+        "무결성",
+        "가용성",
+        "인증"
+      ],
+      "answer": 1,
+      "explanation": "Biba 모델은 무결성 보호를 목표로 합니다. 신뢰할 수 없는 낮은 등급의 데이터가 높은 등급의 데이터를 오염시키는 것을 방지합니다.",
+      "keywords": ["Biba", "무결성"]
+    },
+    {
+      "id": 21,
+      "question": "Biba 모델의 핵심 규칙은?",
+      "options": [
+        "No Read Up, No Write Down",
+        "No Read Down, No Write Up",
+        "Read All, Write All",
+        "No Read, No Write"
+      ],
+      "answer": 1,
+      "explanation": "Biba 모델: No Read Down(하위 무결성 읽기 금지), No Write Up(상위 무결성 쓰기 금지). BLP와 정확히 반대입니다.",
+      "keywords": ["No Read Down", "No Write Up", "Biba"]
+    },
+    {
+      "id": 22,
+      "question": "Clark-Wilson 모델의 구성요소 중 무결성이 보호되는 데이터 항목은?",
+      "options": [
+        "UDI",
+        "CDI",
+        "IVP",
+        "TP"
+      ],
+      "answer": 1,
+      "explanation": "CDI(Constrained Data Item)는 무결성이 보호되는 제약된 데이터 항목입니다. UDI는 비제약 데이터, TP는 변환 프로시저, IVP는 무결성 검증 프로시저입니다.",
+      "keywords": ["CDI", "Clark-Wilson"]
+    },
+    {
+      "id": 23,
+      "question": "Chinese Wall(Brewer-Nash) 모델의 목적은?",
+      "options": [
+        "기밀성 보호",
+        "무결성 보호",
+        "이해 충돌 방지",
+        "가용성 보장"
+      ],
+      "answer": 2,
+      "explanation": "Chinese Wall 모델은 이해 충돌을 방지합니다. 동일 충돌 클래스 내에서 한 회사 정보에 접근하면 다른 회사 정보에 접근할 수 없습니다.",
+      "keywords": ["Chinese Wall", "이해 충돌"]
+    },
+    {
+      "id": 24,
+      "question": "Unix에서 파일 실행 시 소유자의 권한으로 실행되게 하는 특수 권한은?",
+      "options": [
+        "Sticky Bit",
+        "SetUID",
+        "SetGID",
+        "ACL"
+      ],
+      "answer": 1,
+      "explanation": "SetUID(4000)는 파일 실행 시 파일 소유자의 권한으로 실행되는 특수 권한입니다. /usr/bin/passwd가 대표적인 예입니다.",
+      "keywords": ["SetUID", "특수 권한"]
+    },
+    {
+      "id": 25,
+      "question": "Unix에서 디렉토리에 설정 시 파일 소유자만 삭제할 수 있게 하는 특수 권한은?",
+      "options": [
+        "SetUID",
+        "SetGID",
+        "Sticky Bit",
+        "umask"
+      ],
+      "answer": 2,
+      "explanation": "Sticky Bit(1000)는 디렉토리에 설정하면 해당 디렉토리의 파일을 소유자만 삭제할 수 있습니다. /tmp 디렉토리에 주로 사용됩니다.",
+      "keywords": ["Sticky Bit", "특수 권한"]
+    },
+    {
+      "id": 26,
+      "question": "접근통제 행렬에서 객체 중심으로 권한을 나열한 목록은?",
+      "options": [
+        "CL (Capability List)",
+        "ACL (Access Control List)",
+        "RBAC",
+        "MAC"
+      ],
+      "answer": 1,
+      "explanation": "ACL(Access Control List)은 객체 중심으로 누가 어떤 권한을 가지는지 나열합니다. CL(Capability List)은 주체 중심 목록입니다.",
+      "keywords": ["ACL", "접근 제어 목록"]
+    },
+    {
+      "id": 27,
+      "question": "TOCTOU(Time-of-Check to Time-of-Use) 취약점이 해당하는 공격 유형은?",
+      "options": [
+        "권한 상승",
+        "경쟁 조건 (Race Condition)",
+        "은닉 채널",
+        "사회 공학"
+      ],
+      "answer": 1,
+      "explanation": "TOCTOU는 권한 검사(Check)와 실제 사용(Use) 사이의 시간 차이를 악용하는 경쟁 조건(Race Condition) 취약점입니다.",
+      "keywords": ["TOCTOU", "경쟁 조건"]
+    },
+    {
+      "id": 28,
+      "question": "허가된 채널 외의 방법으로 정보를 유출하는 채널은?",
+      "options": [
+        "VPN",
+        "은닉 채널 (Covert Channel)",
+        "SSL",
+        "프록시"
+      ],
+      "answer": 1,
+      "explanation": "은닉 채널(Covert Channel)은 허가된 채널 외의 방법(공유 자원 상태 변화, 시스템 응답 시간 등)으로 정보를 유출하는 채널입니다.",
+      "keywords": ["은닉 채널", "Covert Channel"]
+    },
+    {
+      "id": 29,
+      "question": "접근통제 모델 비교에서 군사/정부 기관에 적합한 모델은?",
+      "options": [
+        "DAC",
+        "MAC",
+        "RBAC",
+        "ABAC"
+      ],
+      "answer": 1,
+      "explanation": "MAC(강제적 접근통제)는 중앙 집중식 관리와 높은 보안 수준을 제공하여 군사/정부 기관에 적합합니다.",
+      "keywords": ["MAC", "군사", "정부"]
+    },
+    {
+      "id": 30,
+      "question": "NIST SP 800-63B에서 권장하는 비밀번호 정책은?",
+      "options": [
+        "30일마다 정기 변경 강제",
+        "복잡성 규칙보다 길이가 더 중요",
+        "최소 4자 이상",
+        "특수문자 필수 포함"
+      ],
+      "answer": 1,
+      "explanation": "NIST 최신 권장사항은 정기적 변경 강제를 권장하지 않으며, 복잡성 규칙보다 길이(8-64자)가 더 중요하다고 합니다.",
+      "keywords": ["NIST", "비밀번호 정책"]
+    },
+    {
+      "id": 31,
+      "question": "정적 직무 분리와 동적 직무 분리의 차이로 올바른 것은?",
+      "options": [
+        "정적은 역할 할당 시, 동적은 트랜잭션 실행 시 분리한다",
+        "정적은 운영 시, 동적은 설계 시 분리한다",
+        "둘 다 같은 시점에 분리한다",
+        "정적은 MAC에서, 동적은 DAC에서 사용한다"
+      ],
+      "answer": 0,
+      "explanation": "정적 직무 분리는 역할 할당 시점에 상호 배타적 역할을 동시에 부여하지 않습니다. 동적 직무 분리는 특정 트랜잭션 실행 시 역할을 분리합니다.",
+      "keywords": ["정적 직무 분리", "동적 직무 분리"]
+    },
+    {
+      "id": 32,
+      "question": "Windows NTFS에서 명시적 권한과 상속 권한이 충돌할 때 적용되는 규칙은?",
+      "options": [
+        "상속 권한 우선",
+        "명시적 권한 우선",
+        "허용 우선",
+        "읽기 권한 우선"
+      ],
+      "answer": 1,
+      "explanation": "NTFS에서는 명시적 권한 > 상속 권한, 거부 > 허용 순서로 적용됩니다.",
+      "keywords": ["NTFS", "명시적 권한", "상속"]
+    },
+    {
+      "id": 33,
+      "question": "생체인증 유형 중 가장 높은 정확도를 보이며 불편함이 있는 것은?",
+      "options": [
+        "지문",
+        "얼굴",
+        "망막",
+        "음성"
+      ],
+      "answer": 2,
+      "explanation": "망막 인증은 가장 높은 정확도(FAR, FRR 모두 매우 낮음)를 보이지만, 사용자가 장비에 눈을 밀착해야 하는 불편함이 있습니다.",
+      "keywords": ["망막", "생체인증", "정확도"]
+    },
+    {
+      "id": 34,
+      "question": "XML 기반으로 웹 서비스 SSO에 사용되는 프로토콜은?",
+      "options": [
+        "Kerberos",
+        "SAML",
+        "OAuth 2.0",
+        "RADIUS"
+      ],
+      "answer": 1,
+      "explanation": "SAML(Security Assertion Markup Language)은 XML 기반의 웹 서비스용 SSO 프로토콜입니다. 인증 및 인가 정보를 교환합니다.",
+      "keywords": ["SAML", "XML", "SSO"]
+    },
+    {
+      "id": 35,
+      "question": "'알 필요성 원칙(Need-to-Know)'의 의미는?",
+      "options": [
+        "모든 직원에게 모든 정보 공개",
+        "업무 수행에 필요한 정보만 접근 허용",
+        "상위 직급에게 모든 정보 접근 허용",
+        "보안 팀에게만 정보 접근 허용"
+      ],
+      "answer": 1,
+      "explanation": "알 필요성 원칙은 업무 수행에 필요한 정보에만 접근을 허용하는 원칙으로, 최소 권한 원칙과 함께 적용됩니다.",
+      "keywords": ["Need-to-Know", "알 필요성"]
+    }
+  ]
+}
