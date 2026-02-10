@@ -8,53 +8,66 @@
       "id": 1,
       "question": "웹 아키텍처에서 동적 콘텐츠를 처리하는 서버는?",
       "options": [
-        "웹 서버",
-        "WAS (Web Application Server)",
+        "프록시 서버",
         "DNS 서버",
-        "프록시 서버"
+        "WAS (Web Application Server)",
+        "웹 서버"
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "WAS(Web Application Server)는 JSP, Servlet, PHP, ASP 등 동적 콘텐츠를 처리합니다. 웹 서버(Apache, Nginx)는 HTML, CSS, JS 등 정적 콘텐츠를 제공합니다.",
-      "keywords": ["WAS", "웹 서버", "동적 콘텐츠"]
+      "keywords": [
+        "WAS",
+        "웹 서버",
+        "동적 콘텐츠"
+      ]
     },
     {
       "id": 2,
       "question": "OWASP Top 10 (2021)에서 1위에 해당하는 취약점은?",
       "options": [
-        "Injection",
-        "Broken Access Control",
         "Cryptographic Failures",
+        "Broken Access Control",
+        "Injection",
         "Security Misconfiguration"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "OWASP Top 10 (2021)에서 A01은 Broken Access Control(접근 제어 취약점)입니다. 이전 2017 버전에서 5위였으나 2021에서 1위로 상승했습니다.",
-      "keywords": ["OWASP Top 10", "Broken Access Control"]
+      "keywords": [
+        "OWASP Top 10",
+        "Broken Access Control"
+      ]
     },
     {
       "id": 3,
       "question": "OWASP Top 10 (2021)에서 A03에 해당하는 취약점은?",
       "options": [
-        "Broken Access Control",
         "Cryptographic Failures",
-        "Injection",
-        "Insecure Design"
+        "Broken Access Control",
+        "Insecure Design",
+        "Injection"
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "A03은 Injection(인젝션 공격)입니다. SQL Injection, XSS, Command Injection 등이 포함됩니다. 2017년 1위에서 2021년 3위로 변경되었습니다.",
-      "keywords": ["OWASP Top 10", "Injection"]
+      "keywords": [
+        "OWASP Top 10",
+        "Injection"
+      ]
     },
     {
       "id": 4,
       "question": "OWASP Top 10 (2021)에서 A10으로 새롭게 추가된 취약점은?",
       "options": [
         "Insecure Design",
-        "Security Misconfiguration",
         "SSRF (Server-Side Request Forgery)",
+        "Security Misconfiguration",
         "Vulnerable Components"
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "SSRF(서버 측 요청 위조)는 2021년 OWASP Top 10에서 A10으로 새롭게 추가된 취약점입니다.",
-      "keywords": ["OWASP Top 10", "SSRF"]
+      "keywords": [
+        "OWASP Top 10",
+        "SSRF"
+      ]
     },
     {
       "id": 5,
@@ -67,98 +80,123 @@
       ],
       "answer": 1,
       "explanation": "Error-based SQL Injection은 데이터베이스의 에러 메시지를 이용하여 테이블명, 컬럼명 등의 정보를 추출합니다.",
-      "keywords": ["Error-based", "SQL Injection"]
+      "keywords": [
+        "Error-based",
+        "SQL Injection"
+      ]
     },
     {
       "id": 6,
       "question": "UNION 절을 이용하여 추가 데이터를 조회하는 SQL Injection 유형은?",
       "options": [
-        "Error-based SQL Injection",
         "Union-based SQL Injection",
         "Blind SQL Injection",
-        "Out-of-Band SQL Injection"
+        "Out-of-Band SQL Injection",
+        "Error-based SQL Injection"
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "Union-based SQL Injection은 UNION SELECT 절을 이용하여 원래 쿼리에 추가 쿼리를 결합, 다른 테이블의 데이터를 조회합니다.",
-      "keywords": ["Union-based", "SQL Injection"]
+      "keywords": [
+        "Union-based",
+        "SQL Injection"
+      ]
     },
     {
       "id": 7,
       "question": "Blind SQL Injection에서 응답 시간의 차이를 이용하여 데이터를 추론하는 방식은?",
       "options": [
-        "Boolean-based",
-        "Error-based",
         "Time-based",
-        "Union-based"
+        "Error-based",
+        "Union-based",
+        "Boolean-based"
       ],
       "answer": 2,
       "explanation": "Time-based Blind SQL Injection은 SLEEP(), WAITFOR DELAY 등의 함수를 사용하여 조건이 참일 때 응답 지연을 발생시켜 데이터를 추론합니다.",
-      "keywords": ["Time-based", "Blind SQL Injection"]
+      "keywords": [
+        "Time-based",
+        "Blind SQL Injection"
+      ]
     },
     {
       "id": 8,
       "question": "MySQL에서 Time-based Blind SQL Injection에 사용되는 함수는?",
       "options": [
-        "WAITFOR DELAY",
+        "pg_sleep()",
         "SLEEP()",
-        "DBMS_PIPE.RECEIVE_MESSAGE",
-        "pg_sleep()"
+        "WAITFOR DELAY",
+        "DBMS_PIPE.RECEIVE_MESSAGE"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "MySQL에서는 SLEEP() 함수를 사용합니다. WAITFOR DELAY는 MSSQL, DBMS_PIPE.RECEIVE_MESSAGE는 Oracle에서 사용됩니다.",
-      "keywords": ["SLEEP", "MySQL", "Time-based"]
+      "keywords": [
+        "SLEEP",
+        "MySQL",
+        "Time-based"
+      ]
     },
     {
       "id": 9,
       "question": "DNS나 HTTP 등 외부 채널을 통해 데이터를 추출하는 SQL Injection 유형은?",
       "options": [
         "In-band SQL Injection",
-        "Blind SQL Injection",
         "Out-of-Band SQL Injection",
-        "Second-Order SQL Injection"
+        "Second-Order SQL Injection",
+        "Blind SQL Injection"
       ],
-      "answer": 2,
+      "answer": 4,
       "explanation": "Out-of-Band SQL Injection은 DNS 쿼리, HTTP 요청 등 외부 채널을 이용하여 데이터를 추출합니다. 서버가 외부 연결이 가능해야 합니다.",
-      "keywords": ["Out-of-Band", "SQL Injection"]
+      "keywords": [
+        "Out-of-Band",
+        "SQL Injection"
+      ]
     },
     {
       "id": 10,
       "question": "SQL Injection의 가장 효과적인 대응 방법은?",
       "options": [
         "입력값 길이 제한",
-        "Prepared Statement (파라미터화된 쿼리)",
         "에러 메시지 숨김",
+        "Prepared Statement (파라미터화된 쿼리)",
         "웹 방화벽(WAF) 적용"
       ],
       "answer": 1,
       "explanation": "Prepared Statement는 SQL 쿼리와 파라미터를 분리하여 SQL Injection을 근본적으로 방지합니다. 다른 방법들은 보조적 수단입니다.",
-      "keywords": ["Prepared Statement", "SQL Injection 대응"]
+      "keywords": [
+        "Prepared Statement",
+        "SQL Injection 대응"
+      ]
     },
     {
       "id": 11,
       "question": "다음 중 안전한 코드는?\n1) String query = \"SELECT * FROM users WHERE id = '\" + input + \"'\";\n2) PreparedStatement stmt = conn.prepareStatement(\"SELECT * FROM users WHERE id = ?\");",
       "options": [
+        "둘 다 안전하다",
         "1번만 안전하다",
         "2번만 안전하다",
-        "둘 다 안전하다",
         "둘 다 취약하다"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "1번은 문자열 연결로 SQL Injection에 취약합니다. 2번은 PreparedStatement를 사용하여 쿼리와 파라미터가 분리되어 안전합니다.",
-      "keywords": ["PreparedStatement", "동적 쿼리"]
+      "keywords": [
+        "PreparedStatement",
+        "동적 쿼리"
+      ]
     },
     {
       "id": 12,
       "question": "SQLMap에서 데이터베이스 목록을 확인하는 옵션은?",
       "options": [
-        "--tables",
         "--dbs",
         "--dump",
-        "--columns"
+        "--columns",
+        "--tables"
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "SQLMap에서 --dbs 옵션은 대상 서버의 데이터베이스 목록을 조회합니다. --tables는 테이블 목록, --dump는 데이터 덤프입니다.",
-      "keywords": ["SQLMap", "--dbs"]
+      "keywords": [
+        "SQLMap",
+        "--dbs"
+      ]
     },
     {
       "id": 13,
@@ -171,85 +209,109 @@
       ],
       "answer": 1,
       "explanation": "Stored XSS(저장형)는 악성 스크립트가 게시판, 댓글 등에 저장되어 해당 페이지를 방문하는 모든 사용자에게 영향을 줍니다. 가장 위험한 XSS 유형입니다.",
-      "keywords": ["Stored XSS", "저장형 XSS"]
+      "keywords": [
+        "Stored XSS",
+        "저장형 XSS"
+      ]
     },
     {
       "id": 14,
       "question": "XSS 유형 중 서버를 거치지 않고 클라이언트 측 JavaScript에서 DOM을 조작하여 발생하는 것은?",
       "options": [
         "Reflected XSS",
-        "Stored XSS",
         "DOM-based XSS",
+        "Stored XSS",
         "Persistent XSS"
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "DOM-based XSS는 서버를 거치지 않고 클라이언트 측 JavaScript가 DOM을 조작할 때 발생합니다. 서버 로그에 기록되지 않아 탐지가 어렵습니다.",
-      "keywords": ["DOM-based XSS", "클라이언트 측"]
+      "keywords": [
+        "DOM-based XSS",
+        "클라이언트 측"
+      ]
     },
     {
       "id": 15,
       "question": "XSS에서 URL의 파라미터에 포함된 스크립트가 응답에 반사되어 실행되는 유형은?",
       "options": [
-        "Stored XSS",
-        "Reflected XSS",
         "DOM-based XSS",
-        "Mutation XSS"
+        "Stored XSS",
+        "Mutation XSS",
+        "Reflected XSS"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "Reflected XSS(반사형)는 요청에 포함된 스크립트가 서버 응답에 그대로 반사되어 실행됩니다. URL, 이메일 링크 등으로 전달되는 비지속적(1회성) 공격입니다.",
-      "keywords": ["Reflected XSS", "반사형"]
+      "keywords": [
+        "Reflected XSS",
+        "반사형"
+      ]
     },
     {
       "id": 16,
       "question": "XSS 대응 방법 중 웹 페이지에서 로드할 수 있는 리소스를 제한하는 HTTP 헤더는?",
       "options": [
-        "X-Frame-Options",
-        "Content-Security-Policy",
         "X-Content-Type-Options",
-        "Strict-Transport-Security"
+        "Strict-Transport-Security",
+        "X-Frame-Options",
+        "Content-Security-Policy"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "CSP(Content-Security-Policy)는 스크립트, 스타일, 이미지 등 리소스의 출처를 제한하여 XSS 공격을 효과적으로 방어합니다.",
-      "keywords": ["CSP", "Content-Security-Policy"]
+      "keywords": [
+        "CSP",
+        "Content-Security-Policy"
+      ]
     },
     {
       "id": 17,
       "question": "쿠키에 HttpOnly 속성을 설정하면 방어할 수 있는 공격은?",
       "options": [
-        "SQL Injection",
         "XSS를 통한 쿠키 탈취",
+        "클릭재킹",
         "CSRF",
-        "클릭재킹"
+        "SQL Injection"
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "HttpOnly 속성은 JavaScript의 document.cookie로 쿠키에 접근하는 것을 차단합니다. XSS 공격으로 세션 쿠키를 탈취하는 것을 방지합니다.",
-      "keywords": ["HttpOnly", "쿠키", "XSS"]
+      "keywords": [
+        "HttpOnly",
+        "쿠키",
+        "XSS"
+      ]
     },
     {
       "id": 18,
       "question": "HTML Entity 인코딩에서 '<' 문자는 어떻게 변환되는가?",
       "options": [
-        "&amp;",
-        "&lt;",
         "&gt;",
-        "&quot;"
+        "&amp;",
+        "&quot;",
+        "&lt;"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "'<'는 &lt;로, '>'는 &gt;로, '&'는 &amp;로, '\"'는 &quot;로 인코딩됩니다. XSS 방지를 위한 기본 대응입니다.",
-      "keywords": ["HTML Entity", "인코딩", "&lt;"]
+      "keywords": [
+        "HTML Entity",
+        "인코딩",
+        "&lt;"
+      ]
     },
     {
       "id": 19,
       "question": "CSRF(Cross-Site Request Forgery) 공격이 성립하기 위한 필수 조건은?",
       "options": [
-        "피해자가 로그아웃 상태",
-        "피해자가 로그인 상태",
         "서버에 WAF가 없는 상태",
-        "HTTPS를 사용하지 않는 상태"
+        "HTTPS를 사용하지 않는 상태",
+        "피해자가 로그인 상태",
+        "피해자가 로그아웃 상태"
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "CSRF는 인증된 사용자가 의도치 않은 요청을 실행하는 공격이므로, 피해자가 대상 사이트에 로그인된 상태여야 합니다.",
-      "keywords": ["CSRF", "인증", "로그인 상태"]
+      "keywords": [
+        "CSRF",
+        "인증",
+        "로그인 상태"
+      ]
     },
     {
       "id": 20,
@@ -257,12 +319,15 @@
       "options": [
         "세션 ID",
         "CSRF 토큰",
-        "API 키",
-        "사용자 ID"
+        "사용자 ID",
+        "API 키"
       ],
       "answer": 1,
       "explanation": "CSRF 토큰은 서버에서 생성한 예측 불가능한 값을 폼에 hidden 필드로 포함하고, 요청 시 서버에서 검증하여 CSRF를 방지합니다.",
-      "keywords": ["CSRF 토큰", "CSRF 대응"]
+      "keywords": [
+        "CSRF 토큰",
+        "CSRF 대응"
+      ]
     },
     {
       "id": 21,
@@ -270,116 +335,149 @@
       "options": [
         "None",
         "Lax",
-        "Strict",
-        "Secure"
+        "Secure",
+        "Strict"
       ],
       "answer": 2,
       "explanation": "SameSite=Strict는 크로스사이트 요청 시 쿠키를 전혀 전송하지 않습니다. Lax는 안전한 GET 요청의 탑레벨 내비게이션만 허용합니다.",
-      "keywords": ["SameSite", "Strict", "쿠키"]
+      "keywords": [
+        "SameSite",
+        "Strict",
+        "쿠키"
+      ]
     },
     {
       "id": 22,
       "question": "파일 업로드 공격에서 서버 측 실행 스크립트를 업로드하여 원격 명령을 실행하는 것은?",
       "options": [
-        "웹쉘(Web Shell)",
-        "트로이 목마",
         "백도어",
+        "트로이 목마",
+        "웹쉘(Web Shell)",
         "키로거"
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "웹쉘은 웹 서버에 업로드되어 HTTP를 통해 원격으로 시스템 명령을 실행할 수 있는 악성 스크립트입니다.",
-      "keywords": ["웹쉘", "파일 업로드"]
+      "keywords": [
+        "웹쉘",
+        "파일 업로드"
+      ]
     },
     {
       "id": 23,
       "question": "파일 업로드 공격에서 확장자 검증을 우회하는 기법이 아닌 것은?",
       "options": [
+        "Prepared Statement 사용",
         ".php5, .phtml 등 대체 확장자 사용",
         "Content-Type 헤더 변조",
-        "널 바이트(file.php%00.jpg) 삽입",
-        "Prepared Statement 사용"
+        "널 바이트(file.php%00.jpg) 삽입"
       ],
-      "answer": 3,
+      "answer": 4,
       "explanation": "Prepared Statement는 SQL Injection 대응 방법입니다. 파일 업로드 우회 기법에는 대체 확장자, MIME 타입 변조, 매직 바이트 추가, 널 바이트 삽입, 대소문자 변형 등이 있습니다.",
-      "keywords": ["파일 업로드 우회", "확장자"]
+      "keywords": [
+        "파일 업로드 우회",
+        "확장자"
+      ]
     },
     {
       "id": 24,
       "question": "파일 업로드 취약점의 대응 방안으로 가장 적절하지 않은 것은?",
       "options": [
-        "허용된 확장자만 업로드(화이트리스트)",
         "업로드 디렉토리 실행 권한 해제",
-        "업로드 파일명을 사용자 입력 그대로 사용",
-        "웹 루트 외부에 파일 저장"
+        "허용된 확장자만 업로드(화이트리스트)",
+        "웹 루트 외부에 파일 저장",
+        "업로드 파일명을 사용자 입력 그대로 사용"
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "사용자 입력 파일명을 그대로 사용하면 경로 조작, 파일 덮어쓰기 공격에 취약합니다. 랜덤 파일명을 생성하여 사용해야 합니다.",
-      "keywords": ["파일 업로드 대응", "랜덤 파일명"]
+      "keywords": [
+        "파일 업로드 대응",
+        "랜덤 파일명"
+      ]
     },
     {
       "id": 25,
       "question": "파일 다운로드 취약점에서 '../'를 이용하여 허용되지 않은 파일에 접근하는 공격은?",
       "options": [
+        "SSRF",
         "SQL Injection",
         "경로 조작(Path Traversal)",
-        "XSS",
-        "SSRF"
+        "XSS"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "경로 조작(Path Traversal)은 '../' 같은 상위 디렉토리 참조를 이용하여 /etc/passwd 등 허용되지 않은 파일에 접근하는 공격입니다.",
-      "keywords": ["Path Traversal", "경로 조작", "디렉토리 트래버설"]
+      "keywords": [
+        "Path Traversal",
+        "경로 조작",
+        "디렉토리 트래버설"
+      ]
     },
     {
       "id": 26,
       "question": "Apache 웹 서버에서 디렉토리 리스팅을 비활성화하는 설정은?",
       "options": [
-        "Options +Indexes",
         "Options -Indexes",
         "autoindex on",
+        "Options +Indexes",
         "directory listing off"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "Apache에서 'Options -Indexes'를 httpd.conf나 .htaccess에 설정하면 디렉토리 리스팅이 비활성화됩니다.",
-      "keywords": ["디렉토리 리스팅", "Options -Indexes", "Apache"]
+      "keywords": [
+        "디렉토리 리스팅",
+        "Options -Indexes",
+        "Apache"
+      ]
     },
     {
       "id": 27,
       "question": "세션 관리 취약점 중 로그인 후 세션 ID를 변경하지 않아 발생하는 공격은?",
       "options": [
         "세션 탈취",
-        "세션 고정(Session Fixation)",
+        "세션 리플레이",
         "세션 하이재킹",
-        "세션 리플레이"
+        "세션 고정(Session Fixation)"
       ],
       "answer": 1,
       "explanation": "세션 고정(Session Fixation)은 공격자가 미리 설정한 세션 ID를 피해자가 사용하도록 유도하는 공격입니다. 로그인 시 세션 ID를 재생성하여 방어합니다.",
-      "keywords": ["Session Fixation", "세션 고정"]
+      "keywords": [
+        "Session Fixation",
+        "세션 고정"
+      ]
     },
     {
       "id": 28,
       "question": "안전한 세션 관리에서 쿠키에 설정해야 하는 속성의 조합으로 올바른 것은?",
       "options": [
         "HttpOnly, Secure, SameSite",
+        "Path, Expires, Public",
         "HttpOnly, Public, Strict",
-        "Secure, Cache, Domain",
-        "Path, Expires, Public"
+        "Secure, Cache, Domain"
       ],
-      "answer": 0,
+      "answer": 1,
       "explanation": "HttpOnly(JS 접근 차단), Secure(HTTPS에서만 전송), SameSite(CSRF 방지)는 안전한 세션 관리를 위해 쿠키에 설정해야 하는 주요 보안 속성입니다.",
-      "keywords": ["쿠키 속성", "HttpOnly", "Secure", "SameSite"]
+      "keywords": [
+        "쿠키 속성",
+        "HttpOnly",
+        "Secure",
+        "SameSite"
+      ]
     },
     {
       "id": 29,
       "question": "MIME 스니핑을 방지하기 위한 보안 헤더는?",
       "options": [
-        "X-Frame-Options",
+        "Strict-Transport-Security",
         "X-Content-Type-Options: nosniff",
-        "Content-Security-Policy",
-        "Strict-Transport-Security"
+        "X-Frame-Options",
+        "Content-Security-Policy"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "X-Content-Type-Options: nosniff는 브라우저의 MIME 타입 스니핑을 방지하여, Content-Type과 다른 형식으로 콘텐츠를 해석하는 것을 막습니다.",
-      "keywords": ["X-Content-Type-Options", "nosniff", "MIME 스니핑"]
+      "keywords": [
+        "X-Content-Type-Options",
+        "nosniff",
+        "MIME 스니핑"
+      ]
     },
     {
       "id": 30,
@@ -392,202 +490,253 @@
       ],
       "answer": 1,
       "explanation": "X-Frame-Options 헤더는 페이지가 iframe/frame에 삽입되는 것을 제한하여 클릭재킹 공격을 방지합니다. DENY, SAMEORIGIN 값을 사용합니다.",
-      "keywords": ["X-Frame-Options", "클릭재킹"]
+      "keywords": [
+        "X-Frame-Options",
+        "클릭재킹"
+      ]
     },
     {
       "id": 31,
       "question": "X-Frame-Options 헤더에서 같은 출처의 프레임만 허용하는 값은?",
       "options": [
-        "DENY",
         "SAMEORIGIN",
         "ALLOW-FROM",
+        "DENY",
         "NONE"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "SAMEORIGIN은 같은 출처(origin)의 페이지에서만 프레임에 삽입할 수 있도록 허용합니다. DENY는 모든 프레임 삽입을 차단합니다.",
-      "keywords": ["X-Frame-Options", "SAMEORIGIN"]
+      "keywords": [
+        "X-Frame-Options",
+        "SAMEORIGIN"
+      ]
     },
     {
       "id": 32,
       "question": "브라우저에 HTTPS 사용을 강제하는 보안 헤더는?",
       "options": [
-        "X-Frame-Options",
-        "Content-Security-Policy",
+        "X-Content-Type-Options",
         "Strict-Transport-Security (HSTS)",
-        "X-Content-Type-Options"
+        "Content-Security-Policy",
+        "X-Frame-Options"
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "HSTS(HTTP Strict Transport Security)는 브라우저에 해당 사이트를 HTTPS로만 접속하도록 강제합니다. SSL Stripping 공격을 방지합니다.",
-      "keywords": ["HSTS", "Strict-Transport-Security", "HTTPS"]
+      "keywords": [
+        "HSTS",
+        "Strict-Transport-Security",
+        "HTTPS"
+      ]
     },
     {
       "id": 33,
       "question": "클릭재킹 공격에서 사용되는 핵심 HTML 요소는?",
       "options": [
-        "<script>",
+        "<img>",
         "<iframe>",
         "<form>",
-        "<img>"
+        "<script>"
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "클릭재킹은 투명한 <iframe>으로 대상 사이트를 삽입하고, 사용자가 보이지 않는 iframe 위의 버튼을 클릭하도록 유도합니다.",
-      "keywords": ["클릭재킹", "iframe"]
+      "keywords": [
+        "클릭재킹",
+        "iframe"
+      ]
     },
     {
       "id": 34,
       "question": "SSRF(Server-Side Request Forgery) 공격에서 AWS 클라우드 메타데이터를 탈취하기 위해 접근하는 IP 주소는?",
       "options": [
-        "127.0.0.1",
-        "192.168.1.1",
+        "10.0.0.1",
         "169.254.169.254",
-        "10.0.0.1"
+        "192.168.1.1",
+        "127.0.0.1"
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "169.254.169.254는 AWS EC2 인스턴스 메타데이터 서비스의 IP 주소입니다. SSRF 공격으로 이 주소에 접근하면 IAM 자격 증명 등 민감 정보를 탈취할 수 있습니다.",
-      "keywords": ["SSRF", "169.254.169.254", "AWS 메타데이터"]
+      "keywords": [
+        "SSRF",
+        "169.254.169.254",
+        "AWS 메타데이터"
+      ]
     },
     {
       "id": 35,
       "question": "SSRF 우회 기법 중 127.0.0.1을 정수로 변환하여 우회하는 것은?",
       "options": [
-        "URL 인코딩",
-        "IP 변환 (2130706433)",
         "DNS Rebinding",
-        "단축 URL"
+        "URL 인코딩",
+        "단축 URL",
+        "IP 변환 (2130706433)"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "127.0.0.1을 정수(2130706433)로 변환하여 IP 필터를 우회할 수 있습니다. 브라우저와 대부분의 라이브러리는 정수 형식의 IP를 정상적으로 처리합니다.",
-      "keywords": ["SSRF 우회", "IP 변환"]
+      "keywords": [
+        "SSRF 우회",
+        "IP 변환"
+      ]
     },
     {
       "id": 36,
       "question": "XXE(XML External Entity) 공격의 원인은?",
       "options": [
         "SQL 쿼리의 동적 생성",
-        "XML 파서의 외부 엔티티 처리 허용",
         "쿠키의 HttpOnly 미설정",
+        "XML 파서의 외부 엔티티 처리 허용",
         "HTTPS 미적용"
       ],
       "answer": 1,
       "explanation": "XXE는 XML 파서가 외부 엔티티(External Entity)를 처리하도록 허용된 경우 발생합니다. 파일 읽기, SSRF, DoS 등의 공격이 가능합니다.",
-      "keywords": ["XXE", "외부 엔티티"]
+      "keywords": [
+        "XXE",
+        "외부 엔티티"
+      ]
     },
     {
       "id": 37,
       "question": "XXE 공격에서 XML 엔티티를 재귀적으로 참조하여 메모리를 고갈시키는 DoS 공격은?",
       "options": [
         "SQL Bomb",
-        "Billion Laughs",
+        "Zip Bomb",
         "Fork Bomb",
-        "Zip Bomb"
+        "Billion Laughs"
       ],
       "answer": 1,
       "explanation": "Billion Laughs(XML Bomb)는 엔티티를 재귀적으로 참조하여 기하급수적으로 확장되는 XML을 만들어 파서의 메모리를 고갈시키는 DoS 공격입니다.",
-      "keywords": ["Billion Laughs", "XML Bomb", "DoS"]
+      "keywords": [
+        "Billion Laughs",
+        "XML Bomb",
+        "DoS"
+      ]
     },
     {
       "id": 38,
       "question": "XXE 공격의 가장 근본적인 대응 방법은?",
       "options": [
         "WAF 적용",
-        "외부 엔티티 및 DTD 비활성화",
         "입력 길이 제한",
-        "HTTPS 적용"
+        "HTTPS 적용",
+        "외부 엔티티 및 DTD 비활성화"
       ],
       "answer": 1,
       "explanation": "XML 파서에서 외부 엔티티와 DTD 처리를 비활성화하는 것이 XXE의 가장 근본적인 대응입니다. 가능하면 XML 대신 JSON을 사용하는 것도 방법입니다.",
-      "keywords": ["XXE 대응", "DTD 비활성화"]
+      "keywords": [
+        "XXE 대응",
+        "DTD 비활성화"
+      ]
     },
     {
       "id": 39,
       "question": "Burp Suite의 기능 중 HTTP/HTTPS 트래픽을 가로채어 수정할 수 있는 기능은?",
       "options": [
+        "Intruder",
         "Spider",
         "Proxy",
-        "Intruder",
         "Repeater"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "Burp Suite의 Proxy 기능은 브라우저와 서버 사이의 HTTP/HTTPS 트래픽을 가로채어 요청/응답을 확인하고 수정할 수 있습니다.",
-      "keywords": ["Burp Suite", "Proxy"]
+      "keywords": [
+        "Burp Suite",
+        "Proxy"
+      ]
     },
     {
       "id": 40,
       "question": "Burp Suite에서 요청을 수정하여 반복적으로 재전송하는 기능은?",
       "options": [
-        "Proxy",
-        "Spider",
         "Repeater",
-        "Decoder"
+        "Decoder",
+        "Proxy",
+        "Spider"
       ],
-      "answer": 2,
+      "answer": 4,
       "explanation": "Repeater는 HTTP 요청을 수동으로 수정하여 서버에 재전송하고 응답을 확인할 수 있는 기능입니다. 취약점 수동 테스트에 유용합니다.",
-      "keywords": ["Burp Suite", "Repeater"]
+      "keywords": [
+        "Burp Suite",
+        "Repeater"
+      ]
     },
     {
       "id": 41,
       "question": "CSP(Content-Security-Policy)에서 스크립트 소스를 제한하는 지시어는?",
       "options": [
+        "img-src",
         "default-src",
         "script-src",
-        "img-src",
         "style-src"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "script-src는 JavaScript의 소스를 제한하는 CSP 지시어입니다. 'self'는 같은 출처만, 특정 도메인을 지정하면 해당 도메인만 허용합니다.",
-      "keywords": ["CSP", "script-src"]
+      "keywords": [
+        "CSP",
+        "script-src"
+      ]
     },
     {
       "id": 42,
       "question": "XSS 우회 기법 중 필터링을 회피하기 위해 대소문자를 혼합하는 예시로 올바른 것은?",
       "options": [
-        "<SCRIPT>alert('XSS')</SCRIPT>",
-        "<ScRiPt>alert('XSS')</ScRiPt>",
+        "<scr<script>ipt>",
         "%3Cscript%3Ealert('XSS')%3C/script%3E",
-        "<scr<script>ipt>"
+        "<ScRiPt>alert('XSS')</ScRiPt>",
+        "<SCRIPT>alert('XSS')</SCRIPT>"
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "대소문자 혼합(<ScRiPt>)은 대소문자를 구분하는 필터를 우회하는 기법입니다. 대응을 위해 대소문자 무시 비교 또는 소문자 변환 후 검증해야 합니다.",
-      "keywords": ["XSS 우회", "대소문자"]
+      "keywords": [
+        "XSS 우회",
+        "대소문자"
+      ]
     },
     {
       "id": 43,
       "question": "HTTP 요청 메서드 중 리소스의 전체를 교체하는 메서드는?",
       "options": [
-        "GET",
-        "POST",
         "PUT",
-        "PATCH"
+        "POST",
+        "PATCH",
+        "GET"
       ],
       "answer": 2,
       "explanation": "PUT은 지정된 리소스의 전체를 교체합니다. PATCH는 부분 수정, POST는 새 리소스 생성, GET은 리소스 조회에 사용됩니다.",
-      "keywords": ["HTTP 메서드", "PUT"]
+      "keywords": [
+        "HTTP 메서드",
+        "PUT"
+      ]
     },
     {
       "id": 44,
       "question": "SSRF 대응 방법으로 적절하지 않은 것은?",
       "options": [
-        "허용된 URL/도메인 화이트리스트",
-        "내부 IP 대역 블랙리스트",
+        "사용자 입력을 URL에 직접 사용",
         "HTTP/HTTPS 프로토콜만 허용",
-        "사용자 입력을 URL에 직접 사용"
+        "허용된 URL/도메인 화이트리스트",
+        "내부 IP 대역 블랙리스트"
       ],
-      "answer": 3,
+      "answer": 2,
       "explanation": "사용자 입력을 URL에 직접 사용하는 것이 SSRF의 원인입니다. 화이트리스트, 블랙리스트, 프로토콜 제한, DNS 확인, 네트워크 분리 등으로 대응해야 합니다.",
-      "keywords": ["SSRF 대응"]
+      "keywords": [
+        "SSRF 대응"
+      ]
     },
     {
       "id": 45,
       "question": "CSRF 공격과 XSS 공격의 차이점으로 올바른 것은?",
       "options": [
-        "CSRF는 서버에서, XSS는 클라이언트에서 스크립트가 실행된다",
-        "CSRF는 사용자의 인증을 악용하고, XSS는 사용자의 브라우저에서 스크립트를 실행한다",
+        "CSRF와 XSS는 동일한 공격이다",
         "CSRF는 SQL을 조작하고, XSS는 HTML을 조작한다",
-        "CSRF와 XSS는 동일한 공격이다"
+        "CSRF는 사용자의 인증을 악용하고, XSS는 사용자의 브라우저에서 스크립트를 실행한다",
+        "CSRF는 서버에서, XSS는 클라이언트에서 스크립트가 실행된다"
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "CSRF는 인증된 사용자의 권한을 이용해 의도치 않은 요청을 서버에 보내는 공격이고, XSS는 악성 스크립트를 피해자 브라우저에서 실행시키는 공격입니다.",
-      "keywords": ["CSRF", "XSS", "차이점"]
+      "keywords": [
+        "CSRF",
+        "XSS",
+        "차이점"
+      ]
     }
   ]
 }

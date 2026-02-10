@@ -8,53 +8,69 @@
       "id": 1,
       "question": "정보보호의 3대 목표(CIA Triad)에 해당하지 않는 것은?",
       "options": [
+        "부인방지(Non-repudiation)",
         "기밀성(Confidentiality)",
         "무결성(Integrity)",
-        "가용성(Availability)",
-        "부인방지(Non-repudiation)"
+        "가용성(Availability)"
       ],
-      "answer": 3,
+      "answer": 4,
       "explanation": "정보보호의 3대 목표(CIA Triad)는 기밀성(Confidentiality), 무결성(Integrity), 가용성(Availability)이다. 부인방지(Non-repudiation)는 추가적 보안 목표에 해당한다.",
-      "keywords": ["CIA Triad", "기밀성", "무결성", "가용성"]
+      "keywords": [
+        "CIA Triad",
+        "기밀성",
+        "무결성",
+        "가용성"
+      ]
     },
     {
       "id": 2,
       "question": "인가된 사용자만 정보에 접근할 수 있도록 보장하는 보안 속성은?",
       "options": [
+        "기밀성",
         "무결성",
         "가용성",
-        "기밀성",
         "책임추적성"
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "기밀성(Confidentiality)은 인가된 사용자만 정보에 접근할 수 있도록 보장하는 속성이다. 도청, 유출 등이 기밀성 위협이며, 암호화와 접근통제가 대책이다.",
-      "keywords": ["기밀성", "Confidentiality"]
+      "keywords": [
+        "기밀성",
+        "Confidentiality"
+      ]
     },
     {
       "id": 3,
       "question": "DoS 공격은 정보보호 3대 목표 중 어떤 속성을 침해하는가?",
       "options": [
-        "기밀성",
-        "무결성",
+        "인증",
         "가용성",
-        "인증"
+        "기밀성",
+        "무결성"
       ],
-      "answer": 2,
+      "answer": 4,
       "explanation": "DoS(서비스 거부) 공격은 가용성(Availability)을 침해한다. 가용성은 인가된 사용자가 필요할 때 정보에 접근할 수 있음을 보장하는 속성으로, 이중화와 백업이 대책이다.",
-      "keywords": ["가용성", "DoS", "Availability"]
+      "keywords": [
+        "가용성",
+        "DoS",
+        "Availability"
+      ]
     },
     {
       "id": 4,
       "question": "정보가 비인가된 방식으로 변경되지 않음을 보장하는 보안 속성은?",
       "options": [
-        "기밀성",
         "무결성",
+        "부인방지",
         "가용성",
-        "부인방지"
+        "기밀성"
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "무결성(Integrity)은 정보가 비인가된 방식으로 변경(변조, 위조)되지 않음을 보장하는 속성이다. 해시와 전자서명이 무결성 확보 수단이다.",
-      "keywords": ["무결성", "Integrity", "변조"]
+      "keywords": [
+        "무결성",
+        "Integrity",
+        "변조"
+      ]
     },
     {
       "id": 5,
@@ -67,345 +83,443 @@
       ],
       "answer": 1,
       "explanation": "부인방지(Non-repudiation)는 행위자가 자신의 행위를 나중에 부인할 수 없도록 하는 보안 속성이다. 전자서명이 대표적인 부인방지 수단이다.",
-      "keywords": ["부인방지", "Non-repudiation"]
+      "keywords": [
+        "부인방지",
+        "Non-repudiation"
+      ]
     },
     {
       "id": 6,
       "question": "정보보호 조직에서 정보보호 전략 및 정책 수립을 총괄하는 역할은?",
       "options": [
-        "경영진",
+        "정보보호 담당자",
         "CISO",
         "정보보호 관리자",
-        "정보보호 담당자"
+        "경영진"
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "CISO(Chief Information Security Officer, 정보보호 최고 책임자)는 정보보호 전략과 정책 수립을 총괄한다. 경영진은 의지 표명과 자원 할당, 정보보호 관리자는 보안 통제 운영을 담당한다.",
-      "keywords": ["CISO", "정보보호 최고 책임자"]
+      "keywords": [
+        "CISO",
+        "정보보호 최고 책임자"
+      ]
     },
     {
       "id": 7,
       "question": "정보보호 정책 체계의 올바른 계층 구조(상위 → 하위)는?",
       "options": [
         "표준 → 정책 → 지침 → 절차",
-        "정책 → 표준 → 지침 → 절차",
+        "절차 → 표준 → 지침 → 정책",
         "정책 → 지침 → 표준 → 절차",
-        "절차 → 표준 → 지침 → 정책"
+        "정책 → 표준 → 지침 → 절차"
       ],
       "answer": 1,
       "explanation": "정보보호 정책 체계는 정책(Policy, 방향/원칙 선언) → 표준(Standards, 필수 준수 사항) → 지침(Guidelines, 권고 사항) → 절차(Procedures, 구체적 수행 방법) 순이다.",
-      "keywords": ["정책", "표준", "지침", "절차"]
+      "keywords": [
+        "정책",
+        "표준",
+        "지침",
+        "절차"
+      ]
     },
     {
       "id": 8,
       "question": "정보보호 정책 체계에서 '준수를 권장하는 문서'에 해당하는 것은?",
       "options": [
-        "정책(Policy)",
-        "표준(Standards)",
         "지침(Guidelines)",
+        "표준(Standards)",
+        "정책(Policy)",
         "절차(Procedures)"
       ],
       "answer": 2,
       "explanation": "지침(Guidelines)은 권고 사항으로 준수를 권장하는 문서이다. 정책은 방향/원칙 선언, 표준은 필수 준수 사항, 절차는 구체적 수행 방법을 담은 문서이다.",
-      "keywords": ["지침", "Guidelines", "권고"]
+      "keywords": [
+        "지침",
+        "Guidelines",
+        "권고"
+      ]
     },
     {
       "id": 9,
       "question": "사회공학 공격 유형 중 인가된 사람을 따라 보안 구역에 무단 진입하는 공격은?",
       "options": [
         "피싱(Phishing)",
-        "스피어 피싱(Spear Phishing)",
+        "테일게이팅(Tailgating)",
         "보이스 피싱(Vishing)",
-        "테일게이팅(Tailgating)"
+        "스피어 피싱(Spear Phishing)"
       ],
       "answer": 3,
       "explanation": "테일게이팅(Tailgating)은 인가된 사람을 따라 보안 구역에 무단으로 진입하는 물리적 사회공학 공격이다. 출입 통제와 동반 입장 금지로 대응한다.",
-      "keywords": ["테일게이팅", "Tailgating", "사회공학"]
+      "keywords": [
+        "테일게이팅",
+        "Tailgating",
+        "사회공학"
+      ]
     },
     {
       "id": 10,
       "question": "특정 개인이나 조직을 표적으로 하는 맞춤형 피싱 공격은?",
       "options": [
-        "피싱(Phishing)",
         "스피어 피싱(Spear Phishing)",
         "스미싱(Smishing)",
+        "피싱(Phishing)",
         "파밍(Pharming)"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "스피어 피싱(Spear Phishing)은 특정 개인이나 조직을 표적으로 하는 맞춤형 피싱 공격이다. 일반 피싱은 불특정 다수를 대상으로 하며, 스미싱은 SMS를 이용한 피싱이다.",
-      "keywords": ["스피어 피싱", "Spear Phishing"]
+      "keywords": [
+        "스피어 피싱",
+        "Spear Phishing"
+      ]
     },
     {
       "id": 11,
       "question": "정보자산 분류에서 유출 시 치명적 피해를 줄 수 있는 핵심 기술이나 개인정보에 해당하는 등급은?",
       "options": [
-        "일반",
-        "3급(대외비)",
         "2급(비밀)",
-        "1급(극비)"
+        "3급(대외비)",
+        "1급(극비)",
+        "일반"
       ],
-      "answer": 3,
+      "answer": 1,
       "explanation": "1급(극비)은 유출 시 치명적 피해를 줄 수 있는 핵심 기술, 개인정보 등이 해당한다. 2급(비밀)은 심각한 피해, 3급(대외비)은 업무 지장, 일반은 공개 가능 등급이다.",
-      "keywords": ["자산 분류", "1급", "극비"]
+      "keywords": [
+        "자산 분류",
+        "1급",
+        "극비"
+      ]
     },
     {
       "id": 12,
       "question": "물리적 보안에서 두 개의 도어 사이 공간으로 한 번에 한 명만 통과 가능한 출입 통제 시스템은?",
       "options": [
         "턴스타일(Turnstile)",
-        "맨트랩(Mantrap)",
+        "게이트웨이(Gateway)",
         "볼라드(Bollard)",
-        "게이트웨이(Gateway)"
+        "맨트랩(Mantrap)"
       ],
       "answer": 1,
       "explanation": "맨트랩(Mantrap)은 두 개의 도어 사이 공간(이중 도어 시스템)으로, 한 번에 한 명만 통과할 수 있는 출입 통제 시스템이다. 테일게이팅 방지에 효과적이다.",
-      "keywords": ["맨트랩", "Mantrap", "이중 도어"]
+      "keywords": [
+        "맨트랩",
+        "Mantrap",
+        "이중 도어"
+      ]
     },
     {
       "id": 13,
       "question": "환경적 보안 위협 중 정전에 대한 대책으로 적절한 것은?",
       "options": [
-        "항온항습 시스템",
-        "소화 시스템",
         "UPS(무정전 전원장치)와 비상 발전기",
-        "차폐 및 접지"
+        "항온항습 시스템",
+        "차폐 및 접지",
+        "소화 시스템"
       ],
-      "answer": 2,
+      "answer": 4,
       "explanation": "정전에 대한 대책은 UPS(Uninterruptible Power Supply, 무정전 전원장치)와 비상 발전기이다. 항온항습은 온도/습도, 소화 시스템은 화재, 차폐/접지는 전자파 대책이다.",
-      "keywords": ["UPS", "무정전 전원장치", "정전"]
+      "keywords": [
+        "UPS",
+        "무정전 전원장치",
+        "정전"
+      ]
     },
     {
       "id": 14,
       "question": "인적 보안에서 채용 시 수행하는 보안 활동으로 옳은 것은?",
       "options": [
-        "신원 조회, 자격 확인",
-        "보안 서약서, NDA 서명",
         "보안 교육, 권한 검토",
-        "자산 반납, 접근 권한 회수"
+        "신원 조회, 자격 확인",
+        "자산 반납, 접근 권한 회수",
+        "보안 서약서, NDA 서명"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "채용 시에는 보안 서약서와 NDA(비밀유지 계약서) 서명을 수행한다. 신원 조회는 채용 전, 보안 교육은 재직 중, 자산 반납과 권한 회수는 퇴직 시 수행한다.",
-      "keywords": ["인적 보안", "NDA", "보안 서약서"]
+      "keywords": [
+        "인적 보안",
+        "NDA",
+        "보안 서약서"
+      ]
     },
     {
       "id": 15,
       "question": "내부자 위협 대응을 위한 통제로 적절하지 않은 것은?",
       "options": [
+        "모든 직원에게 관리자 권한 부여",
         "직무 분리(Separation of Duties)",
         "최소 권한(Least Privilege)",
-        "로그 모니터링",
-        "모든 직원에게 관리자 권한 부여"
+        "로그 모니터링"
       ],
-      "answer": 3,
+      "answer": 4,
       "explanation": "내부자 위협 대응을 위해 직무 분리, 최소 권한 원칙, 로그 모니터링, DLP, 휴가 시 감사 등을 적용한다. 모든 직원에게 관리자 권한을 부여하는 것은 최소 권한 원칙에 위배된다.",
-      "keywords": ["내부자 위협", "직무 분리", "최소 권한"]
+      "keywords": [
+        "내부자 위협",
+        "직무 분리",
+        "최소 권한"
+      ]
     },
     {
       "id": 16,
       "question": "변경 관리 프로세스의 올바른 순서는?",
       "options": [
+        "변경 요청 → 구현 → 영향 분석 → 승인 → 검토 → 문서화",
         "변경 요청 → 승인 → 영향 분석 → 구현 → 검토 → 문서화",
-        "변경 요청 → 영향 분석 → 승인 → 구현 → 검토 → 문서화",
         "영향 분석 → 변경 요청 → 구현 → 승인 → 검토 → 문서화",
-        "변경 요청 → 구현 → 영향 분석 → 승인 → 검토 → 문서화"
+        "변경 요청 → 영향 분석 → 승인 → 구현 → 검토 → 문서화"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "변경 관리 프로세스는 변경 요청 → 영향 분석 → 승인 → 구현 → 검토 → 문서화의 순서로 진행된다. 모든 변경을 문서화하고 영향 평가를 수행하며 롤백 계획을 수립하는 것이 원칙이다.",
-      "keywords": ["변경 관리", "영향 분석", "승인"]
+      "keywords": [
+        "변경 관리",
+        "영향 분석",
+        "승인"
+      ]
     },
     {
       "id": 17,
       "question": "백업 유형 중 이전 백업 이후 변경된 데이터만 백업하여 빠르지만 복구가 복잡한 유형은?",
       "options": [
         "전체 백업(Full Backup)",
-        "증분 백업(Incremental Backup)",
         "차등 백업(Differential Backup)",
+        "증분 백업(Incremental Backup)",
         "미러 백업(Mirror Backup)"
       ],
       "answer": 1,
       "explanation": "증분 백업(Incremental Backup)은 이전 백업 이후 변경된 데이터만 백업하여 빠르지만 복구 시 전체 백업과 모든 증분 백업이 필요하여 복잡하다. 차등 백업은 마지막 전체 백업 이후 변경분을 백업한다.",
-      "keywords": ["증분 백업", "Incremental Backup"]
+      "keywords": [
+        "증분 백업",
+        "Incremental Backup"
+      ]
     },
     {
       "id": 18,
       "question": "3-2-1 백업 규칙에 대한 설명으로 올바른 것은?",
       "options": [
-        "3종류 매체, 2개 복사본, 1개 원격지 보관",
         "3개 복사본, 2종류 매체, 1개 원격지 보관",
+        "3개 복사본, 2일 주기, 1개 원격지 보관",
         "3일 주기, 2개 복사본, 1개 원격지 보관",
-        "3개 복사본, 2일 주기, 1개 원격지 보관"
+        "3종류 매체, 2개 복사본, 1개 원격지 보관"
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "3-2-1 백업 규칙은 3개 이상의 복사본을 만들고, 2종류 이상의 매체에 저장하며, 1개는 원격지에 보관하는 원칙이다.",
-      "keywords": ["3-2-1 백업 규칙"]
+      "keywords": [
+        "3-2-1 백업 규칙"
+      ]
     },
     {
       "id": 19,
       "question": "마지막 전체 백업 이후 변경된 모든 데이터를 백업하는 방식은?",
       "options": [
-        "전체 백업",
         "증분 백업",
+        "스냅샷 백업",
         "차등 백업",
-        "스냅샷 백업"
+        "전체 백업"
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "차등 백업(Differential Backup)은 마지막 전체 백업 이후 변경된 모든 데이터를 백업한다. 증분 백업은 이전 백업(전체 또는 증분) 이후 변경분만 백업한다.",
-      "keywords": ["차등 백업", "Differential Backup"]
+      "keywords": [
+        "차등 백업",
+        "Differential Backup"
+      ]
     },
     {
       "id": 20,
       "question": "업무 연속성 관리(BCM)에서 업무 중단이 조직에 미치는 영향을 분석하는 활동은?",
       "options": [
-        "DRP(재해복구계획)",
-        "BCP(업무연속성계획)",
+        "BRM(업무위험관리)",
         "BIA(업무영향분석)",
-        "BRM(업무위험관리)"
+        "BCP(업무연속성계획)",
+        "DRP(재해복구계획)"
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "BIA(Business Impact Analysis, 업무영향분석)는 업무 중단이 조직에 미치는 영향을 분석하는 활동이다. BIA를 통해 MTD, RTO, RPO, WRT 등의 지표를 산출한다.",
-      "keywords": ["BIA", "업무영향분석", "Business Impact Analysis"]
+      "keywords": [
+        "BIA",
+        "업무영향분석",
+        "Business Impact Analysis"
+      ]
     },
     {
       "id": 21,
       "question": "BIA 지표 중 시스템 복구 목표 시간을 의미하는 것은?",
       "options": [
+        "WRT(Work Recovery Time)",
         "MTD(Maximum Tolerable Downtime)",
-        "RTO(Recovery Time Objective)",
         "RPO(Recovery Point Objective)",
-        "WRT(Work Recovery Time)"
+        "RTO(Recovery Time Objective)"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "RTO(Recovery Time Objective, 복구목표시간)는 시스템 복구 목표 시간이다. MTD는 최대허용중단시간, RPO는 복구목표시점(데이터 손실 허용 범위), WRT는 업무복구시간이다.",
-      "keywords": ["RTO", "Recovery Time Objective"]
+      "keywords": [
+        "RTO",
+        "Recovery Time Objective"
+      ]
     },
     {
       "id": 22,
       "question": "BIA 지표 중 데이터 손실 허용 범위를 의미하는 것은?",
       "options": [
+        "RPO",
         "MTD",
         "RTO",
-        "RPO",
         "WRT"
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "RPO(Recovery Point Objective, 복구목표시점)는 장애 발생 시 허용 가능한 데이터 손실 범위(시점)를 의미한다. RPO가 0에 가까울수록 실시간 백업이 필요하다.",
-      "keywords": ["RPO", "Recovery Point Objective", "데이터 손실"]
+      "keywords": [
+        "RPO",
+        "Recovery Point Objective",
+        "데이터 손실"
+      ]
     },
     {
       "id": 23,
       "question": "BIA 지표 간의 관계로 올바른 것은?",
       "options": [
-        "MTD ≥ RTO + WRT",
-        "MTD = RTO - WRT",
         "RTO ≥ MTD + WRT",
-        "WRT ≥ MTD + RTO"
+        "MTD = RTO - WRT",
+        "WRT ≥ MTD + RTO",
+        "MTD ≥ RTO + WRT"
       ],
-      "answer": 0,
+      "answer": 4,
       "explanation": "MTD(최대허용중단시간)는 RTO(시스템 복구 목표 시간)와 WRT(업무 정상화 시간)의 합보다 크거나 같아야 한다. 즉 MTD ≥ RTO + WRT이다.",
-      "keywords": ["MTD", "RTO", "WRT", "관계"]
+      "keywords": [
+        "MTD",
+        "RTO",
+        "WRT",
+        "관계"
+      ]
     },
     {
       "id": 24,
       "question": "재해복구 사이트 유형 중 즉시 운영이 가능하며 비용이 가장 높은 것은?",
       "options": [
+        "Hot Site",
         "Cold Site",
         "Warm Site",
-        "Hot Site",
         "Mobile Site"
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "Hot Site는 모든 장비와 데이터가 준비되어 즉시 운영이 가능한 복구 사이트로, 비용이 가장 높지만 RTO가 분~시간 수준으로 가장 짧다.",
-      "keywords": ["Hot Site", "재해복구"]
+      "keywords": [
+        "Hot Site",
+        "재해복구"
+      ]
     },
     {
       "id": 25,
       "question": "재해복구 사이트 중 빈 공간만 확보되어 있으며 비용이 가장 낮은 유형은?",
       "options": [
-        "Hot Site",
+        "Cloud Site",
         "Warm Site",
         "Cold Site",
-        "Cloud Site"
+        "Hot Site"
       ],
       "answer": 2,
       "explanation": "Cold Site는 빈 공간만 확보된 최소 비용의 복구 사이트로, 복구에 수일~수주가 소요된다. Hot Site는 즉시 운영, Warm Site는 일부 장비 보유 상태이다.",
-      "keywords": ["Cold Site", "재해복구"]
+      "keywords": [
+        "Cold Site",
+        "재해복구"
+      ]
     },
     {
       "id": 26,
       "question": "BCM 테스트 유형 중 실제로 대체 사이트로 전환하여 수행하는 테스트는?",
       "options": [
-        "체크리스트 테스트",
         "워크스루 테스트",
+        "체크리스트 테스트",
         "시뮬레이션 테스트",
         "전체 중단 테스트"
       ],
       "answer": 3,
       "explanation": "전체 중단 테스트는 실제로 대체 사이트로 전환하는 가장 철저한 테스트이다. 체크리스트는 문서 검토, 워크스루는 담당자 절차 검토, 시뮬레이션은 가상 시나리오 훈련이다.",
-      "keywords": ["전체 중단 테스트", "BCM 테스트"]
+      "keywords": [
+        "전체 중단 테스트",
+        "BCM 테스트"
+      ]
     },
     {
       "id": 27,
       "question": "구성 관리(Configuration Management)의 활동에 해당하지 않는 것은?",
       "options": [
-        "기준선 설정",
         "변경 통제",
+        "비용 산정",
         "상태 보고",
-        "비용 산정"
+        "기준선 설정"
       ],
       "answer": 3,
       "explanation": "구성 관리의 주요 활동은 기준선 설정(표준 구성 정의), 변경 통제(무단 변경 방지), 상태 보고(현재 구성 현황), 감사(기준선 준수 확인)이다. 비용 산정은 구성 관리 활동이 아니다.",
-      "keywords": ["구성 관리", "Configuration Management", "기준선"]
+      "keywords": [
+        "구성 관리",
+        "Configuration Management",
+        "기준선"
+      ]
     },
     {
       "id": 28,
       "question": "공급망 보안에서 선정 단계의 통제 활동으로 적절한 것은?",
       "options": [
-        "데이터 반환/삭제, 접근 회수",
         "모니터링, 정기 감사",
+        "보안 요구사항, SLA 명시",
         "보안 평가, 실사",
-        "보안 요구사항, SLA 명시"
+        "데이터 반환/삭제, 접근 회수"
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "공급망 보안의 선정 단계에서는 보안 평가와 실사를 수행한다. 계약 단계에서 보안 요구사항/SLA 명시, 운영 단계에서 모니터링/정기 감사, 종료 단계에서 데이터 반환/삭제 및 접근 회수를 수행한다.",
-      "keywords": ["공급망 보안", "선정", "보안 평가"]
+      "keywords": [
+        "공급망 보안",
+        "선정",
+        "보안 평가"
+      ]
     },
     {
       "id": 29,
       "question": "패치 관리 프로세스의 올바른 순서는?",
       "options": [
-        "패치 획득 → 취약점 공지 → 테스트 → 배포 → 검증",
-        "취약점 공지 → 패치 획득 → 배포 → 테스트 → 검증",
         "취약점 공지 → 패치 획득 → 테스트 → 배포 → 검증 → 문서화",
+        "취약점 공지 → 패치 획득 → 배포 → 테스트 → 검증",
+        "패치 획득 → 취약점 공지 → 테스트 → 배포 → 검증",
         "테스트 → 취약점 공지 → 패치 획득 → 배포 → 문서화"
       ],
       "answer": 2,
       "explanation": "패치 관리 프로세스는 취약점 공지 → 패치 획득 → 테스트 → 배포 → 검증 → 문서화의 순서로 진행된다. 배포 전 테스트를 통해 패치로 인한 문제를 사전에 확인해야 한다.",
-      "keywords": ["패치 관리", "취약점", "테스트"]
+      "keywords": [
+        "패치 관리",
+        "취약점",
+        "테스트"
+      ]
     },
     {
       "id": 30,
       "question": "업무 종료 시 책상 위의 민감 정보를 정리하는 보안 정책은?",
       "options": [
-        "BYOD 정책",
         "클린 데스크(Clean Desk) 정책",
         "원격 접속 정책",
+        "BYOD 정책",
         "이메일 사용 정책"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "클린 데스크(Clean Desk) 정책은 업무 종료 시 책상 위의 민감 정보(문서, USB, 메모 등)를 정리하여 비인가자의 접근을 방지하는 보안 정책이다.",
-      "keywords": ["클린 데스크", "Clean Desk"]
+      "keywords": [
+        "클린 데스크",
+        "Clean Desk"
+      ]
     },
     {
       "id": 31,
       "question": "정보보호 거버넌스 조직 구조에서 정보보호 방향 설정과 감독을 담당하는 최상위 조직은?",
       "options": [
-        "CISO",
-        "정보보호 위원회",
         "이사회/경영진",
-        "보안 운영팀"
+        "CISO",
+        "보안 운영팀",
+        "정보보호 위원회"
       ],
-      "answer": 2,
+      "answer": 4,
       "explanation": "정보보호 거버넌스 구조에서 이사회/경영진이 최상위에서 정보보호 방향 설정과 감독을 담당한다. 그 아래 정보보호 위원회가 정책 결정을, CISO가 전략 수립과 실행을 담당한다.",
-      "keywords": ["거버넌스", "이사회", "경영진"]
+      "keywords": [
+        "거버넌스",
+        "이사회",
+        "경영진"
+      ]
     },
     {
       "id": 32,
@@ -413,51 +527,67 @@
       "options": [
         "정보 자산",
         "소프트웨어 자산",
-        "물리적 자산",
-        "서비스 자산"
+        "서비스 자산",
+        "물리적 자산"
       ],
       "answer": 2,
       "explanation": "서버, 네트워크 장비, PC 등은 물리적 자산에 해당한다. 정보 자산은 문서/데이터베이스, 소프트웨어 자산은 운영체제/애플리케이션, 서비스 자산은 네트워크 서비스/클라우드이다.",
-      "keywords": ["물리적 자산", "자산 분류"]
+      "keywords": [
+        "물리적 자산",
+        "자산 분류"
+      ]
     },
     {
       "id": 33,
       "question": "보안 인식 교육에서 개발자에게 제공해야 할 교육 내용으로 가장 적절한 것은?",
       "options": [
         "보안 정책, 기본 수칙",
-        "피싱, 악성코드, 비밀번호 관리",
         "시큐어 코딩, OWASP Top 10",
+        "피싱, 악성코드, 비밀번호 관리",
         "보안 거버넌스, 규제 준수"
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "개발자에게는 시큐어 코딩과 OWASP Top 10에 대한 교육이 적절하다. 보안 정책/기본 수칙은 신규 입사자, 피싱/악성코드 관리는 일반 직원, 거버넌스/규제 준수는 관리자 대상이다.",
-      "keywords": ["보안 인식 교육", "시큐어 코딩", "OWASP"]
+      "keywords": [
+        "보안 인식 교육",
+        "시큐어 코딩",
+        "OWASP"
+      ]
     },
     {
       "id": 34,
       "question": "인적 보안에서 퇴직 시 수행해야 할 보안 활동으로 옳은 것은?",
       "options": [
-        "신원 조회, 자격 확인",
-        "보안 서약서, NDA 서명",
         "보안 교육, 권한 검토",
-        "자산 반납, 접근 권한 회수"
+        "자산 반납, 접근 권한 회수",
+        "신원 조회, 자격 확인",
+        "보안 서약서, NDA 서명"
       ],
-      "answer": 3,
+      "answer": 1,
       "explanation": "퇴직 시에는 회사 자산(노트북, 출입증 등) 반납과 시스템 접근 권한 회수를 수행해야 한다. 또한 퇴직 후에도 비밀유지 의무가 적용된다.",
-      "keywords": ["퇴직 보안", "자산 반납", "권한 회수"]
+      "keywords": [
+        "퇴직 보안",
+        "자산 반납",
+        "권한 회수"
+      ]
     },
     {
       "id": 35,
       "question": "DRP(재해복구계획)와 BCP(업무연속성계획)의 관계로 올바른 것은?",
       "options": [
-        "DRP는 BCP의 상위 개념이다",
         "BCP와 DRP는 동일한 개념이다",
+        "DRP는 BCP의 상위 개념이다",
         "DRP는 IT 시스템 복구에, BCP는 전체 비즈니스 연속성에 초점을 맞춘다",
         "DRP는 사전 예방에, BCP는 사후 복구에 초점을 맞춘다"
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "DRP(Disaster Recovery Plan)는 IT 시스템과 인프라의 복구에 초점을 맞추고, BCP(Business Continuity Plan)는 핵심 업무를 포함한 전체 비즈니스 연속성에 초점을 맞춘다. BCP가 DRP보다 포괄적인 개념이다.",
-      "keywords": ["DRP", "BCP", "재해복구", "업무연속성"]
+      "keywords": [
+        "DRP",
+        "BCP",
+        "재해복구",
+        "업무연속성"
+      ]
     },
     {
       "id": 36,
@@ -465,64 +595,80 @@
       "options": [
         "최소 권한 원칙",
         "직무 분리 원칙",
-        "알 필요성 원칙",
-        "이중 통제 원칙"
+        "이중 통제 원칙",
+        "알 필요성 원칙"
       ],
       "answer": 1,
       "explanation": "직무 분리(Separation of Duties) 원칙은 중요 업무의 권한을 여러 사람에게 분산하여 단독으로 부정 행위를 할 수 없도록 하는 원칙이다. 최소 권한은 필요 최소한의 권한만 부여하는 원칙이다.",
-      "keywords": ["직무 분리", "Separation of Duties"]
+      "keywords": [
+        "직무 분리",
+        "Separation of Duties"
+      ]
     },
     {
       "id": 37,
       "question": "Warm Site에 대한 설명으로 올바른 것은?",
       "options": [
-        "모든 장비가 갖추어져 즉시 운영이 가능하다",
-        "일부 장비가 설치되어 있으며 RTO가 시간~일 수준이다",
         "빈 공간만 확보되어 있으며 비용이 가장 낮다",
-        "클라우드 기반으로 유연한 확장이 가능하다"
+        "모든 장비가 갖추어져 즉시 운영이 가능하다",
+        "클라우드 기반으로 유연한 확장이 가능하다",
+        "일부 장비가 설치되어 있으며 RTO가 시간~일 수준이다"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "Warm Site는 일부 장비가 설치된 부분 준비 상태의 복구 사이트로, RTO가 시간~일 수준이며 비용은 Hot Site와 Cold Site의 중간이다.",
-      "keywords": ["Warm Site", "복구 사이트"]
+      "keywords": [
+        "Warm Site",
+        "복구 사이트"
+      ]
     },
     {
       "id": 38,
       "question": "물리적 보안의 계층 구조에서 가장 내부에 위치하는 보안 영역은?",
       "options": [
-        "경계 보안(담장, CCTV)",
+        "서버룸(생체인증)",
         "시설 보안(출입통제)",
-        "사무실 보안(클린 데스크)",
-        "서버룸(생체인증)"
+        "경계 보안(담장, CCTV)",
+        "사무실 보안(클린 데스크)"
       ],
-      "answer": 3,
+      "answer": 4,
       "explanation": "물리적 보안은 경계 보안 → 시설 보안 → 사무실 보안 → 데이터센터 → 서버룸의 다층 구조이다. 서버룸이 가장 내부에 위치하며 생체인증 등 가장 강력한 보안이 적용된다.",
-      "keywords": ["물리적 보안", "서버룸", "다층 방어"]
+      "keywords": [
+        "물리적 보안",
+        "서버룸",
+        "다층 방어"
+      ]
     },
     {
       "id": 39,
       "question": "자산 관리 수명주기의 올바른 순서는?",
       "options": [
-        "사용 → 획득 → 유지 → 폐기",
         "획득(등록/분류) → 사용(접근통제) → 유지(패치/백업) → 폐기(안전 삭제)",
-        "유지 → 획득 → 사용 → 폐기",
-        "획득 → 유지 → 사용 → 폐기"
+        "사용 → 획득 → 유지 → 폐기",
+        "획득 → 유지 → 사용 → 폐기",
+        "유지 → 획득 → 사용 → 폐기"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "자산 관리 수명주기는 획득(등록/분류) → 사용(접근통제) → 유지(패치/백업) → 폐기(안전 삭제)의 순서로 진행된다.",
-      "keywords": ["자산 관리", "수명주기"]
+      "keywords": [
+        "자산 관리",
+        "수명주기"
+      ]
     },
     {
       "id": 40,
       "question": "공급망 보안 위험에 해당하지 않는 것은?",
       "options": [
-        "하드웨어에 악성 칩 삽입",
-        "소프트웨어에 악성코드 삽입",
+        "자사 직원의 비밀번호 분실",
         "외주 인력을 통한 데이터 유출",
-        "자사 직원의 비밀번호 분실"
+        "하드웨어에 악성 칩 삽입",
+        "소프트웨어에 악성코드 삽입"
       ],
-      "answer": 3,
+      "answer": 2,
       "explanation": "공급망 보안 위험은 하드웨어 조작(악성 칩 삽입), 소프트웨어 변조(악성코드 삽입), 외주 인력을 통한 데이터 유출, 공급업체 서비스 중단, 공급업체 규제 위반 등이다. 자사 직원의 비밀번호 분실은 내부자 위협에 해당한다.",
-      "keywords": ["공급망 보안", "공급망 위험"]
+      "keywords": [
+        "공급망 보안",
+        "공급망 위험"
+      ]
     }
   ]
 }

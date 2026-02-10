@@ -8,14 +8,17 @@
       "id": 1,
       "question": "소프트웨어 개발 전 과정에서 보안 취약점을 사전에 제거하는 개발 생명주기는?",
       "options": [
-        "Agile",
         "Waterfall",
+        "DevOps",
         "Secure SDLC",
-        "DevOps"
+        "Agile"
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "Secure SDLC는 보안이 통합된 소프트웨어 개발 생명주기로, 요구사항부터 운영까지 각 단계에서 보안 활동을 수행합니다.",
-      "keywords": ["Secure SDLC", "소프트웨어 개발 보안"]
+      "keywords": [
+        "Secure SDLC",
+        "소프트웨어 개발 보안"
+      ]
     },
     {
       "id": 2,
@@ -28,7 +31,10 @@
       ],
       "answer": 1,
       "explanation": "개발 단계에서 보안 결함을 수정하는 비용은 운영 단계보다 훨씬 저렴합니다. 이는 Secure SDLC의 주요 필요성 중 하나입니다.",
-      "keywords": ["비용 절감", "Secure SDLC"]
+      "keywords": [
+        "비용 절감",
+        "Secure SDLC"
+      ]
     },
     {
       "id": 3,
@@ -41,72 +47,90 @@
       ],
       "answer": 2,
       "explanation": "MS SDL(Microsoft Security Development Lifecycle)은 교육, 요구사항, 설계, 구현, 검증, 릴리스, 대응 등의 단계로 구성된 보안 개발 프로세스입니다.",
-      "keywords": ["MS SDL", "Microsoft"]
+      "keywords": [
+        "MS SDL",
+        "Microsoft"
+      ]
     },
     {
       "id": 4,
       "question": "소프트웨어 보안 성숙도를 측정하는 프레임워크는?",
       "options": [
-        "MS SDL",
-        "BSIMM",
         "CLASP",
-        "STRIDE"
+        "STRIDE",
+        "BSIMM",
+        "MS SDL"
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "BSIMM(Building Security In Maturity Model)은 다양한 조직의 보안 활동을 관찰하여 소프트웨어 보안 성숙도를 측정하는 프레임워크입니다.",
-      "keywords": ["BSIMM", "보안 성숙도"]
+      "keywords": [
+        "BSIMM",
+        "보안 성숙도"
+      ]
     },
     {
       "id": 5,
       "question": "MS SDL의 검증 단계에서 수행하는 활동이 아닌 것은?",
       "options": [
+        "보안 교육",
         "동적 분석",
-        "퍼징(Fuzzing)",
         "침투 테스트",
-        "보안 교육"
+        "퍼징(Fuzzing)"
       ],
       "answer": 3,
       "explanation": "보안 교육은 MS SDL의 첫 번째 단계입니다. 검증 단계에서는 동적 분석, 퍼징, 침투 테스트 등을 수행합니다.",
-      "keywords": ["MS SDL", "검증"]
+      "keywords": [
+        "MS SDL",
+        "검증"
+      ]
     },
     {
       "id": 6,
       "question": "STRIDE 위협 모델에서 'S'가 의미하는 위협은?",
       "options": [
-        "서비스 거부 (Denial of Service)",
-        "신원 위조 (Spoofing)",
         "정보 노출 (Information Disclosure)",
-        "데이터 변조 (Tampering)"
+        "서비스 거부 (Denial of Service)",
+        "데이터 변조 (Tampering)",
+        "신원 위조 (Spoofing)"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "STRIDE에서 S는 Spoofing(신원 위조)입니다. 인증 관련 위협으로, 다른 사용자나 시스템을 사칭하는 공격을 의미합니다.",
-      "keywords": ["STRIDE", "Spoofing"]
+      "keywords": [
+        "STRIDE",
+        "Spoofing"
+      ]
     },
     {
       "id": 7,
       "question": "STRIDE 모델에서 각 위협과 대응되는 보안 속성의 연결이 올바른 것은?",
       "options": [
-        "Tampering - 인증",
+        "Denial of Service - 무결성",
         "Repudiation - 기밀성",
-        "Information Disclosure - 기밀성",
-        "Denial of Service - 무결성"
+        "Tampering - 인증",
+        "Information Disclosure - 기밀성"
       ],
       "answer": 2,
       "explanation": "STRIDE 대응: Spoofing→인증, Tampering→무결성, Repudiation→부인방지, Information Disclosure→기밀성, DoS→가용성, Elevation of Privilege→인가.",
-      "keywords": ["STRIDE", "보안 속성"]
+      "keywords": [
+        "STRIDE",
+        "보안 속성"
+      ]
     },
     {
       "id": 8,
       "question": "STRIDE에서 'E'가 의미하는 위협은?",
       "options": [
-        "정보 노출",
-        "데이터 변조",
+        "부인",
         "권한 상승 (Elevation of Privilege)",
-        "부인"
+        "데이터 변조",
+        "정보 노출"
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "STRIDE에서 E는 Elevation of Privilege(권한 상승)입니다. 인가(Authorization) 관련 위협으로, 일반 사용자가 관리자 권한을 획득하는 것을 의미합니다.",
-      "keywords": ["STRIDE", "Elevation of Privilege"]
+      "keywords": [
+        "STRIDE",
+        "Elevation of Privilege"
+      ]
     },
     {
       "id": 9,
@@ -114,480 +138,601 @@
       "options": [
         "Damage (피해 규모)",
         "Reproducibility (재현 가능성)",
-        "Denial (서비스 거부)",
-        "Discoverability (발견 가능성)"
+        "Discoverability (발견 가능성)",
+        "Denial (서비스 거부)"
       ],
       "answer": 2,
       "explanation": "DREAD는 Damage, Reproducibility, Exploitability(공격 용이성), Affected Users(영향받는 사용자), Discoverability(발견 가능성)로 구성됩니다.",
-      "keywords": ["DREAD", "위험도 평가"]
+      "keywords": [
+        "DREAD",
+        "위험도 평가"
+      ]
     },
     {
       "id": 10,
       "question": "위협 모델링에서 시스템 구조를 파악하기 위해 작성하는 다이어그램은?",
       "options": [
-        "ERD",
-        "DFD (Data Flow Diagram)",
         "UML",
-        "Gantt Chart"
+        "Gantt Chart",
+        "DFD (Data Flow Diagram)",
+        "ERD"
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "DFD(데이터 흐름도)는 위협 모델링의 첫 단계에서 시스템의 데이터 흐름을 시각화하기 위해 작성합니다. 이를 기반으로 STRIDE를 적용합니다.",
-      "keywords": ["DFD", "위협 모델링"]
+      "keywords": [
+        "DFD",
+        "위협 모델링"
+      ]
     },
     {
       "id": 11,
       "question": "입력 데이터 검증에서 허용된 값만 승인하는 방식은?",
       "options": [
-        "블랙리스트",
         "화이트리스트",
-        "그레이리스트",
-        "바이패스"
+        "바이패스",
+        "블랙리스트",
+        "그레이리스트"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "화이트리스트 방식은 허용된 값만 승인하는 검증 방식으로, 블랙리스트(금지된 값만 차단)보다 안전합니다. 우회 가능성이 낮습니다.",
-      "keywords": ["화이트리스트", "입력 검증"]
+      "keywords": [
+        "화이트리스트",
+        "입력 검증"
+      ]
     },
     {
       "id": 12,
       "question": "시큐어 코딩에서 입력 검증은 어디에서 수행해야 하는가?",
       "options": [
-        "클라이언트 측만",
         "서버 측만",
         "클라이언트와 서버 양쪽",
-        "데이터베이스에서만"
+        "데이터베이스에서만",
+        "클라이언트 측만"
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "클라이언트 측 검증만으로는 불충분하며, 반드시 서버 측에서도 검증해야 합니다. 클라이언트 측은 UX 개선용, 서버 측이 보안의 핵심입니다.",
-      "keywords": ["서버 측 검증", "입력 검증"]
+      "keywords": [
+        "서버 측 검증",
+        "입력 검증"
+      ]
     },
     {
       "id": 13,
       "question": "XSS 방지를 위해 HTML 본문에 출력할 때 사용하는 인코딩 방식은?",
       "options": [
-        "URL 인코딩",
+        "JavaScript 인코딩",
         "HTML Entity 인코딩",
-        "Base64 인코딩",
-        "JavaScript 인코딩"
+        "URL 인코딩",
+        "Base64 인코딩"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "HTML 본문에 출력할 때는 HTML Entity 인코딩을 사용합니다. URL 컨텍스트에는 URL 인코딩, JavaScript 컨텍스트에는 JavaScript 인코딩을 사용합니다.",
-      "keywords": ["HTML Entity", "출력 인코딩"]
+      "keywords": [
+        "HTML Entity",
+        "출력 인코딩"
+      ]
     },
     {
       "id": 14,
       "question": "패스워드 해시에 가장 권장되는 알고리즘은?",
       "options": [
-        "MD5",
         "SHA-1",
+        "MD5",
         "bcrypt 또는 Argon2",
         "Base64"
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "bcrypt와 Argon2는 솔트와 작업 계수(cost factor)를 포함하여 무차별 대입 공격에 강한 패스워드 해시 알고리즘입니다. MD5, SHA-1은 일반 해시로 패스워드에 부적합합니다.",
-      "keywords": ["bcrypt", "Argon2", "패스워드 해시"]
+      "keywords": [
+        "bcrypt",
+        "Argon2",
+        "패스워드 해시"
+      ]
     },
     {
       "id": 15,
       "question": "Password Hashing Competition에서 우승한 패스워드 해시 알고리즘은?",
       "options": [
-        "bcrypt",
-        "scrypt",
+        "PBKDF2",
         "Argon2",
-        "PBKDF2"
+        "bcrypt",
+        "scrypt"
       ],
-      "answer": 2,
+      "answer": 4,
       "explanation": "Argon2는 Password Hashing Competition(PHC)에서 우승한 알고리즘으로, 현재 가장 권장되는 패스워드 해시 알고리즘입니다.",
-      "keywords": ["Argon2", "PHC"]
+      "keywords": [
+        "Argon2",
+        "PHC"
+      ]
     },
     {
       "id": 16,
       "question": "암호학적으로 안전한 난수를 생성하기 위해 Java에서 사용해야 하는 클래스는?",
       "options": [
-        "Random",
-        "Math.random()",
         "SecureRandom",
+        "Math.random()",
+        "Random",
         "UUID"
       ],
       "answer": 2,
       "explanation": "SecureRandom은 암호학적으로 안전한 난수를 생성하는 클래스입니다. Random은 예측 가능하여 세션 ID, 토큰 생성에 사용하면 안 됩니다.",
-      "keywords": ["SecureRandom", "안전한 난수"]
+      "keywords": [
+        "SecureRandom",
+        "안전한 난수"
+      ]
     },
     {
       "id": 17,
       "question": "시큐어 코딩에서 에러 처리 원칙으로 올바르지 않은 것은?",
       "options": [
-        "상세 에러 메시지를 사용자에게 표시",
+        "에러 시 안전한 상태 유지",
         "상세 에러는 로그에만 기록",
         "인증 실패 시 동일한 에러 메시지 사용",
-        "에러 시 안전한 상태 유지"
+        "상세 에러 메시지를 사용자에게 표시"
       ],
-      "answer": 0,
+      "answer": 4,
       "explanation": "상세 에러 메시지(SQL 에러, 스택 트레이스 등)를 사용자에게 표시하면 공격자에게 시스템 정보를 노출합니다. 일반적인 메시지만 표시하고 상세 내용은 로그에 기록해야 합니다.",
-      "keywords": ["에러 처리", "정보 노출 방지"]
+      "keywords": [
+        "에러 처리",
+        "정보 노출 방지"
+      ]
     },
     {
       "id": 18,
       "question": "접근 제어에서 '기본 거부' 원칙의 의미는?",
       "options": [
-        "모든 접근을 기본적으로 허용하고 필요시 차단",
+        "특정 시간에만 접근 가능",
         "명시적으로 허용한 것 외에 모두 차단",
-        "관리자만 접근 가능",
-        "특정 시간에만 접근 가능"
+        "모든 접근을 기본적으로 허용하고 필요시 차단",
+        "관리자만 접근 가능"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "기본 거부(Default Deny)는 명시적으로 허용하지 않은 모든 접근을 차단하는 원칙입니다. 최소 권한 원칙과 함께 적용됩니다.",
-      "keywords": ["기본 거부", "Default Deny"]
+      "keywords": [
+        "기본 거부",
+        "Default Deny"
+      ]
     },
     {
       "id": 19,
       "question": "IDOR(Insecure Direct Object Reference) 취약점의 설명으로 올바른 것은?",
       "options": [
-        "SQL Injection을 통한 데이터 접근",
         "권한 검증 없이 객체에 직접 접근 가능",
+        "파일 업로드를 통한 코드 실행",
         "세션 고정 공격",
-        "파일 업로드를 통한 코드 실행"
+        "SQL Injection을 통한 데이터 접근"
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "IDOR은 URL의 파라미터(예: /documents/123)를 변경하여 권한 검증 없이 다른 사용자의 객체에 접근할 수 있는 취약점입니다.",
-      "keywords": ["IDOR", "직접 객체 참조"]
+      "keywords": [
+        "IDOR",
+        "직접 객체 참조"
+      ]
     },
     {
       "id": 20,
       "question": "암호화 알고리즘 중 사용이 비권장되는 것은?",
       "options": [
         "AES-256",
-        "SHA-256",
         "DES",
-        "RSA-2048"
+        "RSA-2048",
+        "SHA-256"
       ],
-      "answer": 2,
+      "answer": 4,
       "explanation": "DES는 56비트 키를 사용하여 현재 안전하지 않습니다. AES-256, SHA-256, RSA-2048+ 등이 권장됩니다. 3DES, RC4, MD5, SHA-1도 비권장됩니다.",
-      "keywords": ["DES", "비권장 암호화"]
+      "keywords": [
+        "DES",
+        "비권장 암호화"
+      ]
     },
     {
       "id": 21,
       "question": "TLS 프로토콜 중 보안 문제로 사용이 비권장되는 버전은?",
       "options": [
-        "TLS 1.2",
         "TLS 1.3",
+        "TLS 1.2",
         "TLS 1.0",
         "DTLS 1.2"
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "TLS 1.0과 1.1은 보안 취약점이 있어 비권장됩니다. TLS 1.2 이상을 사용해야 합니다. SSL은 모든 버전이 안전하지 않습니다.",
-      "keywords": ["TLS 1.0", "비권장", "프로토콜"]
+      "keywords": [
+        "TLS 1.0",
+        "비권장",
+        "프로토콜"
+      ]
     },
     {
       "id": 22,
       "question": "로깅 시 절대 기록해서는 안 되는 정보는?",
       "options": [
+        "사용자 ID",
         "로그인 성공/실패 기록",
         "패스워드, 카드번호",
-        "접근 시간",
-        "사용자 ID"
+        "접근 시간"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "패스워드, 카드번호 등 민감 정보는 로그에 기록해서는 안 됩니다. 개인정보도 필요 시 마스킹 처리해야 합니다.",
-      "keywords": ["로깅", "민감 정보"]
+      "keywords": [
+        "로깅",
+        "민감 정보"
+      ]
     },
     {
       "id": 23,
       "question": "Python에서 안전하지 않은 역직렬화를 유발할 수 있는 모듈은?",
       "options": [
+        "xml.etree",
         "json",
         "pickle",
-        "csv",
-        "xml.etree"
+        "csv"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "pickle 모듈은 임의의 Python 객체를 직렬화/역직렬화하며, 신뢰할 수 없는 데이터에 사용하면 코드 실행이 가능합니다. JSON을 대안으로 사용해야 합니다.",
-      "keywords": ["pickle", "역직렬화", "Python"]
+      "keywords": [
+        "pickle",
+        "역직렬화",
+        "Python"
+      ]
     },
     {
       "id": 24,
       "question": "JavaScript에서 __proto__를 조작하여 객체의 프로토타입을 오염시키는 취약점은?",
       "options": [
+        "DOM Clobbering",
         "XSS",
         "CSRF",
-        "프로토타입 오염 (Prototype Pollution)",
-        "DOM Clobbering"
+        "프로토타입 오염 (Prototype Pollution)"
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "프로토타입 오염은 __proto__나 constructor 속성을 조작하여 모든 JavaScript 객체의 프로토타입을 변경하는 취약점입니다. 속성 접근 시 __proto__와 constructor를 필터링해야 합니다.",
-      "keywords": ["프로토타입 오염", "Prototype Pollution", "JavaScript"]
+      "keywords": [
+        "프로토타입 오염",
+        "Prototype Pollution",
+        "JavaScript"
+      ]
     },
     {
       "id": 25,
       "question": "JavaScript에서 XSS를 방지하기 위해 사용해야 하는 DOM 속성은?",
       "options": [
         "innerHTML",
-        "outerHTML",
         "textContent",
+        "outerHTML",
         "insertAdjacentHTML"
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "textContent는 문자열을 텍스트로 처리하여 HTML 태그가 실행되지 않습니다. innerHTML, outerHTML, insertAdjacentHTML은 HTML을 파싱하여 XSS에 취약합니다.",
-      "keywords": ["textContent", "innerHTML", "XSS 방지"]
+      "keywords": [
+        "textContent",
+        "innerHTML",
+        "XSS 방지"
+      ]
     },
     {
       "id": 26,
       "question": "PHP에서 XSS 방지를 위해 출력 시 사용하는 함수는?",
       "options": [
-        "strip_tags()",
         "htmlspecialchars()",
         "urlencode()",
-        "base64_encode()"
+        "base64_encode()",
+        "strip_tags()"
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "htmlspecialchars()는 HTML 특수문자(<, >, &, \", ')를 엔티티로 변환하여 XSS를 방지합니다. ENT_QUOTES와 UTF-8 인코딩을 함께 지정해야 합니다.",
-      "keywords": ["htmlspecialchars", "PHP", "XSS"]
+      "keywords": [
+        "htmlspecialchars",
+        "PHP",
+        "XSS"
+      ]
     },
     {
       "id": 27,
       "question": "보안 테스트 유형 중 소스코드를 실행하지 않고 분석하여 취약점을 탐지하는 방식은?",
       "options": [
-        "DAST",
-        "SAST",
+        "SCA",
         "IAST",
-        "SCA"
+        "SAST",
+        "DAST"
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "SAST(Static Application Security Testing)는 소스코드를 실행하지 않고 정적으로 분석하여 취약점을 탐지합니다. 개발 초기에 적용 가능합니다.",
-      "keywords": ["SAST", "정적 분석"]
+      "keywords": [
+        "SAST",
+        "정적 분석"
+      ]
     },
     {
       "id": 28,
       "question": "실행 중인 애플리케이션을 대상으로 취약점을 테스트하는 방식은?",
       "options": [
-        "SAST",
-        "DAST",
         "SCA",
-        "코드 리뷰"
+        "코드 리뷰",
+        "DAST",
+        "SAST"
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "DAST(Dynamic Application Security Testing)는 실행 중인 애플리케이션에 요청을 보내 취약점을 탐지하는 동적 분석 방식입니다.",
-      "keywords": ["DAST", "동적 분석"]
+      "keywords": [
+        "DAST",
+        "동적 분석"
+      ]
     },
     {
       "id": 29,
       "question": "오픈소스 라이브러리의 알려진 취약점을 탐지하는 보안 테스트 유형은?",
       "options": [
-        "SAST",
-        "DAST",
         "IAST",
-        "SCA"
+        "SAST",
+        "SCA",
+        "DAST"
       ],
-      "answer": 3,
+      "answer": 1,
       "explanation": "SCA(Software Composition Analysis)는 프로젝트에 사용된 오픈소스 라이브러리의 알려진 취약점을 탐지합니다. OWASP Dependency-Check, Snyk 등이 있습니다.",
-      "keywords": ["SCA", "오픈소스 취약점"]
+      "keywords": [
+        "SCA",
+        "오픈소스 취약점"
+      ]
     },
     {
       "id": 30,
       "question": "다중 언어를 지원하는 대표적인 SAST 도구는?",
       "options": [
+        "Nikto",
         "OWASP ZAP",
         "SonarQube",
-        "Nikto",
         "Burp Suite"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "SonarQube는 Java, Python, JavaScript 등 다양한 언어를 지원하는 코드 품질 및 보안 분석 도구(SAST)입니다.",
-      "keywords": ["SonarQube", "SAST"]
+      "keywords": [
+        "SonarQube",
+        "SAST"
+      ]
     },
     {
       "id": 31,
       "question": "Python 코드의 보안 취약점을 정적 분석하는 도구는?",
       "options": [
         "FindBugs",
+        "Checkmarx",
         "ESLint",
-        "Bandit",
-        "Checkmarx"
+        "Bandit"
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "Bandit은 Python 코드의 보안 취약점을 정적으로 분석하는 도구입니다. FindBugs/SpotBugs는 Java, ESLint는 JavaScript용입니다.",
-      "keywords": ["Bandit", "Python", "SAST"]
+      "keywords": [
+        "Bandit",
+        "Python",
+        "SAST"
+      ]
     },
     {
       "id": 32,
       "question": "행정안전부 시큐어 코딩 가이드의 7가지 분류 중 가장 많은 항목이 포함된 분류는?",
       "options": [
-        "입력 데이터 검증 및 표현",
         "보안 기능",
         "에러 처리",
+        "입력 데이터 검증 및 표현",
         "코드 오류"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "행안부 시큐어 코딩 가이드에서 보안 기능은 16개 항목으로 가장 많습니다. 입력 데이터 검증 및 표현은 15개 항목입니다.",
-      "keywords": ["행안부", "시큐어 코딩 가이드"]
+      "keywords": [
+        "행안부",
+        "시큐어 코딩 가이드"
+      ]
     },
     {
       "id": 33,
       "question": "행안부 시큐어 코딩 가이드의 주요 취약점 중 '소스코드 내에 패스워드, API 키 등을 직접 작성'하는 것은?",
       "options": [
+        "위험한 형식 파일 업로드",
         "취약한 암호화 알고리즘",
-        "하드코드된 중요정보",
         "운영체제 명령어 삽입",
-        "위험한 형식 파일 업로드"
+        "하드코드된 중요정보"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "하드코드된 중요정보는 소스코드에 패스워드, API 키 등 민감 정보를 직접 작성하는 취약점입니다. 환경 변수, 설정 파일, 키 관리 시스템을 사용해야 합니다.",
-      "keywords": ["하드코드", "중요정보"]
+      "keywords": [
+        "하드코드",
+        "중요정보"
+      ]
     },
     {
       "id": 34,
       "question": "DevSecOps의 핵심 원칙인 'Shift Left'의 의미는?",
       "options": [
-        "보안 팀을 좌측 조직으로 이동",
-        "보안 활동을 개발 초기 단계로 앞당김",
         "배포를 왼쪽 서버로 변경",
-        "보안 테스트를 운영 단계에서 수행"
+        "보안 테스트를 운영 단계에서 수행",
+        "보안 팀을 좌측 조직으로 이동",
+        "보안 활동을 개발 초기 단계로 앞당김"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "Shift Left는 보안 활동을 개발 생명주기의 초기(왼쪽) 단계로 앞당기는 원칙입니다. 개발 초기에 보안을 통합하여 비용과 위험을 줄입니다.",
-      "keywords": ["Shift Left", "DevSecOps"]
+      "keywords": [
+        "Shift Left",
+        "DevSecOps"
+      ]
     },
     {
       "id": 35,
       "question": "CI/CD 파이프라인의 커밋 단계에서 수행하는 보안 활동은?",
       "options": [
         "DAST 수행",
-        "비밀 스캔(Secret Scanning)",
         "컨테이너 이미지 스캔",
+        "비밀 스캔(Secret Scanning)",
         "침투 테스트"
       ],
       "answer": 1,
       "explanation": "커밋 단계에서는 비밀 스캔(GitLeaks, TruffleHog)과 린팅을 수행합니다. SAST/SCA는 빌드 단계, DAST는 테스트 단계에서 수행합니다.",
-      "keywords": ["비밀 스캔", "CI/CD"]
+      "keywords": [
+        "비밀 스캔",
+        "CI/CD"
+      ]
     },
     {
       "id": 36,
       "question": "Git 저장소에서 API 키, 패스워드 등 비밀을 탐지하는 도구는?",
       "options": [
         "SonarQube",
-        "GitLeaks",
         "Trivy",
+        "GitLeaks",
         "Bandit"
       ],
       "answer": 1,
       "explanation": "GitLeaks는 Git 저장소의 커밋 히스토리에서 API 키, 패스워드, 토큰 등 비밀 정보를 탐지하는 도구입니다. TruffleHog도 동일한 용도입니다.",
-      "keywords": ["GitLeaks", "비밀 스캔"]
+      "keywords": [
+        "GitLeaks",
+        "비밀 스캔"
+      ]
     },
     {
       "id": 37,
       "question": "컨테이너 이미지의 취약점을 스캔하는 도구는?",
       "options": [
-        "Bandit",
         "Trivy",
+        "ESLint",
         "Checkmarx",
-        "ESLint"
+        "Bandit"
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "Trivy는 컨테이너 이미지와 파일시스템의 취약점을 스캔하는 도구입니다. Clair, Anchore도 컨테이너 스캔 도구입니다.",
-      "keywords": ["Trivy", "컨테이너 스캔"]
+      "keywords": [
+        "Trivy",
+        "컨테이너 스캔"
+      ]
     },
     {
       "id": 38,
       "question": "OWASP에서 제공하는 보안 기능 라이브러리(API)는?",
       "options": [
         "ESAPI",
-        "OWASP ZAP",
         "ModSecurity",
+        "OWASP ZAP",
         "Snort"
       ],
-      "answer": 0,
+      "answer": 1,
       "explanation": "ESAPI(Enterprise Security API)는 OWASP에서 제공하는 보안 기능 라이브러리로, 인코딩, 검증, 인증 등의 보안 기능을 제공합니다.",
-      "keywords": ["ESAPI", "OWASP"]
+      "keywords": [
+        "ESAPI",
+        "OWASP"
+      ]
     },
     {
       "id": 39,
       "question": "OWASP SAMM의 정식 명칭은?",
       "options": [
-        "Software Assurance Maturity Model",
-        "Security Application Management Model",
         "System Architecture Modeling Method",
-        "Secure Access Management Module"
+        "Secure Access Management Module",
+        "Software Assurance Maturity Model",
+        "Security Application Management Model"
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "OWASP SAMM은 Software Assurance Maturity Model의 약자로, 소프트웨어 보안 성숙도를 평가하고 개선하기 위한 프레임워크입니다.",
-      "keywords": ["OWASP SAMM", "성숙도 모델"]
+      "keywords": [
+        "OWASP SAMM",
+        "성숙도 모델"
+      ]
     },
     {
       "id": 40,
       "question": "런타임에 에이전트를 통해 내부에서 취약점을 탐지하는 보안 테스트 유형은?",
       "options": [
-        "SAST",
-        "DAST",
+        "SCA",
         "IAST",
-        "SCA"
+        "SAST",
+        "DAST"
       ],
-      "answer": 2,
+      "answer": 4,
       "explanation": "IAST(Interactive Application Security Testing)는 런타임에 에이전트가 애플리케이션 내부에서 동작하며 취약점을 탐지합니다. SAST와 DAST의 장점을 결합한 방식입니다.",
-      "keywords": ["IAST", "대화형 분석"]
+      "keywords": [
+        "IAST",
+        "대화형 분석"
+      ]
     },
     {
       "id": 41,
       "question": "Secure SDLC에서 설계 단계의 주요 보안 활동은?",
       "options": [
         "시큐어 코딩, 코드 리뷰",
-        "보안 아키텍처 설계, 위협 모델링",
         "보안 테스트, 취약점 스캔",
-        "모니터링, 패치 관리"
+        "모니터링, 패치 관리",
+        "보안 아키텍처 설계, 위협 모델링"
       ],
       "answer": 1,
       "explanation": "설계 단계에서는 보안 아키텍처를 설계하고 위협 모델링(STRIDE)을 수행합니다. 구현 단계에서 시큐어 코딩, 테스트 단계에서 보안 테스트를 수행합니다.",
-      "keywords": ["설계 단계", "위협 모델링"]
+      "keywords": [
+        "설계 단계",
+        "위협 모델링"
+      ]
     },
     {
       "id": 42,
       "question": "IaC(Infrastructure as Code) 보안 스캔을 위한 도구는?",
       "options": [
         "SonarQube",
-        "Checkov",
         "Burp Suite",
+        "Checkov",
         "Wireshark"
       ],
       "answer": 1,
       "explanation": "Checkov는 Terraform, CloudFormation 등 IaC 파일의 보안 설정을 검사하는 도구입니다. tfsec도 IaC 스캔 도구입니다.",
-      "keywords": ["Checkov", "IaC", "스캔"]
+      "keywords": [
+        "Checkov",
+        "IaC",
+        "스캔"
+      ]
     },
     {
       "id": 43,
       "question": "Django 템플릿에서 XSS를 방지하기 위한 기본 동작은?",
       "options": [
         "자동 URL 인코딩",
-        "자동 이스케이프",
         "자동 SQL 파라미터화",
+        "자동 이스케이프",
         "자동 CSRF 토큰 삽입"
       ],
       "answer": 1,
       "explanation": "Django 템플릿은 {{ user_input }}처럼 변수를 출력할 때 자동으로 HTML 이스케이프를 수행하여 XSS를 방지합니다.",
-      "keywords": ["Django", "자동 이스케이프", "XSS"]
+      "keywords": [
+        "Django",
+        "자동 이스케이프",
+        "XSS"
+      ]
     },
     {
       "id": 44,
       "question": "위협 모델링 프로세스의 올바른 순서는?",
       "options": [
+        "코드 리뷰 → 테스트 → 위협 모델링 → 배포",
         "위험도 평가 → 위협 식별 → 대응 방안 → 시스템 이해",
-        "시스템 이해(DFD) → 위협 식별(STRIDE) → 위험도 평가(DREAD) → 대응 방안 → 검증",
         "대응 방안 → 검증 → 위협 식별 → 시스템 이해",
-        "코드 리뷰 → 테스트 → 위협 모델링 → 배포"
+        "시스템 이해(DFD) → 위협 식별(STRIDE) → 위험도 평가(DREAD) → 대응 방안 → 검증"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "위협 모델링은 1.시스템 이해(DFD 작성) → 2.위협 식별(STRIDE 적용) → 3.위험도 평가(DREAD) → 4.대응 방안 수립 → 5.검증 순서로 진행합니다.",
-      "keywords": ["위협 모델링", "프로세스"]
+      "keywords": [
+        "위협 모델링",
+        "프로세스"
+      ]
     },
     {
       "id": 45,
       "question": "오픈소스 의존성 취약점을 자동으로 탐지하고 PR을 생성하는 GitHub 도구는?",
       "options": [
-        "CodeQL",
         "Dependabot",
-        "GitLeaks",
-        "Trivy"
+        "CodeQL",
+        "Trivy",
+        "GitLeaks"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "Dependabot은 GitHub에서 프로젝트의 의존성 취약점을 자동으로 탐지하고 업데이트 Pull Request를 생성하는 도구입니다.",
-      "keywords": ["Dependabot", "의존성", "GitHub"]
+      "keywords": [
+        "Dependabot",
+        "의존성",
+        "GitHub"
+      ]
     }
   ]
 }
