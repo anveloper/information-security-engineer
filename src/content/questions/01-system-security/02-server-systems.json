@@ -7,327 +7,677 @@
     {
       "id": 1,
       "question": "SQL 쿼리를 미리 컴파일하여 SQL Injection 공격을 효과적으로 방지하는 방법은?",
-      "options": ["Stored Procedure", "Prepared Statement", "입력값 길이 제한", "에러 메시지 숨기기"],
-      "answer": 2,
+      "options": [
+        "Prepared Statement",
+        "입력값 길이 제한",
+        "Stored Procedure",
+        "에러 메시지 숨기기"
+      ],
+      "answer": 1,
       "explanation": "Prepared Statement(파라미터화된 쿼리)는 SQL 쿼리를 미리 컴파일하고 사용자 입력을 파라미터로 바인딩하여 SQL Injection을 효과적으로 방지합니다.",
-      "keywords": ["Prepared Statement", "SQL Injection", "파라미터화된 쿼리"]
+      "keywords": [
+        "Prepared Statement",
+        "SQL Injection",
+        "파라미터화된 쿼리"
+      ]
     },
     {
       "id": 2,
       "question": "SQL Injection 공격 유형 중 응답 시간 지연을 이용하여 정보를 유추하는 방식은?",
-      "options": ["Union-based", "Error-based", "Time-based Blind", "Out-of-band"],
-      "answer": 3,
+      "options": [
+        "Union-based",
+        "Time-based Blind",
+        "Error-based",
+        "Out-of-band"
+      ],
+      "answer": 2,
       "explanation": "Time-based Blind SQL Injection은 SLEEP() 등의 함수를 이용하여 응답 시간 차이로 참/거짓을 판별하여 정보를 유추합니다.",
-      "keywords": ["Blind SQL Injection", "Time-based", "SLEEP"]
+      "keywords": [
+        "Blind SQL Injection",
+        "Time-based",
+        "SLEEP"
+      ]
     },
     {
       "id": 3,
       "question": "데이터베이스에서 저장된 데이터를 애플리케이션 수정 없이 자동으로 암호화하는 기술은?",
-      "options": ["컬럼 레벨 암호화", "TDE", "SSL/TLS", "데이터 마스킹"],
-      "answer": 2,
+      "options": [
+        "SSL/TLS",
+        "컬럼 레벨 암호화",
+        "TDE",
+        "데이터 마스킹"
+      ],
+      "answer": 3,
       "explanation": "TDE(Transparent Data Encryption)는 저장 데이터(Data at Rest)를 투명하게 암호화하는 기술로, 애플리케이션 수정 없이 데이터베이스 레벨에서 암호화를 수행합니다.",
-      "keywords": ["TDE", "투명한 데이터 암호화", "Data at Rest"]
+      "keywords": [
+        "TDE",
+        "투명한 데이터 암호화",
+        "Data at Rest"
+      ]
     },
     {
       "id": 4,
       "question": "데이터베이스 활동을 실시간으로 모니터링하고 이상 행위를 탐지하는 솔루션은?",
-      "options": ["DLP", "DAM", "SIEM", "WAF"],
-      "answer": 2,
+      "options": [
+        "DLP",
+        "WAF",
+        "DAM",
+        "SIEM"
+      ],
+      "answer": 3,
       "explanation": "DAM(Database Activity Monitoring)은 데이터베이스에 대한 모든 활동을 실시간으로 모니터링하고, 비정상적인 쿼리나 접근을 탐지합니다.",
-      "keywords": ["DAM", "데이터베이스 모니터링"]
+      "keywords": [
+        "DAM",
+        "데이터베이스 모니터링"
+      ]
     },
     {
       "id": 5,
       "question": "도메인 이름을 IP 주소로 변환하는 DNS에서 IPv4 주소를 매핑하는 레코드 유형은?",
-      "options": ["AAAA", "A", "CNAME", "MX"],
-      "answer": 2,
+      "options": [
+        "A",
+        "AAAA",
+        "CNAME",
+        "MX"
+      ],
+      "answer": 1,
       "explanation": "A 레코드는 도메인 이름을 IPv4 주소로 매핑합니다. AAAA는 IPv6, CNAME은 별칭, MX는 메일 서버를 지정합니다.",
-      "keywords": ["DNS", "A 레코드", "IPv4"]
+      "keywords": [
+        "DNS",
+        "A 레코드",
+        "IPv4"
+      ]
     },
     {
       "id": 6,
       "question": "DNS 응답에 디지털 서명을 추가하여 응답의 무결성을 보장하는 보안 확장은?",
-      "options": ["DoH", "DoT", "DNSSEC", "EDNS"],
+      "options": [
+        "DoH",
+        "DoT",
+        "DNSSEC",
+        "EDNS"
+      ],
       "answer": 3,
       "explanation": "DNSSEC(DNS Security Extensions)는 DNS 응답에 디지털 서명을 추가하여 DNS 스푸핑과 캐시 포이즈닝 공격을 방지합니다.",
-      "keywords": ["DNSSEC", "DNS 보안", "디지털 서명"]
+      "keywords": [
+        "DNSSEC",
+        "DNS 보안",
+        "디지털 서명"
+      ]
     },
     {
       "id": 7,
       "question": "공격자가 DNS 서버의 캐시에 위조된 레코드를 저장하는 공격은?",
-      "options": ["DNS 터널링", "DNS 캐시 포이즈닝", "DNS 증폭 공격", "도메인 하이재킹"],
-      "answer": 2,
+      "options": [
+        "DNS 증폭 공격",
+        "DNS 터널링",
+        "도메인 하이재킹",
+        "DNS 캐시 포이즈닝"
+      ],
+      "answer": 4,
       "explanation": "DNS 캐시 포이즈닝(Kaminsky Attack)은 DNS 서버 캐시에 위조된 레코드를 저장하여 사용자를 악성 사이트로 유도하는 공격입니다.",
-      "keywords": ["DNS 캐시 포이즈닝", "Kaminsky Attack"]
+      "keywords": [
+        "DNS 캐시 포이즈닝",
+        "Kaminsky Attack"
+      ]
     },
     {
       "id": 8,
       "question": "DNS 서버 간 영역 데이터를 복제하는 Zone Transfer가 노출될 경우 발생하는 보안 위협은?",
-      "options": ["서비스 거부", "전체 DNS 레코드 정보 유출", "캐시 오염", "도메인 탈취"],
-      "answer": 2,
+      "options": [
+        "캐시 오염",
+        "서비스 거부",
+        "도메인 탈취",
+        "전체 DNS 레코드 정보 유출"
+      ],
+      "answer": 4,
       "explanation": "Zone Transfer(AXFR/IXFR)가 제한되지 않으면 공격자가 전체 DNS 영역 데이터를 획득하여 내부 시스템 정보를 파악할 수 있습니다.",
-      "keywords": ["Zone Transfer", "AXFR", "DNS 정보 유출"]
+      "keywords": [
+        "Zone Transfer",
+        "AXFR",
+        "DNS 정보 유출"
+      ]
     },
     {
       "id": 9,
       "question": "이메일 발신 서버 IP를 DNS TXT 레코드로 검증하여 스푸핑을 방지하는 기술은?",
-      "options": ["DKIM", "SPF", "DMARC", "S/MIME"],
-      "answer": 2,
+      "options": [
+        "DKIM",
+        "DMARC",
+        "S/MIME",
+        "SPF"
+      ],
+      "answer": 4,
       "explanation": "SPF(Sender Policy Framework)는 발신 서버 IP를 DNS TXT 레코드에 등록하여 수신 서버가 발신자를 검증할 수 있게 합니다.",
-      "keywords": ["SPF", "메일 인증", "발신자 검증"]
+      "keywords": [
+        "SPF",
+        "메일 인증",
+        "발신자 검증"
+      ]
     },
     {
       "id": 10,
       "question": "이메일에 디지털 서명을 추가하여 발신자 인증과 메일 변조를 탐지하는 기술은?",
-      "options": ["SPF", "DKIM", "DMARC", "STARTTLS"],
-      "answer": 2,
+      "options": [
+        "DKIM",
+        "SPF",
+        "DMARC",
+        "STARTTLS"
+      ],
+      "answer": 1,
       "explanation": "DKIM(DomainKeys Identified Mail)은 발신 서버가 개인 키로 메일에 서명하고, 수신 서버가 DNS의 공개 키로 검증하여 변조를 탐지합니다.",
-      "keywords": ["DKIM", "메일 서명", "변조 탐지"]
+      "keywords": [
+        "DKIM",
+        "메일 서명",
+        "변조 탐지"
+      ]
     },
     {
       "id": 11,
       "question": "SPF와 DKIM 검증 결과에 따른 정책을 정의하고 리포팅 기능을 제공하는 이메일 인증 기술은?",
-      "options": ["S/MIME", "PGP", "DMARC", "TLS"],
+      "options": [
+        "TLS",
+        "PGP",
+        "DMARC",
+        "S/MIME"
+      ],
       "answer": 3,
       "explanation": "DMARC(Domain-based Message Authentication, Reporting and Conformance)는 SPF/DKIM 정책(none, quarantine, reject)을 정의하고 인증 결과를 리포팅합니다.",
-      "keywords": ["DMARC", "메일 정책", "SPF", "DKIM"]
+      "keywords": [
+        "DMARC",
+        "메일 정책",
+        "SPF",
+        "DKIM"
+      ]
     },
     {
       "id": 12,
       "question": "인증 없이 모든 메일 전달을 허용하여 스팸 발송에 악용될 수 있는 서버 설정은?",
-      "options": ["SMTP Relay", "Open Relay", "Mail Forward", "MX Record"],
-      "answer": 2,
+      "options": [
+        "MX Record",
+        "SMTP Relay",
+        "Mail Forward",
+        "Open Relay"
+      ],
+      "answer": 4,
       "explanation": "Open Relay는 인증 없이 모든 메일 전달을 허용하는 설정으로, 스팸 발송자에게 악용되어 서버가 블랙리스트에 등록될 수 있습니다.",
-      "keywords": ["Open Relay", "스팸", "SMTP"]
+      "keywords": [
+        "Open Relay",
+        "스팸",
+        "SMTP"
+      ]
     },
     {
       "id": 13,
       "question": "임원을 사칭하여 긴급 송금이나 기밀 정보를 요청하는 이메일 사기 공격은?",
-      "options": ["피싱", "스피어 피싱", "BEC", "스미싱"],
-      "answer": 3,
+      "options": [
+        "스미싱",
+        "피싱",
+        "스피어 피싱",
+        "BEC"
+      ],
+      "answer": 4,
       "explanation": "BEC(Business Email Compromise)는 CEO나 임원을 사칭하여 재무팀 등에 긴급 송금을 요청하는 표적형 이메일 사기 공격입니다.",
-      "keywords": ["BEC", "CEO 사칭", "이메일 사기"]
+      "keywords": [
+        "BEC",
+        "CEO 사칭",
+        "이메일 사기"
+      ]
     },
     {
       "id": 14,
       "question": "OWASP Top 10 (2021)에서 1위에 해당하는 웹 취약점은?",
-      "options": ["Injection", "Broken Access Control", "Cryptographic Failures", "Security Misconfiguration"],
-      "answer": 2,
+      "options": [
+        "Broken Access Control",
+        "Injection",
+        "Cryptographic Failures",
+        "Security Misconfiguration"
+      ],
+      "answer": 1,
       "explanation": "OWASP Top 10 (2021) 1위는 Broken Access Control(접근 제어 실패)입니다. 기존 1위였던 Injection은 3위로 하락했습니다.",
-      "keywords": ["OWASP Top 10", "Broken Access Control", "접근 제어"]
+      "keywords": [
+        "OWASP Top 10",
+        "Broken Access Control",
+        "접근 제어"
+      ]
     },
     {
       "id": 15,
       "question": "웹 페이지에 악성 스크립트를 삽입하여 다른 사용자의 브라우저에서 실행되게 하는 공격은?",
-      "options": ["SQL Injection", "XSS", "CSRF", "SSRF"],
+      "options": [
+        "CSRF",
+        "XSS",
+        "SQL Injection",
+        "SSRF"
+      ],
       "answer": 2,
       "explanation": "XSS(Cross-Site Scripting)는 웹 페이지에 악성 스크립트를 삽입하여 다른 사용자의 브라우저에서 실행되게 하는 클라이언트 측 공격입니다.",
-      "keywords": ["XSS", "Cross-Site Scripting", "스크립트 삽입"]
+      "keywords": [
+        "XSS",
+        "Cross-Site Scripting",
+        "스크립트 삽입"
+      ]
     },
     {
       "id": 16,
       "question": "사용자의 인증된 세션을 악용하여 의도하지 않은 요청을 서버에 전송하게 하는 공격은?",
-      "options": ["XSS", "CSRF", "Session Hijacking", "Clickjacking"],
-      "answer": 2,
+      "options": [
+        "Session Hijacking",
+        "XSS",
+        "Clickjacking",
+        "CSRF"
+      ],
+      "answer": 4,
       "explanation": "CSRF(Cross-Site Request Forgery)는 사용자가 로그인된 상태에서 공격자의 페이지를 방문하면 의도하지 않은 요청이 자동으로 전송되는 공격입니다.",
-      "keywords": ["CSRF", "요청 위조", "세션 악용"]
+      "keywords": [
+        "CSRF",
+        "요청 위조",
+        "세션 악용"
+      ]
     },
     {
       "id": 17,
       "question": "웹 보안 헤더 중 HTTPS 연결을 강제하는 헤더는?",
-      "options": ["Content-Security-Policy", "X-Frame-Options", "Strict-Transport-Security", "X-Content-Type-Options"],
-      "answer": 3,
+      "options": [
+        "Strict-Transport-Security",
+        "Content-Security-Policy",
+        "X-Frame-Options",
+        "X-Content-Type-Options"
+      ],
+      "answer": 1,
       "explanation": "HSTS(Strict-Transport-Security)는 브라우저에게 해당 사이트에 HTTPS로만 접속하도록 강제하는 보안 헤더입니다.",
-      "keywords": ["HSTS", "Strict-Transport-Security", "HTTPS 강제"]
+      "keywords": [
+        "HSTS",
+        "Strict-Transport-Security",
+        "HTTPS 강제"
+      ]
     },
     {
       "id": 18,
       "question": "클릭재킹 공격을 방지하기 위해 페이지가 프레임 내에 표시되는 것을 제어하는 보안 헤더는?",
-      "options": ["CSP", "X-Frame-Options", "HSTS", "X-XSS-Protection"],
+      "options": [
+        "HSTS",
+        "X-Frame-Options",
+        "CSP",
+        "X-XSS-Protection"
+      ],
       "answer": 2,
       "explanation": "X-Frame-Options 헤더는 DENY, SAMEORIGIN 등의 값으로 페이지가 iframe 내에 표시되는 것을 제어하여 클릭재킹을 방지합니다.",
-      "keywords": ["X-Frame-Options", "클릭재킹", "iframe"]
+      "keywords": [
+        "X-Frame-Options",
+        "클릭재킹",
+        "iframe"
+      ]
     },
     {
       "id": 19,
       "question": "XSS 공격 방지를 위해 허용된 리소스 출처를 정의하는 보안 헤더는?",
-      "options": ["X-Frame-Options", "CSP", "HSTS", "Referrer-Policy"],
-      "answer": 2,
+      "options": [
+        "CSP",
+        "Referrer-Policy",
+        "HSTS",
+        "X-Frame-Options"
+      ],
+      "answer": 1,
       "explanation": "CSP(Content-Security-Policy)는 스크립트, 스타일, 이미지 등의 허용된 출처를 정의하여 XSS 공격을 완화합니다.",
-      "keywords": ["CSP", "Content-Security-Policy", "XSS 방지"]
+      "keywords": [
+        "CSP",
+        "Content-Security-Policy",
+        "XSS 방지"
+      ]
     },
     {
       "id": 20,
       "question": "FTP에서 클라이언트가 방화벽 뒤에 있을 때 사용하는 모드는?",
-      "options": ["Active Mode", "Passive Mode", "Extended Mode", "Secure Mode"],
-      "answer": 2,
+      "options": [
+        "Extended Mode",
+        "Secure Mode",
+        "Active Mode",
+        "Passive Mode"
+      ],
+      "answer": 4,
       "explanation": "Passive Mode에서는 데이터 연결을 클라이언트가 서버로 시작하므로, 클라이언트 측 방화벽 문제를 해결할 수 있습니다.",
-      "keywords": ["FTP Passive Mode", "방화벽"]
+      "keywords": [
+        "FTP Passive Mode",
+        "방화벽"
+      ]
     },
     {
       "id": 21,
       "question": "SSH 프로토콜을 기반으로 안전한 파일 전송을 제공하며 포트 22를 사용하는 것은?",
-      "options": ["FTPS", "SFTP", "SCP", "WebDAV"],
-      "answer": 2,
+      "options": [
+        "FTPS",
+        "SCP",
+        "WebDAV",
+        "SFTP"
+      ],
+      "answer": 4,
       "explanation": "SFTP(SSH File Transfer Protocol)는 SSH를 기반으로 한 보안 파일 전송 프로토콜로, 포트 22를 사용합니다. FTPS는 FTP over TLS입니다.",
-      "keywords": ["SFTP", "SSH", "보안 파일 전송"]
+      "keywords": [
+        "SFTP",
+        "SSH",
+        "보안 파일 전송"
+      ]
     },
     {
       "id": 22,
       "question": "WannaCry 랜섬웨어가 악용한 Windows 파일 공유 프로토콜의 취약점은?",
-      "options": ["SMB v1 (EternalBlue)", "NFS", "WebDAV", "AFP"],
-      "answer": 1,
+      "options": [
+        "AFP",
+        "NFS",
+        "SMB v1 (EternalBlue)",
+        "WebDAV"
+      ],
+      "answer": 3,
       "explanation": "WannaCry는 SMB v1의 EternalBlue 취약점(MS17-010)을 악용하여 전 세계적으로 대규모 피해를 발생시켰습니다.",
-      "keywords": ["WannaCry", "SMB", "EternalBlue"]
+      "keywords": [
+        "WannaCry",
+        "SMB",
+        "EternalBlue"
+      ]
     },
     {
       "id": 23,
       "question": "SMB 3.0에서 추가된 주요 보안 기능은?",
-      "options": ["NetBIOS 지원", "암호화 및 다중 채널", "Active Directory 연동", "IPv6 지원"],
+      "options": [
+        "IPv6 지원",
+        "암호화 및 다중 채널",
+        "Active Directory 연동",
+        "NetBIOS 지원"
+      ],
       "answer": 2,
       "explanation": "SMB 3.0(Windows 8/2012)에서 전송 데이터 암호화와 다중 채널 기능이 추가되어 보안과 성능이 향상되었습니다.",
-      "keywords": ["SMB 3.0", "암호화", "다중 채널"]
+      "keywords": [
+        "SMB 3.0",
+        "암호화",
+        "다중 채널"
+      ]
     },
     {
       "id": 24,
       "question": "클라우드 서비스 모델 중 고객이 OS, 미들웨어, 애플리케이션, 데이터를 모두 관리해야 하는 것은?",
-      "options": ["SaaS", "PaaS", "IaaS", "FaaS"],
-      "answer": 3,
+      "options": [
+        "FaaS",
+        "IaaS",
+        "SaaS",
+        "PaaS"
+      ],
+      "answer": 2,
       "explanation": "IaaS(Infrastructure as a Service)에서 CSP는 하드웨어, 네트워크, 가상화를 제공하고, 고객은 OS부터 애플리케이션까지 관리합니다.",
-      "keywords": ["IaaS", "클라우드", "공동 책임"]
+      "keywords": [
+        "IaaS",
+        "클라우드",
+        "공동 책임"
+      ]
     },
     {
       "id": 25,
       "question": "클라우드 보안에서 설정 오류를 탐지하고 컴플라이언스를 점검하는 솔루션은?",
-      "options": ["CASB", "CSPM", "CWPP", "SIEM"],
-      "answer": 2,
+      "options": [
+        "CWPP",
+        "SIEM",
+        "CASB",
+        "CSPM"
+      ],
+      "answer": 4,
       "explanation": "CSPM(Cloud Security Posture Management)은 클라우드 리소스의 설정 오류를 자동으로 탐지하고 컴플라이언스를 점검합니다.",
-      "keywords": ["CSPM", "클라우드 설정", "컴플라이언스"]
+      "keywords": [
+        "CSPM",
+        "클라우드 설정",
+        "컴플라이언스"
+      ]
     },
     {
       "id": 26,
       "question": "클라우드와 사용자 사이에서 접근을 중개하고 DLP, 가시성을 제공하는 솔루션은?",
-      "options": ["CSPM", "CASB", "CWPP", "WAF"],
-      "answer": 2,
+      "options": [
+        "CASB",
+        "CWPP",
+        "CSPM",
+        "WAF"
+      ],
+      "answer": 1,
       "explanation": "CASB(Cloud Access Security Broker)는 클라우드 서비스 접근을 중개하며, 가시성, DLP, 위협 보호, 컴플라이언스 기능을 제공합니다.",
-      "keywords": ["CASB", "클라우드 접근 중개"]
+      "keywords": [
+        "CASB",
+        "클라우드 접근 중개"
+      ]
     },
     {
       "id": 27,
       "question": "다양한 소스에서 로그를 수집하고 상관분석하여 보안 위협을 탐지하는 솔루션은?",
-      "options": ["IDS", "SIEM", "EDR", "NAC"],
+      "options": [
+        "NAC",
+        "SIEM",
+        "EDR",
+        "IDS"
+      ],
       "answer": 2,
       "explanation": "SIEM(Security Information and Event Management)은 다양한 소스에서 로그를 수집하고 상관분석하여 보안 위협을 실시간으로 탐지합니다.",
-      "keywords": ["SIEM", "로그 분석", "상관분석"]
+      "keywords": [
+        "SIEM",
+        "로그 분석",
+        "상관분석"
+      ]
     },
     {
       "id": 28,
       "question": "X.509 인증서 기반으로 이메일 암호화와 디지털 서명을 제공하는 표준은?",
-      "options": ["PGP", "S/MIME", "DKIM", "TLS"],
-      "answer": 2,
+      "options": [
+        "DKIM",
+        "TLS",
+        "S/MIME",
+        "PGP"
+      ],
+      "answer": 3,
       "explanation": "S/MIME(Secure/Multipurpose Internet Mail Extensions)은 X.509 인증서를 사용하여 이메일 암호화와 디지털 서명을 제공하는 기업용 표준입니다.",
-      "keywords": ["S/MIME", "X.509", "이메일 암호화"]
+      "keywords": [
+        "S/MIME",
+        "X.509",
+        "이메일 암호화"
+      ]
     },
     {
       "id": 29,
       "question": "데이터베이스에서 비운영 환경용으로 개인정보를 비식별화하는 기법은?",
-      "options": ["TDE", "정적 마스킹", "동적 마스킹", "토큰화"],
-      "answer": 2,
+      "options": [
+        "토큰화",
+        "동적 마스킹",
+        "정적 마스킹",
+        "TDE"
+      ],
+      "answer": 3,
       "explanation": "정적 마스킹은 테스트/개발 환경 등 비운영 환경을 위해 데이터를 영구적으로 변환하는 비식별화 기법입니다. 동적 마스킹은 실시간 조회 시 적용됩니다.",
-      "keywords": ["정적 마스킹", "데이터 마스킹", "비식별화"]
+      "keywords": [
+        "정적 마스킹",
+        "데이터 마스킹",
+        "비식별화"
+      ]
     },
     {
       "id": 30,
       "question": "관계형 데이터베이스가 아닌 NoSQL 데이터베이스에 해당하지 않는 것은?",
-      "options": ["MongoDB", "Redis", "PostgreSQL", "Cassandra"],
-      "answer": 3,
+      "options": [
+        "Redis",
+        "PostgreSQL",
+        "MongoDB",
+        "Cassandra"
+      ],
+      "answer": 2,
       "explanation": "PostgreSQL은 관계형 데이터베이스(RDBMS)입니다. MongoDB(문서형), Redis(키-값), Cassandra(컬럼형)는 NoSQL 데이터베이스입니다.",
-      "keywords": ["NoSQL", "RDBMS", "PostgreSQL"]
+      "keywords": [
+        "NoSQL",
+        "RDBMS",
+        "PostgreSQL"
+      ]
     },
     {
       "id": 31,
       "question": "웹 서버와 WAS의 역할 구분으로 올바른 것은?",
       "options": [
         "웹 서버는 동적 콘텐츠, WAS는 정적 콘텐츠 처리",
+        "웹 서버는 데이터베이스 연동 담당",
         "웹 서버는 정적 콘텐츠, WAS는 동적 콘텐츠와 비즈니스 로직 처리",
-        "웹 서버와 WAS는 동일한 역할 수행",
-        "웹 서버는 데이터베이스 연동 담당"
+        "웹 서버와 WAS는 동일한 역할 수행"
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "웹 서버(Apache, Nginx)는 HTML, CSS, 이미지 등 정적 콘텐츠를 처리하고, WAS(Tomcat, WebLogic)는 동적 콘텐츠와 비즈니스 로직을 처리합니다.",
-      "keywords": ["웹 서버", "WAS", "정적 콘텐츠", "동적 콘텐츠"]
+      "keywords": [
+        "웹 서버",
+        "WAS",
+        "정적 콘텐츠",
+        "동적 콘텐츠"
+      ]
     },
     {
       "id": 32,
       "question": "DNS 레코드 중 메일 서버를 지정하는 레코드 유형은?",
-      "options": ["A", "CNAME", "MX", "TXT"],
-      "answer": 3,
+      "options": [
+        "CNAME",
+        "MX",
+        "TXT",
+        "A"
+      ],
+      "answer": 2,
       "explanation": "MX(Mail Exchanger) 레코드는 도메인의 메일을 처리할 메일 서버를 지정합니다. 우선순위 값과 함께 설정됩니다.",
-      "keywords": ["MX 레코드", "DNS", "메일 서버"]
+      "keywords": [
+        "MX 레코드",
+        "DNS",
+        "메일 서버"
+      ]
     },
     {
       "id": 33,
       "question": "DNSSEC에서 리소스 레코드에 대한 디지털 서명을 저장하는 레코드 유형은?",
-      "options": ["DNSKEY", "RRSIG", "DS", "NSEC"],
-      "answer": 2,
+      "options": [
+        "RRSIG",
+        "DNSKEY",
+        "DS",
+        "NSEC"
+      ],
+      "answer": 1,
       "explanation": "RRSIG(Resource Record Signature)는 DNS 리소스 레코드에 대한 디지털 서명을 저장합니다. DNSKEY는 공개 키, DS는 상위 위임 서명입니다.",
-      "keywords": ["RRSIG", "DNSSEC", "디지털 서명"]
+      "keywords": [
+        "RRSIG",
+        "DNSSEC",
+        "디지털 서명"
+      ]
     },
     {
       "id": 34,
       "question": "웹 서버 설정에서 디렉토리 내 파일 목록이 노출되는 것을 방지하는 설정은?",
-      "options": ["서버 정보 숨김", "디렉토리 리스팅 비활성화", "HTTP 메서드 제한", "에러 페이지 커스터마이징"],
+      "options": [
+        "서버 정보 숨김",
+        "디렉토리 리스팅 비활성화",
+        "에러 페이지 커스터마이징",
+        "HTTP 메서드 제한"
+      ],
       "answer": 2,
       "explanation": "디렉토리 리스팅(Directory Listing)을 비활성화하면 index 파일이 없는 디렉토리에서 파일 목록이 노출되는 것을 방지할 수 있습니다.",
-      "keywords": ["디렉토리 리스팅", "웹 서버 보안"]
+      "keywords": [
+        "디렉토리 리스팅",
+        "웹 서버 보안"
+      ]
     },
     {
       "id": 35,
       "question": "SMTP에서 전송 구간 암호화를 위해 사용하는 명령어는?",
-      "options": ["EHLO", "STARTTLS", "AUTH", "MAIL FROM"],
-      "answer": 2,
+      "options": [
+        "EHLO",
+        "MAIL FROM",
+        "STARTTLS",
+        "AUTH"
+      ],
+      "answer": 3,
       "explanation": "STARTTLS는 SMTP 연결을 TLS로 업그레이드하여 메일 전송 구간을 암호화합니다. 기회적 암호화(Opportunistic TLS)라고도 합니다.",
-      "keywords": ["STARTTLS", "SMTP", "TLS"]
+      "keywords": [
+        "STARTTLS",
+        "SMTP",
+        "TLS"
+      ]
     },
     {
       "id": 36,
       "question": "이메일 프로토콜 중 서버에 메일을 남기고 여러 기기에서 동기화하여 사용할 수 있는 것은?",
-      "options": ["SMTP", "POP3", "IMAP", "MTA"],
-      "answer": 3,
+      "options": [
+        "POP3",
+        "MTA",
+        "SMTP",
+        "IMAP"
+      ],
+      "answer": 4,
       "explanation": "IMAP(Internet Message Access Protocol)은 서버에 메일을 저장하고 여러 기기에서 동기화할 수 있습니다. POP3는 다운로드 후 삭제가 기본입니다.",
-      "keywords": ["IMAP", "메일 동기화"]
+      "keywords": [
+        "IMAP",
+        "메일 동기화"
+      ]
     },
     {
       "id": 37,
       "question": "클라우드 공동 책임 모델에서 모든 서비스 모델(IaaS, PaaS, SaaS)에서 고객이 항상 책임지는 영역은?",
-      "options": ["운영체제", "네트워크", "데이터", "가상화"],
-      "answer": 3,
+      "options": [
+        "데이터",
+        "네트워크",
+        "가상화",
+        "운영체제"
+      ],
+      "answer": 1,
       "explanation": "공동 책임 모델에서 데이터의 보안은 모든 클라우드 서비스 모델에서 고객의 책임입니다. CSP는 인프라를 제공하지만 데이터 보호는 고객 몫입니다.",
-      "keywords": ["공동 책임 모델", "데이터 보안", "클라우드"]
+      "keywords": [
+        "공동 책임 모델",
+        "데이터 보안",
+        "클라우드"
+      ]
     },
     {
       "id": 38,
       "question": "특권 계정(root, Administrator 등)의 접근을 관리하고 세션을 기록하는 솔루션은?",
-      "options": ["IAM", "PAM", "NAC", "SSO"],
+      "options": [
+        "SSO",
+        "PAM",
+        "IAM",
+        "NAC"
+      ],
       "answer": 2,
       "explanation": "PAM(Privileged Access Management)은 특권 계정의 접근을 관리하고, 비밀번호 볼트, 세션 기록, 최소 권한 접근 등을 제공합니다.",
-      "keywords": ["PAM", "특권 계정", "Privileged Access"]
+      "keywords": [
+        "PAM",
+        "특권 계정",
+        "Privileged Access"
+      ]
     },
     {
       "id": 39,
       "question": "XSS 공격 유형 중 악성 스크립트가 데이터베이스에 저장되어 다른 사용자가 페이지를 볼 때 실행되는 것은?",
-      "options": ["Reflected XSS", "Stored XSS", "DOM-based XSS", "Blind XSS"],
-      "answer": 2,
+      "options": [
+        "Stored XSS",
+        "DOM-based XSS",
+        "Reflected XSS",
+        "Blind XSS"
+      ],
+      "answer": 1,
       "explanation": "Stored XSS(저장형 XSS)는 악성 스크립트가 게시글, 댓글 등에 저장되어 다른 사용자가 해당 페이지를 조회할 때 실행됩니다.",
-      "keywords": ["Stored XSS", "저장형 XSS"]
+      "keywords": [
+        "Stored XSS",
+        "저장형 XSS"
+      ]
     },
     {
       "id": 40,
       "question": "CSRF 공격 방지를 위해 쿠키가 같은 사이트 요청에서만 전송되도록 설정하는 속성은?",
-      "options": ["HttpOnly", "Secure", "SameSite", "Path"],
+      "options": [
+        "Secure",
+        "HttpOnly",
+        "SameSite",
+        "Path"
+      ],
       "answer": 3,
       "explanation": "SameSite 쿠키 속성은 Strict, Lax, None 값으로 쿠키가 같은 사이트 요청에서만 전송되도록 제어하여 CSRF를 방지합니다.",
-      "keywords": ["SameSite", "CSRF 방지", "쿠키"]
+      "keywords": [
+        "SameSite",
+        "CSRF 방지",
+        "쿠키"
+      ]
     }
   ]
 }

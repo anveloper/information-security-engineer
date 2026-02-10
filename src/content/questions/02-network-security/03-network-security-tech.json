@@ -7,18 +7,36 @@
     {
       "id": 1,
       "question": "방화벽 유형 중 연결 상태 테이블을 유지하여 세션 컨텍스트를 추적하며 필터링하는 방식은?",
-      "options": ["패킷 필터링", "상태 기반 검사(Stateful Inspection)", "애플리케이션 게이트웨이", "회선 레벨 게이트웨이"],
+      "options": [
+        "패킷 필터링",
+        "상태 기반 검사(Stateful Inspection)",
+        "회선 레벨 게이트웨이",
+        "애플리케이션 게이트웨이"
+      ],
       "answer": 1,
       "explanation": "상태 기반 검사(Stateful Inspection) 방화벽은 연결 상태 테이블을 유지하여 세션의 컨텍스트를 추적하고, 이를 기반으로 패킷을 필터링합니다.",
-      "keywords": ["Stateful Inspection", "상태 테이블", "방화벽"]
+      "keywords": [
+        "Stateful Inspection",
+        "상태 테이블",
+        "방화벽"
+      ]
     },
     {
       "id": 2,
       "question": "방화벽의 기본 정책으로 명시적으로 허용되지 않은 모든 트래픽을 차단하는 원칙은?",
-      "options": ["최소 권한", "기본 거부(Default Deny)", "심층 방어", "직무 분리"],
+      "options": [
+        "최소 권한",
+        "심층 방어",
+        "기본 거부(Default Deny)",
+        "직무 분리"
+      ],
       "answer": 1,
       "explanation": "기본 거부(Default Deny) 원칙은 명시적으로 허용된 트래픽만 통과시키고 나머지는 모두 차단하는 방화벽의 기본 정책 원칙입니다.",
-      "keywords": ["Default Deny", "기본 거부", "방화벽 정책"]
+      "keywords": [
+        "Default Deny",
+        "기본 거부",
+        "방화벽 정책"
+      ]
     },
     {
       "id": 3,
@@ -26,294 +44,509 @@
       "options": [
         "애플리케이션별 정책 적용이 가능하다",
         "SSL 암호화 트래픽 복호화 검사를 지원한다",
-        "상태 추적 없이 패킷 헤더만으로 필터링한다",
-        "IPS 기능이 통합되어 있다"
+        "IPS 기능이 통합되어 있다",
+        "상태 추적 없이 패킷 헤더만으로 필터링한다"
       ],
       "answer": 2,
       "explanation": "상태 추적 없이 패킷 헤더만으로 필터링하는 것은 전통적인 패킷 필터링 방화벽의 특징입니다. NGFW는 상태 기반 검사에 IPS, 애플리케이션 인식, SSL 검사를 통합합니다.",
-      "keywords": ["NGFW", "차세대 방화벽", "패킷 필터링"]
+      "keywords": [
+        "NGFW",
+        "차세대 방화벽",
+        "패킷 필터링"
+      ]
     },
     {
       "id": 4,
       "question": "방화벽 아키텍처 중 외부 방화벽, DMZ, 내부 방화벽으로 구성되는 가장 안전한 구조는?",
-      "options": ["스크리닝 라우터", "듀얼 홈드 호스트", "스크린드 호스트", "스크린드 서브넷(DMZ)"],
-      "answer": 3,
+      "options": [
+        "스크리닝 라우터",
+        "스크린드 호스트",
+        "스크린드 서브넷(DMZ)",
+        "듀얼 홈드 호스트"
+      ],
+      "answer": 2,
       "explanation": "스크린드 서브넷(Screened Subnet/DMZ) 구조는 외부 방화벽과 내부 방화벽 사이에 DMZ를 두어 다층 방어를 구현하는 가장 안전한 아키텍처입니다.",
-      "keywords": ["스크린드 서브넷", "DMZ", "방화벽 아키텍처"]
+      "keywords": [
+        "스크린드 서브넷",
+        "DMZ",
+        "방화벽 아키텍처"
+      ]
     },
     {
       "id": 5,
       "question": "Linux iptables에서 기본 정책을 DROP으로 설정하는 명령은?",
       "options": [
         "iptables -A INPUT -j DROP",
-        "iptables -P INPUT DROP",
         "iptables -I INPUT DROP",
+        "iptables -P INPUT DROP",
         "iptables -D INPUT DROP"
       ],
       "answer": 1,
       "explanation": "iptables -P INPUT DROP은 INPUT 체인의 기본 정책(Policy)을 DROP으로 설정합니다. -A는 규칙 추가, -I는 규칙 삽입, -D는 규칙 삭제입니다.",
-      "keywords": ["iptables", "기본 정책", "DROP"]
+      "keywords": [
+        "iptables",
+        "기본 정책",
+        "DROP"
+      ]
     },
     {
       "id": 6,
       "question": "iptables의 테이블 중 패킷 필터링에 사용되는 기본 테이블은?",
-      "options": ["nat", "filter", "mangle", "raw"],
+      "options": [
+        "nat",
+        "mangle",
+        "filter",
+        "raw"
+      ],
       "answer": 1,
       "explanation": "filter 테이블은 iptables의 기본 테이블로, INPUT/OUTPUT/FORWARD 체인을 포함하여 패킷 필터링을 수행합니다.",
-      "keywords": ["iptables", "filter 테이블", "패킷 필터링"]
+      "keywords": [
+        "iptables",
+        "filter 테이블",
+        "패킷 필터링"
+      ]
     },
     {
       "id": 7,
       "question": "IPsec 프로토콜 중 인증, 무결성, 암호화를 모두 제공하는 것은?",
-      "options": ["AH", "ESP", "IKE", "ISAKMP"],
+      "options": [
+        "AH",
+        "ISAKMP",
+        "IKE",
+        "ESP"
+      ],
       "answer": 1,
       "explanation": "ESP(Encapsulating Security Payload)는 인증, 무결성, 암호화를 모두 제공합니다(Protocol 50). AH는 인증과 무결성만 제공하고 암호화는 제공하지 않습니다.",
-      "keywords": ["ESP", "IPsec", "암호화"]
+      "keywords": [
+        "ESP",
+        "IPsec",
+        "암호화"
+      ]
     },
     {
       "id": 8,
       "question": "IPsec 모드 중 전체 IP 패킷을 암호화하고 새 IP 헤더를 추가하는 방식은?",
-      "options": ["전송 모드", "터널 모드", "메인 모드", "공격 모드"],
+      "options": [
+        "전송 모드",
+        "메인 모드",
+        "공격 모드",
+        "터널 모드"
+      ],
       "answer": 1,
       "explanation": "터널 모드는 원본 IP 패킷 전체를 암호화하고 새로운 IP 헤더를 추가합니다. 주로 VPN 게이트웨이 간 통신에 사용됩니다. 전송 모드는 페이로드만 암호화합니다.",
-      "keywords": ["터널 모드", "IPsec", "VPN"]
+      "keywords": [
+        "터널 모드",
+        "IPsec",
+        "VPN"
+      ]
     },
     {
       "id": 9,
       "question": "IKE(Internet Key Exchange)의 Phase 1에서 6개의 메시지를 교환하며 ID를 보호하는 모드는?",
-      "options": ["Quick Mode", "Main Mode", "Aggressive Mode", "Transport Mode"],
+      "options": [
+        "Quick Mode",
+        "Transport Mode",
+        "Main Mode",
+        "Aggressive Mode"
+      ],
       "answer": 1,
       "explanation": "Main Mode는 Phase 1에서 6개의 메시지를 교환하며 ID를 보호합니다. Aggressive Mode는 3개 메시지로 빠르지만 ID가 노출될 수 있습니다.",
-      "keywords": ["IKE", "Main Mode", "Phase 1"]
+      "keywords": [
+        "IKE",
+        "Main Mode",
+        "Phase 1"
+      ]
     },
     {
       "id": 10,
       "question": "VPN 프로토콜 중 보안이 취약하여 사용이 비권장되는 것은?",
-      "options": ["IPsec", "OpenVPN", "PPTP", "WireGuard"],
-      "answer": 2,
+      "options": [
+        "PPTP",
+        "IPsec",
+        "OpenVPN",
+        "WireGuard"
+      ],
+      "answer": 3,
       "explanation": "PPTP(Point-to-Point Tunneling Protocol)는 MPPE(RC4) 암호화와 MS-CHAPv2 인증을 사용하며, 보안 취약점이 발견되어 사용이 비권장됩니다.",
-      "keywords": ["PPTP", "VPN", "보안 취약"]
+      "keywords": [
+        "PPTP",
+        "VPN",
+        "보안 취약"
+      ]
     },
     {
       "id": 11,
       "question": "IDS와 IPS의 차이점에 대한 설명으로 옳은 것은?",
       "options": [
-        "IDS는 인라인 배치, IPS는 패시브 배치이다",
         "IDS는 탐지 및 차단, IPS는 탐지만 한다",
-        "IDS는 탐지 및 경고, IPS는 탐지 및 차단을 수행한다",
-        "IDS는 IPS보다 네트워크 지연이 크다"
+        "IDS는 IPS보다 네트워크 지연이 크다",
+        "IDS는 인라인 배치, IPS는 패시브 배치이다",
+        "IDS는 탐지 및 경고, IPS는 탐지 및 차단을 수행한다"
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "IDS는 침입을 탐지하고 경고만 하며 패시브로 배치됩니다. IPS는 인라인으로 배치되어 탐지와 동시에 차단까지 수행합니다.",
-      "keywords": ["IDS", "IPS", "침입 탐지/방지"]
+      "keywords": [
+        "IDS",
+        "IPS",
+        "침입 탐지/방지"
+      ]
     },
     {
       "id": 12,
       "question": "IDS/IPS의 탐지 방식 중 알려진 공격 패턴과 매칭하여 탐지하는 방식은?",
-      "options": ["이상 탐지", "시그니처 기반 탐지", "정책 기반 탐지", "행위 기반 탐지"],
-      "answer": 1,
+      "options": [
+        "시그니처 기반 탐지",
+        "정책 기반 탐지",
+        "이상 탐지",
+        "행위 기반 탐지"
+      ],
+      "answer": 3,
       "explanation": "시그니처 기반(Signature-based) 탐지는 알려진 공격 패턴(시그니처)과 매칭하여 정확하게 탐지합니다. 다만 제로데이 공격은 탐지할 수 없습니다.",
-      "keywords": ["시그니처 기반", "패턴 매칭", "IDS/IPS"]
+      "keywords": [
+        "시그니처 기반",
+        "패턴 매칭",
+        "IDS/IPS"
+      ]
     },
     {
       "id": 13,
       "question": "IDS/IPS 탐지 결과에서 정상 트래픽을 공격으로 잘못 판단하는 것은?",
-      "options": ["True Positive", "True Negative", "False Positive", "False Negative"],
-      "answer": 2,
+      "options": [
+        "True Negative",
+        "False Positive",
+        "False Negative",
+        "True Positive"
+      ],
+      "answer": 1,
       "explanation": "False Positive(오탐)는 정상 트래픽을 공격으로 잘못 탐지하는 것입니다. False Negative(미탐)는 실제 공격을 탐지하지 못하는 것으로, 보안상 더 위험합니다.",
-      "keywords": ["False Positive", "오탐", "탐지 결과"]
+      "keywords": [
+        "False Positive",
+        "오탐",
+        "탐지 결과"
+      ]
     },
     {
       "id": 14,
       "question": "Snort 규칙에서 경고를 발생시키는 동작(Action) 키워드는?",
-      "options": ["log", "pass", "alert", "drop"],
+      "options": [
+        "drop",
+        "pass",
+        "log",
+        "alert"
+      ],
       "answer": 2,
       "explanation": "Snort 규칙의 Action에서 alert는 경고를 발생시키고 로그를 기록합니다. log는 로그만, pass는 통과, drop은 차단합니다.",
-      "keywords": ["Snort", "alert", "규칙"]
+      "keywords": [
+        "Snort",
+        "alert",
+        "규칙"
+      ]
     },
     {
       "id": 15,
       "question": "프록시 유형 중 서버 측에 위치하여 로드밸런싱, SSL 오프로딩, WAF 기능을 제공하는 것은?",
-      "options": ["Forward Proxy", "Reverse Proxy", "Transparent Proxy", "SOCKS Proxy"],
-      "answer": 1,
+      "options": [
+        "Reverse Proxy",
+        "Forward Proxy",
+        "SOCKS Proxy",
+        "Transparent Proxy"
+      ],
+      "answer": 2,
       "explanation": "Reverse Proxy는 서버 측에 위치하여 클라이언트 요청을 내부 서버에 분배하며, 로드밸런싱, SSL 오프로딩, WAF 기능을 제공합니다.",
-      "keywords": ["Reverse Proxy", "로드밸런싱", "프록시"]
+      "keywords": [
+        "Reverse Proxy",
+        "로드밸런싱",
+        "프록시"
+      ]
     },
     {
       "id": 16,
       "question": "802.1X 인증 구성요소 중 스위치나 무선 AP 역할을 하는 것은?",
-      "options": ["Supplicant", "Authenticator", "Authentication Server", "RADIUS Client"],
-      "answer": 1,
+      "options": [
+        "Authenticator",
+        "RADIUS Client",
+        "Authentication Server",
+        "Supplicant"
+      ],
+      "answer": 4,
       "explanation": "Authenticator는 스위치나 무선 AP로, Supplicant(클라이언트)와 Authentication Server(RADIUS) 사이에서 접근 제어를 수행합니다.",
-      "keywords": ["802.1X", "Authenticator", "네트워크 접근 제어"]
+      "keywords": [
+        "802.1X",
+        "Authenticator",
+        "네트워크 접근 제어"
+      ]
     },
     {
       "id": 17,
       "question": "EAP 인증 유형 중 클라이언트와 서버 양쪽 인증서를 사용하여 가장 안전한 것은?",
-      "options": ["EAP-MD5", "EAP-TLS", "EAP-TTLS", "PEAP"],
-      "answer": 1,
+      "options": [
+        "EAP-TTLS",
+        "EAP-MD5",
+        "PEAP",
+        "EAP-TLS"
+      ],
+      "answer": 2,
       "explanation": "EAP-TLS는 클라이언트와 서버 양쪽 모두 인증서를 사용하는 상호 인증 방식으로, EAP 유형 중 가장 안전합니다.",
-      "keywords": ["EAP-TLS", "상호 인증", "인증서"]
+      "keywords": [
+        "EAP-TLS",
+        "상호 인증",
+        "인증서"
+      ]
     },
     {
       "id": 18,
       "question": "RADIUS 프로토콜이 제공하는 AAA 서비스의 구성요소가 아닌 것은?",
-      "options": ["Authentication(인증)", "Authorization(인가)", "Accounting(계정)", "Auditing(감사)"],
+      "options": [
+        "Authentication(인증)",
+        "Authorization(인가)",
+        "Accounting(계정)",
+        "Auditing(감사)"
+      ],
       "answer": 3,
       "explanation": "RADIUS의 AAA는 Authentication(인증), Authorization(인가), Accounting(계정)입니다. Auditing(감사)은 AAA에 포함되지 않습니다.",
-      "keywords": ["RADIUS", "AAA", "인증/인가/계정"]
+      "keywords": [
+        "RADIUS",
+        "AAA",
+        "인증/인가/계정"
+      ]
     },
     {
       "id": 19,
       "question": "제로 트러스트 네트워크의 핵심 원칙이 아닌 것은?",
       "options": [
-        "항상 검증(Never Trust, Always Verify)",
         "최소 권한 접근",
-        "침해 가정",
-        "내부 네트워크는 신뢰"
+        "항상 검증(Never Trust, Always Verify)",
+        "내부 네트워크는 신뢰",
+        "침해 가정"
       ],
-      "answer": 3,
+      "answer": 4,
       "explanation": "제로 트러스트는 내부 네트워크도 신뢰하지 않는 것이 핵심입니다. 모든 접근 요청을 검증하고, 최소 권한만 부여하며, 항상 침해 가능성을 가정합니다.",
-      "keywords": ["제로 트러스트", "Zero Trust", "내부 불신"]
+      "keywords": [
+        "제로 트러스트",
+        "Zero Trust",
+        "내부 불신"
+      ]
     },
     {
       "id": 20,
       "question": "VPN 연결 시 특정 트래픽만 VPN을 경유하고 나머지는 직접 통신하는 방식은?",
-      "options": ["Full Tunnel", "Split Tunnel", "Site-to-Site VPN", "SSL VPN"],
-      "answer": 1,
+      "options": [
+        "Site-to-Site VPN",
+        "SSL VPN",
+        "Full Tunnel",
+        "Split Tunnel"
+      ],
+      "answer": 3,
       "explanation": "Split Tunnel은 특정 트래픽만 VPN을 통해 라우팅하고, 나머지 트래픽은 직접 인터넷으로 통신합니다. VPN 부하는 줄지만 보안이 낮아질 수 있습니다.",
-      "keywords": ["Split Tunnel", "VPN", "트래픽 분할"]
+      "keywords": [
+        "Split Tunnel",
+        "VPN",
+        "트래픽 분할"
+      ]
     },
     {
       "id": 21,
       "question": "방화벽 아키텍처에서 외부에 노출된 강화된 서버로 최소 서비스, 강력한 인증, 상세 로깅을 적용한 것은?",
-      "options": ["스크리닝 라우터", "베스천 호스트", "듀얼 홈드 호스트", "DMZ 서버"],
+      "options": [
+        "스크리닝 라우터",
+        "DMZ 서버",
+        "듀얼 홈드 호스트",
+        "베스천 호스트"
+      ],
       "answer": 1,
       "explanation": "베스천 호스트(Bastion Host)는 외부에 노출되어 방어 최전선 역할을 하며, 최소한의 서비스만 실행하고 강력한 인증과 상세 로깅을 적용합니다.",
-      "keywords": ["베스천 호스트", "Bastion Host", "방화벽"]
+      "keywords": [
+        "베스천 호스트",
+        "Bastion Host",
+        "방화벽"
+      ]
     },
     {
       "id": 22,
       "question": "HIDS(호스트 기반 IDS)와 NIDS(네트워크 기반 IDS)의 차이에 대한 설명으로 옳은 것은?",
       "options": [
-        "HIDS는 네트워크 트래픽을 모니터링한다",
-        "NIDS는 암호화된 트래픽을 쉽게 분석할 수 있다",
         "HIDS는 암호화된 트래픽 분석이 가능하다",
-        "NIDS는 호스트별로 설치해야 한다"
+        "HIDS는 네트워크 트래픽을 모니터링한다",
+        "NIDS는 호스트별로 설치해야 한다",
+        "NIDS는 암호화된 트래픽을 쉽게 분석할 수 있다"
       ],
-      "answer": 2,
+      "answer": 4,
       "explanation": "HIDS는 호스트에 설치되어 시스템 콜, 파일, 로그를 모니터링하므로 복호화된 데이터를 분석할 수 있습니다. NIDS는 네트워크 트래픽을 모니터링하므로 암호화된 트래픽 분석이 어렵습니다.",
-      "keywords": ["HIDS", "NIDS", "암호화 트래픽"]
+      "keywords": [
+        "HIDS",
+        "NIDS",
+        "암호화 트래픽"
+      ]
     },
     {
       "id": 23,
       "question": "IPsec의 AH(Authentication Header) 프로토콜이 제공하지 않는 기능은?",
-      "options": ["인증", "무결성", "기밀성(암호화)", "재전송 방지"],
-      "answer": 2,
+      "options": [
+        "재전송 방지",
+        "인증",
+        "기밀성(암호화)",
+        "무결성"
+      ],
+      "answer": 4,
       "explanation": "AH(Authentication Header)는 인증, 무결성, 재전송 방지를 제공하지만 기밀성(암호화)은 제공하지 않습니다. 암호화가 필요하면 ESP를 사용합니다.",
-      "keywords": ["AH", "IPsec", "기밀성"]
+      "keywords": [
+        "AH",
+        "IPsec",
+        "기밀성"
+      ]
     },
     {
       "id": 24,
       "question": "WPA3에서 오프라인 사전 공격을 방지하기 위해 도입된 인증 방식은?",
-      "options": ["PSK", "802.1X", "SAE(Dragonfly)", "EAP-TLS"],
-      "answer": 2,
+      "options": [
+        "EAP-TLS",
+        "SAE(Dragonfly)",
+        "802.1X",
+        "PSK"
+      ],
+      "answer": 3,
       "explanation": "SAE(Simultaneous Authentication of Equals)는 WPA3에서 도입된 인증 방식으로, Dragonfly 프로토콜을 기반으로 오프라인 사전 공격을 방지합니다.",
-      "keywords": ["SAE", "WPA3", "Dragonfly"]
+      "keywords": [
+        "SAE",
+        "WPA3",
+        "Dragonfly"
+      ]
     },
     {
       "id": 25,
       "question": "마이크로 세그멘테이션의 주요 목적은?",
       "options": [
-        "네트워크 대역폭을 최적화한다",
         "워크로드 단위로 네트워크를 분리하여 횡적 이동을 방지한다",
         "DNS 쿼리를 암호화한다",
-        "VPN 터널 수를 줄인다"
+        "VPN 터널 수를 줄인다",
+        "네트워크 대역폭을 최적화한다"
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "마이크로 세그멘테이션은 워크로드 단위로 네트워크를 세분화하여, 공격자의 내부 횡적 이동(Lateral Movement)을 방지하는 제로 트러스트 구현 기법입니다.",
-      "keywords": ["마이크로 세그멘테이션", "횡적 이동", "제로 트러스트"]
+      "keywords": [
+        "마이크로 세그멘테이션",
+        "횡적 이동",
+        "제로 트러스트"
+      ]
     },
     {
       "id": 26,
       "question": "Snort 규칙 구조에서 페이로드 내 특정 문자열 패턴을 검색하는 옵션은?",
-      "options": ["msg", "content", "sid", "flow"],
-      "answer": 1,
+      "options": [
+        "content",
+        "flow",
+        "msg",
+        "sid"
+      ],
+      "answer": 3,
       "explanation": "content 옵션은 패킷 페이로드 내에서 특정 문자열 패턴을 검색합니다. msg는 경고 메시지, sid는 시그니처 ID, flow는 흐름 방향을 지정합니다.",
-      "keywords": ["Snort", "content", "페이로드 검색"]
+      "keywords": [
+        "Snort",
+        "content",
+        "페이로드 검색"
+      ]
     },
     {
       "id": 27,
       "question": "NAC(Network Access Control)의 기능이 아닌 것은?",
       "options": [
-        "사용자/장치 인증",
         "보안 상태 점검(패치, AV 등)",
-        "비준수 장치 격리 및 치료",
-        "네트워크 대역폭 증가"
+        "사용자/장치 인증",
+        "네트워크 대역폭 증가",
+        "비준수 장치 격리 및 치료"
       ],
-      "answer": 3,
+      "answer": 4,
       "explanation": "NAC은 인증, 상태 점검, 격리, 치료, 지속 모니터링 기능을 제공합니다. 네트워크 대역폭 증가는 NAC의 기능이 아닙니다.",
-      "keywords": ["NAC", "네트워크 접근 제어", "상태 점검"]
+      "keywords": [
+        "NAC",
+        "네트워크 접근 제어",
+        "상태 점검"
+      ]
     },
     {
       "id": 28,
       "question": "회선 레벨 게이트웨이(Circuit-Level Gateway)에 대한 설명으로 옳은 것은?",
       "options": [
-        "응용 계층에서 패킷 내용을 검사한다",
         "세션 계층에서 TCP 연결 설정만 검증하고 이후 패킷 내용은 검사하지 않는다",
+        "SSL/TLS 복호화 검사를 수행한다",
         "네트워크 계층에서 IP 주소 기반 필터링을 수행한다",
-        "SSL/TLS 복호화 검사를 수행한다"
+        "응용 계층에서 패킷 내용을 검사한다"
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "회선 레벨 게이트웨이는 세션 계층(L5)에서 TCP 연결 설정을 검증한 후, 연결이 수립되면 패킷 내용을 검사하지 않습니다. SOCKS 프록시가 대표적입니다.",
-      "keywords": ["회선 레벨 게이트웨이", "SOCKS", "세션 계층"]
+      "keywords": [
+        "회선 레벨 게이트웨이",
+        "SOCKS",
+        "세션 계층"
+      ]
     },
     {
       "id": 29,
       "question": "SSL/TLS VPN의 장점으로 옳은 것은?",
       "options": [
-        "네트워크 계층에서 동작하여 모든 프로토콜을 지원한다",
-        "NAT 환경에서 잘 동작하고 방화벽 통과가 용이하다",
         "UDP 기반이므로 빠른 연결이 가능하다",
+        "NAT 환경에서 잘 동작하고 방화벽 통과가 용이하다",
+        "네트워크 계층에서 동작하여 모든 프로토콜을 지원한다",
         "별도의 클라이언트 소프트웨어가 반드시 필요하다"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "SSL/TLS VPN은 TCP 443 포트를 사용하여 NAT 환경에서 잘 동작하고 방화벽 통과가 용이합니다. 웹 브라우저만으로도 접속이 가능합니다.",
-      "keywords": ["SSL VPN", "NAT", "방화벽 통과"]
+      "keywords": [
+        "SSL VPN",
+        "NAT",
+        "방화벽 통과"
+      ]
     },
     {
       "id": 30,
       "question": "Suricata IDS/IPS의 특징이 아닌 것은?",
       "options": [
-        "멀티스레드로 고성능 처리가 가능하다",
-        "Snort 규칙과 호환된다",
         "네트워크에서 파일을 추출할 수 있다",
-        "단일 스레드로만 동작한다"
+        "단일 스레드로만 동작한다",
+        "Snort 규칙과 호환된다",
+        "멀티스레드로 고성능 처리가 가능하다"
       ],
-      "answer": 3,
+      "answer": 1,
       "explanation": "Suricata는 멀티스레드 아키텍처로 고성능 처리가 가능합니다. Snort 규칙 호환, 프로토콜 인식, 파일 추출, Lua 스크립팅을 지원합니다.",
-      "keywords": ["Suricata", "멀티스레드", "IDS/IPS"]
+      "keywords": [
+        "Suricata",
+        "멀티스레드",
+        "IDS/IPS"
+      ]
     },
     {
       "id": 31,
       "question": "WPA2 Enterprise와 WPA2 Personal의 차이에 대한 설명으로 옳은 것은?",
       "options": [
-        "WPA2 Enterprise는 PSK를 사용한다",
         "WPA2 Personal은 RADIUS 서버를 사용한다",
-        "WPA2 Enterprise는 802.1X/EAP와 RADIUS를 사용한다",
-        "WPA2 Personal은 개별 세션 키를 제공한다"
+        "WPA2 Enterprise는 PSK를 사용한다",
+        "WPA2 Personal은 개별 세션 키를 제공한다",
+        "WPA2 Enterprise는 802.1X/EAP와 RADIUS를 사용한다"
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "WPA2 Enterprise는 802.1X/EAP 인증과 RADIUS 서버를 사용하여 개별 세션 키를 제공합니다. WPA2 Personal은 사전 공유 키(PSK)를 사용합니다.",
-      "keywords": ["WPA2 Enterprise", "802.1X", "RADIUS"]
+      "keywords": [
+        "WPA2 Enterprise",
+        "802.1X",
+        "RADIUS"
+      ]
     },
     {
       "id": 32,
       "question": "iptables에서 로컬 시스템으로 들어오는 패킷을 처리하는 체인은?",
-      "options": ["OUTPUT", "FORWARD", "INPUT", "PREROUTING"],
-      "answer": 2,
+      "options": [
+        "OUTPUT",
+        "INPUT",
+        "FORWARD",
+        "PREROUTING"
+      ],
+      "answer": 3,
       "explanation": "INPUT 체인은 로컬 시스템으로 들어오는 패킷을 처리합니다. OUTPUT은 나가는 패킷, FORWARD는 시스템을 경유하는 패킷을 처리합니다.",
-      "keywords": ["iptables", "INPUT 체인", "체인"]
+      "keywords": [
+        "iptables",
+        "INPUT 체인",
+        "체인"
+      ]
     },
     {
       "id": 33,
@@ -326,153 +559,215 @@
       ],
       "answer": 2,
       "explanation": "이상 탐지 방식은 정상 행위의 기준선(Baseline)을 학습하고, 이로부터의 편차를 탐지하여 알려지지 않은 공격(제로데이)도 탐지할 수 있습니다. 다만 오탐률이 높습니다.",
-      "keywords": ["이상 탐지", "Anomaly Detection", "제로데이"]
+      "keywords": [
+        "이상 탐지",
+        "Anomaly Detection",
+        "제로데이"
+      ]
     },
     {
       "id": 34,
       "question": "Transparent Proxy에 대한 설명으로 옳은 것은?",
       "options": [
-        "클라이언트에 별도의 프록시 설정이 필요하다",
         "네트워크 레벨에서 트래픽을 가로채어 클라이언트 설정 없이 동작한다",
+        "SOCKS 프로토콜을 사용한다",
         "서버 측에서 로드밸런싱을 수행한다",
-        "SOCKS 프로토콜을 사용한다"
+        "클라이언트에 별도의 프록시 설정이 필요하다"
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "Transparent Proxy는 네트워크 레벨에서 트래픽을 가로채어 클라이언트에 별도의 프록시 설정 없이 동작합니다. 강제 콘텐츠 필터링이나 캐싱에 사용됩니다.",
-      "keywords": ["Transparent Proxy", "투명 프록시", "설정 불필요"]
+      "keywords": [
+        "Transparent Proxy",
+        "투명 프록시",
+        "설정 불필요"
+      ]
     },
     {
       "id": 35,
       "question": "RADIUS 프로토콜의 인증 포트와 계정(Accounting) 포트는?",
       "options": [
+        "UDP 500, UDP 4500",
         "TCP 389, TCP 636",
-        "UDP 1812, UDP 1813",
         "TCP 443, TCP 8443",
-        "UDP 500, UDP 4500"
+        "UDP 1812, UDP 1813"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "RADIUS는 인증에 UDP 1812, 계정(Accounting)에 UDP 1813 포트를 사용합니다.",
-      "keywords": ["RADIUS", "UDP 1812", "포트 번호"]
+      "keywords": [
+        "RADIUS",
+        "UDP 1812",
+        "포트 번호"
+      ]
     },
     {
       "id": 36,
       "question": "WPA3에서 Deauthentication 공격을 방지하기 위해 필수로 적용되는 기능은?",
       "options": [
+        "WPS 지원",
         "CCMP 암호화",
         "PMF(Protected Management Frames)",
-        "TKIP 호환",
-        "WPS 지원"
+        "TKIP 호환"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "PMF(Protected Management Frames)는 무선 관리 프레임을 보호하여 위조된 Deauthentication 프레임에 의한 연결 해제 공격을 방지합니다. WPA3에서 필수입니다.",
-      "keywords": ["PMF", "WPA3", "관리 프레임 보호"]
+      "keywords": [
+        "PMF",
+        "WPA3",
+        "관리 프레임 보호"
+      ]
     },
     {
       "id": 37,
       "question": "WireGuard VPN의 특징으로 옳은 것은?",
       "options": [
-        "RC4 암호화를 사용한다",
+        "MPPE 암호화를 사용한다",
         "TCP 기반으로 동작한다",
         "간단한 코드와 높은 성능, ChaCha20 암호화를 사용한다",
-        "MPPE 암호화를 사용한다"
+        "RC4 암호화를 사용한다"
       ],
       "answer": 2,
       "explanation": "WireGuard는 간결한 코드(약 4,000줄), 높은 성능, ChaCha20/Curve25519 암호화, UDP 기반 통신이 특징인 최신 VPN 프로토콜입니다.",
-      "keywords": ["WireGuard", "ChaCha20", "VPN"]
+      "keywords": [
+        "WireGuard",
+        "ChaCha20",
+        "VPN"
+      ]
     },
     {
       "id": 38,
       "question": "BEC(Business Email Compromise) 공격에 대한 설명으로 옳은 것은?",
       "options": [
-        "대량의 스팸 메일을 전송하는 공격이다",
         "기업 임원 등을 사칭하여 금전이나 정보를 탈취하는 사기이다",
         "이메일 서버에 DDoS 공격을 수행한다",
+        "대량의 스팸 메일을 전송하는 공격이다",
         "이메일 첨부파일에 악성코드를 삽입하는 공격이다"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "BEC(Business Email Compromise)는 기업 임원이나 거래처를 사칭한 이메일로 송금이나 민감 정보를 요청하는 표적화된 사기 공격입니다.",
-      "keywords": ["BEC", "비즈니스 이메일 침해", "사칭"]
+      "keywords": [
+        "BEC",
+        "비즈니스 이메일 침해",
+        "사칭"
+      ]
     },
     {
       "id": 39,
       "question": "S/MIME과 PGP의 공통 기능은?",
       "options": [
-        "이메일 발신 서버 IP 검증",
         "이메일 본문 암호화와 디지털 서명",
         "스팸 메일 필터링",
+        "이메일 발신 서버 IP 검증",
         "DNS 레코드를 통한 발신자 검증"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "S/MIME과 PGP는 모두 이메일 본문을 암호화하고 디지털 서명을 제공하여 기밀성과 무결성, 발신자 인증을 보장하는 이메일 보안 표준입니다.",
-      "keywords": ["S/MIME", "PGP", "이메일 암호화"]
+      "keywords": [
+        "S/MIME",
+        "PGP",
+        "이메일 암호화"
+      ]
     },
     {
       "id": 40,
       "question": "L2TP/IPsec VPN에서 L2TP가 담당하는 역할은?",
       "options": [
         "패킷 암호화",
-        "키 교환",
         "L2 터널링",
-        "디지털 서명"
+        "디지털 서명",
+        "키 교환"
       ],
-      "answer": 2,
+      "answer": 4,
       "explanation": "L2TP(Layer 2 Tunneling Protocol)는 데이터링크 계층(L2) 터널링을 담당하고, 암호화는 IPsec이 담당합니다. L2TP 자체는 암호화 기능이 없습니다.",
-      "keywords": ["L2TP", "IPsec", "L2 터널링"]
+      "keywords": [
+        "L2TP",
+        "IPsec",
+        "L2 터널링"
+      ]
     },
     {
       "id": 41,
       "question": "nftables에 대한 설명으로 옳은 것은?",
       "options": [
-        "iptables보다 먼저 개발된 레거시 도구이다",
-        "iptables를 대체하는 차세대 Linux 방화벽 프레임워크이다",
+        "네트워크 IDS 전용 도구이다",
         "Windows 전용 방화벽 도구이다",
-        "네트워크 IDS 전용 도구이다"
+        "iptables를 대체하는 차세대 Linux 방화벽 프레임워크이다",
+        "iptables보다 먼저 개발된 레거시 도구이다"
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "nftables는 iptables를 대체하는 차세대 Linux 방화벽 프레임워크로, 더 간결한 문법과 효율적인 패킷 처리를 제공합니다.",
-      "keywords": ["nftables", "iptables", "Linux 방화벽"]
+      "keywords": [
+        "nftables",
+        "iptables",
+        "Linux 방화벽"
+      ]
     },
     {
       "id": 42,
       "question": "Forward Proxy의 주요 용도가 아닌 것은?",
       "options": [
-        "콘텐츠 필터링",
+        "캐싱",
         "클라이언트 익명화",
-        "로드밸런싱",
-        "캐싱"
+        "콘텐츠 필터링",
+        "로드밸런싱"
       ],
       "answer": 2,
       "explanation": "로드밸런싱은 Reverse Proxy의 주요 기능입니다. Forward Proxy는 클라이언트 측에서 콘텐츠 필터링, 익명화, 캐싱 등의 기능을 제공합니다.",
-      "keywords": ["Forward Proxy", "Reverse Proxy", "로드밸런싱"]
+      "keywords": [
+        "Forward Proxy",
+        "Reverse Proxy",
+        "로드밸런싱"
+      ]
     },
     {
       "id": 43,
       "question": "듀얼 홈드 호스트(Dual-Homed Host) 방화벽의 특징은?",
       "options": [
+        "외부에서 직접 접근 가능한 서버이다",
         "하나의 네트워크 인터페이스만 가진다",
         "두 개의 네트워크 인터페이스를 가지며 라우팅을 비활성화한다",
-        "외부에서 직접 접근 가능한 서버이다",
         "DMZ를 포함한 3단계 구조이다"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "듀얼 홈드 호스트는 두 개의 네트워크 인터페이스(내부/외부)를 가지며, IP 라우팅을 비활성화하여 프록시로만 통신하게 합니다.",
-      "keywords": ["듀얼 홈드 호스트", "네트워크 인터페이스", "프록시"]
+      "keywords": [
+        "듀얼 홈드 호스트",
+        "네트워크 인터페이스",
+        "프록시"
+      ]
     },
     {
       "id": 44,
       "question": "Windows 방화벽 프로필 중 공용 네트워크에서 가장 제한적인 정책이 적용되는 것은?",
-      "options": ["도메인 프로필", "개인 프로필", "공용 프로필", "회사 프로필"],
-      "answer": 2,
+      "options": [
+        "도메인 프로필",
+        "공용 프로필",
+        "개인 프로필",
+        "회사 프로필"
+      ],
+      "answer": 3,
       "explanation": "Windows 방화벽의 공용 프로필은 공공 Wi-Fi 등 신뢰할 수 없는 네트워크에서 가장 제한적인 정책을 적용합니다.",
-      "keywords": ["Windows 방화벽", "공용 프로필", "방화벽 프로필"]
+      "keywords": [
+        "Windows 방화벽",
+        "공용 프로필",
+        "방화벽 프로필"
+      ]
     },
     {
       "id": 45,
       "question": "OpenVPN의 기본 포트와 프로토콜은?",
-      "options": ["TCP 443", "UDP 1194", "TCP 1723", "UDP 500"],
-      "answer": 1,
+      "options": [
+        "UDP 500",
+        "UDP 1194",
+        "TCP 1723",
+        "TCP 443"
+      ],
+      "answer": 4,
       "explanation": "OpenVPN의 기본 포트는 UDP 1194입니다. SSL/TLS 기반으로 동작하며, TCP 443으로 변경하여 방화벽을 우회할 수도 있습니다.",
-      "keywords": ["OpenVPN", "UDP 1194", "VPN"]
+      "keywords": [
+        "OpenVPN",
+        "UDP 1194",
+        "VPN"
+      ]
     }
   ]
 }
